@@ -1,44 +1,135 @@
-import java.io.RandomAccessFile;
+import java.io.*;
+import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        Film l1 = new Film(1, "O nome do vento", 600);
-        System.out.println(l1);
-        Film l2 = new Film(2, "A Origem", 300);
-        System.out.println(l2);
 
-        RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
-        Film l3 = new Film();
-        Film l4 = new Film();
-
-        byte[] b;
-        int len;
+    static void create() throws IOException {
         try {
-            b = l1.toByteArray();
-            arq.writeInt(b.length);
-            arq.write(b);
-            b = l2.toByteArray();
-            arq.writeInt(b.length);
-            arq.write(b);
+            RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
+            Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
+            String line = fileReaderScanner.nextLine();
+            line = fileReaderScanner.nextLine(); // Ignora primeira linha do csv
+            long pointerPosition;
+            byte[] b;
+            arq.writeInt(0);
+            arq.seek(4);
+            while (fileReaderScanner.hasNextLine()) {
+                Film film = new Film();
+                film.ReadText(line);
+                b = film.toByteArray();
+                arq.writeChars("$"); // sinal de registro ativo
+                arq.writeInt(b.length);
+                arq.write(b);
+                pointerPosition = arq.getFilePointer();
+                // Volta ponteiro para cabeçalho e atualiza id
+                arq.seek(0);
+                arq.writeInt(film.show_id);
+                arq.seek(pointerPosition);
 
-            arq.seek(0);
-            len = arq.readInt();
-            b = new byte[len];
-            arq.read(b);
-            l3.fromByteArray(b);
-            System.out.println(l3);
+                line = fileReaderScanner.nextLine();
 
-            len = arq.readInt();
-            b = new byte[len];
-            arq.read(b);
-            l4.fromByteArray(b);
-            System.out.println(l4);
+            }
+            arq.close();
+            fileReaderScanner.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    static void read(int id) throws IOException {
+        try {
+            RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
+            Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
 
             arq.close();
+            fileReaderScanner.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    static void update(int id) throws IOException {
+        try {
+            RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
+            Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
+
+            arq.close();
+            fileReaderScanner.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    static void delete(int id) throws IOException {
+        try {
+            RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
+            Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
+
+            arq.close();
+            fileReaderScanner.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        Scanner sc = new Scanner(System.in);
+        int option = -1;
+        int id = 0;
+
+        do {
+            System.out.println("Entre com uma opção:");
+            System.out.println("1 - Criar a base de dados");
+            System.out.println("2 - Ler um registro da base de dados");
+            System.out.println("3 - Atualizar um registro da base de dados");
+            System.out.println("4 - Deletar um registro da base de dados");
+            System.out.println("5 - Ordenar a base de dados");
+            System.out.println("0 - Sair");
+            System.out.println();
+
+            option = sc.nextInt();
+
+            switch (option) {
+                case 1:
+                    create();
+                    System.out.println("Arquivo criado com sucesso.");
+                    System.out.println();
+                    break;
+                case 2:
+                    System.out.println("Digite o id do Show que você deseja ver: ");
+                    id = sc.nextInt();
+                    read(id);
+                    break;
+                case 3:
+                    System.out.println("Digite o id do Show que você deseja atualizar: ");
+                    id = sc.nextInt();
+                    update(id);
+                    break;
+                case 4:
+                    System.out.println("Digite o id do Show que você deseja deletar: ");
+                    id = sc.nextInt();
+                    delete(id);
+                    break;
+                case 5:
+                    System.out.println("Opção 5");
+                    break;
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+
+                default:
+                    break;
+            }
+
+        } while (option != 0);
+        sc.close();
     }
 }
