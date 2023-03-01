@@ -15,11 +15,6 @@ public class Film {
     protected int release_year;
     protected String duration;
     protected String listed_in;
-    protected int typeSize;
-    protected int titleSize;
-    protected int directorSize;
-    protected int durationSize;
-    protected int listed_inSize;
 
     // Construtores
     public Film() {
@@ -106,46 +101,6 @@ public class Film {
         this.listed_in = listed_in;
     }
 
-    public int getTypeSize() {
-        return typeSize;
-    }
-
-    public void setTypeSize(int typeSize) {
-        this.typeSize = typeSize;
-    }
-
-    public int getTitleSize() {
-        return titleSize;
-    }
-
-    public void setTitleSize(int titleSize) {
-        this.titleSize = titleSize;
-    }
-
-    public int getDirectorSize() {
-        return directorSize;
-    }
-
-    public void setDirectorSize(int directorSize) {
-        this.directorSize = directorSize;
-    }
-
-    public int getDurationSize() {
-        return durationSize;
-    }
-
-    public void setDurationSize(int durationSize) {
-        this.durationSize = durationSize;
-    }
-
-    public int getListed_inSize() {
-        return listed_inSize;
-    }
-
-    public void setListed_inSize(int listed_inSize) {
-        this.listed_inSize = listed_inSize;
-    }
-
     // Função para imprimir dados do filme/show
     public String print() {
         return "Id: " + Integer.toString(this.show_id) + " | Tipo: " + this.type + " | Título: " + this.title
@@ -163,17 +118,12 @@ public class Film {
         DataOutputStream dos = new DataOutputStream(baos);
         SimpleDateFormat date = new SimpleDateFormat("MMMMM dd, yyyy");
         dos.writeInt(this.show_id);
-        dos.writeInt(this.typeSize);
         dos.writeUTF(this.type);
-        dos.writeInt(this.titleSize);
         dos.writeUTF(this.title);
-        dos.writeInt(this.directorSize);
         dos.writeUTF(this.director);
         dos.writeUTF(date.format(this.date_added));
         dos.writeInt(this.release_year);
-        dos.writeInt(this.durationSize);
         dos.writeUTF(this.duration);
-        dos.writeInt(this.listed_inSize);
         dos.writeUTF(this.listed_in);
 
         return baos.toByteArray();
@@ -185,17 +135,12 @@ public class Film {
         DataInputStream dis = new DataInputStream(bais);
         SimpleDateFormat date = new SimpleDateFormat("MMMMM dd, yyyy");
         this.show_id = dis.readInt();
-        this.typeSize = dis.readInt();
         this.type = dis.readUTF();
-        this.titleSize = dis.readInt();
         this.title = dis.readUTF();
-        this.directorSize = dis.readInt();
         this.director = dis.readUTF();
         this.date_added = date.parse(dis.readUTF());
         this.release_year = dis.readInt();
-        this.durationSize = dis.readInt();
         this.duration = dis.readUTF();
-        this.listed_inSize = dis.readInt();
         this.listed_in = dis.readUTF();
 
     }
@@ -235,12 +180,6 @@ public class Film {
         setRelease_year(Integer.parseInt(vetor[5]));
         setDuration(vetor[6]);
         setListed_in(vetor[7]);
-
-        setTypeSize(vetor[1].length());
-        setTitleSize(vetor[2].length());
-        setDirectorSize(vetor[3].length());
-        setDurationSize(vetor[6].length());
-        setListed_inSize(vetor[7].length());
 
     }
 

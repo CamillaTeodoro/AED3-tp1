@@ -17,7 +17,8 @@ public class App {
                 Film film = new Film();
                 film.ReadText(line);
                 b = film.toByteArray();
-                arq.writeChars("$"); // sinal de registro ativo
+                arq.writeChar('$'); // sinal de registro ativo
+
                 arq.writeInt(b.length);
                 arq.write(b);
                 pointerPosition = arq.getFilePointer();
@@ -68,10 +69,30 @@ public class App {
     static void delete(int id) throws IOException {
         try {
             RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
-            Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
+            arq.seek(0);
+            int finalId = arq.readInt();
+            long pointerPosition;
+            pointerPosition = arq.getFilePointer();
+            while (pointerPosition < arq.length()) {
+                char lapide = arq.readChar();
+                int size = arq.readInt();
+                int filmID = arq.readInt();
+                if (filmID == id && lapide == '$') {
+                    arq.seek(pointerPosition);
+                    arq.writeChar('*'); // informa que o arquivo está deletado
+                    System.out.println("Filme/Show deletado com sucesso");
+                    System.out.println();
+                    return;
+                } else if (filmID == id && lapide == '*') {
+                    System.out.println("Filme/Show não existe na base de dados.");
+                    System.out.println();
+                }
+                arq.seek(pointerPosition + 6 + size);
+                pointerPosition = arq.getFilePointer();
+
+            }
 
             arq.close();
-            fileReaderScanner.close();
 
         } catch (Exception e) {
             e.printStackTrace();
