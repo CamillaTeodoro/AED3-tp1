@@ -74,6 +74,7 @@ public class Film {
     }
 
     public void setDate_added(Date date_added) {
+        System.out.println(date_added);
         this.date_added = date_added;
     }
 
@@ -103,13 +104,15 @@ public class Film {
 
     // Função para imprimir dados do filme/show
     public String print() {
-        return "Id: " + Integer.toString(this.show_id) + " | Tipo: " + this.type + " | Título: " + this.title
+        System.out.println("entrei no print");
+        System.out.println(this.date_added);
+        return "Id: " + Integer.toString(show_id) + " | Tipo: " + type + " | Título: " + title
                 + " | Diretor(s): "
-                + this.director
+                + director
                 + " | Data: "
-                + new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).format(this.date_added)
-                + " | Ano de estréia: " + Integer.toString(this.release_year)
-                + " | Duração: " + this.duration + " | Listado como: " + this.listed_in;
+                + new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).format(date_added)
+                + " | Ano de estréia: " + Integer.toString(release_year)
+                + " | Duração: " + duration + " | Gênero(s): " + listed_in;
     }
 
     // Função que cria o byte array com os dados do filme/show
@@ -131,6 +134,7 @@ public class Film {
 
     // Função que lê o byte array e cria o objeto
     public void fromByteArray(byte[] b) throws IOException, ParseException {
+
         ByteArrayInputStream bais = new ByteArrayInputStream(b);
         DataInputStream dis = new DataInputStream(bais);
         SimpleDateFormat date = new SimpleDateFormat("MMMMM dd, yyyy");
@@ -140,6 +144,7 @@ public class Film {
         this.director = dis.readUTF();
         this.date_added = date.parse(dis.readUTF());
         this.release_year = dis.readInt();
+        // System.out.println(this.release_year);
         this.duration = dis.readUTF();
         this.listed_in = dis.readUTF();
 
@@ -172,6 +177,7 @@ public class Film {
         setType(vetor[1]);
         setTitle(vetor[2]);
         setDirector(vetor[3]);
+        // System.out.println(vetor[4]);
         try {
             setDate_added(new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).parse(vetor[4]));
         } catch (Exception e) {

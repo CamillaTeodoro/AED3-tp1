@@ -41,10 +41,43 @@ public class App {
     static void read(int id) throws IOException {
         try {
             RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
-            Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
 
+            arq.seek(4);
+            long pointerPosition;
+            pointerPosition = arq.getFilePointer();
+
+            while (pointerPosition < arq.length()) {
+                Film film = new Film();
+                char lapide = arq.readChar();
+                int size = arq.readInt();
+                int filmID = arq.readInt();
+                if (filmID == id && lapide == '$') {
+                    // System.out.println("cheguei aqui.");
+                    arq.seek(pointerPosition + 2);
+                    int sizeFilm = arq.readInt();
+                    // System.out.println(sizeFilm);
+                    byte[] b = new byte[sizeFilm];
+                    arq.read(b);
+                    film.fromByteArray(b);
+                    System.out.println("cheguei aqui 2.");
+                    film.print();
+
+                    System.out.println();
+                    return;
+                } else if (filmID == id && lapide == '*') {
+                    System.out.println("Filme/Show não existe na base de dados.");
+                    System.out.println();
+                    return;
+                }
+
+                arq.seek(pointerPosition + 6 + size);
+                pointerPosition = arq.getFilePointer();
+
+            }
+
+            System.out.println("Filme/Show não existe na base de dados.");
+            System.out.println();
             arq.close();
-            fileReaderScanner.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,10 +88,8 @@ public class App {
     static void update(int id) throws IOException {
         try {
             RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
-            Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
 
             arq.close();
-            fileReaderScanner.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,8 +100,7 @@ public class App {
     static void delete(int id) throws IOException {
         try {
             RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
-            arq.seek(0);
-            int finalId = arq.readInt();
+            arq.seek(4);
             long pointerPosition;
             pointerPosition = arq.getFilePointer();
             while (pointerPosition < arq.length()) {
@@ -86,13 +116,15 @@ public class App {
                 } else if (filmID == id && lapide == '*') {
                     System.out.println("Filme/Show não existe na base de dados.");
                     System.out.println();
+                    return;
                 }
                 arq.seek(pointerPosition + 6 + size);
                 pointerPosition = arq.getFilePointer();
 
             }
-
             arq.close();
+            System.out.println("Filme/Show não existe na base de dados.");
+            System.out.println();
 
         } catch (Exception e) {
             e.printStackTrace();
