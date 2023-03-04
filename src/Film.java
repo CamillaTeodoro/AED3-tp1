@@ -50,7 +50,7 @@ public class Film {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type.trim();
     }
 
     public String getTitle() {
@@ -58,7 +58,7 @@ public class Film {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title.trim();
     }
 
     public String getDirector() {
@@ -66,7 +66,7 @@ public class Film {
     }
 
     public void setDirector(String director) {
-        this.director = director;
+        this.director = director.trim();
     }
 
     public Date getDate_added() {
@@ -74,7 +74,7 @@ public class Film {
     }
 
     public void setDate_added(Date date_added) {
-        System.out.println(date_added);
+        // System.out.println(date_added);
         this.date_added = date_added;
     }
 
@@ -91,7 +91,7 @@ public class Film {
     }
 
     public void setDuration(String duration) {
-        this.duration = duration;
+        this.duration = duration.trim();
     }
 
     public String getListed_in() {
@@ -99,18 +99,19 @@ public class Film {
     }
 
     public void setListed_in(String listed_in) {
-        this.listed_in = listed_in;
+        this.listed_in = listed_in.trim();
     }
 
     // Função para imprimir dados do filme/show
     public void print() {
-        System.out.println("Id: " + Integer.toString(show_id) + " | Tipo: " + type + " | Título: " + title
+        System.out.println();
+        System.out.println("Id: " + Integer.toString(show_id) + " | Tipo: " + type.trim() + " | Título: " + title.trim()
                 + " | Diretor(es): "
-                + director
+                + director.trim()
                 + " | Data: "
                 + new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).format(date_added)
                 + " | Ano de estréia: " + Integer.toString(release_year)
-                + " | Duração: " + duration + " | Gênero(s): " + listed_in);
+                + " | Duração: " + duration.trim() + " | Gênero(s): " + listed_in.trim());
 
     }
 
