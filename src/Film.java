@@ -103,16 +103,15 @@ public class Film {
     }
 
     // Função para imprimir dados do filme/show
-    public String print() {
-        System.out.println("entrei no print");
-        System.out.println(this.date_added);
-        return "Id: " + Integer.toString(show_id) + " | Tipo: " + type + " | Título: " + title
-                + " | Diretor(s): "
+    public void print() {
+        System.out.println("Id: " + Integer.toString(show_id) + " | Tipo: " + type + " | Título: " + title
+                + " | Diretor(es): "
                 + director
                 + " | Data: "
                 + new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).format(date_added)
                 + " | Ano de estréia: " + Integer.toString(release_year)
-                + " | Duração: " + duration + " | Gênero(s): " + listed_in;
+                + " | Duração: " + duration + " | Gênero(s): " + listed_in);
+
     }
 
     // Função que cria o byte array com os dados do filme/show
