@@ -177,7 +177,6 @@ public class Film {
         setType(vetor[1]);
         setTitle(vetor[2]);
         setDirector(vetor[3]);
-        // System.out.println(vetor[4]);
         try {
             setDate_added(new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).parse(vetor[4]));
         } catch (Exception e) {

@@ -1,5 +1,6 @@
 import java.io.*;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class App {
 
@@ -54,17 +55,22 @@ public class App {
             RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
 
             arq.seek(4);
+            long fileSize = arq.length();
             long pointerPosition;
             long beginOfRegister = arq.getFilePointer();
             pointerPosition = arq.getFilePointer();
 
-            while (pointerPosition < arq.length()) {
+            while (pointerPosition < fileSize) {
+
                 Film film = new Film();
+
                 beginOfRegister = arq.getFilePointer();
+
                 char lapide = arq.readChar();
                 int size = arq.readInt();
                 int filmID = arq.readInt();
                 if (filmID == id && lapide == '$') {
+
                     // System.out.println("cheguei aqui.");
                     arq.seek(pointerPosition + 2);
                     int sizeFilm = arq.readInt();
@@ -77,10 +83,6 @@ public class App {
 
                     System.out.println();
                     return beginOfRegister;
-                } else if (filmID == id && lapide == '*') {
-                    System.out.println("Filme/Show não existe na base de dados.");
-                    System.out.println();
-                    return (long) -1;
                 }
 
                 arq.seek(pointerPosition + 6 + size);
@@ -185,7 +187,7 @@ public class App {
                             arq.writeChar('*');
                             film.type = type;
                             byte[] c = film.toByteArray();
-                            arq.seek(arq.length() - 1);
+                            arq.seek(arq.length());
                             arq.writeChar('$');
                             arq.writeInt(c.length);
                             arq.write(c);
@@ -227,7 +229,7 @@ public class App {
                             arq.writeChar('*');
                             film.title = title;
                             byte[] c = film.toByteArray();
-                            arq.seek(arq.length() - 1);
+                            arq.seek(arq.length());
                             arq.writeChar('$');
                             arq.writeInt(c.length);
                             arq.write(c);
@@ -269,7 +271,7 @@ public class App {
                             arq.writeChar('*');
                             film.director = director;
                             byte[] c = film.toByteArray();
-                            arq.seek(arq.length() - 1);
+                            arq.seek(arq.length());
                             arq.writeChar('$');
                             arq.writeInt(c.length);
                             arq.write(c);
@@ -296,6 +298,88 @@ public class App {
                         director = arq.readUTF();
                         // salva posição do date_added numa variável
                         pointerPosiLong = arq.getFilePointer();
+
+                        String oldDate_added = arq.readUTF();
+                        int sizeOldDate_added = oldDate_added.length();
+                        Date newDate_added;
+                        int sizeFormatNewDate_added;
+                        String formatNewDate_added;
+
+                        try {
+                            newDate_added = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+                                    .parse(dateAdded);
+                            formatNewDate_added = new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH)
+                                    .format(newDate_added);
+                            sizeFormatNewDate_added = formatNewDate_added.length();
+                            if (sizeOldDate_added >= sizeFormatNewDate_added) {
+                                String date_addedResult = formatNewDate_added;
+                                arq.seek(pointerPosiLong);
+                                while (date_addedResult.length() < sizeOldDate_added) {
+                                    date_addedResult += " ";
+                                }
+                                arq.writeUTF(date_addedResult);
+                                film.date_added = newDate_added;
+
+                                System.out.println("Registro editado com sucesso.");
+                                film.print();
+
+                            } else {
+                                arq.seek(whereToUpdate);
+                                arq.writeChar('*');
+                                film.date_added = new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH)
+                                        .parse(formatNewDate_added);
+                                byte[] c = film.toByteArray();
+                                arq.seek(arq.length());
+                                arq.writeChar('$');
+                                arq.writeInt(c.length);
+                                arq.write(c);
+                                // Volta ponteiro para cabeçalho e atualiza id
+                                arq.seek(0);
+                                arq.writeInt(film.show_id);
+                                System.out.println("Registro editado com sucesso.");
+                                film.print();
+
+                            }
+                        } catch (Exception e) {
+                            try {
+                                newDate_added = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+                                        .parse(dateAdded);
+                                formatNewDate_added = new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH)
+                                        .format(newDate_added);
+                                sizeFormatNewDate_added = formatNewDate_added.length();
+                                if (sizeOldDate_added >= sizeFormatNewDate_added) {
+                                    String date_addedResult = formatNewDate_added;
+                                    arq.seek(pointerPosiLong);
+                                    while (date_addedResult.length() < sizeOldDate_added) {
+                                        date_addedResult += " ";
+                                    }
+                                    arq.writeUTF(date_addedResult);
+                                    film.date_added = newDate_added;
+
+                                    System.out.println("Registro editado com sucesso.");
+                                    film.print();
+
+                                } else {
+                                    arq.seek(whereToUpdate);
+                                    arq.writeChar('*');
+                                    film.date_added = new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH)
+                                            .parse(formatNewDate_added);
+                                    byte[] c = film.toByteArray();
+                                    arq.seek(arq.length());
+                                    arq.writeChar('$');
+                                    arq.writeInt(c.length);
+                                    arq.write(c);
+                                    // Volta ponteiro para cabeçalho e atualiza id
+                                    arq.seek(0);
+                                    arq.writeInt(film.show_id);
+                                    System.out.println("Registro editado com sucesso.");
+                                    film.print();
+
+                                }
+                            } catch (Exception e1) {
+                                System.out.println("A data deve ser no formato dd/mm/yyyy ou dd-mm-yyyy.");
+                            }
+                        }
 
                         System.out.println();
 
@@ -355,7 +439,7 @@ public class App {
                             arq.writeChar('*');
                             film.duration = duration;
                             byte[] c = film.toByteArray();
-                            arq.seek(arq.length() - 1);
+                            arq.seek(arq.length());
                             arq.writeChar('$');
                             arq.writeInt(c.length);
                             arq.write(c);
@@ -371,6 +455,48 @@ public class App {
                         break;
                     case 7:
                         System.out.println("Digite o novo Gênero do Filme/Show: ");
+
+                        String listed_in = sc.nextLine();
+                        // coloca ponteiro na posição do type
+                        arq.seek(whereToUpdate + 10);
+                        type = arq.readUTF();
+                        title = arq.readUTF();
+                        director = arq.readUTF();
+                        dateAdded = arq.readUTF();
+                        release_year = arq.readInt();
+                        duration = arq.readUTF();
+
+                        // salva posição do listed_in numa variável
+                        pointerPosiLong = arq.getFilePointer();
+                        String oldListed_in = arq.readUTF();
+                        int sizeOldListed_in = oldListed_in.length();
+                        if (sizeOldListed_in >= listed_in.length()) {
+                            String listed_inResult = listed_in;
+                            while (listed_inResult.length() < sizeOldListed_in) {
+                                listed_inResult += " ";
+                            }
+                            arq.seek(pointerPosiLong);
+                            arq.writeUTF(listed_inResult);
+                            film.listed_in = listed_inResult;
+                            System.out.println("Registro editado com sucesso.");
+                            film.print();
+
+                        } else {
+                            arq.seek(whereToUpdate);
+                            arq.writeChar('*');
+                            film.listed_in = listed_in;
+                            byte[] c = film.toByteArray();
+                            arq.seek(arq.length());
+                            arq.writeChar('$');
+                            arq.writeInt(c.length);
+                            arq.write(c);
+                            // Volta ponteiro para cabeçalho e atualiza id
+                            arq.seek(0);
+                            arq.writeInt(film.show_id);
+                            System.out.println("Registro editado com sucesso.");
+                            film.print();
+
+                        }
                         System.out.println();
 
                         break;
@@ -382,10 +508,7 @@ public class App {
                         System.out.println("ERRO");
                         break;
                 }
-            } else {
-                return;
             }
-            ;
 
             arq.close();
 
