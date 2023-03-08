@@ -392,7 +392,7 @@ public class App {
                             }
                         } catch (Exception e) {
 
-                            System.out.println("A data deve ser no formato dd/mm/yyyy ou dd-mm-yyyy.");
+                            System.out.println("A data deve ser no formato dd/mm/yyyy.");
                         }
 
                         System.out.println();
