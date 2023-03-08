@@ -54,9 +54,18 @@ public class App {
             Scanner sc = new Scanner(System.in);
             Film film = new Film();
             byte[] b;
+            Long idExists;
 
             System.out.println("Digite o id: ");
-            film.setShow_id(Integer.parseInt(sc.nextLine()));
+            int id = Integer.parseInt(sc.nextLine());
+            idExists = read(id);
+            while (idExists != (long) -1) {
+                System.out.println("ID existente na base de dados. Digite outro valor: ");
+                id = Integer.parseInt(sc.nextLine());
+                idExists = read(id);
+            }
+            System.out.println("Cadastro do ID informado aceito com sucesso!!");
+            film.setShow_id((id));
             System.out.println("Digite o Tipo de Filme/Show: ");
             film.setType(sc.nextLine());
             System.out.println("Digite o Título do Filme/Show: ");
@@ -87,6 +96,9 @@ public class App {
             // Volta ponteiro para cabeçalho e atualiza id
             arquivo.seek(0);
             arquivo.writeInt(film.show_id);
+
+            arquivo.close();
+            sc.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -142,6 +154,7 @@ public class App {
 
             System.out.println("Filme/Show não existe na base de dados.");
             System.out.println();
+
             arquivo.close();
 
         } catch (Exception e) {
@@ -197,7 +210,7 @@ public class App {
                 System.out.println("5 - Ano de estréia ");
                 System.out.println("6 - Duração ");
                 System.out.println("7 - Gênero ");
-                System.out.println("0 - Sair ");
+                System.out.println("0 - Voltar ao menu inicial ");
                 System.out.println("");
 
                 try {
@@ -525,6 +538,7 @@ public class App {
             }
 
             arquivo.close();
+            sc.close();
 
         } catch (
 
@@ -565,14 +579,84 @@ public class App {
                 pointerPosition = arquivo.getFilePointer();
 
             }
-            arquivo.close();
             System.out.println("Filme/Show não existe na base de dados.");
             System.out.println();
+
+            arquivo.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    public static void orderDatabase() {
+        Scanner sc = new Scanner(System.in);
+        int option = -1;
+
+        System.out.println("Por qual algoritmo de ordenação você deseja ordenar?");
+        System.out.println("1 - Intercalação balanceada comum");
+        System.out.println("2 - Intercalação balanceada com blocos de tamanho variável");
+        System.out.println("3 - Intercalação balanceada com seleção por substituição");
+        System.out.println("0 - Voltar ao menu inicial");
+
+        try {
+            option = sc.nextInt();
+        } catch (Exception e) {
+            System.out.println("O valor digitado deve ser um número!!");
+            System.out.println("");
+            orderDatabase();
+        }
+        switch (option) {
+            case 1:
+                simpleInterpolation();
+                break;
+            case 2:
+                variableSizeInterpolation();
+                break;
+            case 3:
+                substituteInterpolation();
+                break;
+            case 0:
+                System.out.println("Voltando ao menu inicial");
+                break;
+
+            default:
+                System.out.println("Opção inválida.");
+                break;
+        }
+        sc.close();
+
+    }
+
+    public static void simpleInterpolation() {
+        try {
+            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
+
+            arquivo.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void variableSizeInterpolation() {
+        try {
+            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
+
+            arquivo.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void substituteInterpolation() {
+        try {
+            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
+
+            arquivo.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws Exception {
@@ -637,7 +721,8 @@ public class App {
                     }
                     break;
                 case 5:
-                    System.out.println("Opção 5");
+                    orderDatabase();
+                    System.out.println("Base de dados ordenada com sucesso!");
                     break;
                 case 6:
                     loadDatabase();
@@ -648,6 +733,7 @@ public class App {
                     break;
 
                 default:
+                    System.out.println("Opção inválida.");
                     break;
             }
 
