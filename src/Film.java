@@ -128,7 +128,6 @@ public class Film {
         dos.writeInt(this.release_year);
         dos.writeUTF(this.duration);
         dos.writeUTF(this.listed_in);
-
         return baos.toByteArray();
     }
 

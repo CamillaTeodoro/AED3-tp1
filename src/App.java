@@ -9,35 +9,85 @@ public class App {
      * @throws IOException
      */
     // Cria o arquivo .db através da leitura do aquivo csv
-    static void create() throws IOException {
+    static void loadDatabase() throws IOException {
         try {
-            RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
+            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
             Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
             String line = fileReaderScanner.nextLine(); // Ignora primeira linha do csv
             line = fileReaderScanner.nextLine();
             long pointerPosition;
             byte[] b;
-            arq.writeInt(0);
-            arq.seek(4);
+            arquivo.writeInt(0);
+            arquivo.seek(4);
             while (fileReaderScanner.hasNextLine()) {
                 Film film = new Film();
                 film.ReadText(line);
                 b = film.toByteArray();
-                arq.writeChar('$'); // sinal de registro ativo
+                arquivo.writeChar('$'); // sinal de registro ativo
 
-                arq.writeInt(b.length);
-                arq.write(b);
-                pointerPosition = arq.getFilePointer();
+                arquivo.writeInt(b.length);
+                arquivo.write(b);
+                pointerPosition = arquivo.getFilePointer();
                 // Volta ponteiro para cabeçalho e atualiza id
-                arq.seek(0);
-                arq.writeInt(film.show_id);
-                arq.seek(pointerPosition);
+                arquivo.seek(0);
+                arquivo.writeInt(film.show_id);
+                arquivo.seek(pointerPosition);
 
                 line = fileReaderScanner.nextLine();
 
             }
-            arq.close();
+            arquivo.close();
             fileReaderScanner.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * @throws IOException
+     */
+    static void create() throws IOException {
+
+        try {
+            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
+            Scanner sc = new Scanner(System.in);
+            Film film = new Film();
+            byte[] b;
+
+            System.out.println("Digite o id: ");
+            film.setShow_id(Integer.parseInt(sc.nextLine()));
+            System.out.println("Digite o Tipo de Filme/Show: ");
+            film.setType(sc.nextLine());
+            System.out.println("Digite o Título do Filme/Show: ");
+            film.setTitle(sc.nextLine());
+            System.out.println("Digite o Diretor do Filme/Show: ");
+            film.setDirector(sc.nextLine());
+            System.out.println("Digite a data de lançamento do Filme/Show: ");
+            try {
+                String newDate = sc.nextLine();
+                film.setDate_added(new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(newDate));
+            } catch (Exception e) {
+                System.out.println("A data deve ser no formato dd/mm/yyyy.");
+            }
+            System.out.println("Digite o Ano de estréia do Filme/Show: ");
+            film.setRelease_year(Integer.parseInt(sc.nextLine()));
+            System.out.println("Digite a Duração do Filme/Show: ");
+            film.setDuration(sc.nextLine());
+            System.out.println("Digite o Gênero do Filme/Show: ");
+            film.setListed_in(sc.nextLine());
+
+            arquivo.seek(arquivo.length());
+            b = film.toByteArray();
+            arquivo.writeChar('$'); // sinal de registro ativo
+
+            arquivo.writeInt(b.length);
+            arquivo.write(b);
+
+            // Volta ponteiro para cabeçalho e atualiza id
+            arquivo.seek(0);
+            arquivo.writeInt(film.show_id);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,31 +102,31 @@ public class App {
     // Lê um id do teclado e mostra na tela o filme/show
     static Long read(int id) throws IOException {
         try {
-            RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
+            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
 
-            arq.seek(4);
-            long fileSize = arq.length();
+            arquivo.seek(4);
+            long fileSize = arquivo.length();
             long pointerPosition;
-            long beginOfRegister = arq.getFilePointer();
-            pointerPosition = arq.getFilePointer();
+            long beginOfRegister = arquivo.getFilePointer();
+            pointerPosition = arquivo.getFilePointer();
 
             while (pointerPosition < fileSize) {
 
                 Film film = new Film();
 
-                beginOfRegister = arq.getFilePointer();
+                beginOfRegister = arquivo.getFilePointer();
 
-                char lapide = arq.readChar();
-                int size = arq.readInt();
-                int filmID = arq.readInt();
+                char lapide = arquivo.readChar();
+                int size = arquivo.readInt();
+                int filmID = arquivo.readInt();
                 if (filmID == id && lapide == '$') {
 
                     // System.out.println("cheguei aqui.");
-                    arq.seek(pointerPosition + 2);
-                    int sizeFilm = arq.readInt();
+                    arquivo.seek(pointerPosition + 2);
+                    int sizeFilm = arquivo.readInt();
                     // System.out.println(sizeFilm);
                     byte[] b = new byte[sizeFilm];
-                    arq.read(b);
+                    arquivo.read(b);
                     film.fromByteArray(b);
 
                     film.print();
@@ -85,14 +135,14 @@ public class App {
                     return beginOfRegister;
                 }
 
-                arq.seek(pointerPosition + 6 + size);
-                pointerPosition = arq.getFilePointer();
+                arquivo.seek(pointerPosition + 6 + size);
+                pointerPosition = arquivo.getFilePointer();
 
             }
 
             System.out.println("Filme/Show não existe na base de dados.");
             System.out.println();
-            arq.close();
+            arquivo.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,7 +170,7 @@ public class App {
     // Faz o update do filme/show
     static void update(int id) throws IOException {
         try {
-            RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
+            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
             Scanner sc = new Scanner(System.in);
             int option = -1;
             Long beginOfRegister;
@@ -132,10 +182,10 @@ public class App {
                 // System.out.println(beginOfRegister);
                 // System.out.println(whereToUpdate);
                 Film film = new Film();
-                arq.seek(beginOfRegister + 2);
-                int sizeFilm = arq.readInt();
+                arquivo.seek(beginOfRegister + 2);
+                int sizeFilm = arquivo.readInt();
                 byte[] b = new byte[sizeFilm];
-                arq.read(b);
+                arquivo.read(b);
                 film.fromByteArray(b);
                 // System.out.println(film.director);
 
@@ -166,34 +216,34 @@ public class App {
                         System.out.println("Digite o novo Tipo do Filme/Show: ");
                         String type = sc.nextLine();
                         // coloca ponteiro na posição do type
-                        arq.seek(whereToUpdate + 10);
+                        arquivo.seek(whereToUpdate + 10);
                         // salva posição do type numa variável
-                        Long pointerPosiLong = arq.getFilePointer();
-                        String oldType = arq.readUTF();
+                        Long pointerPosiLong = arquivo.getFilePointer();
+                        String oldType = arquivo.readUTF();
                         int sizeOldType = oldType.length();
                         if (sizeOldType >= type.length()) {
                             String typeResult = type;
-                            arq.seek(pointerPosiLong);
+                            arquivo.seek(pointerPosiLong);
                             while (typeResult.length() < sizeOldType) {
                                 typeResult += " ";
                             }
-                            arq.writeUTF(typeResult);
+                            arquivo.writeUTF(typeResult);
                             film.type = typeResult;
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
                         } else {
-                            arq.seek(whereToUpdate);
-                            arq.writeChar('*');
+                            arquivo.seek(whereToUpdate);
+                            arquivo.writeChar('*');
                             film.type = type;
                             byte[] c = film.toByteArray();
-                            arq.seek(arq.length());
-                            arq.writeChar('$');
-                            arq.writeInt(c.length);
-                            arq.write(c);
+                            arquivo.seek(arquivo.length());
+                            arquivo.writeChar('$');
+                            arquivo.writeInt(c.length);
+                            arquivo.write(c);
                             // Volta ponteiro para cabeçalho e atualiza id
-                            arq.seek(0);
-                            arq.writeInt(film.show_id);
+                            arquivo.seek(0);
+                            arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
@@ -206,36 +256,36 @@ public class App {
                         System.out.println("Digite o novo Título do Filme/Show: ");
                         String title = sc.nextLine();
                         // coloca ponteiro na posição do type
-                        arq.seek(whereToUpdate + 10);
-                        type = arq.readUTF();
+                        arquivo.seek(whereToUpdate + 10);
+                        type = arquivo.readUTF();
                         // salva posição do title numa variável
-                        pointerPosiLong = arq.getFilePointer();
-                        String oldtitle = arq.readUTF();
+                        pointerPosiLong = arquivo.getFilePointer();
+                        String oldtitle = arquivo.readUTF();
                         int sizeOldtitle = oldtitle.length();
                         if (sizeOldtitle >= title.length()) {
                             String titleResult = title;
-                            arq.seek(pointerPosiLong);
+                            arquivo.seek(pointerPosiLong);
                             while (titleResult.length() < sizeOldtitle) {
                                 titleResult += " ";
                             }
-                            arq.writeUTF(titleResult);
+                            arquivo.writeUTF(titleResult);
                             film.title = titleResult;
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
                         } else {
-                            arq.seek(whereToUpdate);
+                            arquivo.seek(whereToUpdate);
                             // System.out.println(whereToUpdate);
-                            arq.writeChar('*');
+                            arquivo.writeChar('*');
                             film.title = title;
                             byte[] c = film.toByteArray();
-                            arq.seek(arq.length());
-                            arq.writeChar('$');
-                            arq.writeInt(c.length);
-                            arq.write(c);
+                            arquivo.seek(arquivo.length());
+                            arquivo.writeChar('$');
+                            arquivo.writeInt(c.length);
+                            arquivo.write(c);
                             // Volta ponteiro para cabeçalho e atualiza id
-                            arq.seek(0);
-                            arq.writeInt(film.show_id);
+                            arquivo.seek(0);
+                            arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
@@ -248,36 +298,36 @@ public class App {
                         System.out.println("Digite o novo Diretor do Filme/Show: ");
                         String director = sc.nextLine();
                         // coloca ponteiro na posição do type
-                        arq.seek(whereToUpdate + 10);
-                        type = arq.readUTF();
-                        title = arq.readUTF();
+                        arquivo.seek(whereToUpdate + 10);
+                        type = arquivo.readUTF();
+                        title = arquivo.readUTF();
                         // salva posição do director numa variável
-                        pointerPosiLong = arq.getFilePointer();
-                        String oldDirector = arq.readUTF();
+                        pointerPosiLong = arquivo.getFilePointer();
+                        String oldDirector = arquivo.readUTF();
                         int sizeOldDirector = oldDirector.length();
                         if (sizeOldDirector >= director.length()) {
                             String directorResult = director;
-                            arq.seek(pointerPosiLong);
+                            arquivo.seek(pointerPosiLong);
                             while (directorResult.length() < sizeOldDirector) {
                                 directorResult += " ";
                             }
-                            arq.writeUTF(directorResult);
+                            arquivo.writeUTF(directorResult);
                             film.director = directorResult;
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
                         } else {
-                            arq.seek(whereToUpdate);
-                            arq.writeChar('*');
+                            arquivo.seek(whereToUpdate);
+                            arquivo.writeChar('*');
                             film.director = director;
                             byte[] c = film.toByteArray();
-                            arq.seek(arq.length());
-                            arq.writeChar('$');
-                            arq.writeInt(c.length);
-                            arq.write(c);
+                            arquivo.seek(arquivo.length());
+                            arquivo.writeChar('$');
+                            arquivo.writeInt(c.length);
+                            arquivo.write(c);
                             // Volta ponteiro para cabeçalho e atualiza id
-                            arq.seek(0);
-                            arq.writeInt(film.show_id);
+                            arquivo.seek(0);
+                            arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
@@ -292,14 +342,14 @@ public class App {
 
                         String dateAdded = sc.nextLine();
                         // coloca ponteiro na posição do type
-                        arq.seek(whereToUpdate + 10);
-                        type = arq.readUTF();
-                        title = arq.readUTF();
-                        director = arq.readUTF();
+                        arquivo.seek(whereToUpdate + 10);
+                        type = arquivo.readUTF();
+                        title = arquivo.readUTF();
+                        director = arquivo.readUTF();
                         // salva posição do date_added numa variável
-                        pointerPosiLong = arq.getFilePointer();
+                        pointerPosiLong = arquivo.getFilePointer();
 
-                        String oldDate_added = arq.readUTF();
+                        String oldDate_added = arquivo.readUTF();
                         int sizeOldDate_added = oldDate_added.length();
                         Date newDate_added;
                         int sizeFormatNewDate_added;
@@ -313,72 +363,36 @@ public class App {
                             sizeFormatNewDate_added = formatNewDate_added.length();
                             if (sizeOldDate_added >= sizeFormatNewDate_added) {
                                 String date_addedResult = formatNewDate_added;
-                                arq.seek(pointerPosiLong);
+                                arquivo.seek(pointerPosiLong);
                                 while (date_addedResult.length() < sizeOldDate_added) {
                                     date_addedResult += " ";
                                 }
-                                arq.writeUTF(date_addedResult);
+                                arquivo.writeUTF(date_addedResult);
                                 film.date_added = newDate_added;
 
                                 System.out.println("Registro editado com sucesso.");
                                 film.print();
 
                             } else {
-                                arq.seek(whereToUpdate);
-                                arq.writeChar('*');
+                                arquivo.seek(whereToUpdate);
+                                arquivo.writeChar('*');
                                 film.date_added = new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH)
                                         .parse(formatNewDate_added);
                                 byte[] c = film.toByteArray();
-                                arq.seek(arq.length());
-                                arq.writeChar('$');
-                                arq.writeInt(c.length);
-                                arq.write(c);
+                                arquivo.seek(arquivo.length());
+                                arquivo.writeChar('$');
+                                arquivo.writeInt(c.length);
+                                arquivo.write(c);
                                 // Volta ponteiro para cabeçalho e atualiza id
-                                arq.seek(0);
-                                arq.writeInt(film.show_id);
+                                arquivo.seek(0);
+                                arquivo.writeInt(film.show_id);
                                 System.out.println("Registro editado com sucesso.");
                                 film.print();
 
                             }
                         } catch (Exception e) {
-                            try {
-                                newDate_added = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
-                                        .parse(dateAdded);
-                                formatNewDate_added = new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH)
-                                        .format(newDate_added);
-                                sizeFormatNewDate_added = formatNewDate_added.length();
-                                if (sizeOldDate_added >= sizeFormatNewDate_added) {
-                                    String date_addedResult = formatNewDate_added;
-                                    arq.seek(pointerPosiLong);
-                                    while (date_addedResult.length() < sizeOldDate_added) {
-                                        date_addedResult += " ";
-                                    }
-                                    arq.writeUTF(date_addedResult);
-                                    film.date_added = newDate_added;
 
-                                    System.out.println("Registro editado com sucesso.");
-                                    film.print();
-
-                                } else {
-                                    arq.seek(whereToUpdate);
-                                    arq.writeChar('*');
-                                    film.date_added = new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH)
-                                            .parse(formatNewDate_added);
-                                    byte[] c = film.toByteArray();
-                                    arq.seek(arq.length());
-                                    arq.writeChar('$');
-                                    arq.writeInt(c.length);
-                                    arq.write(c);
-                                    // Volta ponteiro para cabeçalho e atualiza id
-                                    arq.seek(0);
-                                    arq.writeInt(film.show_id);
-                                    System.out.println("Registro editado com sucesso.");
-                                    film.print();
-
-                                }
-                            } catch (Exception e1) {
-                                System.out.println("A data deve ser no formato dd/mm/yyyy ou dd-mm-yyyy.");
-                            }
+                            System.out.println("A data deve ser no formato dd/mm/yyyy ou dd-mm-yyyy.");
                         }
 
                         System.out.println();
@@ -391,13 +405,13 @@ public class App {
                         // Limpa o \n no ultimo nextInt()
                         sc.nextLine();
                         // coloca ponteiro na posição do type
-                        arq.seek(whereToUpdate + 10);
-                        type = arq.readUTF();
-                        title = arq.readUTF();
-                        director = arq.readUTF();
-                        dateAdded = arq.readUTF();
+                        arquivo.seek(whereToUpdate + 10);
+                        type = arquivo.readUTF();
+                        title = arquivo.readUTF();
+                        director = arquivo.readUTF();
+                        dateAdded = arquivo.readUTF();
 
-                        arq.writeInt(release_year);
+                        arquivo.writeInt(release_year);
                         film.release_year = release_year;
 
                         System.out.println("Registro editado com sucesso.");
@@ -412,40 +426,40 @@ public class App {
 
                         String duration = sc.nextLine();
                         // coloca ponteiro na posição do type
-                        arq.seek(whereToUpdate + 10);
-                        type = arq.readUTF();
-                        title = arq.readUTF();
-                        director = arq.readUTF();
-                        dateAdded = arq.readUTF();
-                        release_year = arq.readInt();
+                        arquivo.seek(whereToUpdate + 10);
+                        type = arquivo.readUTF();
+                        title = arquivo.readUTF();
+                        director = arquivo.readUTF();
+                        dateAdded = arquivo.readUTF();
+                        release_year = arquivo.readInt();
 
                         // salva posição do duration numa variável
-                        pointerPosiLong = arq.getFilePointer();
-                        String oldDuration = arq.readUTF();
+                        pointerPosiLong = arquivo.getFilePointer();
+                        String oldDuration = arquivo.readUTF();
                         int sizeOldDuration = oldDuration.length();
                         if (sizeOldDuration >= duration.length()) {
                             String durationResult = duration;
                             while (durationResult.length() < sizeOldDuration) {
                                 durationResult += " ";
                             }
-                            arq.seek(pointerPosiLong);
-                            arq.writeUTF(durationResult);
+                            arquivo.seek(pointerPosiLong);
+                            arquivo.writeUTF(durationResult);
                             film.duration = durationResult;
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
                         } else {
-                            arq.seek(whereToUpdate);
-                            arq.writeChar('*');
+                            arquivo.seek(whereToUpdate);
+                            arquivo.writeChar('*');
                             film.duration = duration;
                             byte[] c = film.toByteArray();
-                            arq.seek(arq.length());
-                            arq.writeChar('$');
-                            arq.writeInt(c.length);
-                            arq.write(c);
+                            arquivo.seek(arquivo.length());
+                            arquivo.writeChar('$');
+                            arquivo.writeInt(c.length);
+                            arquivo.write(c);
                             // Volta ponteiro para cabeçalho e atualiza id
-                            arq.seek(0);
-                            arq.writeInt(film.show_id);
+                            arquivo.seek(0);
+                            arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
@@ -458,41 +472,41 @@ public class App {
 
                         String listed_in = sc.nextLine();
                         // coloca ponteiro na posição do type
-                        arq.seek(whereToUpdate + 10);
-                        type = arq.readUTF();
-                        title = arq.readUTF();
-                        director = arq.readUTF();
-                        dateAdded = arq.readUTF();
-                        release_year = arq.readInt();
-                        duration = arq.readUTF();
+                        arquivo.seek(whereToUpdate + 10);
+                        type = arquivo.readUTF();
+                        title = arquivo.readUTF();
+                        director = arquivo.readUTF();
+                        dateAdded = arquivo.readUTF();
+                        release_year = arquivo.readInt();
+                        duration = arquivo.readUTF();
 
                         // salva posição do listed_in numa variável
-                        pointerPosiLong = arq.getFilePointer();
-                        String oldListed_in = arq.readUTF();
+                        pointerPosiLong = arquivo.getFilePointer();
+                        String oldListed_in = arquivo.readUTF();
                         int sizeOldListed_in = oldListed_in.length();
                         if (sizeOldListed_in >= listed_in.length()) {
                             String listed_inResult = listed_in;
                             while (listed_inResult.length() < sizeOldListed_in) {
                                 listed_inResult += " ";
                             }
-                            arq.seek(pointerPosiLong);
-                            arq.writeUTF(listed_inResult);
+                            arquivo.seek(pointerPosiLong);
+                            arquivo.writeUTF(listed_inResult);
                             film.listed_in = listed_inResult;
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
                         } else {
-                            arq.seek(whereToUpdate);
-                            arq.writeChar('*');
+                            arquivo.seek(whereToUpdate);
+                            arquivo.writeChar('*');
                             film.listed_in = listed_in;
                             byte[] c = film.toByteArray();
-                            arq.seek(arq.length());
-                            arq.writeChar('$');
-                            arq.writeInt(c.length);
-                            arq.write(c);
+                            arquivo.seek(arquivo.length());
+                            arquivo.writeChar('$');
+                            arquivo.writeInt(c.length);
+                            arquivo.write(c);
                             // Volta ponteiro para cabeçalho e atualiza id
-                            arq.seek(0);
-                            arq.writeInt(film.show_id);
+                            arquivo.seek(0);
+                            arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
                             film.print();
 
@@ -510,7 +524,7 @@ public class App {
                 }
             }
 
-            arq.close();
+            arquivo.close();
 
         } catch (
 
@@ -528,17 +542,17 @@ public class App {
 
     static void delete(int id) throws IOException {
         try {
-            RandomAccessFile arq = new RandomAccessFile("../db/banco.db", "rw");
-            arq.seek(4);
+            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
+            arquivo.seek(4);
             long pointerPosition;
-            pointerPosition = arq.getFilePointer();
-            while (pointerPosition < arq.length()) {
-                char lapide = arq.readChar();
-                int size = arq.readInt();
-                int filmID = arq.readInt();
+            pointerPosition = arquivo.getFilePointer();
+            while (pointerPosition < arquivo.length()) {
+                char lapide = arquivo.readChar();
+                int size = arquivo.readInt();
+                int filmID = arquivo.readInt();
                 if (filmID == id && lapide == '$') {
-                    arq.seek(pointerPosition);
-                    arq.writeChar('*'); // informa que o arquivo está deletado
+                    arquivo.seek(pointerPosition);
+                    arquivo.writeChar('*'); // informa que o arquivo está deletado
                     System.out.println("Filme/Show deletado com sucesso");
                     System.out.println();
                     return;
@@ -547,11 +561,11 @@ public class App {
                     System.out.println();
                     return;
                 }
-                arq.seek(pointerPosition + 6 + size);
-                pointerPosition = arq.getFilePointer();
+                arquivo.seek(pointerPosition + 6 + size);
+                pointerPosition = arquivo.getFilePointer();
 
             }
-            arq.close();
+            arquivo.close();
             System.out.println("Filme/Show não existe na base de dados.");
             System.out.println();
 
@@ -569,11 +583,12 @@ public class App {
 
         do {
             System.out.println("Entre com uma opção:");
-            System.out.println("1 - Criar a base de dados");
+            System.out.println("1 - Criar um novo registro");
             System.out.println("2 - Ler um registro da base de dados");
             System.out.println("3 - Atualizar um registro da base de dados");
             System.out.println("4 - Deletar um registro da base de dados");
             System.out.println("5 - Ordenar a base de dados");
+            System.out.println("6 - Criar a base de dados");
             System.out.println("0 - Sair");
             System.out.println();
 
@@ -587,7 +602,7 @@ public class App {
             switch (option) {
                 case 1:
                     create();
-                    System.out.println("Arquivo criado com sucesso.");
+                    System.out.println("Registro criado com sucesso.");
                     System.out.println();
                     break;
                 case 2:
@@ -623,6 +638,10 @@ public class App {
                     break;
                 case 5:
                     System.out.println("Opção 5");
+                    break;
+                case 6:
+                    loadDatabase();
+                    System.out.println("Base de dados criada com sucesso.");
                     break;
                 case 0:
                     System.out.println("Saindo...");
