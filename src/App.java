@@ -243,6 +243,8 @@ public class App {
                             arquivo.writeUTF(typeResult);
                             film.type = typeResult;
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         } else {
@@ -258,6 +260,8 @@ public class App {
                             arquivo.seek(0);
                             arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         }
@@ -284,6 +288,8 @@ public class App {
                             arquivo.writeUTF(titleResult);
                             film.title = titleResult;
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         } else {
@@ -300,6 +306,8 @@ public class App {
                             arquivo.seek(0);
                             arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         }
@@ -327,6 +335,8 @@ public class App {
                             arquivo.writeUTF(directorResult);
                             film.director = directorResult;
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         } else {
@@ -342,6 +352,8 @@ public class App {
                             arquivo.seek(0);
                             arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         }
@@ -384,6 +396,8 @@ public class App {
                                 film.date_added = newDate_added;
 
                                 System.out.println("Registro editado com sucesso.");
+                                System.out.println("");
+                                System.out.println("Novos dados: ");
                                 film.print();
 
                             } else {
@@ -400,6 +414,8 @@ public class App {
                                 arquivo.seek(0);
                                 arquivo.writeInt(film.show_id);
                                 System.out.println("Registro editado com sucesso.");
+                                System.out.println("");
+                                System.out.println("Novos dados: ");
                                 film.print();
 
                             }
@@ -428,6 +444,8 @@ public class App {
                         film.release_year = release_year;
 
                         System.out.println("Registro editado com sucesso.");
+                        System.out.println("");
+                        System.out.println("Novos dados: ");
                         film.print();
 
                         System.out.println();
@@ -459,6 +477,8 @@ public class App {
                             arquivo.writeUTF(durationResult);
                             film.duration = durationResult;
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         } else {
@@ -474,6 +494,8 @@ public class App {
                             arquivo.seek(0);
                             arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         }
@@ -506,6 +528,8 @@ public class App {
                             arquivo.writeUTF(listed_inResult);
                             film.listed_in = listed_inResult;
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         } else {
@@ -521,6 +545,8 @@ public class App {
                             arquivo.seek(0);
                             arquivo.writeInt(film.show_id);
                             System.out.println("Registro editado com sucesso.");
+                            System.out.println("");
+                            System.out.println("Novos dados: ");
                             film.print();
 
                         }
@@ -590,8 +616,8 @@ public class App {
 
     }
 
-    public static void orderDatabase() {
-        Scanner sc = new Scanner(System.in);
+    public static void SortingDatabase() {
+        Scanner sc1 = new Scanner(System.in);
         int option = -1;
 
         System.out.println("Por qual algoritmo de ordenação você deseja ordenar?");
@@ -601,11 +627,11 @@ public class App {
         System.out.println("0 - Voltar ao menu inicial");
 
         try {
-            option = sc.nextInt();
+            option = sc1.nextInt();
         } catch (Exception e) {
             System.out.println("O valor digitado deve ser um número!!");
             System.out.println("");
-            orderDatabase();
+            SortingDatabase();
         }
         switch (option) {
             case 1:
@@ -625,18 +651,51 @@ public class App {
                 System.out.println("Opção inválida.");
                 break;
         }
-        sc.close();
+
+        sc1.close();
 
     }
 
     public static void simpleInterpolation() {
         try {
             RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
+            RandomAccessFile path1 = new RandomAccessFile("../db/path1.db", "rw");
+            RandomAccessFile path2 = new RandomAccessFile("../db/path2.db", "rw");
+            arquivo.seek(4);
+            int count = 0;
+
+            ArrayList<Film> films = new ArrayList<Film>();
+            while (count < 5) {
+                Film film = new Film();
+                char lapide = arquivo.readChar();
+                if (lapide == '$') {
+
+                    int sizeFilm = arquivo.readInt();
+                    // System.out.println(sizeFilm);
+                    byte[] b = new byte[sizeFilm];
+                    arquivo.read(b);
+                    film.fromByteArray(b);
+                    films.add(film);
+                    System.out.println("Adicionado filme: " + film.show_id);
+                    count++;
+
+                } else {
+                    int sizeRegister = arquivo.readInt();
+                    arquivo.seek(arquivo.getFilePointer() + sizeRegister);
+                }
+
+            }
+            InsertionSort(films);
+            for (Film film : films) {
+                // escreve no arquivo novo
+            }
 
             arquivo.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println("");
     }
 
     public static void variableSizeInterpolation() {
@@ -659,6 +718,31 @@ public class App {
         }
     }
 
+    public static void InsertionSort(ArrayList<Film> films) throws Exception {
+        Film temp = null;
+
+        for (int i = 1; i < films.size(); i++) {
+
+            temp = films.get(i);
+            // System.out.println("Temp: " + temp);
+            int j = i - 1; // inicia com 0
+
+            while (j >= 0 && temp.getShow_id() < films.get(j).getShow_id()) {
+
+                films.set(j + 1, films.get(j));
+                j--;
+                // System.out.println(j);
+            }
+            films.set(j + 1, temp);
+
+        }
+
+        for (Film film : films) {
+            film.print();
+        }
+
+    }
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -667,6 +751,7 @@ public class App {
 
         do {
             System.out.println("Entre com uma opção:");
+            System.out.println("");
             System.out.println("1 - Criar um novo registro");
             System.out.println("2 - Ler um registro da base de dados");
             System.out.println("3 - Atualizar um registro da base de dados");
@@ -677,9 +762,12 @@ public class App {
             System.out.println();
 
             try {
+
                 option = sc.nextInt();
+
             } catch (Exception e) {
-                System.out.println("O valor digitado deve ser um número!!");
+                e.printStackTrace();
+                System.out.println("O valor digitado deve ser um número!! - 3");
                 option = 0;
             }
 
@@ -704,6 +792,7 @@ public class App {
                     try {
                         id = sc.nextInt();
                         update(id);
+
                     } catch (Exception e) {
                         System.out.println("O valor digitado deve ser um número!!");
                         option = 0;
@@ -721,8 +810,9 @@ public class App {
                     }
                     break;
                 case 5:
-                    orderDatabase();
+                    SortingDatabase();
                     System.out.println("Base de dados ordenada com sucesso!");
+                    System.out.println("");
                     break;
                 case 6:
                     loadDatabase();
