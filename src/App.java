@@ -666,9 +666,9 @@ public class App {
             Long pointerPosition = arquivo.getFilePointer();
 
             ArrayList<Film> films = new ArrayList<Film>();
-            while (pointerPosition < arquivo.length()) {
+            while (pointerPosition != arquivo.length()) {
 
-                while (pointerPosition < arquivo.length() && count < 5) {
+                while (pointerPosition != arquivo.length() && count < 5) {
                     Film film = new Film();
                     char lapide = arquivo.readChar();
                     if (lapide == '$') {
@@ -686,23 +686,24 @@ public class App {
                         int sizeRegister = arquivo.readInt();
                         arquivo.seek(arquivo.getFilePointer() + sizeRegister);
                     }
-
+                    pointerPosition = arquivo.getFilePointer();
                 }
                 InsertionSort(films);
                 // escreve no arquivo path1
                 for (Film film : films) {
-                    // escreve no arquivo novo
+
                     byte[] c = film.toByteArray();
                     path1.writeChar('$'); // sinal de registro ativo
                     path1.writeInt(c.length);
                     path1.write(c);
 
                 }
-
                 films.clear();
                 count = 0;
-                while (pointerPosition < arquivo.length() && count < 5) {
+
+                while (pointerPosition != arquivo.length() && count < 5) {
                     Film film = new Film();
+
                     char lapide = arquivo.readChar();
                     if (lapide == '$') {
 
@@ -719,6 +720,7 @@ public class App {
                         int sizeRegister = arquivo.readInt();
                         arquivo.seek(arquivo.getFilePointer() + sizeRegister);
                     }
+                    pointerPosition = arquivo.getFilePointer();
 
                 }
                 InsertionSort(films);
@@ -738,12 +740,12 @@ public class App {
             path1.close();
             path2.close();
             arquivo.close();
+            System.out.println("Base de dados ordenada com sucesso!");
+            System.out.println("");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("Base de dados ordenada com sucesso!");
-        System.out.println("");
 
     }
 
@@ -786,9 +788,9 @@ public class App {
 
         }
         // imprime registros ordenados
-        for (Film film : films) {
-            film.print();
-        }
+        // for (Film film : films) {
+        // film.print();
+        // }
 
     }
 
