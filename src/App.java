@@ -663,34 +663,82 @@ public class App {
             RandomAccessFile path2 = new RandomAccessFile("../db/path2.db", "rw");
             arquivo.seek(4);
             int count = 0;
+            Long pointerPosition = arquivo.getFilePointer();
 
             ArrayList<Film> films = new ArrayList<Film>();
-            while (count < 5) {
-                Film film = new Film();
-                char lapide = arquivo.readChar();
-                if (lapide == '$') {
+            while (pointerPosition < arquivo.length()) {
 
-                    int sizeFilm = arquivo.readInt();
-                    // System.out.println(sizeFilm);
-                    byte[] b = new byte[sizeFilm];
-                    arquivo.read(b);
-                    film.fromByteArray(b);
-                    films.add(film);
-                    System.out.println("Adicionado filme: " + film.show_id);
-                    count++;
+                while (pointerPosition < arquivo.length() && count < 5) {
+                    Film film = new Film();
+                    char lapide = arquivo.readChar();
+                    if (lapide == '$') {
 
-                } else {
-                    int sizeRegister = arquivo.readInt();
-                    arquivo.seek(arquivo.getFilePointer() + sizeRegister);
+                        int sizeFilm = arquivo.readInt();
+                        // System.out.println(sizeFilm);
+                        byte[] b = new byte[sizeFilm];
+                        arquivo.read(b);
+                        film.fromByteArray(b);
+                        films.add(film);
+                        // System.out.println("Adicionado filme: " + film.show_id);
+                        count++;
+
+                    } else {
+                        int sizeRegister = arquivo.readInt();
+                        arquivo.seek(arquivo.getFilePointer() + sizeRegister);
+                    }
+
+                }
+                InsertionSort(films);
+                // escreve no arquivo path1
+                for (Film film : films) {
+                    // escreve no arquivo novo
+                    byte[] c = film.toByteArray();
+                    path1.writeChar('$'); // sinal de registro ativo
+                    path1.writeInt(c.length);
+                    path1.write(c);
+
                 }
 
-            }
-            InsertionSort(films);
-            for (Film film : films) {
-                // escreve no arquivo novo
-            }
+                films.clear();
+                count = 0;
+                while (pointerPosition < arquivo.length() && count < 5) {
+                    Film film = new Film();
+                    char lapide = arquivo.readChar();
+                    if (lapide == '$') {
 
+                        int sizeFilm = arquivo.readInt();
+                        // System.out.println(sizeFilm);
+                        byte[] b = new byte[sizeFilm];
+                        arquivo.read(b);
+                        film.fromByteArray(b);
+                        films.add(film);
+                        // System.out.println("Adicionado filme: " + film.show_id);
+                        count++;
+
+                    } else {
+                        int sizeRegister = arquivo.readInt();
+                        arquivo.seek(arquivo.getFilePointer() + sizeRegister);
+                    }
+
+                }
+                InsertionSort(films);
+                // escreve no arquivo path1
+                for (Film film : films) {
+                    // escreve no arquivo novo
+                    byte[] c = film.toByteArray();
+                    path2.writeChar('$'); // sinal de registro ativo
+                    path2.writeInt(c.length);
+                    path2.write(c);
+
+                }
+                films.clear();
+                count = 0;
+                pointerPosition = arquivo.getFilePointer();
+            }
+            path1.close();
+            path2.close();
             arquivo.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -737,7 +785,7 @@ public class App {
             films.set(j + 1, temp);
 
         }
-
+        // imprime registros ordenados
         for (Film film : films) {
             film.print();
         }
