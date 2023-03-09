@@ -41,7 +41,7 @@ public class App {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        System.out.println("Base de dados criada com sucesso.");
     }
 
     /**
@@ -103,7 +103,7 @@ public class App {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        System.out.println("Registro criado com sucesso.");
     }
 
     /**
@@ -694,8 +694,9 @@ public class App {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        System.out.println("Base de dados ordenada com sucesso!");
         System.out.println("");
+
     }
 
     public static void variableSizeInterpolation() {
@@ -774,7 +775,7 @@ public class App {
             switch (option) {
                 case 1:
                     create();
-                    System.out.println("Registro criado com sucesso.");
+
                     System.out.println();
                     break;
                 case 2:
@@ -811,12 +812,9 @@ public class App {
                     break;
                 case 5:
                     SortingDatabase();
-                    System.out.println("Base de dados ordenada com sucesso!");
-                    System.out.println("");
                     break;
                 case 6:
                     loadDatabase();
-                    System.out.println("Base de dados criada com sucesso.");
                     break;
                 case 0:
                     System.out.println("Saindo...");
