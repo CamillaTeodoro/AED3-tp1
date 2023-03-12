@@ -21,6 +21,17 @@ public class Film {
 
     }
 
+    public Film(Film film) {
+        this.show_id = film.getShow_id();
+        this.type = film.getType();
+        this.title = film.getTitle();
+        this.director = film.getDirector();
+        this.date_added = film.getDate_added();
+        this.release_year = film.getRelease_year();
+        this.duration = film.getDuration();
+        this.listed_in = film.getListed_in();
+    }
+
     public Film(int show_id, String type, String title, String director, Date date_added,
             int release_year, String duration, String listed_in) {
 
@@ -138,6 +149,7 @@ public class Film {
         DataInputStream dis = new DataInputStream(bais);
         SimpleDateFormat date = new SimpleDateFormat("MMMMM dd, yyyy");
         this.show_id = dis.readInt();
+        System.out.println(this.show_id);
         this.type = dis.readUTF();
         this.title = dis.readUTF();
         this.director = dis.readUTF();
