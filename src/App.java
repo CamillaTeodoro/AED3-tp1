@@ -9,34 +9,21 @@ public class App {
      * @throws IOException
      */
     // Cria o arquivo .db através da leitura do aquivo csv
-    static void loadDatabase() throws IOException {
+    static void loadDatabase(DatabaseAccess db) throws IOException {
         try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
             Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
             String line = fileReaderScanner.nextLine(); // Ignora primeira linha do csv
             line = fileReaderScanner.nextLine();
-            long pointerPosition;
-            byte[] b;
-            arquivo.writeInt(0);
-            arquivo.seek(4);
+
             while (fileReaderScanner.hasNextLine()) {
                 Film film = new Film();
                 film.ReadText(line);
-                b = film.toByteArray();
-                arquivo.writeChar('$'); // sinal de registro ativo
-
-                arquivo.writeInt(b.length);
-                arquivo.write(b);
-                pointerPosition = arquivo.getFilePointer();
-                // Volta ponteiro para cabeçalho e atualiza id
-                arquivo.seek(0);
-                arquivo.writeInt(film.show_id);
-                arquivo.seek(pointerPosition);
+                db.create(film);
 
                 line = fileReaderScanner.nextLine();
 
             }
-            arquivo.close();
+
             fileReaderScanner.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -579,7 +566,7 @@ public class App {
                     break;
                 }
                 case 6:
-                    loadDatabase();
+                    loadDatabase(db);
                     break;
                 case 0:
                     System.out.println("Saindo...");
