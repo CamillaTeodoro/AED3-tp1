@@ -119,7 +119,7 @@ public class DatabaseAccess {
                 databaseFile.seek(find(film.getShow_id()));
                 databaseFile.writeChar('$'); // sinal de registro ativo
 
-                databaseFile.writeInt(editedFilmByteArray.length);
+                databaseFile.writeInt(filmByteArray.length); // mantem o size antigo
                 databaseFile.write(editedFilmByteArray);
 
             } else {
@@ -162,5 +162,10 @@ public class DatabaseAccess {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void clearDb() throws IOException {
+        databaseFile.setLength(0);
+        databaseFile.writeInt(0);
     }
 }

@@ -11,6 +11,7 @@ public class App {
     // Cria o arquivo .db através da leitura do aquivo csv
     static void loadDatabase(DatabaseAccess db) throws IOException {
         try {
+            db.clearDb();
             Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
             String line = fileReaderScanner.nextLine(); // Ignora primeira linha do csv
             line = fileReaderScanner.nextLine();
