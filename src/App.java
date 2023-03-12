@@ -656,7 +656,8 @@ public class App {
 
     }
 
-    public static void simpleInterpolation() {
+    public static void sortBatchOfRegisters() {
+
         try {
             RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
             RandomAccessFile path1 = new RandomAccessFile("../db/path1.db", "rw");
@@ -740,8 +741,6 @@ public class App {
             path1.close();
             path2.close();
             arquivo.close();
-            System.out.println("Base de dados ordenada com sucesso!");
-            System.out.println("");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -749,14 +748,21 @@ public class App {
 
     }
 
-    public static void variableSizeInterpolation() {
-        try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
+    public static void simpleInterpolation() {
+        sortBatchOfRegisters();
 
-            arquivo.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println("");
+        System.out.println("Base de dados ordenada com sucesso!");
+        System.out.println("");
+
+    }
+
+    public static void variableSizeInterpolation() {
+        sortBatchOfRegisters();
+
+        System.out.println("");
+        System.out.println("Base de dados ordenada com sucesso!");
+        System.out.println("");
     }
 
     public static void substituteInterpolation() {
