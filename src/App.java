@@ -68,7 +68,7 @@ public class App {
         System.out.println("Digite a Duração do Filme/Show: ");
         film.setDuration(sc.nextLine());
         System.out.println("Digite o Gênero do Filme/Show: ");
-        film.setListed_in(sc.nextLine());
+        film.setListed_in(sc.nextLine().split(","));
 
         return film;
     }
@@ -142,7 +142,7 @@ public class App {
                 System.out.println("Digite o novo Gênero do Filme/Show: ");
 
                 String listed_in = sc.nextLine();
-                newFilm.setListed_in(listed_in);
+                newFilm.setListed_in(listed_in.split(","));
                 break;
 
             case 0:

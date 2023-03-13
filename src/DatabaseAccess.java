@@ -5,7 +5,7 @@ import java.io.RandomAccessFile;
 public class DatabaseAccess {
 
     private RandomAccessFile databaseFile;
-    private Long position = (long) 4;
+    private Long position = (long) 4; // defaults the start of the record
     private String filepath;
     private boolean isEndOfFile = false;
 

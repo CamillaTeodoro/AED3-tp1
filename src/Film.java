@@ -14,7 +14,7 @@ public class Film {
     protected Date date_added;
     protected int release_year;
     protected String duration;
-    protected String listed_in;
+    protected String[] listed_in;
 
     // Construtores
     public Film() {
@@ -33,7 +33,7 @@ public class Film {
     }
 
     public Film(int show_id, String type, String title, String director, Date date_added,
-            int release_year, String duration, String listed_in) {
+            int release_year, String duration, String[] listed_in) {
 
         this.show_id = show_id;
         this.type = type;
@@ -105,15 +105,39 @@ public class Film {
         this.duration = duration.trim();
     }
 
-    public String getListed_in() {
+    public String[] getListed_in() {
         return listed_in;
     }
 
-    public void setListed_in(String listed_in) {
-        this.listed_in = listed_in.trim();
+    public void setListed_in(String[] listed_in) {
+        this.listed_in = listed_in;
     }
 
-    // Função para imprimir dados do filme/show
+    public static String[] readStringArray(DataInputStream dis) throws IOException {
+
+        int tam = dis.readInt(); // Strings
+
+        String[] stringArray = new String[tam];
+
+        for (int i = 0; i < tam; i++) {
+            stringArray[i] = dis.readUTF();
+        }
+        return stringArray;
+    }
+
+    public static void writeStringArray(String[] stringArray, DataOutputStream dos) throws IOException {
+
+        dos.writeInt(stringArray.length);
+
+        for (int i = 0; i < stringArray.length; i++) {
+            dos.writeUTF(stringArray[i]);
+        }
+
+    }
+
+    /**
+     * Print register
+     */
     public void print() {
         System.out.println();
         System.out.println("Id: " + Integer.toString(show_id) + " | Tipo: " + type.trim() + " | Título: " + title.trim()
@@ -122,7 +146,7 @@ public class Film {
                 + " | Data: "
                 + new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).format(date_added)
                 + " | Ano de estréia: " + Integer.toString(release_year)
-                + " | Duração: " + duration.trim() + " | Gênero(s): " + listed_in.trim());
+                + " | Duração: " + duration.trim() + " | Gênero(s): " + String.join(", ", listed_in));
 
     }
 
@@ -138,7 +162,7 @@ public class Film {
         dos.writeUTF(date.format(this.date_added));
         dos.writeInt(this.release_year);
         dos.writeUTF(this.duration);
-        dos.writeUTF(this.listed_in);
+        writeStringArray(this.listed_in, dos);
         return baos.toByteArray();
     }
 
@@ -157,7 +181,7 @@ public class Film {
         this.release_year = dis.readInt();
         // System.out.println(this.release_year);
         this.duration = dis.readUTF();
-        this.listed_in = dis.readUTF();
+        this.listed_in = readStringArray(dis);
 
     }
 
@@ -193,7 +217,7 @@ public class Film {
         }
         setRelease_year(Integer.parseInt(vetor[5]));
         setDuration(vetor[6]);
-        setListed_in(vetor[7]);
+        setListed_in(vetor[7].split(","));
 
     }
 
