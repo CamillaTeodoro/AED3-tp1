@@ -173,8 +173,13 @@ public class DatabaseAccess {
         resetPosition();
     }
 
+    public Long length() throws IOException {
+        return databaseFile.length();
+    }
+
     public void resetPosition() {
         position = (long) 4;
+        isEndOfFile = false;
     }
 
     public boolean isEndOfFile() {
@@ -225,13 +230,13 @@ public class DatabaseAccess {
     public void print() {
         long oldPos = position;
         position = (long) 4;
-        System.out.println("Print path: " + filepath);
+        // System.out.println("Print path: " + filepath);
         Film film = next();
         while (film != null) {
             System.out.println(film.getShow_id());
             film = next();
         }
-        System.out.println("Print path end: " + filepath);
+        // System.out.println("Print path end: " + filepath);
         position = oldPos;
     }
 }

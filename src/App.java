@@ -255,16 +255,43 @@ public class App {
             DatabaseAccess path3 = new DatabaseAccess("../db/path3.db");
             DatabaseAccess path4 = new DatabaseAccess("../db/path4.db");
 
-            path3.clearDb();
-            path4.clearDb();
+            int internalBatchSize = batchSize;
 
-            while (!path1.isEndOfFile() && !path2.isEndOfFile()) {
-                merge(path1, path2, path3);
-                merge(path1, path2, path4);
+            do {
+                path1.resetPosition();
+                path2.resetPosition();
+                path3.clearDb();
+                path4.clearDb();
+
+                while (!path1.isEndOfFile() && !path2.isEndOfFile()) {
+                    merge(path1, path2, path3, internalBatchSize);
+                    merge(path1, path2, path4, internalBatchSize);
+                }
+
+                // Double the batch size
+                internalBatchSize = internalBatchSize * 2;
+
+                // Swap files 1 and 3
+                DatabaseAccess temp = path1;
+                path1 = path3;
+                path3 = temp;
+
+                // Swap files 2 and 4
+                DatabaseAccess temp2 = path2;
+                path2 = path4;
+                path4 = temp2;
+
+            } while (path2.length() > 4);
+
+            DatabaseAccess db = new DatabaseAccess("../db/banco.db");
+            db.clearDb();
+            path1.resetPosition();
+            while (!path1.isEndOfFile()) {
+                db.create(path1.next());
             }
 
-            path3.print();
-            path4.print();
+            // It should be sorted now
+            db.print();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -276,7 +303,11 @@ public class App {
 
     }
 
-    public static void merge(DatabaseAccess source1, DatabaseAccess source2, DatabaseAccess destination)
+    public static void merge(
+            DatabaseAccess source1,
+            DatabaseAccess source2,
+            DatabaseAccess destination,
+            int batchSize)
             throws IOException {
         Film film1 = source1.next();
         Film film2 = source2.next();
@@ -377,7 +408,7 @@ public class App {
 
             try {
 
-                option = Integer.parseInt(sc.nextLine());
+                option = sc.nextInt();
 
             } catch (Exception e) {
                 e.printStackTrace();
