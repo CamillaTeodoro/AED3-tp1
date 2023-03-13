@@ -176,8 +176,6 @@ public class Film {
                 result = "";
             } else if (line.charAt(i) == '"') {
                 isIn = !isIn;
-            } else if (line.charAt(i) == '[' || line.charAt(i) == ']') {
-                continue;
             } else {
                 result += line.charAt(i);
             }

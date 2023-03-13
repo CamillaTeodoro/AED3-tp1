@@ -3,7 +3,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class App {
-    private static int batchSize = 4;
+    private static int batchSize = 5;
 
     /**
      * 
@@ -13,11 +13,15 @@ public class App {
     static void loadDatabase(DatabaseAccess db) throws IOException {
         try {
             db.clearDb();
-            Scanner fileReaderScanner = new Scanner(new File("../test.csv"));
+            Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
             String line = fileReaderScanner.nextLine(); // Ignora primeira linha do csv
 
             while (fileReaderScanner.hasNextLine()) {
                 line = fileReaderScanner.nextLine();
+                if (line.trim().length() == 0) {
+                    continue;
+                }
+
                 Film film = new Film();
                 film.ReadText(line);
                 db.create(film);
@@ -112,7 +116,7 @@ public class App {
 
             case 4:
                 System.out.println("Digite a nova Data do Filme/Show: ");
-                String dateAdded = sc.nextLine();
+
                 try {
                     String newDate = sc.nextLine();
                     newFilm.setDate_added(new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(newDate));
@@ -164,7 +168,7 @@ public class App {
         System.out.println("0 - Voltar ao menu inicial");
 
         try {
-            option = sc1.nextInt();
+            option = Integer.parseInt(sc1.nextLine());
         } catch (Exception e) {
             System.out.println("O valor digitado deve ser um número!!");
             System.out.println("");
@@ -353,13 +357,7 @@ public class App {
     }
 
     public static void substituteInterpolation() {
-        try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
 
-            arquivo.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static void InsertionSort(ArrayList<Film> films) throws Exception {
@@ -408,7 +406,7 @@ public class App {
 
             try {
 
-                option = sc.nextInt();
+                option = Integer.parseInt(sc.nextLine());
 
             } catch (Exception e) {
                 e.printStackTrace();
