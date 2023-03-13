@@ -88,6 +88,9 @@ public class DatabaseAccess {
 
         try {
 
+            if (film == null) {
+                return false;
+            }
             byte[] b;
 
             databaseFile.seek(databaseFile.length());
