@@ -3,6 +3,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class App {
+    private static int batchSize = 4;
 
     /**
      * 
@@ -12,17 +13,14 @@ public class App {
     static void loadDatabase(DatabaseAccess db) throws IOException {
         try {
             db.clearDb();
-            Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
+            Scanner fileReaderScanner = new Scanner(new File("../test.csv"));
             String line = fileReaderScanner.nextLine(); // Ignora primeira linha do csv
-            line = fileReaderScanner.nextLine();
 
             while (fileReaderScanner.hasNextLine()) {
+                line = fileReaderScanner.nextLine();
                 Film film = new Film();
                 film.ReadText(line);
                 db.create(film);
-
-                line = fileReaderScanner.nextLine();
-
             }
 
             fileReaderScanner.close();
@@ -194,95 +192,56 @@ public class App {
     }
 
     public static void sortBatchOfRegisters() {
-
         try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
-            RandomAccessFile path1 = new RandomAccessFile("../db/path1.db", "rw");
-            RandomAccessFile path2 = new RandomAccessFile("../db/path2.db", "rw");
-            arquivo.seek(4);
+            DatabaseAccess db = new DatabaseAccess("../db/banco.db");
+
+            DatabaseAccess path1 = new DatabaseAccess("../db/path1.db");
+            DatabaseAccess path2 = new DatabaseAccess("../db/path2.db");
+
+            path1.clearDb();
+            path2.clearDb();
+
             int count = 0;
-            Long pointerPosition = arquivo.getFilePointer();
+            db.resetPosition();
+            Film currentFilm = db.next();
 
             ArrayList<Film> films = new ArrayList<Film>();
-            while (pointerPosition != arquivo.length()) {
-
-                while (pointerPosition != arquivo.length() && count < 5) {
-                    Film film = new Film();
-                    char lapide = arquivo.readChar();
-                    if (lapide == '$') {
-
-                        int sizeFilm = arquivo.readInt();
-                        // System.out.println(sizeFilm);
-                        byte[] b = new byte[sizeFilm];
-                        arquivo.read(b);
-                        film.fromByteArray(b);
-                        films.add(film);
-                        // System.out.println("Adicionado filme: " + film.show_id);
-                        count++;
-
-                    } else {
-                        int sizeRegister = arquivo.readInt();
-                        arquivo.seek(arquivo.getFilePointer() + sizeRegister);
-                    }
-                    pointerPosition = arquivo.getFilePointer();
+            while (currentFilm != null) {
+                // Grava os 5 proximos filmes no path1 ordenados
+                while (currentFilm != null && count < batchSize) {
+                    films.add(currentFilm);
+                    currentFilm = db.next();
+                    count++;
                 }
                 InsertionSort(films);
                 // escreve no arquivo path1
                 for (Film film : films) {
-
-                    byte[] c = film.toByteArray();
-                    path1.writeChar('$'); // sinal de registro ativo
-                    path1.writeInt(c.length);
-                    path1.write(c);
-
+                    path1.create(film);
                 }
                 films.clear();
                 count = 0;
 
-                while (pointerPosition != arquivo.length() && count < 5) {
-                    Film film = new Film();
-
-                    char lapide = arquivo.readChar();
-                    if (lapide == '$') {
-
-                        int sizeFilm = arquivo.readInt();
-                        // System.out.println(sizeFilm);
-                        byte[] b = new byte[sizeFilm];
-                        arquivo.read(b);
-                        film.fromByteArray(b);
-                        films.add(film);
-                        // System.out.println("Adicionado filme: " + film.show_id);
-                        count++;
-
-                    } else {
-                        int sizeRegister = arquivo.readInt();
-                        arquivo.seek(arquivo.getFilePointer() + sizeRegister);
-                    }
-                    pointerPosition = arquivo.getFilePointer();
-
+                // Grava os 5 proximos filmes no path2 ordenados
+                while (currentFilm != null && count < batchSize) {
+                    films.add(currentFilm);
+                    currentFilm = db.next();
+                    count++;
                 }
                 InsertionSort(films);
                 // escreve no arquivo path1
                 for (Film film : films) {
-                    // escreve no arquivo novo
-                    byte[] c = film.toByteArray();
-                    path2.writeChar('$'); // sinal de registro ativo
-                    path2.writeInt(c.length);
-                    path2.write(c);
-
+                    path2.create(film);
                 }
                 films.clear();
                 count = 0;
-                pointerPosition = arquivo.getFilePointer();
             }
+            db.close();
             path1.close();
             path2.close();
-            arquivo.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static void simpleInterpolation() {
@@ -290,122 +249,23 @@ public class App {
 
         // Abrir os dois arquivos
         try {
-            RandomAccessFile path1 = new RandomAccessFile("../db/path1.db", "rw");
-            RandomAccessFile path2 = new RandomAccessFile("../db/path2.db", "rw");
-            RandomAccessFile sortedFile = new RandomAccessFile("../db/sortedFile.db", "rw");
+            DatabaseAccess path1 = new DatabaseAccess("../db/path1.db");
+            DatabaseAccess path2 = new DatabaseAccess("../db/path2.db");
 
-            Long pointerPositionPath1 = path1.getFilePointer();
-            Long pointerPositionPath2 = path2.getFilePointer();
-            Long pointerPositionSortedFile = sortedFile.getFilePointer();
+            DatabaseAccess path3 = new DatabaseAccess("../db/path3.db");
+            DatabaseAccess path4 = new DatabaseAccess("../db/path4.db");
 
-            path1.seek(0);
-            path2.seek(0);
-            int countPath1 = 0;
-            int countPath2 = 0;
-            sortedFile.seek(0);
-            sortedFile.writeInt(0);
+            path3.clearDb();
+            path4.clearDb();
 
-            Film film1 = new Film();
-            char lapide1 = path1.readChar();
-            int size1 = path1.readInt();
-            byte[] b1 = new byte[size1];
-            path1.read(b1);
-            film1.fromByteArray(b1);
-
-            Film film2 = new Film();
-            char lapide2 = path2.readChar();
-            int size2 = path2.readInt();
-            byte[] b2 = new byte[size2];
-            path2.read(b2);
-            film2.fromByteArray(b2);
-            while (pointerPositionPath1 != path1.length() && pointerPositionPath2 != path2.length()) {
-                // System.out.println("entrando no while:" + pointerPositionPath1 + " " +
-                // pointerPositionPath2);
-
-                while (countPath1 < 5 && countPath2 < 5) {
-
-                    if (film1.getShow_id() < film2.getShow_id()) {
-                        sortedFile.writeChar(lapide1);
-                        sortedFile.writeInt(size1);
-                        sortedFile.write(b1);
-                        pointerPositionSortedFile = sortedFile.getFilePointer();
-                        pointerPositionPath1 = path1.getFilePointer();
-                        // System.out.println(film1.getShow_id());
-                        sortedFile.seek(0);
-                        sortedFile.writeInt(film1.getShow_id());
-                        sortedFile.seek(pointerPositionSortedFile);
-                        countPath1++;
-                        lapide1 = path1.readChar();
-                        size1 = path1.readInt();
-                        b1 = new byte[size1];
-                        path1.read(b1);
-                        film1.fromByteArray(b1);
-
-                    } else {
-                        sortedFile.writeChar(lapide2);
-                        sortedFile.writeInt(size2);
-                        sortedFile.write(b2);
-                        pointerPositionSortedFile = sortedFile.getFilePointer();
-                        pointerPositionPath2 = path2.getFilePointer();
-                        // System.out.println(film2.getShow_id());
-                        sortedFile.seek(0);
-                        sortedFile.writeInt(film2.getShow_id());
-                        sortedFile.seek(pointerPositionSortedFile);
-                        countPath2++;
-                        lapide2 = path2.readChar();
-                        size2 = path2.readInt();
-                        b2 = new byte[size2];
-                        path2.read(b2);
-                        film2.fromByteArray(b2);
-
-                    }
-
-                }
-                if (countPath1 < countPath2) {
-                    for (int i = countPath1; i < 5; i++) {
-
-                        sortedFile.writeChar(lapide1);
-                        sortedFile.writeInt(size1);
-                        sortedFile.write(b1);
-                        pointerPositionSortedFile = sortedFile.getFilePointer();
-                        pointerPositionPath1 = path1.getFilePointer();
-                        // System.out.println(pointerPositionPath1 + "path1");
-                        sortedFile.seek(0);
-                        sortedFile.writeInt(film1.getShow_id());
-                        sortedFile.seek(pointerPositionSortedFile);
-                        lapide1 = path1.readChar();
-                        size1 = path1.readInt();
-                        b1 = new byte[size1];
-                        path1.read(b1);
-                        film1.fromByteArray(b1);
-                    }
-                } else {
-                    for (int i = countPath2; i < 5; i++) {
-                        // System.out.println("coutpath2: " + i);
-                        // System.out.println(film2.getShow_id());
-                        sortedFile.writeChar(lapide2);
-                        sortedFile.writeInt(size2);
-                        sortedFile.write(b2);
-                        pointerPositionSortedFile = sortedFile.getFilePointer();
-                        pointerPositionPath2 = path2.getFilePointer();
-                        // System.out.println(pointerPositionPath2 + "path2");
-                        sortedFile.seek(0);
-                        sortedFile.writeInt(film2.getShow_id());
-                        sortedFile.seek(pointerPositionSortedFile);
-                        lapide2 = path2.readChar();
-                        size2 = path2.readInt();
-                        b2 = new byte[size2];
-                        path2.read(b2);
-                        film2.fromByteArray(b2);
-                    }
-
-                }
-                countPath1 = 0;
-                countPath2 = 0;
-                pointerPositionPath1 = path1.getFilePointer();
-                pointerPositionPath2 = path2.getFilePointer();
-
+            while (!path1.isEndOfFile() && !path2.isEndOfFile()) {
+                merge(path1, path2, path3);
+                merge(path1, path2, path4);
             }
+
+            path3.print();
+            path4.print();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -414,6 +274,43 @@ public class App {
         System.out.println("Base de dados ordenada com sucesso!");
         System.out.println("");
 
+    }
+
+    public static void merge(DatabaseAccess source1, DatabaseAccess source2, DatabaseAccess destination)
+            throws IOException {
+        Film film1 = source1.next();
+        Film film2 = source2.next();
+
+        int count1 = batchSize;
+        int count2 = batchSize;
+
+        while (count1 > 0 && count2 > 0 && film1 != null && film2 != null) {
+            if (film1.getShow_id() < film2.getShow_id()) {
+                destination.create(film1);
+                if (--count1 != 0) {
+                    film1 = source1.next();
+                }
+            } else {
+                destination.create(film2);
+                if (--count2 != 0) {
+                    film2 = source2.next();
+                }
+            }
+        }
+
+        while (count1 != 0 && film1 != null) {
+            destination.create(film1);
+            if (--count1 != 0) {
+                film1 = source1.next();
+            }
+        }
+
+        while (count2 != 0 && film2 != null) {
+            destination.create(film2);
+            if (--count2 != 0) {
+                film2 = source2.next();
+            }
+        }
     }
 
     public static void variableSizeInterpolation() {

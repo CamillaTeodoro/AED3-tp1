@@ -5,9 +5,13 @@ import java.io.RandomAccessFile;
 public class DatabaseAccess {
 
     private RandomAccessFile databaseFile;
+    private Long position = (long) 4;
+    private String filepath;
+    private boolean isEndOfFile = false;
 
     DatabaseAccess(String filePath) throws FileNotFoundException {
         databaseFile = new RandomAccessFile(filePath, "rw");
+        this.filepath = filePath;
     }
 
     public void close() throws IOException {
@@ -43,7 +47,6 @@ public class DatabaseAccess {
             e.printStackTrace();
         }
         return null;
-
     }
 
     /**
@@ -167,5 +170,68 @@ public class DatabaseAccess {
     public void clearDb() throws IOException {
         databaseFile.setLength(0);
         databaseFile.writeInt(0);
+        resetPosition();
+    }
+
+    public void resetPosition() {
+        position = (long) 4;
+    }
+
+    public boolean isEndOfFile() {
+        return isEndOfFile;
+    }
+
+    public Film next() {
+        try {
+            databaseFile.seek(position);
+            long fileSize = databaseFile.length();
+            long pointerPosition = position;
+
+            while (pointerPosition < fileSize) {
+                char lapide = databaseFile.readChar();
+                int size = databaseFile.readInt();
+                if (lapide == '$') {
+                    break;
+                }
+
+                databaseFile.seek(pointerPosition + 6 + size);
+                pointerPosition = databaseFile.getFilePointer();
+            }
+
+            if (pointerPosition >= fileSize) {
+                isEndOfFile = true;
+                return null;
+            }
+
+            Film film = new Film();
+
+            // System.out.println("cheguei aqui.");
+            databaseFile.seek(pointerPosition + 2);
+            int sizeFilm = databaseFile.readInt();
+            // System.out.println(sizeFilm);
+            byte[] b = new byte[sizeFilm];
+            databaseFile.read(b);
+            film.fromByteArray(b);
+
+            position = databaseFile.getFilePointer();
+            return film;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void print() {
+        long oldPos = position;
+        position = (long) 4;
+        System.out.println("Print path: " + filepath);
+        Film film = next();
+        while (film != null) {
+            System.out.println(film.getShow_id());
+            film = next();
+        }
+        System.out.println("Print path end: " + filepath);
+        position = oldPos;
     }
 }
