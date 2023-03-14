@@ -16,7 +16,7 @@ public class Film {
     protected String duration;
     protected String[] listed_in;
 
-    // Constructor
+    // Constructors
     public Film() {
 
     }

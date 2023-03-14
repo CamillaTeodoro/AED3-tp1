@@ -422,7 +422,7 @@ public class App {
             films.set(j + 1, temp);
 
         }
-        // imprime registros ordenados
+        // print sorted records
         // for (Film film : films) {
         // film.print();
         // }

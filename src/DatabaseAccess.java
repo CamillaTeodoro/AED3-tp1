@@ -4,6 +4,7 @@ import java.io.RandomAccessFile;
 
 public class DatabaseAccess {
 
+    // Atributtes
     private RandomAccessFile databaseFile;
     private Long position = (long) 4; // defaults the start of the record
     private String filepath; // sets the file path
@@ -20,11 +21,13 @@ public class DatabaseAccess {
     }
 
     /**
+     * Takes an id as paramater and returns the starting position of the record or
+     * -1
      * 
      * @param id
      * @throws IOException
      */
-    // Lê um id do teclado e mostra na tela o filme/show
+
     public Film read(int id) throws IOException {
         try {
             Long pointerPosition = find(id);
