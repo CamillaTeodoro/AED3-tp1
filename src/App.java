@@ -3,40 +3,31 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class App {
+    private static int batchSize = 5;
 
     /**
+     * Read the csv file and load it into the database
      * 
+     * @param db
      * @throws IOException
      */
-    // Cria o arquivo .db através da leitura do aquivo csv
-    static void loadDatabase() throws IOException {
+    static void loadDatabase(DatabaseAccess db) throws IOException {
         try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
+            db.clearDb();
             Scanner fileReaderScanner = new Scanner(new File("../netflix_titles.csv"));
             String line = fileReaderScanner.nextLine(); // Ignora primeira linha do csv
-            line = fileReaderScanner.nextLine();
-            long pointerPosition;
-            byte[] b;
-            arquivo.writeInt(0);
-            arquivo.seek(4);
+
             while (fileReaderScanner.hasNextLine()) {
+                line = fileReaderScanner.nextLine();
+                if (line.trim().length() == 0) {
+                    continue;
+                }
+
                 Film film = new Film();
                 film.ReadText(line);
-                b = film.toByteArray();
-                arquivo.writeChar('$'); // sinal de registro ativo
-
-                arquivo.writeInt(b.length);
-                arquivo.write(b);
-                pointerPosition = arquivo.getFilePointer();
-                // Volta ponteiro para cabeçalho e atualiza id
-                arquivo.seek(0);
-                arquivo.writeInt(film.show_id);
-                arquivo.seek(pointerPosition);
-
-                line = fileReaderScanner.nextLine();
-
+                db.create(film);
             }
-            arquivo.close();
+
             fileReaderScanner.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,579 +36,150 @@ public class App {
     }
 
     /**
+     * Receive from user the data
+     * 
+     * @param sc
+     * @param db
+     * @return
      * @throws IOException
      */
-    static void create() throws IOException {
+    public static Film readFilmDataFromUser(Scanner sc, DatabaseAccess db) throws IOException {
+        Film film = new Film();
 
-        try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
-            Scanner sc = new Scanner(System.in);
-            Film film = new Film();
-            byte[] b;
-            Long idExists;
+        System.out.println("Digite o id: ");
+        int id = Integer.parseInt(sc.nextLine());
 
-            System.out.println("Digite o id: ");
-            int id = Integer.parseInt(sc.nextLine());
-            idExists = read(id);
-            while (idExists != (long) -1) {
-                System.out.println("ID existente na base de dados. Digite outro valor: ");
-                id = Integer.parseInt(sc.nextLine());
-                idExists = read(id);
-            }
-            System.out.println("Cadastro do ID informado aceito com sucesso!!");
-            film.setShow_id((id));
-            System.out.println("Digite o Tipo de Filme/Show: ");
-            film.setType(sc.nextLine());
-            System.out.println("Digite o Título do Filme/Show: ");
-            film.setTitle(sc.nextLine());
-            System.out.println("Digite o Diretor do Filme/Show: ");
-            film.setDirector(sc.nextLine());
-            System.out.println("Digite a data de lançamento do Filme/Show: ");
-            try {
-                String newDate = sc.nextLine();
-                film.setDate_added(new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(newDate));
-            } catch (Exception e) {
-                System.out.println("A data deve ser no formato dd/mm/yyyy.");
-            }
-            System.out.println("Digite o Ano de estréia do Filme/Show: ");
-            film.setRelease_year(Integer.parseInt(sc.nextLine()));
-            System.out.println("Digite a Duração do Filme/Show: ");
-            film.setDuration(sc.nextLine());
-            System.out.println("Digite o Gênero do Filme/Show: ");
-            film.setListed_in(sc.nextLine());
-
-            arquivo.seek(arquivo.length());
-            b = film.toByteArray();
-            arquivo.writeChar('$'); // sinal de registro ativo
-
-            arquivo.writeInt(b.length);
-            arquivo.write(b);
-
-            // Volta ponteiro para cabeçalho e atualiza id
-            arquivo.seek(0);
-            arquivo.writeInt(film.show_id);
-
-            arquivo.close();
-            sc.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        Long idExists = db.find(id);
+        while (idExists != (long) -1) {
+            System.out.println("ID existente na base de dados. Digite outro valor: ");
+            id = Integer.parseInt(sc.nextLine());
+            idExists = db.find(id);
         }
-        System.out.println("Registro criado com sucesso.");
+        System.out.println("Cadastro do ID informado aceito com sucesso!!");
+        film.setShow_id((id));
+
+        // =====================================================
+        System.out.println("Digite o Tipo de Filme/Show: ");
+        film.setType(sc.nextLine());
+        System.out.println("Digite o Título do Filme/Show: ");
+        film.setTitle(sc.nextLine());
+        System.out.println("Digite o Diretor do Filme/Show: ");
+        film.setDirector(sc.nextLine());
+        System.out.println("Digite a data de lançamento do Filme/Show: ");
+        try {
+            String newDate = sc.nextLine();
+            film.setDate_added(new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(newDate));
+        } catch (Exception e) {
+            System.out.println("A data deve ser no formato dd/mm/yyyy.");
+        }
+        System.out.println("Digite o Ano de estréia do Filme/Show: ");
+        film.setRelease_year(Integer.parseInt(sc.nextLine()));
+        System.out.println("Digite a Duração do Filme/Show: ");
+        film.setDuration(sc.nextLine());
+        System.out.println("Digite o Gênero do Filme/Show: ");
+        film.setListed_in(sc.nextLine().split(","));
+
+        return film;
     }
 
     /**
+     * Receive from user the data that he wants to update
      * 
-     * @param id
-     * @throws IOException
+     * @param film
+     * @param sc
+     * @return
      */
-    // Lê um id do teclado e mostra na tela o filme/show
-    static Long read(int id) throws IOException {
+    static Film readEditDataFromUser(Film film, Scanner sc) {
+        int option = -1;
+        Film newFilm = new Film(film);
+
+        System.out.println("Digite o número correspondente ao campo que deseja editar:");
+        System.out.println("1 - Tipo ");
+        System.out.println("2 - Título ");
+        System.out.println("3 - Diretor ");
+        System.out.println("4 - Data ");
+        System.out.println("5 - Ano de estréia ");
+        System.out.println("6 - Duração ");
+        System.out.println("7 - Gênero ");
+        System.out.println("0 - Voltar ao menu inicial ");
+        System.out.println("");
+
         try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
-
-            arquivo.seek(4);
-            long fileSize = arquivo.length();
-            long pointerPosition;
-            long beginOfRegister = arquivo.getFilePointer();
-            pointerPosition = arquivo.getFilePointer();
-
-            while (pointerPosition < fileSize) {
-
-                Film film = new Film();
-
-                beginOfRegister = arquivo.getFilePointer();
-
-                char lapide = arquivo.readChar();
-                int size = arquivo.readInt();
-                int filmID = arquivo.readInt();
-                if (filmID == id && lapide == '$') {
-
-                    // System.out.println("cheguei aqui.");
-                    arquivo.seek(pointerPosition + 2);
-                    int sizeFilm = arquivo.readInt();
-                    // System.out.println(sizeFilm);
-                    byte[] b = new byte[sizeFilm];
-                    arquivo.read(b);
-                    film.fromByteArray(b);
-
-                    film.print();
-
-                    System.out.println();
-                    return beginOfRegister;
-                }
-
-                arquivo.seek(pointerPosition + 6 + size);
-                pointerPosition = arquivo.getFilePointer();
-
-            }
-
-            System.out.println("Filme/Show não existe na base de dados.");
-            System.out.println();
-
-            arquivo.close();
-
+            option = Integer.parseInt(sc.nextLine());
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("O valor digitado deve ser um número!!");
+            option = 0;
         }
-        return (long) -1;
 
-    }
+        switch (option) {
+            case 1:
 
-    /**
-     * 
-     * @param id
-     * @throws IOException
-     * 
-     *                     1 - move pointer para inicio do tipo;
-     *                     2 - le o tipo
-     *                     3 - verifica o tamanho do tipo
-     *                     4 - compara o tamanho do tipo antigo com o novo
-     *                     5 - se o novo for menor, so substitui
-     *                     6 - se for maior, colocar lápide no velho e copiar o novo
-     *                     registro pro fim do
-     *                     arquivo
-     *                     7 - alterar o id do cabeçalho do arquivo
-     */
+                System.out.println("Digite o novo Tipo do Filme/Show: ");
+                String type = sc.nextLine();
+                newFilm.setType(type);
+                break;
 
-    // Faz o update do filme/show
-    static void update(int id) throws IOException {
-        try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
-            Scanner sc = new Scanner(System.in);
-            int option = -1;
-            Long beginOfRegister;
+            case 2:
+                System.out.println("Digite o novo Título do Filme/Show: ");
+                String title = sc.nextLine();
+                newFilm.setTitle(title);
+                break;
+            case 3:
+                System.out.println("Digite o novo Diretor do Filme/Show: ");
+                String director = sc.nextLine();
+                newFilm.setDirector(director);
+                break;
 
-            beginOfRegister = read(id);
-            // (long) -1 retorno do read() quando registro não existe
-            if (beginOfRegister != (long) -1) {
-                Long whereToUpdate = beginOfRegister;
-                // System.out.println(beginOfRegister);
-                // System.out.println(whereToUpdate);
-                Film film = new Film();
-                arquivo.seek(beginOfRegister + 2);
-                int sizeFilm = arquivo.readInt();
-                byte[] b = new byte[sizeFilm];
-                arquivo.read(b);
-                film.fromByteArray(b);
-                // System.out.println(film.director);
-
-                System.out.println("Digite o número correspondente ao campo que deseja editar:");
-                System.out.println("1 - Tipo ");
-                System.out.println("2 - Título ");
-                System.out.println("3 - Diretor ");
-                System.out.println("4 - Data ");
-                System.out.println("5 - Ano de estréia ");
-                System.out.println("6 - Duração ");
-                System.out.println("7 - Gênero ");
-                System.out.println("0 - Voltar ao menu inicial ");
-                System.out.println("");
+            case 4:
+                System.out.println("Digite a nova Data do Filme/Show: ");
 
                 try {
-                    option = sc.nextInt();
+                    String newDate = sc.nextLine();
+                    newFilm.setDate_added(new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(newDate));
                 } catch (Exception e) {
-                    System.out.println("O valor digitado deve ser um número!!");
-                    option = 0;
+                    System.out.println("A data deve ser no formato dd/mm/yyyy.");
                 }
 
-                // Limpa o \n no ultimo nextInt()
-                sc.nextLine();
+                break;
 
-                switch (option) {
-                    case 1:
+            case 5:
+                System.out.println("Digite o novo Ano de Estréia do Filme/Show: ");
+                int release_year = Integer.parseInt(sc.nextLine());
+                newFilm.setRelease_year(release_year);
+                break;
 
-                        System.out.println("Digite o novo Tipo do Filme/Show: ");
-                        String type = sc.nextLine();
-                        // coloca ponteiro na posição do type
-                        arquivo.seek(whereToUpdate + 10);
-                        // salva posição do type numa variável
-                        Long pointerPosiLong = arquivo.getFilePointer();
-                        String oldType = arquivo.readUTF();
-                        int sizeOldType = oldType.length();
-                        if (sizeOldType >= type.length()) {
-                            String typeResult = type;
-                            arquivo.seek(pointerPosiLong);
-                            while (typeResult.length() < sizeOldType) {
-                                typeResult += " ";
-                            }
-                            arquivo.writeUTF(typeResult);
-                            film.type = typeResult;
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
+            case 6:
+                System.out.println("Digite a nova Duração do Filme/Show: ");
+                String duration = sc.nextLine();
+                newFilm.setDuration(duration);
+                break;
 
-                        } else {
-                            arquivo.seek(whereToUpdate);
-                            arquivo.writeChar('*');
-                            film.type = type;
-                            byte[] c = film.toByteArray();
-                            arquivo.seek(arquivo.length());
-                            arquivo.writeChar('$');
-                            arquivo.writeInt(c.length);
-                            arquivo.write(c);
-                            // Volta ponteiro para cabeçalho e atualiza id
-                            arquivo.seek(0);
-                            arquivo.writeInt(film.show_id);
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
+            case 7:
+                System.out.println("Digite o novo Gênero do Filme/Show: ");
 
-                        }
+                String listed_in = sc.nextLine();
+                newFilm.setListed_in(listed_in.split(","));
+                break;
 
-                        System.out.println();
+            case 0:
+                System.out.println("Voltando ao menu inicial");
+                return null;
 
-                        break;
-                    case 2:
-                        System.out.println("Digite o novo Título do Filme/Show: ");
-                        String title = sc.nextLine();
-                        // coloca ponteiro na posição do type
-                        arquivo.seek(whereToUpdate + 10);
-                        type = arquivo.readUTF();
-                        // salva posição do title numa variável
-                        pointerPosiLong = arquivo.getFilePointer();
-                        String oldtitle = arquivo.readUTF();
-                        int sizeOldtitle = oldtitle.length();
-                        if (sizeOldtitle >= title.length()) {
-                            String titleResult = title;
-                            arquivo.seek(pointerPosiLong);
-                            while (titleResult.length() < sizeOldtitle) {
-                                titleResult += " ";
-                            }
-                            arquivo.writeUTF(titleResult);
-                            film.title = titleResult;
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
-
-                        } else {
-                            arquivo.seek(whereToUpdate);
-                            // System.out.println(whereToUpdate);
-                            arquivo.writeChar('*');
-                            film.title = title;
-                            byte[] c = film.toByteArray();
-                            arquivo.seek(arquivo.length());
-                            arquivo.writeChar('$');
-                            arquivo.writeInt(c.length);
-                            arquivo.write(c);
-                            // Volta ponteiro para cabeçalho e atualiza id
-                            arquivo.seek(0);
-                            arquivo.writeInt(film.show_id);
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
-
-                        }
-
-                        System.out.println();
-
-                        break;
-                    case 3:
-                        System.out.println("Digite o novo Diretor do Filme/Show: ");
-                        String director = sc.nextLine();
-                        // coloca ponteiro na posição do type
-                        arquivo.seek(whereToUpdate + 10);
-                        type = arquivo.readUTF();
-                        title = arquivo.readUTF();
-                        // salva posição do director numa variável
-                        pointerPosiLong = arquivo.getFilePointer();
-                        String oldDirector = arquivo.readUTF();
-                        int sizeOldDirector = oldDirector.length();
-                        if (sizeOldDirector >= director.length()) {
-                            String directorResult = director;
-                            arquivo.seek(pointerPosiLong);
-                            while (directorResult.length() < sizeOldDirector) {
-                                directorResult += " ";
-                            }
-                            arquivo.writeUTF(directorResult);
-                            film.director = directorResult;
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
-
-                        } else {
-                            arquivo.seek(whereToUpdate);
-                            arquivo.writeChar('*');
-                            film.director = director;
-                            byte[] c = film.toByteArray();
-                            arquivo.seek(arquivo.length());
-                            arquivo.writeChar('$');
-                            arquivo.writeInt(c.length);
-                            arquivo.write(c);
-                            // Volta ponteiro para cabeçalho e atualiza id
-                            arquivo.seek(0);
-                            arquivo.writeInt(film.show_id);
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
-
-                        }
-
-                        System.out.println();
-
-                        break;
-
-                    case 4:
-                        System.out.println("Digite a nova Data do Filme/Show: ");
-
-                        String dateAdded = sc.nextLine();
-                        // coloca ponteiro na posição do type
-                        arquivo.seek(whereToUpdate + 10);
-                        type = arquivo.readUTF();
-                        title = arquivo.readUTF();
-                        director = arquivo.readUTF();
-                        // salva posição do date_added numa variável
-                        pointerPosiLong = arquivo.getFilePointer();
-
-                        String oldDate_added = arquivo.readUTF();
-                        int sizeOldDate_added = oldDate_added.length();
-                        Date newDate_added;
-                        int sizeFormatNewDate_added;
-                        String formatNewDate_added;
-
-                        try {
-                            newDate_added = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
-                                    .parse(dateAdded);
-                            formatNewDate_added = new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH)
-                                    .format(newDate_added);
-                            sizeFormatNewDate_added = formatNewDate_added.length();
-                            if (sizeOldDate_added >= sizeFormatNewDate_added) {
-                                String date_addedResult = formatNewDate_added;
-                                arquivo.seek(pointerPosiLong);
-                                while (date_addedResult.length() < sizeOldDate_added) {
-                                    date_addedResult += " ";
-                                }
-                                arquivo.writeUTF(date_addedResult);
-                                film.date_added = newDate_added;
-
-                                System.out.println("Registro editado com sucesso.");
-                                System.out.println("");
-                                System.out.println("Novos dados: ");
-                                film.print();
-
-                            } else {
-                                arquivo.seek(whereToUpdate);
-                                arquivo.writeChar('*');
-                                film.date_added = new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH)
-                                        .parse(formatNewDate_added);
-                                byte[] c = film.toByteArray();
-                                arquivo.seek(arquivo.length());
-                                arquivo.writeChar('$');
-                                arquivo.writeInt(c.length);
-                                arquivo.write(c);
-                                // Volta ponteiro para cabeçalho e atualiza id
-                                arquivo.seek(0);
-                                arquivo.writeInt(film.show_id);
-                                System.out.println("Registro editado com sucesso.");
-                                System.out.println("");
-                                System.out.println("Novos dados: ");
-                                film.print();
-
-                            }
-                        } catch (Exception e) {
-
-                            System.out.println("A data deve ser no formato dd/mm/yyyy.");
-                        }
-
-                        System.out.println();
-
-                        break;
-
-                    case 5:
-                        System.out.println("Digite o novo Ano de Estréia do Filme/Show: ");
-                        int release_year = sc.nextInt();
-                        // Limpa o \n no ultimo nextInt()
-                        sc.nextLine();
-                        // coloca ponteiro na posição do type
-                        arquivo.seek(whereToUpdate + 10);
-                        type = arquivo.readUTF();
-                        title = arquivo.readUTF();
-                        director = arquivo.readUTF();
-                        dateAdded = arquivo.readUTF();
-
-                        arquivo.writeInt(release_year);
-                        film.release_year = release_year;
-
-                        System.out.println("Registro editado com sucesso.");
-                        System.out.println("");
-                        System.out.println("Novos dados: ");
-                        film.print();
-
-                        System.out.println();
-
-                        break;
-
-                    case 6:
-                        System.out.println("Digite a nova Duração do Filme/Show: ");
-
-                        String duration = sc.nextLine();
-                        // coloca ponteiro na posição do type
-                        arquivo.seek(whereToUpdate + 10);
-                        type = arquivo.readUTF();
-                        title = arquivo.readUTF();
-                        director = arquivo.readUTF();
-                        dateAdded = arquivo.readUTF();
-                        release_year = arquivo.readInt();
-
-                        // salva posição do duration numa variável
-                        pointerPosiLong = arquivo.getFilePointer();
-                        String oldDuration = arquivo.readUTF();
-                        int sizeOldDuration = oldDuration.length();
-                        if (sizeOldDuration >= duration.length()) {
-                            String durationResult = duration;
-                            while (durationResult.length() < sizeOldDuration) {
-                                durationResult += " ";
-                            }
-                            arquivo.seek(pointerPosiLong);
-                            arquivo.writeUTF(durationResult);
-                            film.duration = durationResult;
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
-
-                        } else {
-                            arquivo.seek(whereToUpdate);
-                            arquivo.writeChar('*');
-                            film.duration = duration;
-                            byte[] c = film.toByteArray();
-                            arquivo.seek(arquivo.length());
-                            arquivo.writeChar('$');
-                            arquivo.writeInt(c.length);
-                            arquivo.write(c);
-                            // Volta ponteiro para cabeçalho e atualiza id
-                            arquivo.seek(0);
-                            arquivo.writeInt(film.show_id);
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
-
-                        }
-                        System.out.println();
-
-                        break;
-                    case 7:
-                        System.out.println("Digite o novo Gênero do Filme/Show: ");
-
-                        String listed_in = sc.nextLine();
-                        // coloca ponteiro na posição do type
-                        arquivo.seek(whereToUpdate + 10);
-                        type = arquivo.readUTF();
-                        title = arquivo.readUTF();
-                        director = arquivo.readUTF();
-                        dateAdded = arquivo.readUTF();
-                        release_year = arquivo.readInt();
-                        duration = arquivo.readUTF();
-
-                        // salva posição do listed_in numa variável
-                        pointerPosiLong = arquivo.getFilePointer();
-                        String oldListed_in = arquivo.readUTF();
-                        int sizeOldListed_in = oldListed_in.length();
-                        if (sizeOldListed_in >= listed_in.length()) {
-                            String listed_inResult = listed_in;
-                            while (listed_inResult.length() < sizeOldListed_in) {
-                                listed_inResult += " ";
-                            }
-                            arquivo.seek(pointerPosiLong);
-                            arquivo.writeUTF(listed_inResult);
-                            film.listed_in = listed_inResult;
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
-
-                        } else {
-                            arquivo.seek(whereToUpdate);
-                            arquivo.writeChar('*');
-                            film.listed_in = listed_in;
-                            byte[] c = film.toByteArray();
-                            arquivo.seek(arquivo.length());
-                            arquivo.writeChar('$');
-                            arquivo.writeInt(c.length);
-                            arquivo.write(c);
-                            // Volta ponteiro para cabeçalho e atualiza id
-                            arquivo.seek(0);
-                            arquivo.writeInt(film.show_id);
-                            System.out.println("Registro editado com sucesso.");
-                            System.out.println("");
-                            System.out.println("Novos dados: ");
-                            film.print();
-
-                        }
-                        System.out.println();
-
-                        break;
-                    case 0:
-                        System.out.println("Voltando ao menu inicial");
-                        break;
-
-                    default:
-                        System.out.println("ERRO");
-                        break;
-                }
-            }
-
-            arquivo.close();
-            sc.close();
-
-        } catch (
-
-        Exception e) {
-            e.printStackTrace();
+            default:
+                System.out.println("ERRO");
+                break;
         }
 
+        return newFilm;
     }
 
     /**
+     * Create the menu from the sorting methods
      * 
-     * @param id
-     * @throws IOException
+     * @param sc1
      */
+    public static void SortingDatabase(Scanner sc1) {
 
-    static void delete(int id) throws IOException {
-        try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
-            arquivo.seek(4);
-            long pointerPosition;
-            pointerPosition = arquivo.getFilePointer();
-            while (pointerPosition < arquivo.length()) {
-                char lapide = arquivo.readChar();
-                int size = arquivo.readInt();
-                int filmID = arquivo.readInt();
-                if (filmID == id && lapide == '$') {
-                    arquivo.seek(pointerPosition);
-                    arquivo.writeChar('*'); // informa que o arquivo está deletado
-                    System.out.println("Filme/Show deletado com sucesso");
-                    System.out.println();
-                    return;
-                } else if (filmID == id && lapide == '*') {
-                    System.out.println("Filme/Show não existe na base de dados.");
-                    System.out.println();
-                    return;
-                }
-                arquivo.seek(pointerPosition + 6 + size);
-                pointerPosition = arquivo.getFilePointer();
-
-            }
-            System.out.println("Filme/Show não existe na base de dados.");
-            System.out.println();
-
-            arquivo.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void SortingDatabase() {
-        Scanner sc1 = new Scanner(System.in);
         int option = -1;
 
         System.out.println("Por qual algoritmo de ordenação você deseja ordenar?");
@@ -627,11 +189,11 @@ public class App {
         System.out.println("0 - Voltar ao menu inicial");
 
         try {
-            option = sc1.nextInt();
+            option = Integer.parseInt(sc1.nextLine());
         } catch (Exception e) {
             System.out.println("O valor digitado deve ser um número!!");
             System.out.println("");
-            SortingDatabase();
+            SortingDatabase(sc1);
         }
         switch (option) {
             case 1:
@@ -652,123 +214,196 @@ public class App {
                 break;
         }
 
-        sc1.close();
-
     }
 
-    public static void simpleInterpolation() {
+    /**
+     * Read the banco file
+     * Sort small batches of records from db and save it into two paths
+     */
+    public static void sortBatchOfRecords() {
         try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
-            RandomAccessFile path1 = new RandomAccessFile("../db/path1.db", "rw");
-            RandomAccessFile path2 = new RandomAccessFile("../db/path2.db", "rw");
-            arquivo.seek(4);
+            DatabaseAccess db = new DatabaseAccess("../db/banco.db");
+
+            DatabaseAccess path1 = new DatabaseAccess("../db/path1.db");
+            DatabaseAccess path2 = new DatabaseAccess("../db/path2.db");
+
+            path1.clearDb();
+            path2.clearDb();
+
             int count = 0;
-            Long pointerPosition = arquivo.getFilePointer();
+            db.resetPosition();
+            Film currentFilm = db.next();
 
             ArrayList<Film> films = new ArrayList<Film>();
-            while (pointerPosition != arquivo.length()) {
-
-                while (pointerPosition != arquivo.length() && count < 5) {
-                    Film film = new Film();
-                    char lapide = arquivo.readChar();
-                    if (lapide == '$') {
-
-                        int sizeFilm = arquivo.readInt();
-                        // System.out.println(sizeFilm);
-                        byte[] b = new byte[sizeFilm];
-                        arquivo.read(b);
-                        film.fromByteArray(b);
-                        films.add(film);
-                        // System.out.println("Adicionado filme: " + film.show_id);
-                        count++;
-
-                    } else {
-                        int sizeRegister = arquivo.readInt();
-                        arquivo.seek(arquivo.getFilePointer() + sizeRegister);
-                    }
-                    pointerPosition = arquivo.getFilePointer();
+            while (currentFilm != null) {
+                // Save the next sorted 5 films into path1
+                while (currentFilm != null && count < batchSize) {
+                    films.add(currentFilm);
+                    currentFilm = db.next();
+                    count++;
                 }
                 InsertionSort(films);
-                // escreve no arquivo path1
+                // write into path1
                 for (Film film : films) {
-
-                    byte[] c = film.toByteArray();
-                    path1.writeChar('$'); // sinal de registro ativo
-                    path1.writeInt(c.length);
-                    path1.write(c);
-
+                    path1.create(film);
                 }
                 films.clear();
                 count = 0;
 
-                while (pointerPosition != arquivo.length() && count < 5) {
-                    Film film = new Film();
-
-                    char lapide = arquivo.readChar();
-                    if (lapide == '$') {
-
-                        int sizeFilm = arquivo.readInt();
-                        // System.out.println(sizeFilm);
-                        byte[] b = new byte[sizeFilm];
-                        arquivo.read(b);
-                        film.fromByteArray(b);
-                        films.add(film);
-                        // System.out.println("Adicionado filme: " + film.show_id);
-                        count++;
-
-                    } else {
-                        int sizeRegister = arquivo.readInt();
-                        arquivo.seek(arquivo.getFilePointer() + sizeRegister);
-                    }
-                    pointerPosition = arquivo.getFilePointer();
-
+                // Save the next sorted 5 films into path2
+                while (currentFilm != null && count < batchSize) {
+                    films.add(currentFilm);
+                    currentFilm = db.next();
+                    count++;
                 }
                 InsertionSort(films);
-                // escreve no arquivo path1
+                // write into path2
                 for (Film film : films) {
-                    // escreve no arquivo novo
-                    byte[] c = film.toByteArray();
-                    path2.writeChar('$'); // sinal de registro ativo
-                    path2.writeInt(c.length);
-                    path2.write(c);
-
+                    path2.create(film);
                 }
                 films.clear();
                 count = 0;
-                pointerPosition = arquivo.getFilePointer();
             }
+            db.close();
             path1.close();
             path2.close();
-            arquivo.close();
-            System.out.println("Base de dados ordenada com sucesso!");
-            System.out.println("");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * executes a simple interpolation to sorte the file
+     */
+    public static void simpleInterpolation() {
+
+        sortBatchOfRecords();
+
+        // Abrir os dois arquivos
+        try {
+            DatabaseAccess path1 = new DatabaseAccess("../db/path1.db");
+            DatabaseAccess path2 = new DatabaseAccess("../db/path2.db");
+
+            DatabaseAccess path3 = new DatabaseAccess("../db/path3.db");
+            DatabaseAccess path4 = new DatabaseAccess("../db/path4.db");
+
+            int internalBatchSize = batchSize;
+
+            do {
+                path1.resetPosition();
+                path2.resetPosition();
+                path3.clearDb();
+                path4.clearDb();
+
+                while (!path1.isEndOfFile() && !path2.isEndOfFile()) {
+                    merge(path1, path2, path3, internalBatchSize);
+                    merge(path1, path2, path4, internalBatchSize);
+                }
+
+                // Double the batch size
+                internalBatchSize = internalBatchSize * 2;
+
+                // Swap files 1 and 3
+                DatabaseAccess temp = path1;
+                path1 = path3;
+                path3 = temp;
+
+                // Swap files 2 and 4
+                DatabaseAccess temp2 = path2;
+                path2 = path4;
+                path4 = temp2;
+
+            } while (path2.length() > 4);
+
+            DatabaseAccess db = new DatabaseAccess("../db/banco.db");
+            db.clearDb();
+            path1.resetPosition();
+            while (!path1.isEndOfFile()) {
+                db.create(path1.next());
+            }
+
+            // It should be sorted now
+            db.print();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        System.out.println("");
+        System.out.println("Base de dados ordenada com sucesso!");
+        System.out.println("");
+
+    }
+
+    /**
+     * merge two files into a new one file
+     * 
+     * @param source1
+     * @param source2
+     * @param destination
+     * @param batchSize
+     * @throws IOException
+     */
+    public static void merge(
+            DatabaseAccess source1,
+            DatabaseAccess source2,
+            DatabaseAccess destination,
+            int batchSize)
+            throws IOException {
+        Film film1 = source1.next();
+        Film film2 = source2.next();
+
+        int count1 = batchSize;
+        int count2 = batchSize;
+
+        while (count1 > 0 && count2 > 0 && film1 != null && film2 != null) {
+            if (film1.getShow_id() < film2.getShow_id()) {
+                destination.create(film1);
+                if (--count1 != 0) {
+                    film1 = source1.next();
+                }
+            } else {
+                destination.create(film2);
+                if (--count2 != 0) {
+                    film2 = source2.next();
+                }
+            }
+        }
+
+        while (count1 != 0 && film1 != null) {
+            destination.create(film1);
+            if (--count1 != 0) {
+                film1 = source1.next();
+            }
+        }
+
+        while (count2 != 0 && film2 != null) {
+            destination.create(film2);
+            if (--count2 != 0) {
+                film2 = source2.next();
+            }
+        }
     }
 
     public static void variableSizeInterpolation() {
-        try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
+        sortBatchOfRecords();
 
-            arquivo.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println("");
+        System.out.println("Base de dados ordenada com sucesso!");
+        System.out.println("");
     }
 
     public static void substituteInterpolation() {
-        try {
-            RandomAccessFile arquivo = new RandomAccessFile("../db/banco.db", "rw");
 
-            arquivo.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
+    /**
+     * method to sort the batch of records
+     * 
+     * @param films
+     * @throws Exception
+     */
     public static void InsertionSort(ArrayList<Film> films) throws Exception {
         Film temp = null;
 
@@ -787,7 +422,7 @@ public class App {
             films.set(j + 1, temp);
 
         }
-        // imprime registros ordenados
+        // print sorted records
         // for (Film film : films) {
         // film.print();
         // }
@@ -797,10 +432,12 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
+        DatabaseAccess db = new DatabaseAccess("../db/banco.db");
         int option = -1;
         int id = 0;
 
         do {
+            System.out.println("");
             System.out.println("Entre com uma opção:");
             System.out.println("");
             System.out.println("1 - Criar um novo registro");
@@ -814,57 +451,94 @@ public class App {
 
             try {
 
-                option = sc.nextInt();
+                option = Integer.parseInt(sc.nextLine());
 
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("O valor digitado deve ser um número!! - 3");
+                System.out.println("O valor digitado deve ser um número!!");
                 option = 0;
             }
 
             switch (option) {
-                case 1:
-                    create();
+                case 1: {
+                    Film film = readFilmDataFromUser(sc, db);
+
+                    boolean result = db.create(film);
+                    if (result) {
+                        System.out.println("Registro criado com sucesso!");
+                    } else {
+                        System.out.println("Erro ao cadastrar!");
+                    }
 
                     System.out.println();
                     break;
-                case 2:
+                }
+                case 2: {
                     System.out.println("Digite o id do Show que você deseja ver: ");
                     try {
-                        id = sc.nextInt();
-                        read(id);
+                        id = Integer.parseInt(sc.nextLine());
+                        Film film = db.read(id);
+                        if (film == null) {
+                            System.out.println("Filme/Show não existe na base de dados!");
+                        } else {
+                            film.print();
+                        }
                     } catch (Exception e) {
                         System.out.println("O valor digitado deve ser um número!!");
                         option = 0;
                     }
                     break;
-                case 3:
+                }
+                case 3: {
                     System.out.println("Digite o id do Show que você deseja atualizar: ");
                     try {
-                        id = sc.nextInt();
-                        update(id);
+                        id = Integer.parseInt(sc.nextLine());
+                        Film film = db.read(id);
+                        film.print();
+                        Film editedFilm = readEditDataFromUser(film, sc);
+                        if (editedFilm == null) {
+                            break;
+                        }
+                        boolean result = db.update(film, editedFilm);
+                        if (result) {
+                            System.out.println("Registro editado com sucesso!");
+                        } else {
+                            System.out.println("Erro ao editar!");
+                        }
+
+                        System.out.println();
 
                     } catch (Exception e) {
                         System.out.println("O valor digitado deve ser um número!!");
                         option = 0;
                     }
                     break;
+                }
 
-                case 4:
+                case 4: {
                     System.out.println("Digite o id do Show que você deseja deletar: ");
                     try {
-                        id = sc.nextInt();
-                        delete(id);
+                        id = Integer.parseInt(sc.nextLine());
+                        Boolean result = db.delete(id);
+                        if (result) {
+                            System.out.println("Registro deletado com sucesso!");
+                        } else {
+                            System.out.println("Erro ao deletar!");
+                        }
+
+                        System.out.println();
                     } catch (Exception e) {
                         System.out.println("O valor digitado deve ser um número!!");
                         option = 0;
                     }
                     break;
-                case 5:
-                    SortingDatabase();
+                }
+                case 5: {
+                    SortingDatabase(sc);
                     break;
+                }
                 case 6:
-                    loadDatabase();
+                    loadDatabase(db);
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -877,5 +551,6 @@ public class App {
 
         } while (option != 0);
         sc.close();
+        db.close();
     }
 }

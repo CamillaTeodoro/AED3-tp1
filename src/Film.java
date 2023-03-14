@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class Film {
 
-    // Atributos
+    // Attributes
     protected int show_id;
     protected String type;
     protected String title;
@@ -14,15 +14,27 @@ public class Film {
     protected Date date_added;
     protected int release_year;
     protected String duration;
-    protected String listed_in;
+    protected String[] listed_in;
 
-    // Construtores
+    // Constructors
     public Film() {
 
     }
 
+    // Used inside readEditDataFromUser()
+    public Film(Film film) {
+        this.show_id = film.getShow_id();
+        this.type = film.getType();
+        this.title = film.getTitle();
+        this.director = film.getDirector();
+        this.date_added = film.getDate_added();
+        this.release_year = film.getRelease_year();
+        this.duration = film.getDuration();
+        this.listed_in = film.getListed_in();
+    }
+
     public Film(int show_id, String type, String title, String director, Date date_added,
-            int release_year, String duration, String listed_in) {
+            int release_year, String duration, String[] listed_in) {
 
         this.show_id = show_id;
         this.type = type;
@@ -94,15 +106,39 @@ public class Film {
         this.duration = duration.trim();
     }
 
-    public String getListed_in() {
+    public String[] getListed_in() {
         return listed_in;
     }
 
-    public void setListed_in(String listed_in) {
-        this.listed_in = listed_in.trim();
+    public void setListed_in(String[] listed_in) {
+        this.listed_in = listed_in;
     }
 
-    // Função para imprimir dados do filme/show
+    public static String[] readStringArray(DataInputStream dis) throws IOException {
+
+        int tam = dis.readInt(); // Strings
+
+        String[] stringArray = new String[tam];
+
+        for (int i = 0; i < tam; i++) {
+            stringArray[i] = dis.readUTF();
+        }
+        return stringArray;
+    }
+
+    public static void writeStringArray(String[] stringArray, DataOutputStream dos) throws IOException {
+
+        dos.writeInt(stringArray.length);
+
+        for (int i = 0; i < stringArray.length; i++) {
+            dos.writeUTF(stringArray[i]);
+        }
+
+    }
+
+    /**
+     * Print register
+     */
     public void print() {
         System.out.println();
         System.out.println("Id: " + Integer.toString(show_id) + " | Tipo: " + type.trim() + " | Título: " + title.trim()
@@ -111,11 +147,11 @@ public class Film {
                 + " | Data: "
                 + new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).format(date_added)
                 + " | Ano de estréia: " + Integer.toString(release_year)
-                + " | Duração: " + duration.trim() + " | Gênero(s): " + listed_in.trim());
+                + " | Duração: " + duration.trim() + " | Gênero(s): " + String.join(", ", listed_in));
 
     }
 
-    // Função que cria o byte array com os dados do filme/show
+    // Turns an object into a byte array
     public byte[] toByteArray() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
@@ -127,17 +163,18 @@ public class Film {
         dos.writeUTF(date.format(this.date_added));
         dos.writeInt(this.release_year);
         dos.writeUTF(this.duration);
-        dos.writeUTF(this.listed_in);
+        writeStringArray(this.listed_in, dos);
         return baos.toByteArray();
     }
 
-    // Função que lê o byte array e cria o objeto
+    // Turns a byte array into an object
     public void fromByteArray(byte[] b) throws IOException, ParseException {
 
         ByteArrayInputStream bais = new ByteArrayInputStream(b);
         DataInputStream dis = new DataInputStream(bais);
         SimpleDateFormat date = new SimpleDateFormat("MMMMM dd, yyyy");
         this.show_id = dis.readInt();
+        // System.out.println(this.show_id);
         this.type = dis.readUTF();
         this.title = dis.readUTF();
         this.director = dis.readUTF();
@@ -145,11 +182,11 @@ public class Film {
         this.release_year = dis.readInt();
         // System.out.println(this.release_year);
         this.duration = dis.readUTF();
-        this.listed_in = dis.readUTF();
+        this.listed_in = readStringArray(dis);
 
     }
 
-    // Lê a linha recebida do csv e cria o objeto.
+    // Read the csv line
     public void ReadText(String line) throws ParseException {
 
         String[] vetor = new String[8];
@@ -164,8 +201,6 @@ public class Film {
                 result = "";
             } else if (line.charAt(i) == '"') {
                 isIn = !isIn;
-            } else if (line.charAt(i) == '[' || line.charAt(i) == ']') {
-                continue;
             } else {
                 result += line.charAt(i);
             }
@@ -183,7 +218,7 @@ public class Film {
         }
         setRelease_year(Integer.parseInt(vetor[5]));
         setDuration(vetor[6]);
-        setListed_in(vetor[7]);
+        setListed_in(vetor[7].split(","));
 
     }
 
