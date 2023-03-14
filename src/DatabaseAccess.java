@@ -6,9 +6,10 @@ public class DatabaseAccess {
 
     private RandomAccessFile databaseFile;
     private Long position = (long) 4; // defaults the start of the record
-    private String filepath;
+    private String filepath; // sets the file path
     private boolean isEndOfFile = false;
 
+    // Constructor
     DatabaseAccess(String filePath) throws FileNotFoundException {
         databaseFile = new RandomAccessFile(filePath, "rw");
         this.filepath = filePath;
@@ -50,11 +51,12 @@ public class DatabaseAccess {
     }
 
     /**
+     * Takes an id as paramater and returns the starting position of the record or
+     * -1
      * 
      * @param id
      * @throws IOException
      */
-    // Lê um id do teclado e mostra na tela o filme/show
     public Long find(int id) throws IOException {
         try {
 
@@ -130,7 +132,7 @@ public class DatabaseAccess {
 
             } else {
                 databaseFile.seek(find(film.getShow_id()));
-                databaseFile.writeChar('*'); // sinal de registro ativo
+                databaseFile.writeChar('*'); // sinal de registro desativado
 
                 databaseFile.seek(databaseFile.length());
                 databaseFile.writeChar('$'); // sinal de registro ativo
@@ -189,6 +191,7 @@ public class DatabaseAccess {
         return isEndOfFile;
     }
 
+    // Get next record and return the film object
     public Film next() {
         try {
             databaseFile.seek(position);

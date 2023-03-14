@@ -6,10 +6,11 @@ public class App {
     private static int batchSize = 5;
 
     /**
+     * Read the csv file and load it into the database
      * 
+     * @param db
      * @throws IOException
      */
-    // Cria o arquivo .db através da leitura do aquivo csv
     static void loadDatabase(DatabaseAccess db) throws IOException {
         try {
             db.clearDb();
@@ -34,6 +35,14 @@ public class App {
         System.out.println("Base de dados criada com sucesso.");
     }
 
+    /**
+     * Receive from user the data
+     * 
+     * @param sc
+     * @param db
+     * @return
+     * @throws IOException
+     */
     public static Film readFilmDataFromUser(Scanner sc, DatabaseAccess db) throws IOException {
         Film film = new Film();
 
@@ -73,6 +82,13 @@ public class App {
         return film;
     }
 
+    /**
+     * Receive from user the data that he wants to update
+     * 
+     * @param film
+     * @param sc
+     * @return
+     */
     static Film readEditDataFromUser(Film film, Scanner sc) {
         int option = -1;
         Film newFilm = new Film(film);
@@ -157,6 +173,11 @@ public class App {
         return newFilm;
     }
 
+    /**
+     * Create the menu from the sorting methods
+     * 
+     * @param sc1
+     */
     public static void SortingDatabase(Scanner sc1) {
 
         int option = -1;
@@ -195,7 +216,11 @@ public class App {
 
     }
 
-    public static void sortBatchOfRegisters() {
+    /**
+     * Read the banco file
+     * Sort small batches of records from db and save it into two paths
+     */
+    public static void sortBatchOfRecords() {
         try {
             DatabaseAccess db = new DatabaseAccess("../db/banco.db");
 
@@ -211,28 +236,28 @@ public class App {
 
             ArrayList<Film> films = new ArrayList<Film>();
             while (currentFilm != null) {
-                // Grava os 5 proximos filmes no path1 ordenados
+                // Save the next sorted 5 films into path1
                 while (currentFilm != null && count < batchSize) {
                     films.add(currentFilm);
                     currentFilm = db.next();
                     count++;
                 }
                 InsertionSort(films);
-                // escreve no arquivo path1
+                // write into path1
                 for (Film film : films) {
                     path1.create(film);
                 }
                 films.clear();
                 count = 0;
 
-                // Grava os 5 proximos filmes no path2 ordenados
+                // Save the next sorted 5 films into path2
                 while (currentFilm != null && count < batchSize) {
                     films.add(currentFilm);
                     currentFilm = db.next();
                     count++;
                 }
                 InsertionSort(films);
-                // escreve no arquivo path1
+                // write into path2
                 for (Film film : films) {
                     path2.create(film);
                 }
@@ -248,8 +273,12 @@ public class App {
         }
     }
 
+    /**
+     * executes a simple interpolation to sorte the file
+     */
     public static void simpleInterpolation() {
-        sortBatchOfRegisters();
+
+        sortBatchOfRecords();
 
         // Abrir os dois arquivos
         try {
@@ -307,6 +336,15 @@ public class App {
 
     }
 
+    /**
+     * merge two files into a new one file
+     * 
+     * @param source1
+     * @param source2
+     * @param destination
+     * @param batchSize
+     * @throws IOException
+     */
     public static void merge(
             DatabaseAccess source1,
             DatabaseAccess source2,
@@ -349,7 +387,7 @@ public class App {
     }
 
     public static void variableSizeInterpolation() {
-        sortBatchOfRegisters();
+        sortBatchOfRecords();
 
         System.out.println("");
         System.out.println("Base de dados ordenada com sucesso!");
@@ -360,6 +398,12 @@ public class App {
 
     }
 
+    /**
+     * method to sort the batch of records
+     * 
+     * @param films
+     * @throws Exception
+     */
     public static void InsertionSort(ArrayList<Film> films) throws Exception {
         Film temp = null;
 
@@ -393,6 +437,7 @@ public class App {
         int id = 0;
 
         do {
+            System.out.println("");
             System.out.println("Entre com uma opção:");
             System.out.println("");
             System.out.println("1 - Criar um novo registro");

@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class Film {
 
-    // Atributos
+    // Attributes
     protected int show_id;
     protected String type;
     protected String title;
@@ -16,11 +16,12 @@ public class Film {
     protected String duration;
     protected String[] listed_in;
 
-    // Construtores
+    // Constructor
     public Film() {
 
     }
 
+    // Used inside readEditDataFromUser()
     public Film(Film film) {
         this.show_id = film.getShow_id();
         this.type = film.getType();
@@ -150,7 +151,7 @@ public class Film {
 
     }
 
-    // Função que cria o byte array com os dados do filme/show
+    // Turns an object into a byte array
     public byte[] toByteArray() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
@@ -166,7 +167,7 @@ public class Film {
         return baos.toByteArray();
     }
 
-    // Função que lê o byte array e cria o objeto
+    // Turns a byte array into an object
     public void fromByteArray(byte[] b) throws IOException, ParseException {
 
         ByteArrayInputStream bais = new ByteArrayInputStream(b);
@@ -185,7 +186,7 @@ public class Film {
 
     }
 
-    // Lê a linha recebida do csv e cria o objeto.
+    // Read the csv line
     public void ReadText(String line) throws ParseException {
 
         String[] vetor = new String[8];
