@@ -170,7 +170,7 @@ public class DatabaseAccess {
             return true;
 
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
         return false;
     }
@@ -247,5 +247,13 @@ public class DatabaseAccess {
         }
         // System.out.println("Print path end: " + filepath);
         position = oldPos;
+    }
+
+    public Long getFilePointer() throws IOException {
+        return databaseFile.getFilePointer();
+    }
+
+    public void seek(Long pointerPosition) throws IOException {
+        databaseFile.seek(pointerPosition);
     }
 }

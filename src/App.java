@@ -265,6 +265,7 @@ public class App {
                 count = 0;
             }
             db.close();
+
             path1.close();
             path2.close();
 
@@ -369,6 +370,7 @@ public class App {
                     film2 = source2.next();
                 }
             }
+
         }
 
         while (count1 != 0 && film1 != null) {
@@ -376,6 +378,7 @@ public class App {
             if (--count1 != 0) {
                 film1 = source1.next();
             }
+
         }
 
         while (count2 != 0 && film2 != null) {
@@ -384,6 +387,7 @@ public class App {
                 film2 = source2.next();
             }
         }
+
     }
 
     public static void variableSizeInterpolation() {
@@ -494,19 +498,23 @@ public class App {
                     try {
                         id = Integer.parseInt(sc.nextLine());
                         Film film = db.read(id);
-                        film.print();
-                        Film editedFilm = readEditDataFromUser(film, sc);
-                        if (editedFilm == null) {
-                            break;
-                        }
-                        boolean result = db.update(film, editedFilm);
-                        if (result) {
-                            System.out.println("Registro editado com sucesso!");
-                        } else {
-                            System.out.println("Erro ao editar!");
-                        }
+                        if (film != null) {
+                            film.print();
+                            Film editedFilm = readEditDataFromUser(film, sc);
+                            if (editedFilm == null) {
+                                break;
+                            }
+                            boolean result = db.update(film, editedFilm);
+                            if (result) {
+                                System.out.println("Registro editado com sucesso!");
+                            } else {
+                                System.out.println("Erro ao editar!");
+                            }
 
-                        System.out.println();
+                            System.out.println();
+                        } else {
+                            System.out.println("Filme/Show não existe na base de dados");
+                        }
 
                     } catch (Exception e) {
                         System.out.println("O valor digitado deve ser um número!!");
@@ -526,7 +534,6 @@ public class App {
                             System.out.println("Erro ao deletar!");
                         }
 
-                        System.out.println();
                     } catch (Exception e) {
                         System.out.println("O valor digitado deve ser um número!!");
                         option = 0;
