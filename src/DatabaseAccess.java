@@ -249,11 +249,11 @@ public class DatabaseAccess {
         position = oldPos;
     }
 
-    public Long getFilePointer() throws IOException {
-        return databaseFile.getFilePointer();
+    public Long getPosition() throws IOException {
+        return position;
     }
 
-    public void seek(Long pointerPosition) throws IOException {
-        databaseFile.seek(pointerPosition);
+    public void setPosition(Long pointerPosition) throws IOException {
+        this.position = pointerPosition;
     }
 }
