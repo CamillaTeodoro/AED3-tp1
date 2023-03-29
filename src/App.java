@@ -3,7 +3,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class App {
-    private static int batchSize = 4;
+    private static int batchSize = 5;
 
     /**
      * Read the csv file and load it into the database
@@ -341,7 +341,7 @@ public class App {
     }
 
     /**
-     * merge two files into a new one file
+     * merge two files into a new one file using constant batch sizes
      * 
      * @param source1
      * @param source2
@@ -394,7 +394,7 @@ public class App {
     }
 
     /**
-     * merge two files into a new one file
+     * merge two files into a new one file using variable batch sizes
      * 
      * @param source1
      * @param source2
@@ -418,10 +418,9 @@ public class App {
             if (film1.getShow_id() < film2.getShow_id()) {
                 destination.create(film1);
                 if (--count1 != 0) {
-                    // System.out.println("Filme1 antes do next: " + film1.getShow_id());
+
                     film1 = source1.next();
-                    // System.out.println("Filme1 depois do next: " + film1.getShow_id());
-                    // System.out.println(count1);
+
                 } else {
                     int id = film1.getShow_id();
                     Long pointerPosition = source1.getPosition();
@@ -429,14 +428,14 @@ public class App {
                     if (film1 == null) {
                         break;
                     }
-                    // System.out.println("Filme1 no else: " + film1.getShow_id());
+
                     if (id <= film1.getShow_id()) {
                         count1 += batchSize;
                     } else {
                         source1.setPosition(pointerPosition);
 
                     }
-                    // System.out.println("count no else: " + count1);
+
                 }
             } else {
                 destination.create(film2);
@@ -476,17 +475,13 @@ public class App {
                 film2 = source2.next();
             }
         }
-        System.out.println("PATH1==================");
-        source1.print();
-        System.out.println("PATH2==================");
-        source2.print();
 
     }
 
     public static void variableSizeInterpolation() {
         sortBatchOfRecords();
 
-        // Abrir os dois arquivos
+        // open 4 files
         try {
             DatabaseAccess path1 = new DatabaseAccess("../db/path1.db");
             DatabaseAccess path2 = new DatabaseAccess("../db/path2.db");
@@ -584,6 +579,8 @@ public class App {
         DatabaseAccess db = new DatabaseAccess("../db/banco.db");
         int option = -1;
         int id = 0;
+
+        BTree indexBTree = new BTree();
 
         do {
             System.out.println("");
