@@ -580,7 +580,9 @@ public class App {
         int option = -1;
         int id = 0;
 
-        BTree indexBTree = new BTree();
+        BTree bTree = new BTree();
+        Node root = bTree.getRoot();
+        bTree.print(root);
 
         do {
             System.out.println("");
