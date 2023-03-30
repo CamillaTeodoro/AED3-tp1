@@ -7,6 +7,7 @@ public class BTree {
     // Atributtes
 
     private Node root;
+    private RandomAccessFile file;
 
     // Getters and Setters
 
@@ -23,21 +24,22 @@ public class BTree {
     public BTree() {
 
         this.root = new Node();
-        
 
     }
 
-    public BTree(String path) throws IOException {
+    public BTree(String filePath) throws IOException {
 
         // checcks if the file exists
-        File bTree = new File("bTree");
-        if (!bTree.exists())
-            bTree.mkdir();
+        File bTree = new File(filePath);
+        if (!bTree.exists()) {
 
-        RandomAccessFile file = new RandomAccessFile("../db/" + bTree + ".db", "rw");
-        if (file.length() < 8)
+            file = new RandomAccessFile(bTree + ".db", "rw");
+        }
+
+        if (file.length() <= 8) {
+            file.seek(0);
             file.writeLong(-1);
-
+        }
         this.root = new Node();
     }
 
@@ -46,6 +48,7 @@ public class BTree {
     public void insert(int id, long address) {
         if (root == null) {
             root = new Node();
+
         }
         if (root.isFull()) {
             Node newRoot = new Node();
