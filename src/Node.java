@@ -4,16 +4,28 @@ public class Node {
 
     // Atributtes
     private long initialAddress;
-    private int order = 8;
+    private int order = 5;
     private int numberOfChildrens = order - 1;
     private int quantity = 0;
     private int[] data;
     private long[] address;
     private Node[] pointer;
+    private boolean isLeaf = false;
 
     // Constructor
 
     Node() {
+        data = new int[numberOfChildrens];
+        address = new long[numberOfChildrens];
+        pointer = new Node[order];
+        for (int i = 0; i < numberOfChildrens; i++) {
+            setAddress(i, -1);
+
+        }
+        for (int i = 0; i < order; i++) {
+            setPointer(i, null);
+
+        }
 
     }
 
@@ -46,11 +58,11 @@ public class Node {
         this.order = order;
     }
 
-    public int getChildren() {
+    public int getNumberOfChildrens() {
         return numberOfChildrens;
     }
 
-    public void setChildren(int children) {
+    public void setNumberOfChildrens(int children) {
         this.numberOfChildrens = children;
     }
 
@@ -62,28 +74,36 @@ public class Node {
         this.quantity = quantity;
     }
 
-    public int[] getData() {
-        return data;
+    public int getData(int i) {
+        return data[i];
     }
 
-    public void setData(int[] data) {
-        this.data = data;
+    public void setData(int i, int data) {
+        this.data[i] = data;
     }
 
-    public long[] getAddress() {
-        return address;
+    public long getAddress(int i) {
+        return address[i];
     }
 
-    public void setAddress(long[] address) {
-        this.address = address;
+    public void setAddress(int i, long address) {
+        this.address[i] = address;
     }
 
-    public Node[] getPointer() {
-        return pointer;
+    public Node getPointer(int i) {
+        return pointer[i];
     }
 
-    public void setPointer(Node[] pointer) {
-        this.pointer = pointer;
+    public void setPointer(int i, Node pointer) {
+        this.pointer[i] = pointer;
+    }
+
+    public boolean getLeaf() {
+        return isLeaf;
+    }
+
+    public void setLeaf(boolean isLeaf) {
+        this.isLeaf = isLeaf;
     }
 
     // Turns an object into a byte array
@@ -142,11 +162,44 @@ public class Node {
         return quantity == numberOfChildrens;
     }
 
-    public void split(int id, long address, Node node) {
-
+    public int findPosition(int value) {
+        int position = 0;
+        while (position < this.quantity && this.data[position] < value) {
+            position++;
+        }
+        return position;
     }
 
+    /**
+     * Method to find a value in the Node. Used to check if an id can be added to
+     * the tree
+     * If the id exists, return true
+     */
+
+    public boolean findID(int id) {
+        for (int i = 0; i < this.quantity; i++) {
+            if (this.data[i] == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Method to insert the id and the adrees in the Node
+     * 
+     * @param id
+     * @param address
+     */
     public void insert(int id, long address) {
-
+        int position = findPosition(id);
+        for (int i = this.quantity - 1; i >= position; i--) {
+            this.data[i + 1] = this.data[i];
+            this.address[i + 1] = this.address[i];
+        }
+        this.data[position] = id;
+        this.address[position] = address;
+        this.quantity++;
     }
+
 }

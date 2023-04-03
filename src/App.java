@@ -581,9 +581,11 @@ public class App {
         int id = 0;
 
         // Create the tree
-        BTree bTree = new BTree("../db/bTree");
+        // BTree bTree = new BTree("../db/bTree");
+        BTree bTree = new BTree();
         Node root = bTree.getRoot();
-        bTree.print(root);
+        bTree.printBTree(root);
+        
 
         do {
             System.out.println("");
