@@ -593,6 +593,10 @@ public class App {
         }
 
         bTree.insert(36, 300);
+        // bTree.printBTree(root);
+        bTree.insert(16, 300);
+        bTree.insert(17, 300);
+        bTree.insert(5, 300);
         bTree.printBTree(root);
 
         do {

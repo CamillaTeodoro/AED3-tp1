@@ -118,7 +118,8 @@ public class BTree {
             return;
         }
 
-        // Case 2: the node has space for a new insertion
+        // search for the node to insert
+
         Node node = root;
         Node parent = null;
         boolean idExists;
@@ -138,13 +139,92 @@ public class BTree {
             node = node.getPointer(index);
         }
 
+        // Case 2: the node has space for a new insertion
         if (node.getQuantity() < node.getNumberOfChildrens()) {
             node.insert(id, address);
             return;
         }
 
         // Case 3: There is no space in the node
+        splitNode(node, parent, index, id, address);
+    }
 
+    private void splitNode(Node node, Node parent, int index, int data, long address) {
+        Node newNode = new Node();
+
+        int[] tempData = new int[node.getNumberOfChildrens() + 1];
+        long[] tempAddress = new long[node.getNumberOfChildrens() + 1];
+        Node[] tempPointer = new Node[node.getNumberOfChildrens() + 2];
+
+        // Copy the values of node children for an temporary array
+        for (int i = 0; i < node.getNumberOfChildrens(); i++) {
+            tempData[i] = node.getData(i);
+            tempAddress[i] = node.getAddress(i);
+            tempPointer[i] = node.getPointer(i);
+        }
+        tempPointer[node.getNumberOfChildrens()] = node.getPointer(node.getNumberOfChildrens());
+
+        // Find the position to insert the new id
+        int pos = node.findPosition(data);
+
+        // Insert the value in the temporary array
+        for (int i = node.getNumberOfChildrens(); i > pos; i--) {
+            tempData[i] = tempData[i - 1];
+            tempAddress[i] = tempAddress[i - 1];
+            tempPointer[i + 1] = tempPointer[i];
+        }
+        tempData[pos] = data;
+        tempAddress[pos] = address;
+        tempPointer[pos + 1] = newNode;
+
+        // Split the node in two
+        int medianIndex = node.getNumberOfChildrens() / 2;
+        node.setQuantity(medianIndex);
+        for (int i = 0; i < medianIndex; i++) {
+            node.setData(i, tempData[i]);
+            node.setAddress(i, tempAddress[i]);
+            node.setPointer(i, tempPointer[i]);
+        }
+        node.setPointer(medianIndex, tempPointer[medianIndex]);
+
+        newNode.setQuantity(node.getNumberOfChildrens() - medianIndex);
+        for (int i = medianIndex + 1; i <= node.getNumberOfChildrens(); i++) {
+            newNode.setData(i - medianIndex - 1, tempData[i]);
+            newNode.setAddress(i - medianIndex - 1, tempAddress[i]);
+            newNode.setPointer(i - medianIndex - 1, tempPointer[i]);
+        }
+        newNode.setPointer(newNode.getQuantity(), tempPointer[node.getNumberOfChildrens() + 1]);
+
+        // Case 4: recursive split from parent
+        if (parent != null) {
+            newNode.setLeaf(node.getLeaf());
+
+            // Insert the value from media in parent
+            int pointerIndex = parent.findPosition(data);
+            for (int i = parent.getQuantity(); i > pointerIndex; i--) {
+                parent.setPointer(i + 1, parent.getPointer(i));
+            }
+            parent.setPointer(pointerIndex + 1, newNode);
+            parent.insert(tempData[medianIndex], tempAddress[medianIndex]);
+
+            if (parent.getQuantity() == parent.getNumberOfChildrens()) {
+                splitNode(parent, null, -1, tempData[medianIndex], tempAddress[medianIndex]);
+            }
+        } else {
+
+            // Case 5: split the root
+            Node newRoot = new Node();
+            newRoot.setLeaf(false);
+            setRoot(newRoot);
+
+            node.setLeaf(false);
+            newNode.setLeaf(node.getLeaf());
+
+            newRoot.setPointer(0, node);
+            newRoot.setPointer(1, newNode);
+            newRoot.insert(tempData[medianIndex], tempAddress[medianIndex]);
+            newRoot.setQuantity(1);
+        }
     }
 
     public Node searchId(int id) {
