@@ -108,8 +108,57 @@ public class BTree {
     /**
      * Insert the id and the address in the bTree
      */
-    public void insert(int data, long address) {
+    public void insert(int id, long address) {
 
+        // Case 1: empty tree
+        if (root == null) {
+            Node newNode = new Node();
+            newNode.insert(id, address);
+            setRoot(newNode);
+            return;
+        }
+
+        // Case 2: the node has space for a new insertion
+        Node node = root;
+        Node parent = null;
+        boolean idExists;
+        int index = -1;
+
+        while (!node.getLeaf()) {
+            parent = node;
+            idExists = node.findID(id);
+
+            if (idExists) {
+                // The value already exists in the tree and can't be added
+                System.out.println("ID já existe. Não foi possivel inserir!");
+                return;
+            }
+            index = node.findPosition(id);
+
+            node = node.getPointer(index);
+        }
+
+        if (node.getQuantity() < node.getNumberOfChildrens()) {
+            node.insert(id, address);
+            return;
+        }
+
+        // Case 3: There is no space in the node
+
+    }
+
+    public Node searchId(int id) {
+        Node currentNode = root;
+        while (currentNode != null) {
+            int position = currentNode.findPosition(id);
+            for (int i = position; i < currentNode.getQuantity(); i++) {
+                if (currentNode.getData(i) == id) {
+                    return currentNode;
+                }
+            }
+            currentNode = currentNode.getPointer(position);
+        }
+        return null; // Node not found in tree
     }
 
     public void delete(int id, long address) {

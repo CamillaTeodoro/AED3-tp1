@@ -162,9 +162,9 @@ public class Node {
         return quantity == numberOfChildrens;
     }
 
-    public int findPosition(int value) {
+    public int findPosition(int id) {
         int position = 0;
-        while (position < this.quantity && this.data[position] < value) {
+        while (position < this.quantity && this.data[position] < id) {
             position++;
         }
         return position;
@@ -193,10 +193,14 @@ public class Node {
      */
     public void insert(int id, long address) {
         int position = findPosition(id);
-        for (int i = this.quantity - 1; i >= position; i--) {
-            this.data[i + 1] = this.data[i];
-            this.address[i + 1] = this.address[i];
+        if (quantity != 0) {
+
+            for (int i = this.quantity - 1; i >= position; i--) {
+                this.data[i + 1] = this.data[i];
+                this.address[i + 1] = this.address[i];
+            }
         }
+
         this.data[position] = id;
         this.address[position] = address;
         this.quantity++;
