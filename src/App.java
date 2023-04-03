@@ -580,7 +580,20 @@ public class App {
         int option = -1;
         int id = 0;
 
-        BTree indexBTree = new BTree();
+        // Create the tree
+        // BTree bTree = new BTree("../db/bTree");
+        BTree bTree = new BTree();
+        Node root = bTree.getRoot();
+        // bTree.printBTree(root);
+        Node n = bTree.searchId(11);
+        if (n != null) {
+            System.out.println("achou");
+        } else {
+            System.out.println("não achou");
+        }
+
+        bTree.insert(36, 300);
+        bTree.printBTree(root);
 
         do {
             System.out.println("");
