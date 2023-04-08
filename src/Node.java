@@ -158,10 +158,36 @@ public class Node {
 
     }
 
+    /**
+     * Method to checko if the node is full
+     * 
+     * @return
+     */
     public boolean isFull() {
         return quantity == numberOfChildrens;
     }
 
+    /**
+     * Method to check if the node is balanced
+     * 
+     * @return
+     */
+    public boolean isBalanced() {
+        return quantity >= numberOfChildrens / 2;
+    }
+
+    /**
+     * Method to check if the node will continue balanced after a deletion
+     * 
+     * @return
+     */
+    public boolean willBeBalanced() {
+        return quantity - 1 >= numberOfChildrens / 2;
+    }
+
+    /**
+     * Method to find the id position in the node
+     */
     public int findPosition(int id) {
         int position = 0;
         while (position < this.quantity && this.data[position] < id) {

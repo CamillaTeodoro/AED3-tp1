@@ -220,6 +220,50 @@ public class BTree {
     }
 
     public void delete(int id) {
+        // Case 1: empty tree
+        if (root == null) {
+            System.out.println("Arquivo vazio.");
+            return;
+        }
+        Node nodeWithElement = searchId(id);
+        if (nodeWithElement != null) {
+            System.out.println("achou");
+
+            // Case 2: the Id is not in a leaf node
+            if (!nodeWithElement.getLeaf()) {
+
+                System.out.println("Node não é leaf");
+
+                return;
+            }
+
+            // Case 3: the Id is in a leaf node that will have more than 50% occupancy rate
+            // after the deletion
+            if (nodeWithElement.willBeBalanced()) {
+                System.out.println("Node é leaf e continuará balanceado");
+                int pos = nodeWithElement.findPosition(id);
+                for (int i = pos; i < nodeWithElement.getNumberOfChildrens() - 1; i++) {
+                    System.out.println("pos: " + i);
+                    nodeWithElement.setData(i, nodeWithElement.getData(i + 1));
+                    nodeWithElement.setAddress(i, nodeWithElement.getAddress(i + 1));
+                    nodeWithElement.setPointer(i + 1, nodeWithElement.getPointer(i + 2));
+
+                }
+                nodeWithElement.setQuantity(nodeWithElement.getQuantity() - 1);
+
+            } else {
+                // Case 4: the Id is in a leaf node that will have less than 50% occupancy rate
+                // aftert the deletion and the sister conde can give an id
+                System.out.println("Node é leaf e ficará desbalanceado. A irmã pode doar um id");
+
+                // Case 5: the sister conde can give an id, so the node will be merged with the
+                // sister
+                System.out.println("Node é leaf e ficará desbalanceado. A irmã não pode doar um id");
+            }
+
+        } else {
+            System.out.println("Id não existe na arvore");
+        }
 
     }
 

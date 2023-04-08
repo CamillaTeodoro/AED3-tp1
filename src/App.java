@@ -589,37 +589,42 @@ public class App {
         // } else {
         // System.out.println("não achou");
         // }
-        bTree.printRoot();
+        // bTree.printRoot();
 
-        System.out.println("Inserindo 30");
+        // System.out.println("Inserindo 30");
         bTree.insert(30, 30);
-        bTree.printRoot();
-        System.out.println("Inserindo 40");
+        // bTree.printRoot();
+        // System.out.println("Inserindo 40");
         bTree.insert(40, 40);
-        bTree.printRoot();
-        System.out.println("Inserindo 50");
+        // bTree.printRoot();
+        // System.out.println("Inserindo 50");
         bTree.insert(50, 50);
-        bTree.printRoot();
-        System.out.println("Inserindo 20");
+        // bTree.printRoot();
+        // System.out.println("Inserindo 20");
         bTree.insert(20, 20);
-        bTree.printRoot();
-        System.out.println("Inserindo 10");
+        // bTree.printRoot();
+        // System.out.println("Inserindo 10");
         bTree.insert(10, 10);
-        bTree.printRoot();
-        System.out.println("Inserindo 5");
+        // bTree.printRoot();
+        // System.out.println("Inserindo 5");
         bTree.insert(5, 5);
-        bTree.printRoot();
-        System.out.println("Inserindo 15");
+        // bTree.printRoot();
+        // System.out.println("Inserindo 15");
         bTree.insert(15, 15);
-        bTree.printRoot();
-        System.out.println("Inserindo 2");
+        // bTree.printRoot();
+        // System.out.println("Inserindo 2");
         bTree.insert(2, 2);
-        bTree.printRoot();
-        System.out.println("Inserindo 7");
+        // bTree.printRoot();
+        // System.out.println("Inserindo 7");
         bTree.insert(7, 7);
-        bTree.printRoot();
-        System.out.println("Inserindo 1");
+        // bTree.printRoot();
+        // System.out.println("Inserindo 1");
         bTree.insert(1, 1);
+        // bTree.printRoot();
+
+        bTree.delete(11);
+        bTree.delete(2);
+        bTree.delete(15);
         bTree.printRoot();
 
         // do {
