@@ -166,8 +166,9 @@ public class BTree {
         }
         newNode.setPointer(newNode.getQuantity(), tempPointer[node.getNumberOfChildrens() + 1]);
 
+        newNode.setLeaf(node.getLeaf());
+
         if (parent != null) {
-            newNode.setLeaf(node.getLeaf());
 
             // Insert the value from media in parent
             int pointerIndex = parent.findPosition(id);
@@ -187,6 +188,8 @@ public class BTree {
             // Case 5: recursive split from parent
 
             splitNode(parent, null, tempData[medianIndex], tempAddress[medianIndex]);
+            int index = parent.findPosition(tempData[medianIndex]);
+            parent.setPointer(index + 1, newNode);
 
         } else {
 
