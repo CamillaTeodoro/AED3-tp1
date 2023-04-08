@@ -4,13 +4,13 @@ public class Node {
 
     // Atributtes
     private long initialAddress;
-    private int order = 5;
+    private int order = 4;
     private int numberOfChildrens = order - 1;
     private int quantity = 0;
     private int[] data;
     private long[] address;
     private Node[] pointer;
-    private boolean isLeaf = false;
+    private boolean isLeaf = true;
 
     // Constructor
 

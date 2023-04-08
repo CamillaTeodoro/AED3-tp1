@@ -575,152 +575,175 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        Scanner sc = new Scanner(System.in);
-        DatabaseAccess db = new DatabaseAccess("../db/banco.db");
-        int option = -1;
-        int id = 0;
+        // Scanner sc = new Scanner(System.in);
+        // DatabaseAccess db = new DatabaseAccess("../db/banco.db");
+        // int option = -1;
+        // int id = 0;
 
         // Create the tree
         // BTree bTree = new BTree("../db/bTree");
         BTree bTree = new BTree();
-        Node root = bTree.getRoot();
-        // bTree.printBTree(root);
-        Node n = bTree.searchId(11);
-        if (n != null) {
-            System.out.println("achou");
-        } else {
-            System.out.println("não achou");
-        }
+        // Node n = bTree.searchId(11);
+        // if (n != null) {
+        // System.out.println("achou");
+        // } else {
+        // System.out.println("não achou");
+        // }
+        bTree.printRoot();
 
-        bTree.insert(36, 300);
-        // bTree.printBTree(root);
-        bTree.insert(16, 300);
-        bTree.insert(17, 300);
-        bTree.insert(5, 300);
-        bTree.printBTree(root);
+        System.out.println("Inserindo 30");
+        bTree.insert(30, 30);
+        bTree.printRoot();
+        System.out.println("Inserindo 40");
+        bTree.insert(40, 40);
+        bTree.printRoot();
+        System.out.println("Inserindo 50");
+        bTree.insert(50, 50);
+        bTree.printRoot();
+        System.out.println("Inserindo 20");
+        bTree.insert(20, 20);
+        bTree.printRoot();
+        System.out.println("Inserindo 10");
+        bTree.insert(10, 10);
+        bTree.printRoot();
+        System.out.println("Inserindo 5");
+        bTree.insert(5, 5);
+        bTree.printRoot();
+        System.out.println("Inserindo 15");
+        bTree.insert(15, 15);
+        bTree.printRoot();
+        System.out.println("Inserindo 2");
+        bTree.insert(2, 2);
+        bTree.printRoot();
+        System.out.println("Inserindo 7");
+        bTree.insert(7, 7);
+        bTree.printRoot();
+        System.out.println("Inserindo 1");
+        bTree.insert(1, 1);
+        bTree.printRoot();
 
-        do {
-            System.out.println("");
-            System.out.println("Entre com uma opção:");
-            System.out.println("");
-            System.out.println("1 - Criar um novo registro");
-            System.out.println("2 - Ler um registro da base de dados");
-            System.out.println("3 - Atualizar um registro da base de dados");
-            System.out.println("4 - Deletar um registro da base de dados");
-            System.out.println("5 - Ordenar a base de dados");
-            System.out.println("6 - Criar a base de dados");
-            System.out.println("0 - Sair");
-            System.out.println();
+        // do {
+        // System.out.println("");
+        // System.out.println("Entre com uma opção:");
+        // System.out.println("");
+        // System.out.println("1 - Criar um novo registro");
+        // System.out.println("2 - Ler um registro da base de dados");
+        // System.out.println("3 - Atualizar um registro da base de dados");
+        // System.out.println("4 - Deletar um registro da base de dados");
+        // System.out.println("5 - Ordenar a base de dados");
+        // System.out.println("6 - Criar a base de dados");
+        // System.out.println("0 - Sair");
+        // System.out.println();
 
-            try {
+        // try {
 
-                option = Integer.parseInt(sc.nextLine());
+        // option = Integer.parseInt(sc.nextLine());
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("O valor digitado deve ser um número!!");
-                option = 0;
-            }
+        // } catch (Exception e) {
+        // e.printStackTrace();
+        // System.out.println("O valor digitado deve ser um número!!");
+        // option = 0;
+        // }
 
-            switch (option) {
-                case 1: {
-                    Film film = readFilmDataFromUser(sc, db);
-                    if (film == null) {
-                        System.out.println("Erro ao cadastrar!");
-                    } else {
+        // switch (option) {
+        // case 1: {
+        // Film film = readFilmDataFromUser(sc, db);
+        // if (film == null) {
+        // System.out.println("Erro ao cadastrar!");
+        // } else {
 
-                        boolean result = db.create(film);
-                        if (result) {
-                            System.out.println("Registro criado com sucesso!");
-                        } else {
-                            System.out.println("Erro ao cadastrar!");
-                        }
-                    }
-                    System.out.println();
-                    break;
-                }
-                case 2: {
-                    System.out.println("Digite o id do Show que você deseja ver: ");
-                    try {
-                        id = Integer.parseInt(sc.nextLine());
-                        Film film = db.read(id);
-                        if (film == null) {
-                            System.out.println("Filme/Show não existe na base de dados!");
-                        } else {
-                            film.print();
-                        }
-                    } catch (Exception e) {
-                        System.out.println("O valor digitado deve ser um número!!");
-                        option = 0;
-                    }
-                    break;
-                }
-                case 3: {
-                    System.out.println("Digite o id do Show que você deseja atualizar: ");
-                    try {
-                        id = Integer.parseInt(sc.nextLine());
-                        Film film = db.read(id);
-                        if (film != null) {
-                            film.print();
-                            Film editedFilm = readEditDataFromUser(film, sc);
-                            if (editedFilm == null) {
-                                System.out.println("Erro ao editar!");
-                                break;
-                            }
-                            boolean result = db.update(film, editedFilm);
-                            if (result) {
-                                System.out.println("Registro editado com sucesso!");
-                            } else {
-                                System.out.println("Erro ao editar!");
-                            }
+        // boolean result = db.create(film);
+        // if (result) {
+        // System.out.println("Registro criado com sucesso!");
+        // } else {
+        // System.out.println("Erro ao cadastrar!");
+        // }
+        // }
+        // System.out.println();
+        // break;
+        // }
+        // case 2: {
+        // System.out.println("Digite o id do Show que você deseja ver: ");
+        // try {
+        // id = Integer.parseInt(sc.nextLine());
+        // Film film = db.read(id);
+        // if (film == null) {
+        // System.out.println("Filme/Show não existe na base de dados!");
+        // } else {
+        // film.print();
+        // }
+        // } catch (Exception e) {
+        // System.out.println("O valor digitado deve ser um número!!");
+        // option = 0;
+        // }
+        // break;
+        // }
+        // case 3: {
+        // System.out.println("Digite o id do Show que você deseja atualizar: ");
+        // try {
+        // id = Integer.parseInt(sc.nextLine());
+        // Film film = db.read(id);
+        // if (film != null) {
+        // film.print();
+        // Film editedFilm = readEditDataFromUser(film, sc);
+        // if (editedFilm == null) {
+        // System.out.println("Erro ao editar!");
+        // break;
+        // }
+        // boolean result = db.update(film, editedFilm);
+        // if (result) {
+        // System.out.println("Registro editado com sucesso!");
+        // } else {
+        // System.out.println("Erro ao editar!");
+        // }
 
-                            System.out.println();
-                        } else {
-                            System.out.println("Filme/Show não existe na base de dados");
-                        }
+        // System.out.println();
+        // } else {
+        // System.out.println("Filme/Show não existe na base de dados");
+        // }
 
-                    } catch (Exception e) {
-                        System.out.println("O valor digitado deve ser um número!!");
-                        option = 0;
-                    }
-                    break;
-                }
+        // } catch (Exception e) {
+        // System.out.println("O valor digitado deve ser um número!!");
+        // option = 0;
+        // }
+        // break;
+        // }
 
-                case 4: {
-                    System.out.println("Digite o id do Show que você deseja deletar: ");
-                    try {
-                        id = Integer.parseInt(sc.nextLine());
-                        Boolean result = db.delete(id);
-                        if (result) {
-                            System.out.println("Registro deletado com sucesso!");
-                        } else {
-                            System.out.println("Erro ao deletar!");
-                        }
+        // case 4: {
+        // System.out.println("Digite o id do Show que você deseja deletar: ");
+        // try {
+        // id = Integer.parseInt(sc.nextLine());
+        // Boolean result = db.delete(id);
+        // if (result) {
+        // System.out.println("Registro deletado com sucesso!");
+        // } else {
+        // System.out.println("Erro ao deletar!");
+        // }
 
-                    } catch (Exception e) {
-                        System.out.println("O valor digitado deve ser um número!!");
-                        option = 0;
-                    }
-                    break;
-                }
-                case 5: {
-                    SortingDatabase(sc);
-                    break;
-                }
-                case 6:
-                    loadDatabase(db);
-                    break;
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
+        // } catch (Exception e) {
+        // System.out.println("O valor digitado deve ser um número!!");
+        // option = 0;
+        // }
+        // break;
+        // }
+        // case 5: {
+        // SortingDatabase(sc);
+        // break;
+        // }
+        // case 6:
+        // loadDatabase(db);
+        // break;
+        // case 0:
+        // System.out.println("Saindo...");
+        // break;
 
-                default:
-                    System.out.println("Opção inválida.");
-                    break;
-            }
+        // default:
+        // System.out.println("Opção inválida.");
+        // break;
+        // }
 
-        } while (option != 0);
-        sc.close();
-        db.close();
+        // } while (option != 0);
+        // sc.close();
+        // db.close();
     }
 }

@@ -22,69 +22,37 @@ public class BTree {
 
     // Constructors
     public BTree() {
+        // this.root = new Node();
 
-        this.root = new Node();
-        this.root.setData(0, 29);
-        this.root.setQuantity(1);
-        this.root.setPointer(0, new Node());
-        this.root.getPointer(0).setData(0, 8);
-        this.root.getPointer(0).setData(1, 15);
-        this.root.getPointer(0).setQuantity(2);
-        this.root.getPointer(0).setPointer(0, new Node());
-        this.root.getPointer(0).getPointer(0).setData(0, 1);
-        this.root.getPointer(0).getPointer(0).setData(1, 3);
-        this.root.getPointer(0).getPointer(0).setData(2, 4);
-        this.root.getPointer(0).getPointer(0).setData(3, 7);
-        this.root.getPointer(0).getPointer(0).setQuantity(4);
-        this.root.getPointer(0).getPointer(0).setLeaf(true);
+        // this.root.setData(0, 10);
+        // this.root.setPointer(0, new Node());
+        // this.root.setLeaf(false);
+        // this.root.getPointer(0).setData(0, 5);
+        // this.root.getPointer(0).setPointer(0, new Node());
+        // this.root.getPointer(0).setLeaf(false);
+        // this.root.getPointer(0).getPointer(0).setData(0, 1);
+        // this.root.getPointer(0).getPointer(0).setData(1, 2);
+        // this.root.getPointer(0).setPointer(1, new Node());
+        // this.root.getPointer(0).getPointer(1).setData(0, 7);
+        // this.root.setPointer(1, new Node());
+        // this.root.getPointer(1).setData(0, 20);
+        // this.root.getPointer(1).setData(1, 40);
+        // this.root.getPointer(1).setPointer(0, new Node());
+        // this.root.getPointer(1).setLeaf(false);
+        // this.root.getPointer(1).getPointer(0).setData(0, 15);
+        // this.root.getPointer(1).setPointer(1, new Node());
+        // this.root.getPointer(1).getPointer(1).setData(0, 30);
+        // this.root.getPointer(1).setPointer(2, new Node());
+        // this.root.getPointer(1).getPointer(2).setData(0, 50);
 
-        this.root.getPointer(0).setPointer(1, new Node());
-        this.root.getPointer(0).getPointer(1).setData(0, 10);
-        this.root.getPointer(0).getPointer(1).setData(1, 12);
-        this.root.getPointer(0).getPointer(1).setData(2, 13);
-        this.root.getPointer(0).getPointer(1).setData(3, 14);
-        this.root.getPointer(0).getPointer(1).setQuantity(4);
-        this.root.getPointer(0).getPointer(1).setLeaf(true);
-
-        this.root.getPointer(0).setPointer(2, new Node());
-        this.root.getPointer(0).getPointer(2).setData(0, 18);
-        this.root.getPointer(0).getPointer(2).setData(1, 20);
-        this.root.getPointer(0).getPointer(2).setData(2, 25);
-        this.root.getPointer(0).getPointer(2).setQuantity(3);
-        this.root.getPointer(0).getPointer(2).setLeaf(true);
-
-        this.root.setPointer(1, new Node());
-        this.root.getPointer(1).setData(0, 37);
-        this.root.getPointer(1).setData(1, 45);
-        this.root.getPointer(1).setData(2, 60);
-        this.root.getPointer(1).setQuantity(3);
-
-        this.root.getPointer(1).setPointer(0, new Node());
-        this.root.getPointer(1).getPointer(0).setData(0, 30);
-        this.root.getPointer(1).getPointer(0).setData(1, 35);
-        this.root.getPointer(1).getPointer(0).setQuantity(2);
-        this.root.getPointer(1).getPointer(0).setLeaf(true);
-
-        this.root.getPointer(1).setPointer(1, new Node());
-        this.root.getPointer(1).getPointer(1).setData(0, 40);
-        this.root.getPointer(1).getPointer(1).setData(1, 41);
-        this.root.getPointer(1).getPointer(1).setData(2, 42);
-        this.root.getPointer(1).getPointer(1).setData(3, 43);
-        this.root.getPointer(1).getPointer(1).setQuantity(4);
-        this.root.getPointer(1).getPointer(1).setLeaf(true);
-
-        this.root.getPointer(1).setPointer(2, new Node());
-        this.root.getPointer(1).getPointer(2).setData(0, 51);
-        this.root.getPointer(1).getPointer(2).setData(1, 52);
-        this.root.getPointer(1).getPointer(2).setQuantity(2);
-        this.root.getPointer(1).getPointer(2).setLeaf(true);
-
-        this.root.getPointer(1).setPointer(3, new Node());
-        this.root.getPointer(1).getPointer(3).setData(0, 70);
-        this.root.getPointer(1).getPointer(3).setData(1, 77);
-        this.root.getPointer(1).getPointer(3).setData(2, 83);
-        this.root.getPointer(1).getPointer(3).setQuantity(3);
-        this.root.getPointer(1).getPointer(3).setLeaf(true);
+        // this.root.setQuantity(1);
+        // this.root.getPointer(0).setQuantity(1);
+        // this.root.getPointer(0).getPointer(0).setQuantity(2);
+        // this.root.getPointer(0).getPointer(1).setQuantity(1);
+        // this.root.getPointer(1).setQuantity(2);
+        // this.root.getPointer(1).getPointer(0).setQuantity(1);
+        // this.root.getPointer(1).getPointer(1).setQuantity(1);
+        // this.root.getPointer(1).getPointer(2).setQuantity(1);
 
     }
 
@@ -114,6 +82,7 @@ public class BTree {
         if (root == null) {
             Node newNode = new Node();
             newNode.insert(id, address);
+
             setRoot(newNode);
             return;
         }
@@ -140,23 +109,24 @@ public class BTree {
         }
 
         // Case 2: the node has space for a new insertion
-        if (node.getQuantity() < node.getNumberOfChildrens()) {
+        if (!node.isFull()) {
             node.insert(id, address);
             return;
         }
 
         // Case 3: There is no space in the node
-        splitNode(node, parent, index, id, address);
+        splitNode(node, parent, id, address);
     }
 
-    private void splitNode(Node node, Node parent, int index, int data, long address) {
+    private void splitNode(Node node, Node parent, int id, long address) {
         Node newNode = new Node();
 
+        // onde more space for the new value
         int[] tempData = new int[node.getNumberOfChildrens() + 1];
         long[] tempAddress = new long[node.getNumberOfChildrens() + 1];
         Node[] tempPointer = new Node[node.getNumberOfChildrens() + 2];
 
-        // Copy the values of node children for an temporary array
+        // Copy the values of node children for the temporary array
         for (int i = 0; i < node.getNumberOfChildrens(); i++) {
             tempData[i] = node.getData(i);
             tempAddress[i] = node.getAddress(i);
@@ -165,7 +135,7 @@ public class BTree {
         tempPointer[node.getNumberOfChildrens()] = node.getPointer(node.getNumberOfChildrens());
 
         // Find the position to insert the new id
-        int pos = node.findPosition(data);
+        int pos = node.findPosition(id);
 
         // Insert the value in the temporary array
         for (int i = node.getNumberOfChildrens(); i > pos; i--) {
@@ -173,12 +143,13 @@ public class BTree {
             tempAddress[i] = tempAddress[i - 1];
             tempPointer[i + 1] = tempPointer[i];
         }
-        tempData[pos] = data;
+        tempData[pos] = id;
         tempAddress[pos] = address;
-        tempPointer[pos + 1] = newNode;
+        tempPointer[pos + 1] = null;
 
         // Split the node in two
-        int medianIndex = node.getNumberOfChildrens() / 2;
+        int medianIndex = (node.getNumberOfChildrens() / 2) + 1;
+
         node.setQuantity(medianIndex);
         for (int i = 0; i < medianIndex; i++) {
             node.setData(i, tempData[i]);
@@ -195,30 +166,34 @@ public class BTree {
         }
         newNode.setPointer(newNode.getQuantity(), tempPointer[node.getNumberOfChildrens() + 1]);
 
-        // Case 4: recursive split from parent
         if (parent != null) {
             newNode.setLeaf(node.getLeaf());
 
             // Insert the value from media in parent
-            int pointerIndex = parent.findPosition(data);
-            for (int i = parent.getQuantity(); i > pointerIndex; i--) {
-                parent.setPointer(i + 1, parent.getPointer(i));
-            }
-            parent.setPointer(pointerIndex + 1, newNode);
-            parent.insert(tempData[medianIndex], tempAddress[medianIndex]);
+            int pointerIndex = parent.findPosition(id);
 
-            if (parent.getQuantity() == parent.getNumberOfChildrens()) {
-                splitNode(parent, null, -1, tempData[medianIndex], tempAddress[medianIndex]);
+            // Case 4: parent is not full
+            if (!parent.isFull()) {
+
+                for (int i = parent.getQuantity(); i > pointerIndex; i--) {
+
+                    parent.setPointer(i + 1, parent.getPointer(i));
+                }
+                parent.setPointer(pointerIndex + 1, newNode);
+                parent.insert(tempData[medianIndex], tempAddress[medianIndex]);
+                return;
             }
+
+            // Case 5: recursive split from parent
+
+            splitNode(parent, null, tempData[medianIndex], tempAddress[medianIndex]);
+
         } else {
 
-            // Case 5: split the root
+            // Case 6: split the root
             Node newRoot = new Node();
             newRoot.setLeaf(false);
             setRoot(newRoot);
-
-            node.setLeaf(false);
-            newNode.setLeaf(node.getLeaf());
 
             newRoot.setPointer(0, node);
             newRoot.setPointer(1, newNode);
@@ -241,8 +216,12 @@ public class BTree {
         return null; // Node not found in tree
     }
 
-    public void delete(int id, long address) {
+    public void delete(int id) {
 
+    }
+
+    public void printRoot() {
+        printBTree(this.getRoot());
     }
 
     /**
