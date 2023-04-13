@@ -22,7 +22,7 @@ public class BTree {
 
     // Constructors
     public BTree() {
-        // this.root = new Node();
+        this.root = new Node();
 
         // this.root.setData(0, 10);
         // this.root.setPointer(0, new Node());
@@ -53,6 +53,71 @@ public class BTree {
         // this.root.getPointer(1).getPointer(0).setQuantity(1);
         // this.root.getPointer(1).getPointer(1).setQuantity(1);
         // this.root.getPointer(1).getPointer(2).setQuantity(1);
+
+        this.root.setData(0, 29);
+        this.root.setQuantity(1);
+        this.root.setPointer(0, new Node());
+        this.root.setLeaf(false);
+        this.root.getPointer(0).setData(0, 8);
+        this.root.getPointer(0).setData(1, 15);
+        this.root.getPointer(0).setQuantity(2);
+        this.root.getPointer(0).setPointer(0, new Node());
+        this.root.getPointer(0).setLeaf(false);
+        this.root.getPointer(0).getPointer(0).setData(0, 1);
+        this.root.getPointer(0).getPointer(0).setData(1, 3);
+        this.root.getPointer(0).getPointer(0).setData(2, 4);
+        this.root.getPointer(0).getPointer(0).setData(3, 7);
+        this.root.getPointer(0).getPointer(0).setQuantity(4);
+        this.root.getPointer(0).getPointer(0).setLeaf(true);
+
+        this.root.getPointer(0).setPointer(1, new Node());
+        this.root.getPointer(0).getPointer(1).setData(0, 10);
+        this.root.getPointer(0).getPointer(1).setData(1, 12);
+        this.root.getPointer(0).getPointer(1).setData(2, 13);
+        this.root.getPointer(0).getPointer(1).setData(3, 14);
+        this.root.getPointer(0).getPointer(1).setQuantity(4);
+        this.root.getPointer(0).getPointer(1).setLeaf(true);
+
+        this.root.getPointer(0).setPointer(2, new Node());
+        this.root.getPointer(0).getPointer(2).setData(0, 18);
+        this.root.getPointer(0).getPointer(2).setData(1, 20);
+        this.root.getPointer(0).getPointer(2).setData(2, 25);
+        this.root.getPointer(0).getPointer(2).setQuantity(3);
+        this.root.getPointer(0).getPointer(2).setLeaf(true);
+
+        this.root.setPointer(1, new Node());
+        this.root.getPointer(1).setData(0, 37);
+        this.root.getPointer(1).setData(1, 45);
+        this.root.getPointer(1).setData(2, 60);
+        this.root.getPointer(1).setQuantity(3);
+        this.root.getPointer(1).setLeaf(false);
+
+        this.root.getPointer(1).setPointer(0, new Node());
+        this.root.getPointer(1).getPointer(0).setData(0, 30);
+        this.root.getPointer(1).getPointer(0).setData(1, 35);
+        this.root.getPointer(1).getPointer(0).setQuantity(2);
+        this.root.getPointer(1).getPointer(0).setLeaf(true);
+
+        this.root.getPointer(1).setPointer(1, new Node());
+        this.root.getPointer(1).getPointer(1).setData(0, 40);
+        this.root.getPointer(1).getPointer(1).setData(1, 41);
+        this.root.getPointer(1).getPointer(1).setData(2, 42);
+        this.root.getPointer(1).getPointer(1).setData(3, 43);
+        this.root.getPointer(1).getPointer(1).setQuantity(4);
+        this.root.getPointer(1).getPointer(1).setLeaf(true);
+
+        this.root.getPointer(1).setPointer(2, new Node());
+        this.root.getPointer(1).getPointer(2).setData(0, 51);
+        this.root.getPointer(1).getPointer(2).setData(1, 52);
+        this.root.getPointer(1).getPointer(2).setQuantity(2);
+        this.root.getPointer(1).getPointer(2).setLeaf(true);
+
+        this.root.getPointer(1).setPointer(3, new Node());
+        this.root.getPointer(1).getPointer(3).setData(0, 70);
+        this.root.getPointer(1).getPointer(3).setData(1, 77);
+        this.root.getPointer(1).getPointer(3).setData(2, 83);
+        this.root.getPointer(1).getPointer(3).setQuantity(3);
+        this.root.getPointer(1).getPointer(3).setLeaf(true);
 
     }
 
@@ -225,14 +290,30 @@ public class BTree {
             System.out.println("Arquivo vazio.");
             return;
         }
+
+        // search for the node with the id
         Node nodeWithElement = searchId(id);
         if (nodeWithElement != null) {
-            System.out.println("achou");
+            int position = nodeWithElement.findPosition(id);
 
             // Case 2: the Id is not in a leaf node
             if (!nodeWithElement.getLeaf()) {
 
-                System.out.println("Node não é leaf");
+                // Node to be deleted is not a leaf node
+                Node predecessorNode = nodeWithElement.getPointer(position);
+                while (!predecessorNode.getLeaf()) {
+                    predecessorNode = predecessorNode.getPointer(predecessorNode.getQuantity());
+                }
+                int predecessorId = predecessorNode.getData(predecessorNode.getQuantity() - 1);
+                long predecessorAddress = predecessorNode.getAddress(predecessorNode.getQuantity() - 1);
+                nodeWithElement.setData(position, predecessorId);
+                nodeWithElement.setAddress(position, predecessorAddress);
+
+                predecessorNode.setQuantity(predecessorNode.getQuantity() - 1);
+
+                if (!predecessorNode.willBeBalanced()) {
+                    balanceOrMerge(predecessorNode);
+                }
 
                 return;
             }
@@ -242,8 +323,7 @@ public class BTree {
             if (nodeWithElement.willBeBalanced()) {
                 System.out.println("Node é leaf e continuará balanceado");
                 int pos = nodeWithElement.findPosition(id);
-                for (int i = pos; i < nodeWithElement.getNumberOfChildrens() - 1; i++) {
-                    System.out.println("pos: " + i);
+                for (int i = pos; i < nodeWithElement.getQuantity() - 1; i++) {
                     nodeWithElement.setData(i, nodeWithElement.getData(i + 1));
                     nodeWithElement.setAddress(i, nodeWithElement.getAddress(i + 1));
                     nodeWithElement.setPointer(i + 1, nodeWithElement.getPointer(i + 2));
@@ -252,18 +332,18 @@ public class BTree {
                 nodeWithElement.setQuantity(nodeWithElement.getQuantity() - 1);
 
             } else {
-                // Case 4: the Id is in a leaf node that will have less than 50% occupancy rate
-                // aftert the deletion and the sister conde can give an id
-                System.out.println("Node é leaf e ficará desbalanceado. A irmã pode doar um id");
-
-                // Case 5: the sister conde can give an id, so the node will be merged with the
-                // sister
-                System.out.println("Node é leaf e ficará desbalanceado. A irmã não pode doar um id");
+                // Case 4: the Id is in a leaf node that will have less than 50% occupancy
+                // rate after the deletion
+                balanceOrMerge(nodeWithElement);
             }
 
         } else {
             System.out.println("Id não existe na arvore");
         }
+
+    }
+
+    private void balanceOrMerge(Node node) {
 
     }
 

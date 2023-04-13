@@ -4,7 +4,7 @@ public class Node {
 
     // Atributtes
     private long initialAddress;
-    private int order = 4;
+    private int order = 5;
     private int numberOfChildrens = order - 1;
     private int quantity = 0;
     private int[] data;
@@ -230,6 +230,18 @@ public class Node {
         this.data[position] = id;
         this.address[position] = address;
         this.quantity++;
+    }
+
+    public void delete(int id) {
+
+    }
+
+    private void deleteFromLeaf(int position) {
+        for (int i = position + 1; i < quantity; i++) {
+            data[i - 1] = data[i];
+            address[i - 1] = address[i];
+        }
+        quantity--;
     }
 
 }
