@@ -370,36 +370,9 @@ public class BTree {
             // Check right sibling
             Node rightSibling = parent.getPointer(nodeIndex + 1);
             if (rightSibling != null && rightSibling.getQuantity() > node.getOrder() / 2) {
-                // Move a key and pointer from right sibling to node
-                int key = rightSibling.getData(0);
-                long address = rightSibling.getAddress(0);
-                Node child = rightSibling.getPointer(0);
 
-                // remove id from the node
-                int pos = node.findPosition(id);
-                for (int i = pos; i < node.getQuantity() - 1; i++) {
-                    node.setData(i, node.getData(i + 1));
-                    node.setAddress(i, node.getAddress(i + 1));
-                    node.setPointer(i + 1, node.getPointer(i + 2));
+                borrowFromRightSibling(node, parent, nodeIndex, rightSibling, id);
 
-                }
-                node.setQuantity(node.getQuantity() - 1);
-
-                // receive the new id from parent
-                node.setData(node.getQuantity(), parent.getData(nodeIndex));
-                node.setAddress(node.getQuantity(), parent.getAddress(nodeIndex));
-                node.setPointer(node.getQuantity() - 1, child);
-                node.setQuantity(node.getQuantity() + 1);
-                parent.setData(nodeIndex, key);
-                parent.setAddress(nodeIndex, address);
-
-                // delete the first id from right sibling
-                for (int i = 0; i < rightSibling.getQuantity() - 1; i++) {
-                    rightSibling.setData(i, rightSibling.getData(i + 1));
-                    rightSibling.setAddress(i, rightSibling.getAddress(i + 1));
-                    rightSibling.setPointer(i + 1, rightSibling.getPointer(i + 2));
-                }
-                rightSibling.setQuantity(rightSibling.getQuantity() - 1);
                 return;
             }
             // the id is in the last pointer node
@@ -407,93 +380,22 @@ public class BTree {
             // Check left sibling
             Node leftSibling = parent.getPointer(nodeIndex - 1);
             if (leftSibling != null && leftSibling.getQuantity() > node.getOrder() / 2) {
-                // Move a key and pointer from left sibling to node
-                int key = leftSibling.getData(leftSibling.getQuantity() - 1);
-                long address = leftSibling.getAddress(leftSibling.getQuantity() - 1);
-                Node child = leftSibling.getPointer(leftSibling.getQuantity() - 1);
-                // delete the id from the node and move id's to receive parents donation
-                int pos = node.findPosition(id);
-                for (int i = 0; i < pos; i++) {
-                    node.setData(i + 1, node.getData(i));
-                    node.setAddress(i + 1, node.getAddress(i));
-                    node.setPointer(i + 2, node.getPointer(i + 1));
-
-                }
-
-                // receive id from parent
-                node.setData(0, parent.getData(nodeIndex - 1));
-                node.setAddress(0, parent.getAddress(nodeIndex - 1));
-                node.setPointer(1, node.getPointer(0));
-                node.setPointer(0, child);
-
-                // set in parent the id lended for leftsibling
-                parent.setData(nodeIndex - 1, key);
-                parent.setAddress(nodeIndex - 1, address);
-                // delete the first id from right sibling
-                leftSibling.setQuantity(leftSibling.getQuantity() - 1);
+                borrowFromLeftSibling(node, parent, nodeIndex,
+                        leftSibling, id);
                 return;
             }
-            // the id is not in the first or last pointer node
+
         } else {
             // Check both siblings
             Node leftSibling = parent.getPointer(nodeIndex - 1);
             Node rightSibling = parent.getPointer(nodeIndex + 1);
             if (leftSibling != null && leftSibling.getQuantity() > node.getOrder() / 2) {
-                // Move a key and pointer from left sibling to node
-                int key = leftSibling.getData(leftSibling.getQuantity() - 1);
-                long address = leftSibling.getAddress(leftSibling.getQuantity() - 1);
-                Node child = leftSibling.getPointer(leftSibling.getQuantity() - 1);
-                // delete the id from the node and move id's to receive parents donation
-                int pos = node.findPosition(id);
-                for (int i = 0; i < pos; i++) {
-                    node.setData(i + 1, node.getData(i));
-                    node.setAddress(i + 1, node.getAddress(i));
-                    node.setPointer(i + 2, node.getPointer(i + 1));
-
-                }
-                node.setData(0, parent.getData(nodeIndex - 1));
-                node.setAddress(0, parent.getAddress(nodeIndex - 1));
-                node.setPointer(1, node.getPointer(0));
-                node.setPointer(0, child);
-
-                // set in parent the id lended for leftsibling
-                parent.setData(nodeIndex - 1, key);
-                parent.setAddress(nodeIndex - 1, address);
-
-                // delete the first id from right sibling
-                leftSibling.setQuantity(leftSibling.getQuantity() - 1);
+                borrowFromLeftSibling(node, parent, nodeIndex,
+                        leftSibling, id);
                 return;
             } else if (rightSibling != null && rightSibling.getQuantity() > node.getOrder() / 2) {
-                // Move a key and pointer from right sibling to node
-                int key = rightSibling.getData(0);
-                long address = rightSibling.getAddress(0);
-                Node child = rightSibling.getPointer(0);
 
-                // remove id from the node
-                int pos = node.findPosition(id);
-                for (int i = pos; i < node.getQuantity() - 1; i++) {
-                    node.setData(i, node.getData(i + 1));
-                    node.setAddress(i, node.getAddress(i + 1));
-                    node.setPointer(i + 1, node.getPointer(i + 2));
-
-                }
-                node.setQuantity(node.getQuantity() - 1);
-
-                // receive the new id from parent
-                node.setData(node.getQuantity(), parent.getData(nodeIndex));
-                node.setAddress(node.getQuantity(), parent.getAddress(nodeIndex));
-                node.setPointer(node.getQuantity() - 1, child);
-                node.setQuantity(node.getQuantity() + 1);
-                parent.setData(nodeIndex, key);
-                parent.setAddress(nodeIndex, address);
-
-                // delete the first id from right sibling
-                for (int i = 0; i < rightSibling.getQuantity() - 1; i++) {
-                    rightSibling.setData(i, rightSibling.getData(i + 1));
-                    rightSibling.setAddress(i, rightSibling.getAddress(i + 1));
-                    rightSibling.setPointer(i + 1, rightSibling.getPointer(i + 2));
-                }
-                rightSibling.setQuantity(rightSibling.getQuantity() - 1);
+                borrowFromRightSibling(node, parent, nodeIndex, rightSibling, id);
                 return;
 
             }
@@ -525,6 +427,70 @@ public class BTree {
             parent.setPointer(nodeIndex - 1, leftSibling);
             parent.setQuantity(parent.getQuantity() - 1);
         }
+    }
+
+    public void borrowFromLeftSibling(Node node, Node parent, int nodeIndex,
+            Node leftSibling, int id) {
+        // Move a key and pointer from left sibling to node
+        int key = leftSibling.getData(leftSibling.getQuantity() - 1);
+        long address = leftSibling.getAddress(leftSibling.getQuantity() - 1);
+        Node child = leftSibling.getPointer(leftSibling.getQuantity() - 1);
+        // delete the id from the node and move id's to receive parents donation
+        int pos = node.findPosition(id);
+        for (int i = 0; i < pos; i++) {
+            node.setData(i + 1, node.getData(i));
+            node.setAddress(i + 1, node.getAddress(i));
+            node.setPointer(i + 2, node.getPointer(i + 1));
+
+        }
+        node.setData(0, parent.getData(nodeIndex - 1));
+        node.setAddress(0, parent.getAddress(nodeIndex - 1));
+        node.setPointer(1, node.getPointer(0));
+        node.setPointer(0, child);
+
+        // set in parent the id lended for leftsibling
+        parent.setData(nodeIndex - 1, key);
+        parent.setAddress(nodeIndex - 1, address);
+
+        // delete the first id from right sibling
+        leftSibling.setQuantity(leftSibling.getQuantity() - 1);
+    }
+
+    public void borrowFromRightSibling(Node node, Node parent, int nodeIndex,
+            Node rightSibling, int id) {
+
+        // Move a key and pointer from right sibling to node
+        int key = rightSibling.getData(0);
+        long address = rightSibling.getAddress(0);
+        Node child = rightSibling.getPointer(0);
+        // remove id from the node
+        int pos = node.findPosition(id);
+        for (int i = pos; i < node.getQuantity() - 1; i++) {
+            node.setData(i, node.getData(i + 1));
+            node.setAddress(i, node.getAddress(i + 1));
+            node.setPointer(i + 1, node.getPointer(i + 2));
+
+        }
+        node.setQuantity(node.getQuantity() - 1);
+
+        // receive the new id from parent
+        node.setData(node.getQuantity(), parent.getData(nodeIndex));
+        node.setAddress(node.getQuantity(), parent.getAddress(nodeIndex));
+        node.setPointer(node.getQuantity() - 1, child);
+        node.setQuantity(node.getQuantity() + 1);
+
+        // set in parent the id lended for righsibling
+        parent.setData(nodeIndex, key);
+        parent.setAddress(nodeIndex, address);
+
+        // delete the first id from right sibling
+        for (int i = 0; i < rightSibling.getQuantity() - 1; i++) {
+            rightSibling.setData(i, rightSibling.getData(i + 1));
+            rightSibling.setAddress(i, rightSibling.getAddress(i + 1));
+            rightSibling.setPointer(i + 1, rightSibling.getPointer(i + 2));
+        }
+        rightSibling.setQuantity(rightSibling.getQuantity() - 1);
+
     }
 
     public void printRoot() {
