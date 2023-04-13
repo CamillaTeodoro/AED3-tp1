@@ -232,16 +232,12 @@ public class Node {
         this.quantity++;
     }
 
-    public void delete(int id) {
-
-    }
-
-    private void deleteFromLeaf(int position) {
-        for (int i = position + 1; i < quantity; i++) {
-            data[i - 1] = data[i];
-            address[i - 1] = address[i];
+    public int findPointer(Node node) {
+        for (int i = 0; i < quantity + 1; i++) {
+            if (pointer[i] == node) {
+                return i;
+            }
         }
-        quantity--;
+        return -1; // Node not found in pointers
     }
-
 }

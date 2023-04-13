@@ -583,57 +583,42 @@ public class App {
         // Create the tree
         // BTree bTree = new BTree("../db/bTree");
         BTree bTree = new BTree();
-        // Node n = bTree.searchId(11);
-        // if (n != null) {
-        // System.out.println("achou");
-        // } else {
-        // System.out.println("não achou");
-        // }
-        // bTree.printRoot();
 
-        // // System.out.println("Inserindo 30");
-        // bTree.insert(30, 30);
-        // // bTree.printRoot();
-        // // System.out.println("Inserindo 40");
-        // bTree.insert(40, 40);
-        // // bTree.printRoot();
-        // // System.out.println("Inserindo 50");
-        // bTree.insert(50, 50);
-        // // bTree.printRoot();
-        // // System.out.println("Inserindo 20");
-        // bTree.insert(20, 20);
-        // // bTree.printRoot();
-        // // System.out.println("Inserindo 10");
-        // bTree.insert(10, 10);
-        // // bTree.printRoot();
-        // // System.out.println("Inserindo 5");
-        // bTree.insert(5, 5);
-        // // bTree.printRoot();
-        // // System.out.println("Inserindo 15");
-        // bTree.insert(15, 15);
-        // // bTree.printRoot();
-        // // System.out.println("Inserindo 2");
-        // bTree.insert(2, 2);
-        // // bTree.printRoot();
-        // // System.out.println("Inserindo 7");
-        // bTree.insert(7, 7);
-        // // bTree.printRoot();
-        // // System.out.println("Inserindo 1");
-        // bTree.insert(1, 1);
-        bTree.printRoot();
+        // bTree.printRoot();
         System.out.println("Deletando valores ==================");
 
         System.out.println("Deletando 13");
         bTree.delete(13);
-        bTree.printRoot();
+        // bTree.printRoot();
         System.out.println("Deletando 29");
         bTree.delete(29);
-        bTree.printRoot();
+        // bTree.printRoot();
         System.out.println("Deletando 35");
         bTree.delete(35);
-        bTree.printRoot();
+        // bTree.printRoot();
         System.out.println("Deletando 42");
         bTree.delete(42);
+        // bTree.printRoot();
+        System.out.println("Deletando 83");
+        bTree.delete(83);
+        bTree.printRoot();
+        System.out.println("Inserindo 55");
+        bTree.insert(55, 55);
+        bTree.printRoot();
+        System.out.println("Deletando 77");
+        bTree.delete(77);
+        bTree.printRoot();
+        System.out.println("Inserindo 44");
+        bTree.insert(44, 44);
+        bTree.printRoot();
+        System.out.println("Deletando 51");
+        bTree.delete(51);
+        bTree.printRoot();
+        System.out.println("Inserindo 53");
+        bTree.insert(53, 53);
+        bTree.printRoot();
+        System.out.println("Deletando 43");
+        bTree.delete(43);
         bTree.printRoot();
 
         // do {
