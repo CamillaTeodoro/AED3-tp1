@@ -1,11 +1,15 @@
 import java.io.*;
 
 public class Node {
+    public static final int ORDER = 4;
+    public static final int NUMBER_OF_CHILDREN = ORDER - 1;
+    // 4 int quantity
+    // 8 long last pointer
+    // 20 = long pointer (8) + int id (4) + long address (8)
+    public static final int RECORD_SIZE = 4 + 8 + (NUMBER_OF_CHILDREN * 20);
 
     // Atributtes
-    private long initialAddress;
-    private int order = 5;
-    private int numberOfChildrens = order - 1;
+    private long initialAddress = 0xAAAAAAAAAAAAAAAAL;
     private int quantity = 0;
     private int[] data;
     private long[] address;
@@ -14,26 +18,22 @@ public class Node {
 
     // Constructor
 
-    Node() {
-        data = new int[numberOfChildrens];
-        address = new long[numberOfChildrens];
-        pointer = new Node[order];
-        for (int i = 0; i < numberOfChildrens; i++) {
+    Node(long initialAddress) {
+        this.initialAddress = initialAddress;
+        data = new int[NUMBER_OF_CHILDREN];
+        address = new long[NUMBER_OF_CHILDREN];
+        pointer = new Node[ORDER];
+        for (int i = 0; i < NUMBER_OF_CHILDREN; i++) {
             setAddress(i, -1);
-
         }
-        for (int i = 0; i < order; i++) {
+        for (int i = 0; i < ORDER; i++) {
             setPointer(i, null);
-
         }
-
     }
 
-    public Node(long initialAddress, int order, int children, int quantity, int[] data, long[] address,
+    public Node(long initialAddress, int quantity, int[] data, long[] address,
             Node[] pointer) {
         this.initialAddress = initialAddress;
-        this.order = order;
-        this.numberOfChildrens = children;
         this.quantity = quantity;
         this.data = data;
         this.address = address;
@@ -48,22 +48,6 @@ public class Node {
 
     public void setInitialAddress(long initialAddress) {
         this.initialAddress = initialAddress;
-    }
-
-    public int getOrder() {
-        return order;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
-    public int getNumberOfChildrens() {
-        return numberOfChildrens;
-    }
-
-    public void setNumberOfChildrens(int children) {
-        this.numberOfChildrens = children;
     }
 
     public int getQuantity() {
@@ -117,21 +101,17 @@ public class Node {
         // write the pointer, data and address
         int i = 0;
         while (i < quantity) {
-
-            dos.writeLong(this.pointer[i] == null ? -1 : this.pointer[i].address[i]);
+            dos.writeLong(this.pointer[i] == null ? -1 : this.pointer[i].initialAddress);
             dos.writeInt(data[i]);
             dos.writeLong(address[i]);
             i++;
         }
-        dos.writeLong(this.pointer[i + 1] == null ? -1 : this.pointer[i].address[i]);
+        dos.writeLong(this.pointer[i] == null ? -1 : this.pointer[i].initialAddress);
 
-        // As we have a fixed-length record, we need to
-        // fill in the other fields
-        int recordSize = 20;
-        byte[] empty = new byte[recordSize];
-        while (i < numberOfChildrens) {
-            dos.write(empty);
-            dos.writeLong(this.pointer[i + 1] == null ? -1 : this.pointer[i].address[i]);
+        while (i < NUMBER_OF_CHILDREN) {
+            dos.writeInt(0); // Empty record id
+            dos.writeLong(-1); // Empty sequential file address
+            dos.writeLong(-1); // Empty btree file pointer
             i++;
         }
 
@@ -140,7 +120,6 @@ public class Node {
 
     // Turns a byte array into an object
     public void fromByteArray(byte[] b) throws IOException {
-
         ByteArrayInputStream bais = new ByteArrayInputStream(b);
         DataInputStream dis = new DataInputStream(bais);
 
@@ -148,23 +127,31 @@ public class Node {
         quantity = dis.readInt();
 
         int i = 0;
-        while (i < numberOfChildrens) {
-            pointer[i].address[i] = dis.readLong();
+        while (i < NUMBER_OF_CHILDREN) {
+            long pointerPosition = dis.readLong();
+            if (pointerPosition != -1) {
+                this.setLeaf(false);
+                pointer[i] = new Node(pointerPosition);
+            }
+
             data[i] = dis.readInt();
             address[i] = dis.readLong();
             i++;
         }
-        pointer[i].address[i] = dis.readLong();
-
+        long pointerPosition = dis.readLong();
+        if (pointerPosition != -1) {
+            this.setLeaf(false);
+            pointer[i] = new Node(pointerPosition);
+        }
     }
 
     /**
-     * Method to checko if the node is full
+     * Method to check if the node is full
      * 
      * @return
      */
     public boolean isFull() {
-        return quantity == numberOfChildrens;
+        return quantity == NUMBER_OF_CHILDREN;
     }
 
     /**
@@ -173,7 +160,7 @@ public class Node {
      * @return
      */
     public boolean isBalanced() {
-        return quantity >= numberOfChildrens / 2;
+        return quantity >= NUMBER_OF_CHILDREN / 2;
     }
 
     /**
@@ -182,7 +169,7 @@ public class Node {
      * @return
      */
     public boolean willBeBalanced() {
-        return quantity - 1 >= numberOfChildrens / 2;
+        return quantity - 1 >= NUMBER_OF_CHILDREN / 2;
     }
 
     /**
@@ -212,7 +199,7 @@ public class Node {
     }
 
     /**
-     * Method to insert the id and the adrees in the Node
+     * Method to insert the id and the address in the Node
      * 
      * @param id
      * @param address

@@ -7,13 +7,11 @@ public class DatabaseAccess {
     // Atributtes
     private RandomAccessFile databaseFile;
     private Long position = (long) 4; // defaults the start of the record
-    private String filepath; // sets the file path
     private boolean isEndOfFile = false;
 
     // Constructor
     DatabaseAccess(String filePath) throws FileNotFoundException {
         databaseFile = new RandomAccessFile(filePath, "rw");
-        this.filepath = filePath;
     }
 
     /**
@@ -26,8 +24,7 @@ public class DatabaseAccess {
     }
 
     /**
-     * Takes an id as paramater and returns the starting position of the record or
-     * -1
+     * Takes an id as paramater and returns the film
      * 
      * @param id
      * @throws IOException
@@ -54,36 +51,68 @@ public class DatabaseAccess {
         }
         return null;
     }
-    /** <p>readFromAddr -> reads a film from the database from the the given byte address</p>
+
+    /**
+     * <p>
+     * readFromAddr -> reads a film from the database from the the given byte
+     * address
+     * </p>
+     * 
      * @param addr address of the film in the database
      * @return the film found at that address
-      */
-     public Film readFromAddr(long addr){
+     */
+    public Film readFromAddr(long addr) {
         Film resp = new Film();
-        try{
-        if(addr != -1){
-            databaseFile.seek(addr);
-            if('$'==databaseFile.readChar()){
-                int sizeReg = databaseFile.readInt();
-                byte[] b = new byte[sizeReg];
-                databaseFile.read(b);
-                resp.fromByteArray(b);
-            }else{
-                System.out.println("Registro inválido!");
+        try {
+            if (addr != -1) {
+                databaseFile.seek(addr);
+                if ('$' == databaseFile.readChar()) {
+                    int sizeReg = databaseFile.readInt();
+                    byte[] b = new byte[sizeReg];
+                    databaseFile.read(b);
+                    resp.fromByteArray(b);
+                } else {
+                    System.out.println("Registro inválido!");
+                }
+            } else {
+                System.out.println("Endereço inválido!");
             }
-        }else{
-            System.out.println("Endereço inválido!");
-        }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Erro ao ler do arquivo db com endereço dado pelo hash!");
         }
         return resp;
-     }
+    }
 
     /**
-     * Takes an id as paramater and returns the starting position of the record or
-     * -1
+     * Takes an long address as paramater and returns the film
+     * 
+     * @param id
+     * @throws IOException
+     */
+
+    public Film read(long address) throws IOException {
+        try {
+
+            Film film = new Film();
+
+            databaseFile.seek(address + 2);
+            int sizeFilm = databaseFile.readInt();
+            byte[] b = new byte[sizeFilm];
+            databaseFile.read(b);
+            film.fromByteArray(b);
+
+            return film;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Takes an id as paramater and returns the starting position of the
+     * record or -1
      * 
      * @param id
      * @throws IOException
@@ -114,15 +143,13 @@ public class DatabaseAccess {
 
     }
 
-    /** 
+    /**
      * create a new record in database
      * 
      * @throws IOException
      */
     public long create(Film film) throws IOException {
-
         try {
-
             if (film == null) {
                 return -1;
             }
@@ -141,7 +168,6 @@ public class DatabaseAccess {
             databaseFile.writeInt(film.show_id);
 
             return address;
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -150,10 +176,11 @@ public class DatabaseAccess {
 
     /**
      * update a record
+     * 
      * @throws IOException
      */
     public long update(Film film, Film editedFilm) throws IOException {
-            long addr = -1;
+        long addr = -1;
         try {
             byte[] filmByteArray = film.toByteArray();
             byte[] editedFilmByteArray = editedFilm.toByteArray();
@@ -178,12 +205,51 @@ public class DatabaseAccess {
                 databaseFile.writeInt(film.show_id);
 
             }
-            
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         return addr;
+    }
+
+    /**
+     * update a record
+     * 
+     * @throws IOException
+     */
+    public Long updateWithAddress(Film film, Film editedFilm, Long oldAddress) throws IOException {
+        try {
+            byte[] filmByteArray = film.toByteArray();
+            byte[] editedFilmByteArray = editedFilm.toByteArray();
+
+            Long newAddress = oldAddress;
+
+            if (editedFilmByteArray.length <= filmByteArray.length) {
+                databaseFile.seek(oldAddress);
+                databaseFile.writeChar('$'); // character that says the file is active
+
+                databaseFile.writeInt(filmByteArray.length); // keep the old size
+                databaseFile.write(editedFilmByteArray);
+            } else {
+                databaseFile.seek(oldAddress);
+                databaseFile.writeChar('*'); // character that says the file is deleted
+
+                newAddress = databaseFile.length();
+                databaseFile.seek(newAddress);
+                databaseFile.writeChar('$'); // character that says the file is active
+                databaseFile.writeInt(editedFilmByteArray.length);
+                databaseFile.write(editedFilmByteArray);
+                // returns the pointer to the header and update id
+                databaseFile.seek(0);
+                databaseFile.writeInt(film.show_id);
+
+            }
+            return newAddress;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1L;
     }
 
     /**
@@ -198,6 +264,24 @@ public class DatabaseAccess {
             Long pointerPosition = find(id);
 
             databaseFile.seek(pointerPosition);
+            databaseFile.writeChar('*'); // character that says the file is deleted
+            return true;
+
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+
+    /**
+     * 
+     * @param id
+     * @throws IOException
+     */
+
+    public boolean delete(long address) throws IOException {
+        try {
+            databaseFile.seek(address);
             databaseFile.writeChar('*'); // character that says the file is deleted
             return true;
 
