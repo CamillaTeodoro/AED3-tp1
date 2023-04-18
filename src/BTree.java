@@ -141,6 +141,8 @@ public class BTree {
 
         // Case 3: There is no space in the node
         splitNode(node, parent, id, address);
+
+        printBTreeFile();
     }
 
     private void splitNode(Node node, Node parent, int id, long address) throws IOException {
