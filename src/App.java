@@ -731,6 +731,7 @@ public class App {
                 }
                 case 5: {
                     SortingDatabase(sc);
+
                     break;
                 }
                 case 6:
