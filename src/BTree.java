@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -9,11 +8,20 @@ public class BTree {
     private Node root;
     private RandomAccessFile file;
 
+    // There is a long in the beginning of the file that
+    // points to the position of the root node in the file
+    // A long takes 8 bytes (0 - 7) so the first position
+    // starts on byte 8
+    private static final long INITIAL_POSITION = 8;
+
+    private static final String INDENTATION = "---";
+
+    private long nextPosition = INITIAL_POSITION;
+
     // Getters and Setters
 
     public Node getRoot() {
         return root;
-
     }
 
     public void setRoot(Node root) {
@@ -22,138 +30,80 @@ public class BTree {
 
     // Constructors
     public BTree() {
-        this.root = new Node();
-
-        // this.root.setData(0, 10);
-        // this.root.setPointer(0, new Node());
-        // this.root.setLeaf(false);
-        // this.root.getPointer(0).setData(0, 5);
-        // this.root.getPointer(0).setPointer(0, new Node());
-        // this.root.getPointer(0).setLeaf(false);
-        // this.root.getPointer(0).getPointer(0).setData(0, 1);
-        // this.root.getPointer(0).getPointer(0).setData(1, 2);
-        // this.root.getPointer(0).setPointer(1, new Node());
-        // this.root.getPointer(0).getPointer(1).setData(0, 7);
-        // this.root.setPointer(1, new Node());
-        // this.root.getPointer(1).setData(0, 20);
-        // this.root.getPointer(1).setData(1, 40);
-        // this.root.getPointer(1).setPointer(0, new Node());
-        // this.root.getPointer(1).setLeaf(false);
-        // this.root.getPointer(1).getPointer(0).setData(0, 15);
-        // this.root.getPointer(1).setPointer(1, new Node());
-        // this.root.getPointer(1).getPointer(1).setData(0, 30);
-        // this.root.getPointer(1).setPointer(2, new Node());
-        // this.root.getPointer(1).getPointer(2).setData(0, 50);
-
-        // this.root.setQuantity(1);
-        // this.root.getPointer(0).setQuantity(1);
-        // this.root.getPointer(0).getPointer(0).setQuantity(2);
-        // this.root.getPointer(0).getPointer(1).setQuantity(1);
-        // this.root.getPointer(1).setQuantity(2);
-        // this.root.getPointer(1).getPointer(0).setQuantity(1);
-        // this.root.getPointer(1).getPointer(1).setQuantity(1);
-        // this.root.getPointer(1).getPointer(2).setQuantity(1);
-
-        this.root.setData(0, 29);
-        this.root.setQuantity(1);
-        this.root.setPointer(0, new Node());
-        this.root.setLeaf(false);
-        this.root.getPointer(0).setData(0, 8);
-        this.root.getPointer(0).setData(1, 15);
-        this.root.getPointer(0).setQuantity(2);
-        this.root.getPointer(0).setPointer(0, new Node());
-        this.root.getPointer(0).setLeaf(false);
-        this.root.getPointer(0).getPointer(0).setData(0, 1);
-        this.root.getPointer(0).getPointer(0).setData(1, 3);
-        this.root.getPointer(0).getPointer(0).setData(2, 4);
-        this.root.getPointer(0).getPointer(0).setData(3, 7);
-        this.root.getPointer(0).getPointer(0).setQuantity(4);
-        this.root.getPointer(0).getPointer(0).setLeaf(true);
-
-        this.root.getPointer(0).setPointer(1, new Node());
-        this.root.getPointer(0).getPointer(1).setData(0, 10);
-        this.root.getPointer(0).getPointer(1).setData(1, 12);
-        this.root.getPointer(0).getPointer(1).setData(2, 13);
-        this.root.getPointer(0).getPointer(1).setData(3, 14);
-        this.root.getPointer(0).getPointer(1).setQuantity(4);
-        this.root.getPointer(0).getPointer(1).setLeaf(true);
-
-        this.root.getPointer(0).setPointer(2, new Node());
-        this.root.getPointer(0).getPointer(2).setData(0, 18);
-        this.root.getPointer(0).getPointer(2).setData(1, 20);
-        this.root.getPointer(0).getPointer(2).setData(2, 25);
-        this.root.getPointer(0).getPointer(2).setQuantity(3);
-        this.root.getPointer(0).getPointer(2).setLeaf(true);
-
-        this.root.setPointer(1, new Node());
-        this.root.getPointer(1).setData(0, 37);
-        this.root.getPointer(1).setData(1, 45);
-        this.root.getPointer(1).setData(2, 60);
-        this.root.getPointer(1).setQuantity(3);
-        this.root.getPointer(1).setLeaf(false);
-
-        this.root.getPointer(1).setPointer(0, new Node());
-        this.root.getPointer(1).getPointer(0).setData(0, 30);
-        this.root.getPointer(1).getPointer(0).setData(1, 35);
-        this.root.getPointer(1).getPointer(0).setQuantity(2);
-        this.root.getPointer(1).getPointer(0).setLeaf(true);
-
-        this.root.getPointer(1).setPointer(1, new Node());
-        this.root.getPointer(1).getPointer(1).setData(0, 40);
-        this.root.getPointer(1).getPointer(1).setData(1, 41);
-        this.root.getPointer(1).getPointer(1).setData(2, 42);
-        this.root.getPointer(1).getPointer(1).setData(3, 43);
-        this.root.getPointer(1).getPointer(1).setQuantity(4);
-        this.root.getPointer(1).getPointer(1).setLeaf(true);
-
-        this.root.getPointer(1).setPointer(2, new Node());
-        this.root.getPointer(1).getPointer(2).setData(0, 51);
-        this.root.getPointer(1).getPointer(2).setData(1, 52);
-        this.root.getPointer(1).getPointer(2).setQuantity(2);
-        this.root.getPointer(1).getPointer(2).setLeaf(true);
-
-        this.root.getPointer(1).setPointer(3, new Node());
-        this.root.getPointer(1).getPointer(3).setData(0, 70);
-        this.root.getPointer(1).getPointer(3).setData(1, 77);
-        this.root.getPointer(1).getPointer(3).setData(2, 83);
-        this.root.getPointer(1).getPointer(3).setQuantity(3);
-        this.root.getPointer(1).getPointer(3).setLeaf(true);
 
     }
 
     public BTree(String filePath) throws IOException {
-
-        // checcks if the file exists
-        File bTree = new File(filePath);
-        if (!bTree.exists()) {
-
-            file = new RandomAccessFile(bTree + ".db", "rw");
+        file = new RandomAccessFile(filePath, "rw");
+        if (file.length() > 0) {
+            mountBTree();
         }
+    }
 
-        if (file.length() <= 8) {
-            file.seek(0);
-            file.writeLong(-1);
+    /**
+     * creates a node based on the data read from the file
+     * 
+     * @param node
+     * @throws IOException
+     */
+    private void loadNode(Node node) throws IOException {
+        file.seek(node.getInitialAddress());
+        byte[] record = new byte[Node.RECORD_SIZE];
+        file.read(record);
+        node.fromByteArray(record);
+    }
+
+    private void mountNode(Node node) throws IOException {
+        loadNode(node);
+        for (int i = 0; i < Node.ORDER; i++) {
+            if (node.getPointer(i) == null)
+                continue;
+            mountNode(node.getPointer(i));
         }
-        this.root = new Node();
+    }
+
+    /**
+     * create in memory the B-Tree using the data in file
+     * 
+     * @param file
+     * @throws IOException
+     */
+    private void mountBTree() throws IOException {
+        file.seek(0);
+        long rootPosition = file.readLong();
+        Node node = new Node(rootPosition);
+        setRoot(node);
+        mountNode(node);
+    }
+
+    public long getNextPosition() {
+        long position = nextPosition;
+        nextPosition += Node.RECORD_SIZE;
+        return position;
+    }
+
+    public void reset() throws IOException {
+        setRoot(null);
+        file.setLength(0);
     }
 
     // Methods
     /**
      * Insert the id and the address in the bTree
+     * 
+     * @throws IOException
      */
-    public void insert(int id, long address) {
-
+    public void insert(int id, long address) throws IOException {
         // Case 1: empty tree
         if (root == null) {
-            Node newNode = new Node();
+            Node newNode = new Node(getNextPosition());
             newNode.insert(id, address);
-
             setRoot(newNode);
+            printBTreeFile();
             return;
         }
 
         // search for the node to insert
-
         Node node = root;
         Node parent = null;
         boolean idExists;
@@ -173,9 +123,18 @@ public class BTree {
             node = node.getPointer(index);
         }
 
+        idExists = node.findID(id);
+
+        if (idExists) {
+            // The value already exists in the tree and can't be added
+            System.out.println("ID já existe. Não foi possivel inserir!");
+            return;
+        }
+
         // Case 2: the node has space for a new insertion
         if (!node.isFull()) {
             node.insert(id, address);
+            printBTreeFile();
             return;
         }
 
@@ -183,27 +142,28 @@ public class BTree {
         splitNode(node, parent, id, address);
     }
 
-    private void splitNode(Node node, Node parent, int id, long address) {
-        Node newNode = new Node();
+    private void splitNode(Node node, Node parent, int id, long address) throws IOException {
+        Node newNode = new Node(getNextPosition());
+        newNode.setLeaf(node.getLeaf());
 
-        // onde more space for the new value
-        int[] tempData = new int[node.getNumberOfChildrens() + 1];
-        long[] tempAddress = new long[node.getNumberOfChildrens() + 1];
-        Node[] tempPointer = new Node[node.getNumberOfChildrens() + 2];
+        // one more space for the new value
+        int[] tempData = new int[Node.NUMBER_OF_CHILDREN + 1];
+        long[] tempAddress = new long[Node.NUMBER_OF_CHILDREN + 1];
+        Node[] tempPointer = new Node[Node.NUMBER_OF_CHILDREN + 2];
 
         // Copy the values of node children for the temporary array
-        for (int i = 0; i < node.getNumberOfChildrens(); i++) {
+        for (int i = 0; i < Node.NUMBER_OF_CHILDREN; i++) {
             tempData[i] = node.getData(i);
             tempAddress[i] = node.getAddress(i);
             tempPointer[i] = node.getPointer(i);
         }
-        tempPointer[node.getNumberOfChildrens()] = node.getPointer(node.getNumberOfChildrens());
+        tempPointer[Node.NUMBER_OF_CHILDREN] = node.getPointer(Node.NUMBER_OF_CHILDREN);
 
         // Find the position to insert the new id
         int pos = node.findPosition(id);
 
         // Insert the value in the temporary array
-        for (int i = node.getNumberOfChildrens(); i > pos; i--) {
+        for (int i = Node.NUMBER_OF_CHILDREN; i > pos; i--) {
             tempData[i] = tempData[i - 1];
             tempAddress[i] = tempAddress[i - 1];
             tempPointer[i + 1] = tempPointer[i];
@@ -213,7 +173,7 @@ public class BTree {
         tempPointer[pos + 1] = null;
 
         // Split the node in two
-        int medianIndex = (node.getNumberOfChildrens() / 2) + 1;
+        int medianIndex = (Node.NUMBER_OF_CHILDREN / 2);
 
         node.setQuantity(medianIndex);
         for (int i = 0; i < medianIndex; i++) {
@@ -223,15 +183,13 @@ public class BTree {
         }
         node.setPointer(medianIndex, tempPointer[medianIndex]);
 
-        newNode.setQuantity(node.getNumberOfChildrens() - medianIndex);
-        for (int i = medianIndex + 1; i <= node.getNumberOfChildrens(); i++) {
+        newNode.setQuantity(Node.NUMBER_OF_CHILDREN - medianIndex);
+        for (int i = medianIndex + 1; i <= Node.NUMBER_OF_CHILDREN; i++) {
             newNode.setData(i - medianIndex - 1, tempData[i]);
             newNode.setAddress(i - medianIndex - 1, tempAddress[i]);
             newNode.setPointer(i - medianIndex - 1, tempPointer[i]);
         }
-        newNode.setPointer(newNode.getQuantity(), tempPointer[node.getNumberOfChildrens() + 1]);
-
-        newNode.setLeaf(node.getLeaf());
+        newNode.setPointer(newNode.getQuantity(), tempPointer[Node.NUMBER_OF_CHILDREN + 1]);
 
         if (parent != null) {
 
@@ -247,19 +205,22 @@ public class BTree {
                 }
                 parent.setPointer(pointerIndex + 1, newNode);
                 parent.insert(tempData[medianIndex], tempAddress[medianIndex]);
+                printBTreeFile();
                 return;
             }
 
             // Case 5: recursive split from parent
 
-            splitNode(parent, null, tempData[medianIndex], tempAddress[medianIndex]);
+            splitNode(parent, getParent(parent), tempData[medianIndex], tempAddress[medianIndex]);
+
+            parent = getParent(node);
             int index = parent.findPosition(tempData[medianIndex]);
             parent.setPointer(index + 1, newNode);
-
+            printBTreeFile();
         } else {
 
             // Case 6: split the root
-            Node newRoot = new Node();
+            Node newRoot = new Node(getNextPosition());
             newRoot.setLeaf(false);
             setRoot(newRoot);
 
@@ -267,7 +228,9 @@ public class BTree {
             newRoot.setPointer(1, newNode);
             newRoot.insert(tempData[medianIndex], tempAddress[medianIndex]);
             newRoot.setQuantity(1);
+            printBTreeFile();
         }
+
     }
 
     public Node searchId(int id) {
@@ -284,7 +247,8 @@ public class BTree {
         return null; // Node not found in tree
     }
 
-    public void delete(int id) {
+    public void delete(int id) throws IOException {
+        mountBTree();
         // Case 1: empty tree
         if (root == null) {
             System.out.println("Arquivo vazio.");
@@ -314,13 +278,13 @@ public class BTree {
                 if (!predecessorNode.isBalanced()) {
                     balanceOrMerge(predecessorNode, id);
                 }
-
+                printBTreeFile();
                 return;
             }
 
             // Case 3: the Id is in a leaf node that will have more than 50% occupancy rate
             // after the deletion
-            if (nodeWithElement.willBeBalanced()) {
+            if (nodeWithElement.willBeBalanced() || root.getLeaf()) {
 
                 for (int i = position; i < nodeWithElement.getQuantity() - 1; i++) {
                     nodeWithElement.setData(i, nodeWithElement.getData(i + 1));
@@ -329,11 +293,13 @@ public class BTree {
 
                 }
                 nodeWithElement.setQuantity(nodeWithElement.getQuantity() - 1);
+                printBTreeFile();
 
             } else {
                 // Case 4: the Id is in a leaf node that will have less than 50% occupancy
                 // rate after the deletion
                 balanceOrMerge(nodeWithElement, id);
+                printBTreeFile();
             }
 
         } else {
@@ -359,7 +325,8 @@ public class BTree {
         return null;
     }
 
-    private void balanceOrMerge(Node node, int id) {
+    private void balanceOrMerge(Node node, int id) throws IOException {
+
         Node parent = getParent(node);
         int nodeIndex = parent.findPointer(node);
 
@@ -369,7 +336,7 @@ public class BTree {
         if (nodeIndex == 0) {
             // Check right sibling
             Node rightSibling = parent.getPointer(nodeIndex + 1);
-            if (rightSibling != null && rightSibling.getQuantity() > node.getOrder() / 2) {
+            if (rightSibling != null && rightSibling.getQuantity() > Node.ORDER / 2) {
 
                 borrowFromRightSibling(node, parent, nodeIndex, rightSibling, id);
 
@@ -379,9 +346,10 @@ public class BTree {
         } else if (nodeIndex == parent.getQuantity()) {
             // Check left sibling
             Node leftSibling = parent.getPointer(nodeIndex - 1);
-            if (leftSibling != null && leftSibling.getQuantity() > node.getOrder() / 2) {
+            if (leftSibling != null && leftSibling.getQuantity() > Node.ORDER / 2) {
                 borrowFromLeftSibling(node, parent, nodeIndex,
                         leftSibling, id);
+
                 return;
             }
 
@@ -389,13 +357,14 @@ public class BTree {
             // Check both siblings
             Node leftSibling = parent.getPointer(nodeIndex - 1);
             Node rightSibling = parent.getPointer(nodeIndex + 1);
-            if (leftSibling != null && leftSibling.getQuantity() > node.getOrder() / 2) {
+            if (leftSibling != null && leftSibling.getQuantity() > Node.ORDER / 2) {
                 borrowFromLeftSibling(node, parent, nodeIndex,
                         leftSibling, id);
                 return;
-            } else if (rightSibling != null && rightSibling.getQuantity() > node.getOrder() / 2) {
+            } else if (rightSibling != null && rightSibling.getQuantity() > Node.ORDER / 2) {
 
                 borrowFromRightSibling(node, parent, nodeIndex, rightSibling, id);
+
                 return;
 
             }
@@ -414,18 +383,36 @@ public class BTree {
 
             parent.setPointer(0, node);
             parent.setQuantity(parent.getQuantity() - 1);
+
         } else {
             Node leftSibling = parent.getPointer(nodeIndex - 1);
+
+            // transfer the parent id for leftsibling
             leftSibling.setData(leftSibling.getQuantity(), parent.getData(nodeIndex - 1));
             leftSibling.setAddress(leftSibling.getQuantity(), parent.getAddress(nodeIndex - 1));
             leftSibling.setPointer(leftSibling.getQuantity(), node.getPointer(0));
+
+            leftSibling.setQuantity(leftSibling.getQuantity() + 1);
+
+            // transfer the node id for leftsibling
+            leftSibling.setData(leftSibling.getQuantity(), node.getData(nodeIndex - 1));
+            leftSibling.setAddress(leftSibling.getQuantity(), node.getAddress(nodeIndex - 1));
+            leftSibling.setPointer(leftSibling.getQuantity(), node.getPointer(0));
+
             if (!leftSibling.getLeaf()) {
                 leftSibling.setPointer(leftSibling.getQuantity() + 1, node.getPointer(1));
             }
             leftSibling.setQuantity(leftSibling.getQuantity() + 1);
 
             parent.setPointer(nodeIndex - 1, leftSibling);
+            for (int i = nodeIndex - 1; i < parent.getQuantity(); i++) {
+                parent.setData(i, parent.getData(i + 1));
+                parent.setAddress(i, parent.getAddress(i + 1));
+                parent.setPointer(i + 1, parent.getPointer(i + 2));
+
+            }
             parent.setQuantity(parent.getQuantity() - 1);
+
         }
     }
 
@@ -513,6 +500,117 @@ public class BTree {
                 printBTree(node.getPointer(i));
             }
         }
+    }
+
+    public void printStructure() {
+        System.out.println("===============================");
+        printStructure(root, "");
+        System.out.println("===============================");
+    }
+
+    private void printStructure(Node node, String indent) {
+        if (node == null)
+            return;
+
+        String text = indent + "(";
+        for (int i = 0; i < node.getQuantity(); i++) {
+            text += node.getData(i) + " ";
+        }
+        System.out.println(text.trim() + ")");
+
+        for (int i = 0; i <= node.getQuantity(); i++) {
+            if (!node.getLeaf()) {
+                printStructure(node.getPointer(i), indent + INDENTATION);
+            }
+        }
+    }
+
+    public void printBTreeFile() throws IOException {
+        this.file.setLength(0);
+        file.writeLong(this.getRoot().getInitialAddress());
+        printBTreeFile(this.getRoot());
+    }
+
+    public boolean saveNode(Node node) {
+        if (node == null)
+            return false;
+        try {
+            file.seek(node.getInitialAddress());
+            file.write(node.toByteArray());
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void printBTreeFile(Node node) {
+        if (node == null)
+            return;
+        saveNode(node);
+
+        for (int i = 0; i <= node.getQuantity(); i++) {
+            if (!node.getLeaf()) {
+                printBTreeFile(node.getPointer(i));
+            }
+        }
+    }
+
+    /**
+     * Takes an id as paramater and returns the starting position of the record
+     * in the sequencial file or -1
+     * Read the file searching for the id
+     * 
+     * @param id
+     * @return
+     */
+    public long findIndexInBTreeFile(int id) throws IOException {
+        file.seek(0);
+        long rootPosition = file.readLong();
+        Node currentNode = new Node(rootPosition);
+        loadNode(currentNode);
+
+        while (currentNode != null) {
+            int position = currentNode.findPosition(id);
+            for (int i = position; i < currentNode.getQuantity(); i++) {
+                if (currentNode.getData(i) == id) {
+                    return currentNode.getAddress(i);
+                }
+            }
+            currentNode = currentNode.getPointer(position);
+            if (currentNode == null)
+                return -1;
+            loadNode(currentNode);
+        }
+        return -1;
+    }
+
+    /**
+     * Search for the id in the file and updates it address
+     * 
+     * @param id
+     * @return
+     */
+    public boolean updateDBAddress(int id, long newAddress) throws IOException {
+        file.seek(0);
+        long rootPosition = file.readLong();
+        Node currentNode = new Node(rootPosition);
+        loadNode(currentNode);
+
+        while (currentNode != null) {
+            int position = currentNode.findPosition(id);
+            for (int i = position; i < currentNode.getQuantity(); i++) {
+                if (currentNode.getData(i) == id) {
+                    currentNode.setAddress(i, newAddress);
+                    saveNode(currentNode);
+                    return true;
+                }
+            }
+            currentNode = currentNode.getPointer(position);
+            if (currentNode == null)
+                return false;
+            loadNode(currentNode);
+        }
+        return false;
     }
 
 }
