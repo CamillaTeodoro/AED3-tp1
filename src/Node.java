@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class Node {
-    public static final int ORDER = 4;
+    public static final int ORDER = 8;
     public static final int NUMBER_OF_CHILDREN = ORDER - 1;
     // 4 int quantity
     // 8 long last pointer

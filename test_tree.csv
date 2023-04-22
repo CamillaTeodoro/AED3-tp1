@@ -9,37 +9,4 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 8,Movie,Sankofa,Haile Gerima,"September 24, 2021",1993,125 min,"Dramas, Independent Movies, International Movies"
 9,TV Show,The Great British Baking Show,Andy Devonshire,"September 24, 2021",2021,9 Seasons,"British TV Shows, Reality TV"
 10,Movie,The Starling,Theodore Melfi,"September 24, 2021",2021,104 min,"Comedies, Dramas"
-11,TV Show,"Vendetta: Truth, Lies and The Mafia",null,"September 24, 2021",2021,1 Season,"Crime TV Shows, Docuseries, International TV Shows"
-12,TV Show,Bangkok Breaking,Kongkiat Komesiri,"September 23, 2021",2021,1 Season,"Crime TV Shows, International TV Shows, TV Action & Adventure"
-13,Movie,Je Suis Karl,Christian Schwochow,"September 23, 2021",2021,127 min,"Dramas, International Movies"
-14,Movie,Confessions of an Invisible Girl,Bruno Garotti,"September 22, 2021",2021,91 min,"Children & Family Movies, Comedies"
-15,TV Show,Crime Stories: India Detectives,null,"September 22, 2021",2021,1 Season,"British TV Shows, Crime TV Shows, Docuseries"
-16,TV Show,Dear White People,null,"September 22, 2021",2021,4 Seasons,"TV Comedies, TV Dramas"
-17,Movie,Europe's Most Dangerous Man: Otto Skorzeny in Spain,"Pedro de Echave García, Pablo Azorín Williams","September 22, 2021",2020,67 min,"Documentaries, International Movies"
-18,TV Show,Falsa identidad,null,"September 22, 2021",2020,2 Seasons,"Crime TV Shows, Spanish-Language TV Shows, TV Dramas"
-19,Movie,Intrusion,Adam Salky,"September 22, 2021",2021,94 min,Thrillers
-20,TV Show,Jaguar,null,"September 22, 2021",2021,1 Season,"International TV Shows, Spanish-Language TV Shows, TV Action & Adventure"
-21,TV Show,Monsters Inside: The 24 Faces of Billy Milligan,Olivier Megaton,"September 22, 2021",2021,1 Season,"Crime TV Shows, Docuseries, International TV Shows"
-22,TV Show,Resurrection: Ertugrul,null,"September 22, 2021",2018,5 Seasons,"International TV Shows, TV Action & Adventure, TV Dramas"
-23,Movie,Avvai Shanmughi,K.S. Ravikumar,"September 21, 2021",1996,161 min,"Comedies, International Movies"
-24,Movie,Go! Go! Cory Carson: Chrissy Takes the Wheel,"Alex Woo, Stanley Moore","September 21, 2021",2021,61 min,Children & Family Movies
-25,Movie,Jeans,S. Shankar,"September 21, 2021",1998,166 min,"Comedies, International Movies, Romantic Movies"
-26,TV Show,Love on the Spectrum,null,"September 21, 2021",2021,2 Seasons,"Docuseries, International TV Shows, Reality TV"
-27,Movie,Minsara Kanavu,Rajiv Menon,"September 21, 2021",1997,147 min,"Comedies, International Movies, Music & Musicals"
-28,Movie,Grown Ups,Dennis Dugan,"September 20, 2021",2010,103 min,Comedies
-29,Movie,Dark Skies,Scott Stewart,"September 19, 2021",2013,97 min,"Horror Movies, Sci-Fi & Fantasy"
-30,Movie,Paranoia,Robert Luketic,"September 19, 2021",2013,106 min,Thrillers
-31,Movie,Ankahi Kahaniya,"Ashwiny Iyer Tiwari, Abhishek Chaubey, Saket Chaudhary","September 17, 2021",2021,111 min,"Dramas, Independent Movies, International Movies"
-32,TV Show,Chicago Party Aunt,null,"September 17, 2021",2021,1 Season,TV Comedies
-33,TV Show,Sex Education,null,"September 17, 2021",2020,3 Seasons,"British TV Shows, International TV Shows, TV Comedies"
-34,TV Show,Squid Game,null,"September 17, 2021",2021,1 Season,"International TV Shows, TV Dramas, TV Thrillers"
-35,TV Show,Tayo and Little Wizards,null,"September 17, 2021",2020,1 Season,Kids' TV
-36,Movie,The Father Who Moves Mountains,Daniel Sandu,"September 17, 2021",2021,110 min,"Dramas, International Movies, Thrillers"
-37,Movie,The Stronghold,Cédric Jimenez,"September 17, 2021",2021,105 min,"Action & Adventure, Dramas, International Movies"
-38,TV Show,Angry Birds,null,"September 16, 2021",2018,1 Season,"Kids' TV, TV Comedies"
-39,Movie,Birth of the Dragon,George Nolfi,"September 16, 2021",2017,96 min,"Action & Adventure, Dramas"
-40,TV Show,Chhota Bheem,null,"September 16, 2021",2021,3 Seasons,Kids' TV
-41,TV Show,He-Man and the Masters of the Universe,null,"September 16, 2021",2021,1 Season,"Kids' TV, TV Sci-Fi & Fantasy"
-42,Movie,Jaws,Steven Spielberg,"September 16, 2021",1975,124 min,"Action & Adventure, Classic Movies, Dramas"
-43,Movie,Jaws 2,Jeannot Szwarc,"September 16, 2021",1978,116 min,"Dramas, Horror Movies, Thrillers"
-44,Movie,Jaws 3,Joe Alves,"September 16, 2021",1983,98 min,"Action & Adventure, Horror Movies, Thrillers"
+

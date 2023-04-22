@@ -4,9 +4,11 @@ import java.util.*;
 
 public class App {
     private static int batchSize = 5;
-    private static final String CSV_PATH = "/Users/shermam/Camilla/AED3-tp1/netflix_titles.csv";
-    private static final String DB_PATH = "/Users/shermam/Camilla/AED3-tp1/db/banco.db";
-    private static final String BTREE_PATH = "/Users/shermam/Camilla/AED3-tp1/db/bTree.db";
+    private static final String CSV_PATH = "../netflix_titles.csv";
+    private static final String DB_PATH = "../db/banco.db";
+    private static final String BTREE_PATH = "../db/bTree.db";
+    private static final String HASH_DIR_PATH = "../db/HashDir.db";
+    private static final String HASH_IND_PATH = "../db/HashInd.db";
 
     /**
      * Read the csv file and load it into the database
@@ -19,6 +21,7 @@ public class App {
         try {
             db.clearDb();
             hh.reset();
+            bTree.reset();
             Scanner fileReaderScanner = new Scanner(new File(CSV_PATH));
             String line = fileReaderScanner.nextLine(); // Ignora primeira linha do csv
 
@@ -30,6 +33,9 @@ public class App {
 
                 Film film = new Film();
                 film.ReadText(line);
+
+                System.out.println("Inserting: " + film.getShow_id());
+
                 Long address = db.create(film);
                 hh.inserir(film.getShow_id(), address);
                 bTree.insert(film.getShow_id(), address);
@@ -586,7 +592,7 @@ public class App {
 
         Scanner sc = new Scanner(System.in);
         DatabaseAccess db = new DatabaseAccess(DB_PATH);
-        Hash hh = new Hash();
+        Hash hh = new Hash(HASH_DIR_PATH, HASH_IND_PATH);
         int option = -1;
         int id = 0;
 
@@ -745,9 +751,6 @@ public class App {
                         option = 0;
                     }
                     break;
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
 
                 case 8: {
                     System.out.println("Digite o id do Show que você deseja atualizar: ");
@@ -834,6 +837,10 @@ public class App {
                 case 12: {
                     hh.mostrarDir(sc);
                 }
+
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
 
                 default:
                     System.out.println("Opção inválida.");

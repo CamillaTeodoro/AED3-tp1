@@ -40,6 +40,12 @@ public class BTree {
         }
     }
 
+    /**
+     * creates a node based on the data read from the file
+     * 
+     * @param node
+     * @throws IOException
+     */
     private void loadNode(Node node) throws IOException {
         file.seek(node.getInitialAddress());
         byte[] record = new byte[Node.RECORD_SIZE];
@@ -74,6 +80,11 @@ public class BTree {
         long position = nextPosition;
         nextPosition += Node.RECORD_SIZE;
         return position;
+    }
+
+    public void reset() throws IOException {
+        setRoot(null);
+        file.setLength(0);
     }
 
     // Methods
@@ -129,7 +140,6 @@ public class BTree {
 
         // Case 3: There is no space in the node
         splitNode(node, parent, id, address);
-
     }
 
     private void splitNode(Node node, Node parent, int id, long address) throws IOException {
@@ -206,6 +216,7 @@ public class BTree {
             parent = getParent(node);
             int index = parent.findPosition(tempData[medianIndex]);
             parent.setPointer(index + 1, newNode);
+            printBTreeFile();
         } else {
 
             // Case 6: split the root
@@ -547,6 +558,7 @@ public class BTree {
     /**
      * Takes an id as paramater and returns the starting position of the record
      * in the sequencial file or -1
+     * Read the file searching for the id
      * 
      * @param id
      * @return
@@ -573,8 +585,7 @@ public class BTree {
     }
 
     /**
-     * Takes an id as paramater and returns the starting position of the record
-     * in the sequencial file or -1
+     * Search for the id in the file and updates it address
      * 
      * @param id
      * @return
