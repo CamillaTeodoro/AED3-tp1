@@ -34,14 +34,14 @@ public class App {
                 Film film = new Film();
                 film.ReadText(line);
 
-                System.out.println("Inserting: " + film.getShow_id());
+                // System.out.println("Inserting: " + film.getShow_id());
 
                 Long address = db.create(film);
                 hh.inserir(film.getShow_id(), address);
                 bTree.insert(film.getShow_id(), address);
             }
 
-            bTree.printStructure();
+            // bTree.printStructure();
 
             fileReaderScanner.close();
         } catch (Exception e) {
@@ -599,7 +599,7 @@ public class App {
         // Create the tree
         BTree bTree = new BTree(BTREE_PATH);
 
-        bTree.printStructure();
+        // bTree.printStructure();
 
         do {
             System.out.println("");
