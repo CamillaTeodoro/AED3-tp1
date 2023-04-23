@@ -249,7 +249,16 @@ class Hash {
                     numb2++;
                 }
             }
-
+        if(hashFunc(idShow)== bucket){
+            idFilm1[numb1] = idShow;
+            enderecoFilm1[numb1] = endereco;
+            numb1++;
+        }else{
+            idFilm2[numb2] = idShow;
+            enderecoFilm2[numb2] = endereco;
+            numb2++;
+        }
+       
             if (hashFunc(idFilm1[0]) < hashFunc(idFilm2[0])) {
                 arqIndices.seek(pos);
                 arqIndices.writeShort(profLocal);
