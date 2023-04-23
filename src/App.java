@@ -147,7 +147,7 @@ public class App {
                 break;
 
             case 4:
-                System.out.println("Digite a nova Data do Filme/Show: ");
+                System.out.println("Digite a nova Data do Filme/Show (DD/MM/AAAA): ");
 
                 try {
                     String newDate = sc.nextLine();

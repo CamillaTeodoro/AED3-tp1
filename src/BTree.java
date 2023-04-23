@@ -94,6 +94,7 @@ public class BTree {
      * @throws IOException
      */
     public void insert(int id, long address) throws IOException {
+
         // Case 1: empty tree
         if (root == null) {
             Node newNode = new Node(getNextPosition());
@@ -308,6 +309,12 @@ public class BTree {
 
     }
 
+    /**
+     * Method to find the node`s parent
+     * 
+     * @param node
+     * @return
+     */
     public Node getParent(Node node) {
         Node currentNode = root;
         Node parent = null;
@@ -325,6 +332,13 @@ public class BTree {
         return null;
     }
 
+    /**
+     * Recursive method to balance a node after a deletion
+     * 
+     * @param node
+     * @param id
+     * @throws IOException
+     */
     private void balanceOrMerge(Node node, int id) throws IOException {
 
         Node parent = getParent(node);
@@ -416,6 +430,16 @@ public class BTree {
         }
     }
 
+    /**
+     * Method to borrow from left sibling when right node is unbalanced
+     * 
+     * @param node
+     * @param parent
+     * @param nodeIndex
+     * @param leftSibling
+     * @param id
+     */
+
     public void borrowFromLeftSibling(Node node, Node parent, int nodeIndex,
             Node leftSibling, int id) {
         // Move a key and pointer from left sibling to node
@@ -443,6 +467,15 @@ public class BTree {
         leftSibling.setQuantity(leftSibling.getQuantity() - 1);
     }
 
+    /**
+     * Method to borrow from right sibling when left node is unbalanced
+     * 
+     * @param node
+     * @param parent
+     * @param nodeIndex
+     * @param rightSibling
+     * @param id
+     */
     public void borrowFromRightSibling(Node node, Node parent, int nodeIndex,
             Node rightSibling, int id) {
 
@@ -480,13 +513,13 @@ public class BTree {
 
     }
 
+    /**
+     * Recursive method for print the ID and the address
+     */
     public void printRoot() {
         printBTree(this.getRoot());
     }
 
-    /**
-     * Recursive method for print the ID and the address
-     */
     public void printBTree(Node node) {
         if (node != null) {
             int i;
@@ -502,6 +535,9 @@ public class BTree {
         }
     }
 
+    /**
+     * Recursive method to debug the tree structure
+     */
     public void printStructure() {
         System.out.println("===============================");
         printStructure(root, "");
@@ -525,12 +561,12 @@ public class BTree {
         }
     }
 
-    public void printBTreeFile() throws IOException {
-        this.file.setLength(0);
-        file.writeLong(this.getRoot().getInitialAddress());
-        printBTreeFile(this.getRoot());
-    }
-
+    /**
+     * Method to write just the node in the file
+     * 
+     * @param node
+     * @return
+     */
     public boolean saveNode(Node node) {
         if (node == null)
             return false;
@@ -541,6 +577,18 @@ public class BTree {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    /**
+     * Recursive method to write the entire b-tree in the file.
+     * 
+     * @throws IOException
+     */
+
+    public void printBTreeFile() throws IOException {
+        this.file.setLength(0);
+        file.writeLong(this.getRoot().getInitialAddress());
+        printBTreeFile(this.getRoot());
     }
 
     public void printBTreeFile(Node node) {
@@ -585,7 +633,7 @@ public class BTree {
     }
 
     /**
-     * Search for the id in the file and updates it address
+     * Search for the id in the file and updates it's address
      * 
      * @param id
      * @return

@@ -219,6 +219,12 @@ public class Node {
         this.quantity++;
     }
 
+    /**
+     * used to know in which pointer the node is
+     * 
+     * @param node
+     * @return
+     */
     public int findPointer(Node node) {
         for (int i = 0; i < quantity + 1; i++) {
             if (pointer[i] == node) {
