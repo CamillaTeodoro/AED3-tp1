@@ -147,7 +147,7 @@ public class App {
                 break;
 
             case 4:
-                System.out.println("Digite a nova Data do Filme/Show (DD/MM/AAAA): ");
+                System.out.println("Digite a nova Data do Filme/Show: ");
 
                 try {
                     String newDate = sc.nextLine();
@@ -829,15 +829,8 @@ public class App {
                         e.printStackTrace();
                     }
                 }
-
-                case 11: {
-                    hh.mostrarInd(sc);
-                }
-                    break;
-                case 12: {
-                    hh.mostrarDir(sc);
-                }
-
+                break;
+                
                 case 0:
                     System.out.println("Saindo...");
                     break;
