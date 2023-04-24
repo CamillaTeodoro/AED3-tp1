@@ -111,7 +111,7 @@ public class DatabaseAccess {
     }
 
     /**
-     * Takes an id as paramater and returns the starting position of the
+     * Takes an id as parameter and returns the starting position of the
      * record or -1
      * 
      * @param id
