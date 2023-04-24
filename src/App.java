@@ -614,7 +614,9 @@ public class App {
             System.out.println("7 - Ler um registro usando o arquivo de index em árvore B");
             System.out.println("8 - Atualizar um registro usando o arquivo de index em árvore B");
             System.out.println("9 - Deletar um registro usando o arquivo de index em árvore B");
-            System.out.println("10 - Busca com hash");
+            System.out.println("10 - Busca via hash");
+            System.out.println("11 - Atualização via hash");
+            System.out.println("12 - Deletar via hash");
             System.out.println("0 - Sair");
             System.out.println();
 
@@ -771,7 +773,8 @@ public class App {
                             } else {
                                 if (newAddress != oldAddress) {
                                     boolean result = bTree.updateDBAddress(id, newAddress);
-                                    if (!result) {
+                                    boolean result2 = hh.atualizar(id,newAddress);
+                                    if (!result && result2) {
                                         System.out.println("Erro ao atualizar a arvore btree!");
                                     }
                                 }
@@ -799,6 +802,7 @@ public class App {
                         Boolean result = db.delete(idAddress);
                         if (result) {
                             bTree.delete(id);
+                            hh.deletar(id);
                             System.out.println("Registro deletado com sucesso!");
                         } else {
                             System.out.println("Erro ao deletar!");
@@ -830,7 +834,69 @@ public class App {
                     }
                 }
                 break;
-                
+                case 11:
+                {
+                    System.out.println("Digite o id do Show que você deseja atualizar: ");
+                    try{
+                        id = Integer.parseInt(sc.nextLine());
+                        Long oldAddress = hh.ler(id);
+                        if(oldAddress == -1){
+                             System.out.println("Filme não encontrado!");
+                        }else{
+                        Film film = db.readFromAddr(oldAddress);
+                        if(film!=null){
+                            film.print();
+                            Film editedFilm = readEditDataFromUser(film, sc);
+                            if (editedFilm == null) {
+                                System.out.println("Erro ao editar!");
+                                break;
+                            }
+                        Long newAddress = db.updateWithAddress(film, editedFilm, oldAddress);
+                         if (newAddress == -1) {
+                                System.out.println("Erro ao editar!");
+                            } else {
+                                if (newAddress != oldAddress) {
+                                    boolean result = hh.atualizar(id, newAddress);
+                                    boolean result2 = bTree.updateDBAddress(id, newAddress);
+                                    if (result && !result2) {
+                                        System.out.println("Erro ao atualizar o hash!");
+                                    }
+                                }
+
+                                System.out.println("Registro editado com sucesso!");
+                            }
+
+                            System.out.println();
+                        }else{
+                            System.out.println("Filme/Show não existe na base de dados");
+                        }
+                        }
+                    }catch(Exception e){
+                        System.out.println("O valor digitado deve ser um número!!");
+                    }
+                }
+                break;
+                case 12:
+                {
+                     System.out.println("Digite o id do Show que você deseja deletar: ");
+                    try {
+                        id = Integer.parseInt(sc.nextLine());
+                        Long idAddress = hh.ler(id);
+                        Boolean result = db.delete(idAddress);
+                        if (result) {
+                            hh.deletar(id);
+                            bTree.delete(id);
+                            System.out.println("Registro deletado com sucesso!");
+                        } else {
+                            System.out.println("Erro ao deletar!");
+                        }
+
+                    } catch (Exception e) {
+                        System.out.println("O valor digitado deve ser um número!!");
+                        option = 0;
+                    }
+                }
+                break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
