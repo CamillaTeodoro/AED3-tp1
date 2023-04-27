@@ -617,6 +617,8 @@ public class App {
             System.out.println("10 - Busca via hash");
             System.out.println("11 - Atualização via hash");
             System.out.println("12 - Deletar via hash");
+            System.out.println("13 - Compactar arquivo");
+            System.out.println("14 - Descompactar arquivo");
             System.out.println("0 - Sair");
             System.out.println();
 
@@ -731,6 +733,7 @@ public class App {
                 }
                 case 5: {
                     SortingDatabase(sc);
+
                     break;
                 }
                 case 6:
@@ -773,7 +776,7 @@ public class App {
                             } else {
                                 if (newAddress != oldAddress) {
                                     boolean result = bTree.updateDBAddress(id, newAddress);
-                                    boolean result2 = hh.atualizar(id,newAddress);
+                                    boolean result2 = hh.atualizar(id, newAddress);
                                     if (!result && result2) {
                                         System.out.println("Erro ao atualizar a arvore btree!");
                                     }
@@ -833,52 +836,50 @@ public class App {
                         e.printStackTrace();
                     }
                 }
-                break;
-                case 11:
-                {
+                    break;
+                case 11: {
                     System.out.println("Digite o id do Show que você deseja atualizar: ");
-                    try{
+                    try {
                         id = Integer.parseInt(sc.nextLine());
                         Long oldAddress = hh.ler(id);
-                        if(oldAddress == -1){
-                             System.out.println("Filme não encontrado!");
-                        }else{
-                        Film film = db.readFromAddr(oldAddress);
-                        if(film!=null){
-                            film.print();
-                            Film editedFilm = readEditDataFromUser(film, sc);
-                            if (editedFilm == null) {
-                                System.out.println("Erro ao editar!");
-                                break;
-                            }
-                        Long newAddress = db.updateWithAddress(film, editedFilm, oldAddress);
-                         if (newAddress == -1) {
-                                System.out.println("Erro ao editar!");
-                            } else {
-                                if (newAddress != oldAddress) {
-                                    boolean result = hh.atualizar(id, newAddress);
-                                    boolean result2 = bTree.updateDBAddress(id, newAddress);
-                                    if (result && !result2) {
-                                        System.out.println("Erro ao atualizar o hash!");
+                        if (oldAddress == -1) {
+                            System.out.println("Filme não encontrado!");
+                        } else {
+                            Film film = db.readFromAddr(oldAddress);
+                            if (film != null) {
+                                film.print();
+                                Film editedFilm = readEditDataFromUser(film, sc);
+                                if (editedFilm == null) {
+                                    System.out.println("Erro ao editar!");
+                                    break;
+                                }
+                                Long newAddress = db.updateWithAddress(film, editedFilm, oldAddress);
+                                if (newAddress == -1) {
+                                    System.out.println("Erro ao editar!");
+                                } else {
+                                    if (newAddress != oldAddress) {
+                                        boolean result = hh.atualizar(id, newAddress);
+                                        boolean result2 = bTree.updateDBAddress(id, newAddress);
+                                        if (result && !result2) {
+                                            System.out.println("Erro ao atualizar o hash!");
+                                        }
                                     }
+
+                                    System.out.println("Registro editado com sucesso!");
                                 }
 
-                                System.out.println("Registro editado com sucesso!");
+                                System.out.println();
+                            } else {
+                                System.out.println("Filme/Show não existe na base de dados");
                             }
-
-                            System.out.println();
-                        }else{
-                            System.out.println("Filme/Show não existe na base de dados");
                         }
-                        }
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         System.out.println("O valor digitado deve ser um número!!");
                     }
                 }
-                break;
-                case 12:
-                {
-                     System.out.println("Digite o id do Show que você deseja deletar: ");
+                    break;
+                case 12: {
+                    System.out.println("Digite o id do Show que você deseja deletar: ");
                     try {
                         id = Integer.parseInt(sc.nextLine());
                         Long idAddress = hh.ler(id);
@@ -896,7 +897,13 @@ public class App {
                         option = 0;
                     }
                 }
-                break;
+                    break;
+                case 13:
+                    System.out.println("Compactando");
+                    break;
+                case 14:
+                    System.out.println("Descompactando");
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;

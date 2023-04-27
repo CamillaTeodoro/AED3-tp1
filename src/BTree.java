@@ -141,6 +141,7 @@ public class BTree {
 
         // Case 3: There is no space in the node
         splitNode(node, parent, id, address);
+
     }
 
     private void splitNode(Node node, Node parent, int id, long address) throws IOException {
@@ -659,6 +660,22 @@ public class BTree {
             loadNode(currentNode);
         }
         return false;
+    }
+
+    /**
+     * Takes an id as paramater and returns the starting position of the record
+     * in the sequencial file or -1
+     * 
+     * @param id
+     * @return
+     */
+    public long findIndexInBTree(int id) {
+        Node nodeWithId = searchId(id);
+        if (nodeWithId != null) {
+            // procuro o id e retono o address
+
+        }
+        return -1;
     }
 
 }
