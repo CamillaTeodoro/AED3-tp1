@@ -617,6 +617,8 @@ public class App {
             System.out.println("10 - Busca via hash");
             System.out.println("11 - Atualização via hash");
             System.out.println("12 - Deletar via hash");
+            System.out.println("13 - Compactar arquivo");
+            System.out.println("14 - Descompactar arquivo");
             System.out.println("0 - Sair");
             System.out.println();
 
@@ -895,6 +897,12 @@ public class App {
                         option = 0;
                     }
                 }
+                    break;
+                case 13:
+                    System.out.println("Compactando");
+                    break;
+                case 14:
+                    System.out.println("Descompactando");
                     break;
                 case 0:
                     System.out.println("Saindo...");
