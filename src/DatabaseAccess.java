@@ -373,6 +373,30 @@ public class DatabaseAccess {
     }
 
     /**
+     * Get next record and return the film object
+     * 
+     * @return a Film or null
+     */
+    public Film nextFilm() {
+        try {
+            long pointerPosition = databaseFile.getFilePointer();
+            Film film = new Film();
+            databaseFile.seek(pointerPosition - 4);
+            int sizeFilm = databaseFile.readInt();
+            // System.out.println(sizeFilm);
+            byte[] b = new byte[sizeFilm];
+            databaseFile.read(b);
+            film.fromByteArray(b);
+
+            return film;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Print database
      */
     public void print() {
@@ -406,5 +430,36 @@ public class DatabaseAccess {
      */
     public void setPosition(Long pointerPosition) throws IOException {
         this.position = pointerPosition;
+    }
+
+    public String dbToString() throws IOException {
+
+        String fileString = "";
+        long fileSize = databaseFile.length();
+        long pointerPosition = position;
+        databaseFile.seek(0);
+        int lastId = databaseFile.readInt();
+        fileString += Integer.toString(lastId) + " ";
+
+        while (pointerPosition < fileSize) {
+            char lapide = databaseFile.readChar();
+            int size = databaseFile.readInt();
+            if (lapide == '$') {
+                fileString += Character.toString(lapide) + " ";
+                fileString += Integer.toString(size) + " ";
+
+                Film film = new Film();
+                film = nextFilm();
+                String filmAsString = film.toString();
+                fileString += filmAsString;
+
+                fileString += "/ ";
+            }
+
+            databaseFile.seek(pointerPosition + 6 + size);
+            pointerPosition = databaseFile.getFilePointer();
+        }
+        System.out.println(fileString);
+        return fileString;
     }
 }

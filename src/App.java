@@ -4,7 +4,7 @@ import java.util.*;
 
 public class App {
     private static int batchSize = 5;
-    private static final String CSV_PATH = "../netflix_titles.csv";
+    private static final String CSV_PATH = "../test.csv";
     private static final String DB_PATH = "../db/banco.db";
     private static final String BTREE_PATH = "../db/bTree.db";
     private static final String HASH_DIR_PATH = "../db/HashDir.db";
@@ -899,7 +899,9 @@ public class App {
                 }
                     break;
                 case 13:
-                    System.out.println("Compactando");
+                String fileAString = db.dbToString();
+                    LZW lzw = new LZW();
+                    //lzw.compress(fileAString, compressedFile);
                     break;
                 case 14:
                     System.out.println("Descompactando");
