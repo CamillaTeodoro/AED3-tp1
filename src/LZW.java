@@ -1,4 +1,5 @@
 import java.io.*;
+import java.text.ParseException;
 import java.util.*;
 
 public class LZW {
@@ -58,7 +59,7 @@ public class LZW {
         System.out.println("Tempo total para compactação pelo algoritmo LZW foi de " + total + " milessegundos");
     }
 
-    public void unpack(String CompressedFileName, String newFileDB) throws IOException {
+    public void unpack(String CompressedFileName, String newDBFile) throws IOException, NumberFormatException, ParseException {
         long tempoInicial = System.currentTimeMillis();
 
         // create the initial dictionary
@@ -80,7 +81,7 @@ public class LZW {
 
         short code = compressed.remove(0);
         String current = dictionary.get(code);
-        StringBuilder decompressed = new StringBuilder(current);
+        String unpackedFileString = current;
         for (short nextCode : compressed) {
             String entry;
             if (dictionary.containsKey(nextCode)) {
@@ -90,14 +91,14 @@ public class LZW {
             } else {
                 throw new IllegalArgumentException("Bad compressed code: " + nextCode);
             }
-            decompressed.append(entry);
+            unpackedFileString += entry;
             dictionary.put((short) dictionary.size(), current + entry.charAt(0));
             current = entry;
         }
 
-        FileWriter writer = new FileWriter(newFileDB);
-        writer.write(decompressed.toString());
-        writer.close();
+        // write the unpacked file
+        DatabaseAccess db = new DatabaseAccess(newDBFile);
+        db.dbFromString(unpackedFileString);
 
         long tempoFinal = System.currentTimeMillis();
         long total = tempoFinal - tempoInicial;

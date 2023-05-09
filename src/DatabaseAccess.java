@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.text.ParseException;
 
 public class DatabaseAccess {
 
@@ -439,21 +440,19 @@ public class DatabaseAccess {
         long pointerPosition = position;
         databaseFile.seek(0);
         int lastId = databaseFile.readInt();
-        fileString += Integer.toString(lastId) + " ";
+        fileString += Integer.toString(lastId);
+        fileString += "\n";
 
         while (pointerPosition < fileSize) {
             char lapide = databaseFile.readChar();
             int size = databaseFile.readInt();
             if (lapide == '$') {
-                fileString += Character.toString(lapide) + " ";
-                fileString += Integer.toString(size) + " ";
-
                 Film film = new Film();
                 film = nextFilm();
                 String filmAsString = film.toString();
                 fileString += filmAsString;
 
-                fileString += "/ ";
+                fileString += "\n";
             }
 
             databaseFile.seek(pointerPosition + 6 + size);
@@ -461,5 +460,23 @@ public class DatabaseAccess {
         }
         System.out.println(fileString);
         return fileString;
+    }
+
+    public void dbFromString(String unpackedFileString) throws NumberFormatException, IOException, ParseException {
+
+        clearDb();
+        position = (long) 0;
+
+        String lines[] = unpackedFileString.split("\n");
+        databaseFile.writeInt(Integer.parseInt(lines[0]));
+
+        // remover $ e o tamanho
+        for (int i = 1; i < lines.length; i++) {
+
+            Film film = new Film();
+            film.ReadText(lines[i]);
+            film.print();
+            create(film);
+        }
     }
 }
