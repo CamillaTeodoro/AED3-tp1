@@ -9,6 +9,7 @@ public class App {
     private static final String BTREE_PATH = "../db/bTree.db";
     private static final String HASH_DIR_PATH = "../db/HashDir.db";
     private static final String HASH_IND_PATH = "../db/HashInd.db";
+    private static final String COMPRESSED_FILE = "../db/BancoLZWCompressao1.db";
 
     /**
      * Read the csv file and load it into the database
@@ -599,6 +600,9 @@ public class App {
         // Create the tree
         BTree bTree = new BTree(BTREE_PATH);
 
+        // create the LZW instance
+        LZW lzw = new LZW();
+
         // bTree.printStructure();
 
         do {
@@ -899,12 +903,14 @@ public class App {
                 }
                     break;
                 case 13:
-                String fileAString = db.dbToString();
-                    LZW lzw = new LZW();
-                    //lzw.compress(fileAString, compressedFile);
+                    System.out.println("Compactando");
+                    String fileAString = db.dbToString();
+
+                    lzw.compress(fileAString, COMPRESSED_FILE);
                     break;
                 case 14:
                     System.out.println("Descompactando");
+                    lzw.unpack(COMPRESSED_FILE, DB_PATH);
                     break;
                 case 0:
                     System.out.println("Saindo...");
