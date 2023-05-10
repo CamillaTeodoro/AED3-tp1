@@ -441,7 +441,7 @@ public class DatabaseAccess {
         databaseFile.seek(0);
         int lastId = databaseFile.readInt();
         fileString += Integer.toString(lastId);
-        fileString += "\n";
+        fileString += ";";
 
         while (pointerPosition < fileSize) {
             char lapide = databaseFile.readChar();
@@ -452,7 +452,7 @@ public class DatabaseAccess {
                 String filmAsString = film.toString();
                 fileString += filmAsString;
 
-                fileString += "\n";
+                fileString += ";";
             }
 
             databaseFile.seek(pointerPosition + 6 + size);
@@ -466,7 +466,7 @@ public class DatabaseAccess {
 
         clearDb();
 
-        String lines[] = unpackedFileString.split("\n");
+        String lines[] = unpackedFileString.split(";");
 
         // transform each array item in a film and write it
         // in the db file
@@ -474,7 +474,7 @@ public class DatabaseAccess {
 
             Film film = new Film();
             film.ReadText(lines[i]);
-            film.print();
+            // film.print();
             create(film);
         }
     }

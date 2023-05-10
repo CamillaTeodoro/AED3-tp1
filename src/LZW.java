@@ -16,11 +16,11 @@ public class LZW {
         long tempoInicial = System.currentTimeMillis();
 
         // create the initial dictionary
-        Map<String, Short> dictionary = new HashMap<>();
-        // int j = 0;
+        HashMap<String, Short> dictionary = new HashMap<>();
+
         for (int i = 0; i < 256; i++) {
             dictionary.put("" + (char) i, (short) i);
-            // j++;
+
         }
         // System.out.println("Tamanho do dicionário inicial: " + dictionary.size());
         String current = "";
@@ -34,22 +34,31 @@ public class LZW {
             } else {
                 result.add(dictionary.get(current));
                 dictionary.put(combined, (short) dictionary.size());
+                System.out.println("key: " + combined + "| Value: " + (short) dictionary.size());
                 current = "" + c;
+
             }
         }
-        System.out.println("Tamanho do dicionário após inserção: " + dictionary.size());
 
-        if (!current.equals("")) {
+        // System.out.println("Tamanho do dicionário após inserção: " +
+        // dictionary.size());
+
+        if (!current.equals(""))
+        {
             result.add(dictionary.get(current));
         }
 
-        System.out.println("Tamanho do result após cada inserção: " + result.size());
+        /*
+         * /
+         * dictionary.entrySet().forEach(entry -> {
+         * System.out.println(entry.getKey() + " = " + entry.getValue());
+         * });
+         */
 
-        int count = 0;
-        for (short code : result) {
-            count++;
-            System.out.println("count: " + count);
-            compressedFile.writeShort(code);
+        // System.out.println("Tamanho do result após cada inserção: " + result.size());
+
+        for (short code : result) {   
+           compressedFile.writeShort(code);
 
         }
 
@@ -66,7 +75,7 @@ public class LZW {
         long tempoInicial = System.currentTimeMillis();
 
         // create the initial dictionary
-        Map<Short, String> dictionary = new HashMap<>();
+        HashMap<Short, String> dictionary = new HashMap<>();
 
         for (int i = 0; i < 256; i++) {
             dictionary.put((short) i, "" + (char) i);
