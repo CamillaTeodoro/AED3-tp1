@@ -19,3 +19,437 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 18,TV Show,Falsa identidad,null,"September 22, 2021",2020,2 Seasons,"Crime TV Shows, Spanish-Language TV Shows, TV Dramas"
 19,Movie,Intrusion,Adam Salky,"September 22, 2021",2021,94 min,Thrillers
 20,TV Show,Jaguar,null,"September 22, 2021",2021,1 Season,"International TV Shows, Spanish-Language TV Shows, TV Action & Adventure"
+21,TV Show,Monsters Inside: The 24 Faces of Billy Milligan,Olivier Megaton,"September 22, 2021",2021,1 Season,"Crime TV Shows, Docuseries, International TV Shows"
+22,TV Show,Resurrection: Ertugrul,null,"September 22, 2021",2018,5 Seasons,"International TV Shows, TV Action & Adventure, TV Dramas"
+23,Movie,Avvai Shanmughi,K.S. Ravikumar,"September 21, 2021",1996,161 min,"Comedies, International Movies"
+24,Movie,Go! Go! Cory Carson: Chrissy Takes the Wheel,"Alex Woo, Stanley Moore","September 21, 2021",2021,61 min,Children & Family Movies
+25,Movie,Jeans,S. Shankar,"September 21, 2021",1998,166 min,"Comedies, International Movies, Romantic Movies"
+26,TV Show,Love on the Spectrum,null,"September 21, 2021",2021,2 Seasons,"Docuseries, International TV Shows, Reality TV"
+27,Movie,Minsara Kanavu,Rajiv Menon,"September 21, 2021",1997,147 min,"Comedies, International Movies, Music & Musicals"
+28,Movie,Grown Ups,Dennis Dugan,"September 20, 2021",2010,103 min,Comedies
+29,Movie,Dark Skies,Scott Stewart,"September 19, 2021",2013,97 min,"Horror Movies, Sci-Fi & Fantasy"
+30,Movie,Paranoia,Robert Luketic,"September 19, 2021",2013,106 min,Thrillers
+31,Movie,Ankahi Kahaniya,"Ashwiny Iyer Tiwari, Abhishek Chaubey, Saket Chaudhary","September 17, 2021",2021,111 min,"Dramas, Independent Movies, International Movies"
+32,TV Show,Chicago Party Aunt,null,"September 17, 2021",2021,1 Season,TV Comedies
+33,TV Show,Sex Education,null,"September 17, 2021",2020,3 Seasons,"British TV Shows, International TV Shows, TV Comedies"
+34,TV Show,Squid Game,null,"September 17, 2021",2021,1 Season,"International TV Shows, TV Dramas, TV Thrillers"
+35,TV Show,Tayo and Little Wizards,null,"September 17, 2021",2020,1 Season,Kids' TV
+36,Movie,The Father Who Moves Mountains,Daniel Sandu,"September 17, 2021",2021,110 min,"Dramas, International Movies, Thrillers"
+37,Movie,The Stronghold,Cédric Jimenez,"September 17, 2021",2021,105 min,"Action & Adventure, Dramas, International Movies"
+38,TV Show,Angry Birds,null,"September 16, 2021",2018,1 Season,"Kids' TV, TV Comedies"
+39,Movie,Birth of the Dragon,George Nolfi,"September 16, 2021",2017,96 min,"Action & Adventure, Dramas"
+40,TV Show,Chhota Bheem,null,"September 16, 2021",2021,3 Seasons,Kids' TV
+41,TV Show,He-Man and the Masters of the Universe,null,"September 16, 2021",2021,1 Season,"Kids' TV, TV Sci-Fi & Fantasy"
+42,Movie,Jaws,Steven Spielberg,"September 16, 2021",1975,124 min,"Action & Adventure, Classic Movies, Dramas"
+43,Movie,Jaws 2,Jeannot Szwarc,"September 16, 2021",1978,116 min,"Dramas, Horror Movies, Thrillers"
+44,Movie,Jaws 3,Joe Alves,"September 16, 2021",1983,98 min,"Action & Adventure, Horror Movies, Thrillers"
+45,Movie,Jaws: The Revenge,Joseph Sargent,"September 16, 2021",1987,91 min,"Action & Adventure, Horror Movies, Thrillers"
+46,Movie,My Heroes Were Cowboys,Tyler Greco,"September 16, 2021",2021,23 min,Documentaries
+47,Movie,Safe House,Daniel Espinosa,"September 16, 2021",2012,115 min,Action & Adventure
+48,TV Show,The Smart Money Woman,Bunmi Ajakaiye,"September 16, 2021",2020,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+49,Movie,Training Day,Antoine Fuqua,"September 16, 2021",2001,122 min,"Dramas, Thrillers"
+50,TV Show,Castle and Castle,null,"September 15, 2021",2021,2 Seasons,"International TV Shows, TV Dramas"
+51,TV Show,Dharmakshetra,null,"September 15, 2021",2014,1 Season,"International TV Shows, TV Dramas, TV Sci-Fi & Fantasy"
+52,Movie,InuYasha the Movie 2: The Castle Beyond the Looking Glass,Toshiya Shinohara,"September 15, 2021",2002,99 min,"Action & Adventure, Anime Features, International Movies"
+53,Movie,InuYasha the Movie 3: Swords of an Honorable Ruler,Toshiya Shinohara,"September 15, 2021",2003,99 min,"Action & Adventure, Anime Features, International Movies"
+54,Movie,InuYasha the Movie 4: Fire on the Mystic Island,Toshiya Shinohara,"September 15, 2021",2004,88 min,"Action & Adventure, Anime Features, International Movies"
+55,Movie,InuYasha the Movie: Affections Touching Across Time,Toshiya Shinohara,"September 15, 2021",2001,100 min,"Action & Adventure, Anime Features, International Movies"
+56,TV Show,Nailed It,null,"September 15, 2021",2021,6 Seasons,Reality TV
+57,Movie,Naruto Shippuden the Movie: Blood Prison,Masahiko Murata,"September 15, 2021",2011,102 min,"Action & Adventure, Anime Features, International Movies"
+58,Movie,Naruto Shippûden the Movie: Bonds,Hajime Kamegaki,"September 15, 2021",2008,93 min,"Action & Adventure, Anime Features, International Movies"
+59,Movie,Naruto Shippûden the Movie: The Will of Fire,Masahiko Murata,"September 15, 2021",2009,96 min,"Action & Adventure, Anime Features, International Movies"
+60,Movie,Naruto Shippuden: The Movie,Hajime Kamegaki,"September 15, 2021",2007,95 min,"Action & Adventure, Anime Features, International Movies"
+61,Movie,Naruto Shippuden: The Movie: The Lost Tower,Masahiko Murata,"September 15, 2021",2010,85 min,"Action & Adventure, Anime Features, International Movies"
+62,Movie,Naruto the Movie 2: Legend of the Stone of Gelel,Hirotsugu Kawasaki,"September 15, 2021",2005,97 min,"Action & Adventure, Anime Features, International Movies"
+63,Movie,Naruto the Movie 3: Guardians of the Crescent Moon Kingdom,Toshiyuki Tsuru,"September 15, 2021",2006,95 min,"Action & Adventure, Anime Features, International Movies"
+64,Movie,Naruto the Movie: Ninja Clash in the Land of Snow,Tensai Okamura,"September 15, 2021",2004,83 min,"Action & Adventure, Anime Features, International Movies"
+65,Movie,Nightbooks,David Yarovesky,"September 15, 2021",2021,103 min,Children & Family Movies
+66,TV Show,Numberblocks,null,"September 15, 2021",2021,6 Seasons,Kids' TV
+67,TV Show,Raja Rasoi Aur Anya Kahaniyan,null,"September 15, 2021",2014,1 Season,"Docuseries, International TV Shows"
+68,TV Show,Saved by the Bell,null,"September 15, 2021",1994,9 Seasons,"Kids' TV, TV Comedies"
+69,Movie,Schumacher,"Hanns-Bruno Kammertöns, Vanessa Nöcker, Michael Wech","September 15, 2021",2021,113 min,"Documentaries, International Movies, Sports Movies"
+70,TV Show,Stories by Rabindranath Tagore,null,"September 15, 2021",2015,1 Season,"International TV Shows, TV Dramas"
+71,TV Show,Too Hot To Handle: Latino,null,"September 15, 2021",2021,1 Season,"International TV Shows, Reality TV, Romantic TV Shows"
+72,Movie,A StoryBots Space Adventure,David A. Vargas,"September 14, 2021",2021,13 min,Children & Family Movies
+73,TV Show,Jack Whitehall: Travels with My Father,null,"September 14, 2021",2021,5 Seasons,"British TV Shows, Docuseries, International TV Shows"
+74,Movie,King of Boys,Kemi Adetiba,"September 14, 2021",2018,182 min,"Dramas, International Movies"
+75,TV Show,The World's Most Amazing Vacation Rentals,null,"September 14, 2021",2021,2 Seasons,Reality TV
+76,Movie,You vs. Wild: Out Cold,Ben Simms,"September 14, 2021",2021,106 min,Children & Family Movies
+77,TV Show,Yowamushi Pedal,null,"September 14, 2021",2013,1 Season,"Anime Series, International TV Shows"
+78,Movie,Little Singham - Black Shadow,Prakash Satam,"September 11, 2021",2021,48 min,"Children & Family Movies, Comedies"
+79,Movie,Tughlaq Durbar,Delhiprasad Deenadayalan,"September 11, 2021",2020,145 min,"Comedies, Dramas, International Movies"
+80,Movie,Tughlaq Durbar (Telugu),Delhiprasad Deenadayalan,"September 11, 2021",2021,145 min,"Comedies, Dramas, International Movies"
+81,Movie,Firedrake the Silver Dragon,Tomer Eshed,"September 10, 2021",2021,93 min,Children & Family Movies
+82,Movie,Kate,Cedric Nicolas-Troyan,"September 10, 2021",2021,106 min,Action & Adventure
+83,TV Show,Lucifer,null,"September 10, 2021",2021,6 Seasons,"Crime TV Shows, TV Comedies, TV Dramas"
+84,TV Show,Metal Shop Masters,null,"September 10, 2021",2021,1 Season,Reality TV
+85,Movie,Omo Ghetto: the Saga,"JJC Skillz, Funke Akindele","September 10, 2021",2020,147 min,"Action & Adventure, Comedies, Dramas"
+86,TV Show,Pokémon Master Journeys: The Series,null,"September 10, 2021",2021,1 Season,"Anime Series, Kids' TV"
+87,Movie,Prey,Thomas Sieben,"September 10, 2021",2021,87 min,"International Movies, Thrillers"
+88,TV Show,Titipo Titipo,null,"September 10, 2021",2019,2 Seasons,"Kids' TV, Korean TV Shows"
+89,Movie,Blood Brothers: Malcolm X & Muhammad Ali,Marcus Clarke,"September 9, 2021",2021,96 min,"Documentaries, Sports Movies"
+90,TV Show,Mighty Raju,null,"September 9, 2021",2017,4 Seasons,Kids' TV
+91,Movie,Paradise Hills,Alice Waddington,"September 9, 2021",2019,95 min,"Sci-Fi & Fantasy, Thrillers"
+92,Movie,The Women and the Murderer,"Mona Achache, Patricia Tourancheau","September 9, 2021",2021,92 min,"Documentaries, International Movies"
+93,TV Show,Into the Night,null,"September 8, 2021",2021,2 Seasons,"International TV Shows, TV Dramas, TV Mysteries"
+94,Movie,JJ+E,Alexis Almström,"September 8, 2021",2021,91 min,"Dramas, International Movies, Romantic Movies"
+95,Movie,Show Dogs,Raja Gosnell,"September 8, 2021",2018,90 min,"Children & Family Movies, Comedies"
+96,TV Show,The Circle,null,"September 8, 2021",2021,3 Seasons,Reality TV
+97,Movie,If I Leave Here Tomorrow: A Film About Lynyrd Skynyrd,Stephen Kijak,"September 7, 2021",2018,97 min,"Documentaries, Music & Musicals"
+98,TV Show,Kid Cosmic,null,"September 7, 2021",2021,2 Seasons,"Kids' TV, TV Comedies, TV Sci-Fi & Fantasy"
+99,TV Show,Octonauts: Above & Beyond,null,"September 7, 2021",2021,1 Season,"British TV Shows, Kids' TV"
+100,TV Show,On the Verge,null,"September 7, 2021",2021,1 Season,"TV Comedies, TV Dramas"
+101,TV Show,Tobot Galaxy Detectives,null,"September 7, 2021",2019,2 Seasons,Kids' TV
+102,Movie,Untold: Breaking Point,"Chapman Way, Maclain Way","September 7, 2021",2021,80 min,"Documentaries, Sports Movies"
+103,TV Show,Countdown: Inspiration4 Mission to Space,Jason Hehir,"September 6, 2021",2021,1 Season,"Docuseries, Science & Nature TV"
+104,Movie,Shadow Parties,Yemi Amodu,"September 6, 2021",2020,117 min,"Dramas, International Movies, Thrillers"
+105,TV Show,Tayo the Little Bus,null,"September 6, 2021",2016,2 Seasons,"Kids' TV, Korean TV Shows"
+106,Movie,Angamaly Diaries,Lijo Jose Pellissery,"September 5, 2021",2017,128 min,"Action & Adventure, Comedies, Dramas"
+107,TV Show,Bunk'd,null,"September 5, 2021",2021,5 Seasons,"Kids' TV, TV Comedies"
+108,Movie,A Champion Heart,David de Vos,"September 4, 2021",2018,90 min,"Children & Family Movies, Dramas"
+109,TV Show,Dive Club,null,"September 3, 2021",2021,1 Season,"Kids' TV, TV Dramas, Teen TV Shows"
+110,TV Show,La casa de papel,null,"September 3, 2021",2021,5 Seasons,"Crime TV Shows, International TV Shows, Spanish-Language TV Shows"
+111,TV Show,Money Heist: From Tokyo to Berlin,"Luis Alfaro, Javier Gómez Santander","September 3, 2021",2021,1 Season,"Docuseries, International TV Shows, Spanish-Language TV Shows"
+112,TV Show,Sharkdog,null,"September 3, 2021",2021,1 Season,Kids' TV
+113,Movie,Worth,Sara Colangelo,"September 3, 2021",2021,119 min,Dramas
+114,Movie,Afterlife of the Party,Stephen Herek,"September 2, 2021",2021,110 min,"Comedies, Romantic Movies"
+115,Movie,Anjaam,Rahul Rawail,"September 2, 2021",1994,143 min,"Dramas, International Movies, Thrillers"
+116,Movie,Bright Star,Jane Campion,"September 2, 2021",2009,119 min,"Dramas, Romantic Movies"
+117,Movie,Dhanak,Nagesh Kukunoor,"September 2, 2021",2015,114 min,"Comedies, Dramas, Independent Movies"
+118,Movie,Final Account,Luke Holland,"September 2, 2021",2021,94 min,Documentaries
+119,Movie,Gurgaon,Shanker Raman,"September 2, 2021",2017,106 min,"Dramas, International Movies, Thrillers"
+120,Movie,Here and There,JP Habac,"September 2, 2021",2020,99 min,"Dramas, International Movies, Romantic Movies"
+121,TV Show,Heroes of Goo Jit Zu,null,"September 2, 2021",2021,1 Season,"Kids' TV, TV Comedies"
+122,TV Show,Hotel Del Luna,null,"September 2, 2021",2019,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+123,Movie,In the Cut,Jane Campion,"September 2, 2021",2003,118 min,Thrillers
+124,TV Show,Luv Kushh,null,"September 2, 2021",2012,1 Season,Kids' TV
+125,TV Show,Pororo - The Little Penguin,null,"September 2, 2021",2013,3 Seasons,"Kids' TV, Korean TV Shows"
+126,TV Show,Q-Force,null,"September 2, 2021",2021,1 Season,"Crime TV Shows, TV Action & Adventure, TV Comedies"
+127,Movie,Shikara,Vidhu Vinod Chopra,"September 2, 2021",2020,115 min,"Dramas, International Movies, Romantic Movies"
+128,Movie,A Cinderella Story,Mark Rosman,"September 1, 2021",2004,95 min,"Children & Family Movies, Comedies"
+129,Movie,Agatha Christie's Crooked House,Gilles Paquet-Brenner,"September 1, 2021",2017,115 min,"Dramas, International Movies, Thrillers"
+130,Movie,An Unfinished Life,Lasse Hallström,"September 1, 2021",2005,108 min,Dramas
+131,Movie,Barbie Big City Big Dreams,Scott Pleydell-Pearce,"September 1, 2021",2021,63 min,"Children & Family Movies, Music & Musicals"
+132,Movie,Blade Runner: The Final Cut,Ridley Scott,"September 1, 2021",1982,117 min,"Action & Adventure, Classic Movies, Cult Movies"
+133,TV Show,Brave Animated Series,null,"September 1, 2021",2021,1 Season,"International TV Shows, TV Action & Adventure, TV Comedies"
+134,Movie,Chappie,Neill Blomkamp,"September 1, 2021",2015,121 min,"Action & Adventure, Sci-Fi & Fantasy"
+135,Movie,Clear and Present Danger,Phillip Noyce,"September 1, 2021",1994,142 min,"Action & Adventure, Dramas"
+136,Movie,Cliffhanger,Renny Harlin,"September 1, 2021",1993,113 min,Action & Adventure
+137,Movie,Cold Mountain,Anthony Minghella,"September 1, 2021",2003,154 min,"Dramas, Romantic Movies"
+138,Movie,Crocodile Dundee in Los Angeles,Simon Wincer,"September 1, 2021",2001,95 min,"Action & Adventure, Comedies"
+139,Movie,Dear John,Lasse Hallström,"September 1, 2021",2010,108 min,"Dramas, Romantic Movies"
+140,Movie,Do the Right Thing,Spike Lee,"September 1, 2021",1989,120 min,"Classic Movies, Comedies, Dramas"
+141,Movie,"El patrón, radiografía de un crimen",Sebastián Schindel,"September 1, 2021",2014,100 min,"Dramas, International Movies, Thrillers"
+142,Movie,Extraction,Steven C. Miller,"September 1, 2021",2015,82 min,Action & Adventure
+143,Movie,Freedom Writers,Richard LaGravenese,"September 1, 2021",2007,124 min,Dramas
+144,Movie,Green Lantern,Martin Campbell,"September 1, 2021",2011,114 min,"Action & Adventure, Sci-Fi & Fantasy"
+145,Movie,House Party,Reginald Hudlin,"September 1, 2021",1990,104 min,"Comedies, Cult Movies"
+146,Movie,House Party 2,"George Jackson, Doug McHenry","September 1, 2021",1991,94 min,"Comedies, Cult Movies, Music & Musicals"
+147,Movie,House Party 3,Eric Meza,"September 1, 2021",1994,94 min,"Comedies, Music & Musicals"
+148,TV Show,How to Be a Cowboy,null,"September 1, 2021",2021,1 Season,Reality TV
+149,TV Show,HQ Barbers,Gerhard Mostert,"September 1, 2021",2020,1 Season,TV Shows
+150,Movie,I Got the Hook Up,Michael Martin,"September 1, 2021",1998,93 min,"Action & Adventure, Comedies"
+151,Movie,In Too Deep,Michael Rymer,"September 1, 2021",1999,97 min,Thrillers
+152,Movie,Initial D,"Andrew Lau Wai-keung, Alan Mak","September 1, 2021",2005,109 min,"Action & Adventure, International Movies"
+153,Movie,Janoskians: Untold and Untrue,Brett Weiner,"September 1, 2021",2016,88 min,Comedies
+154,TV Show,Kid-E-Cats,null,"September 1, 2021",2016,2 Seasons,Kids' TV
+155,TV Show,Kuroko's Basketball,null,"September 1, 2021",2015,3 Seasons,"Anime Series, International TV Shows, Teen TV Shows"
+156,Movie,Labyrinth,Jim Henson,"September 1, 2021",1986,101 min,"Action & Adventure, Children & Family Movies, Cult Movies"
+157,Movie,Letters to Juliet,Gary Winick,"September 1, 2021",2010,105 min,"Comedies, Dramas, Romantic Movies"
+158,Movie,Level 16,Danishka Esterhazy,"September 1, 2021",2018,102 min,"Sci-Fi & Fantasy, Thrillers"
+159,Movie,Love Don't Cost a Thing,Troy Byer,"September 1, 2021",2003,101 min,"Comedies, Romantic Movies"
+160,Movie,Love in a Puff,Pang Ho-cheung,"September 1, 2021",2010,103 min,"Comedies, Dramas, International Movies"
+161,TV Show,Major Dad,null,"September 1, 2021",1992,4 Seasons,TV Comedies
+162,Movie,Mars Attacks!,Tim Burton,"September 1, 2021",1996,106 min,"Comedies, Cult Movies, Sci-Fi & Fantasy"
+163,Movie,Marshall,Reginald Hudlin,"September 1, 2021",2017,118 min,Dramas
+164,Movie,My Boss's Daughter,David Zucker,"September 1, 2021",2003,86 min,"Comedies, Romantic Movies"
+165,Movie,Mystery Men,Kinka Usher,"September 1, 2021",1999,121 min,"Action & Adventure, Comedies"
+166,TV Show,Oldsters,null,"September 1, 2021",2019,1 Season,"Crime TV Shows, International TV Shows, Spanish-Language TV Shows"
+167,Movie,Once Upon a Time in America,Sergio Leone,"September 1, 2021",1984,229 min,"Classic Movies, Dramas"
+168,Movie,Open Season 2,"Matthew O'Callaghan, Todd Wilderman","September 1, 2021",2008,76 min,"Children & Family Movies, Comedies"
+169,Movie,Osmosis Jones,"Bobby Farrelly, Peter Farrelly","September 1, 2021",2001,95 min,"Action & Adventure, Children & Family Movies, Comedies"
+170,Movie,Poseidon,Wolfgang Petersen,"September 1, 2021",2006,98 min,"Action & Adventure, Dramas"
+171,Movie,Rhyme & Reason,Peter Spirer,"September 1, 2021",1997,89 min,"Documentaries, Music & Musicals"
+172,Movie,Same Kind of Different as Me,Michael Carney,"September 1, 2021",2017,120 min,"Dramas, Faith & Spirituality"
+173,Movie,School of Rock,Richard Linklater,"September 1, 2021",2003,110 min,"Comedies, Music & Musicals"
+174,Movie,Snervous Tyler Oakley,Amy Rice,"September 1, 2021",2015,83 min,"Documentaries, LGBTQ Movies"
+175,Movie,Tears of the Sun,Antoine Fuqua,"September 1, 2021",2003,121 min,"Action & Adventure, Dramas"
+176,Movie,The Blue Lagoon,Randal Kleiser,"September 1, 2021",1980,105 min,"Dramas, Romantic Movies"
+177,Movie,The Golden Child,Michael Ritchie,"September 1, 2021",1986,94 min,"Action & Adventure, Comedies"
+178,Movie,The Guns of Navarone,J. Lee Thompson,"September 1, 2021",1961,156 min,"Action & Adventure, Classic Movies"
+179,Movie,The Interview,"Evan Goldberg, Seth Rogen","September 1, 2021",2014,112 min,"Action & Adventure, Comedies"
+180,Movie,The Nutty Professor,Tom Shadyac,"September 1, 2021",1996,95 min,"Comedies, Romantic Movies"
+181,Movie,The Nutty Professor II: The Klumps,Peter Segal,"September 1, 2021",2000,107 min,"Comedies, Romantic Movies"
+182,TV Show,Turning Point: 9/11 and the War on Terror,null,"September 1, 2021",2021,1 Season,Docuseries
+183,Movie,Welcome Home Roscoe Jenkins,Malcolm D. Lee,"September 1, 2021",2008,114 min,Comedies
+184,Movie,In the Line of Fire,Wolfgang Petersen,"August 31, 2021",1993,129 min,"Action & Adventure, Classic Movies"
+185,TV Show,Sparking Joy,null,"August 31, 2021",2021,1 Season,Reality TV
+186,Movie,Untold: Crime & Penalties,"Chapman Way, Maclain Way","August 31, 2021",2021,86 min,"Documentaries, Sports Movies"
+187,TV Show,Hometown Cha-Cha-Cha,null,"August 29, 2021",2021,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+188,TV Show,The Ingenuity of the Househusband,null,"August 29, 2021",2021,1 Season,"International TV Shows, TV Comedies"
+189,Movie,2 Alone in Paris,"Ramzy Bedia, Éric Judor","August 28, 2021",2008,97 min,"Comedies, International Movies"
+190,TV Show,Bread Barbershop,null,"August 28, 2021",2020,2 Seasons,"Kids' TV, TV Comedies"
+191,Movie,Thimmarusu,Sharan Koppisetty,"August 28, 2021",2021,125 min,"Dramas, International Movies"
+192,Movie,Wind River,Taylor Sheridan,"August 28, 2021",2017,107 min,"Dramas, Independent Movies"
+193,Movie,C Kkompany,Sachin Yardi,"August 27, 2021",2008,127 min,"Action & Adventure, Comedies, International Movies"
+194,TV Show,D.P.,null,"August 27, 2021",2021,1 Season,"International TV Shows, TV Dramas"
+195,TV Show,Deadly Sins,null,"August 27, 2021",2002,1 Season,"International TV Shows, Spanish-Language TV Shows, TV Dramas"
+196,Movie,EMI: Liya Hai To Chukana Padega,Saurabh Kabra,"August 27, 2021",2008,128 min,"Comedies, Dramas, International Movies"
+197,Movie,He's All That,Mark Waters,"August 27, 2021",2021,92 min,"Comedies, Romantic Movies"
+198,TV Show,I Heart Arlo,null,"August 27, 2021",2021,1 Season,"Kids' TV, TV Comedies"
+199,TV Show,King of Boys: The Return of the King,Kemi Adetiba,"August 27, 2021",2021,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
+200,Movie,Koi Aap Sa,Partho Mitra,"August 27, 2021",2006,135 min,"Comedies, Dramas, International Movies"
+201,Movie,Krishna Cottage,Santram Varma,"August 27, 2021",2004,124 min,"Action & Adventure, Horror Movies, International Movies"
+202,Movie,Kucch To Hai,"Anil V. Kumar, Anurag Basu","August 27, 2021",2003,136 min,"Dramas, International Movies, Thrillers"
+203,Movie,Kyaa Kool Hai Hum,Sangeeth Sivan,"August 27, 2021",2005,165 min,"Comedies, International Movies, Music & Musicals"
+204,Movie,Kyaa Kool Hain Hum 3,Umesh Ghadge,"August 27, 2021",2016,124 min,"Comedies, International Movies"
+205,Movie,Kyaa Super Kool Hain Hum,Sachin Yardi,"August 27, 2021",2012,136 min,"Comedies, International Movies"
+206,Movie,Kyo Kii... Main Jhuth Nahin Bolta,David Dhawan,"August 27, 2021",2001,150 min,"Comedies, International Movies, Sci-Fi & Fantasy"
+207,Movie,"LSD: Love, Sex Aur Dhokha",Dibakar Banerjee,"August 27, 2021",2010,112 min,"Dramas, Independent Movies, International Movies"
+208,Movie,Mission Istaanbul: Darr Ke Aagey Jeet Hai,Apoorva Lakhia,"August 27, 2021",2008,119 min,"Action & Adventure, International Movies, Music & Musicals"
+209,Movie,Once Upon a Time in Mumbaai,Milan Luthria,"August 27, 2021",2010,133 min,"Dramas, International Movies, Music & Musicals"
+210,Movie,Once Upon a Time in Mumbai Dobaara!,Milan Luthria,"August 27, 2021",2013,142 min,"Dramas, International Movies, Music & Musicals"
+211,Movie,Ragini MMS,Pawan Kripalani,"August 27, 2021",2011,93 min,"Horror Movies, International Movies"
+212,Movie,Ragini MMS 2,Bhushan Patel,"August 27, 2021",2014,113 min,"Horror Movies, International Movies"
+213,TV Show,Rebellion,null,"August 27, 2021",2016,2 Seasons,"International TV Shows, TV Dramas"
+214,TV Show,RIDE ON TIME,null,"August 27, 2021",2021,3 Seasons,"Docuseries, International TV Shows"
+215,Movie,SAS: Rise of the Black Swan,Magnus Martens,"August 27, 2021",2021,124 min,"Action & Adventure, International Movies"
+216,Movie,Shootout at Lokhandwala,Apoorva Lakhia,"August 27, 2021",2007,116 min,"Action & Adventure, Dramas, International Movies"
+217,Movie,Shor In the City,"Raj Nidimoru, Krishna D.K.","August 27, 2021",2011,106 min,"Comedies, Dramas, Independent Movies"
+218,Movie,The Dirty Picture,Milan Luthria,"August 27, 2021",2011,145 min,"Comedies, Dramas, International Movies"
+219,TV Show,Titletown High,null,"August 27, 2021",2021,1 Season,"Reality TV, Teen TV Shows"
+220,TV Show,EDENS ZERO,null,"August 26, 2021",2021,1 Season,"Anime Series, International TV Shows"
+221,TV Show,Family Reunion,null,"August 26, 2021",2021,4 Seasons,"Kids' TV, TV Comedies"
+222,Movie,"Bob Ross: Happy Accidents, Betrayal & Greed",Joshua Rofé,"August 25, 2021",2021,93 min,Documentaries
+223,TV Show,Clickbait,Brad Anderson,"August 25, 2021",2021,1 Season,"Crime TV Shows, TV Dramas, TV Mysteries"
+224,TV Show,John of God: The Crimes of a Spiritual Healer,"Mauricio Dias, Tatiana Villela","August 25, 2021",2021,1 Season,"Crime TV Shows, Docuseries, International TV Shows"
+225,TV Show,Motel Makeover,null,"August 25, 2021",2021,1 Season,"International TV Shows, Reality TV"
+226,TV Show,Open Your Eyes,null,"August 25, 2021",2021,1 Season,"International TV Shows, TV Dramas, TV Mysteries"
+227,TV Show,Post Mortem: No One Dies in Skarnes,null,"August 25, 2021",2021,1 Season,"International TV Shows, TV Comedies, TV Dramas"
+228,Movie,Really Love,Angel Kristi Williams,"August 25, 2021",2020,95 min,"Dramas, Independent Movies, Romantic Movies"
+229,Movie,The November Man,Roger Donaldson,"August 25, 2021",2014,108 min,Action & Adventure
+230,Movie,The Old Ways,Christopher Alender,"August 25, 2021",2020,90 min,Horror Movies
+231,Movie,The River Runner,Rush Sturges,"August 25, 2021",2021,86 min,"Documentaries, Sports Movies"
+232,Movie,The Water Man,David Oyelowo,"August 25, 2021",2021,92 min,"Children & Family Movies, Dramas"
+233,TV Show,Wheel of Fortune,null,"August 25, 2021",2019,3 Seasons,Reality TV
+234,Movie,Count Me In,Mark Lo,"August 24, 2021",2021,82 min,"Documentaries, Music & Musicals"
+235,TV Show,Oggy Oggy,null,"August 24, 2021",2021,1 Season,"Kids' TV, TV Comedies"
+236,Movie,Untold: Caitlyn Jenner,Crystal Moselle,"August 24, 2021",2021,70 min,"Documentaries, LGBTQ Movies, Sports Movies"
+237,Movie,Boomika,Rathindran R Prasad,"August 23, 2021",2021,122 min,"Horror Movies, International Movies, Thrillers"
+238,Movie,Boomika (Hindi),Rathindran R Prasad,"August 23, 2021",2021,122 min,"Horror Movies, International Movies, Thrillers"
+239,Movie,Boomika (Malayalam),Rathindran R Prasad,"August 23, 2021",2021,122 min,"Horror Movies, International Movies, Thrillers"
+240,Movie,Boomika (Telugu),Rathindran R Prasad,"August 23, 2021",2021,122 min,"Horror Movies, International Movies, Thrillers"
+241,Movie,The Witcher: Nightmare of the Wolf,Han Kwang Il,"August 23, 2021",2021,84 min,"Action & Adventure, Anime Features"
+242,TV Show,Manifest,null,"August 21, 2021",2021,3 Seasons,"TV Dramas, TV Mysteries, TV Sci-Fi & Fantasy"
+243,TV Show,Comedy Premium League,null,"August 20, 2021",2021,1 Season,"International TV Shows, TV Comedies"
+244,TV Show,Everything Will Be Fine,null,"August 20, 2021",2021,1 Season,"International TV Shows, Spanish-Language TV Shows, TV Comedies"
+245,Movie,Gunshot,Karim El Shenawy,"August 20, 2021",2018,96 min,"Dramas, International Movies, Thrillers"
+246,TV Show,Korean Cold Noodle Rhapsody,null,"August 20, 2021",2021,1 Season,"Docuseries, International TV Shows"
+247,Movie,Man in Love,Yin Chen-hao,"August 20, 2021",2021,115 min,"Dramas, International Movies, Romantic Movies"
+248,Movie,Sweet Girl,Brian Andrew Mendoza,"August 20, 2021",2021,110 min,"Action & Adventure, Dramas"
+249,TV Show,The Chair,null,"August 20, 2021",2021,1 Season,"TV Comedies, TV Dramas"
+250,Movie,The Loud House Movie,Dave Needham,"August 20, 2021",2021,88 min,"Children & Family Movies, Comedies, Music & Musicals"
+251,Movie,A Faraway Land,Veronica Velasco,"August 19, 2021",2020,102 min,"Dramas, International Movies, Romantic Movies"
+252,Movie,Like Crazy,Drake Doremus,"August 19, 2021",2011,91 min,"Dramas, Independent Movies, Romantic Movies"
+253,Movie,Black Island,Miguel Alexandre,"August 18, 2021",2021,105 min,"International Movies, Thrillers"
+254,Movie,Bombay,Mani Ratnam,"August 18, 2021",1995,135 min,"Dramas, International Movies, Romantic Movies"
+255,TV Show,Go! Go! Cory Carson,null,"August 18, 2021",2021,5 Seasons,Kids' TV
+256,Movie,Memories of a Murderer: The Nilsen Tapes,Michael Harte,"August 18, 2021",2021,86 min,"Documentaries, International Movies"
+257,Movie,Nneka The Pretty Serpent,Tosin Igho,"August 18, 2021",2020,140 min,"Dramas, International Movies"
+258,Movie,O Kadhal Kanmani,Mani Ratnam,"August 18, 2021",2015,133 min,"Dramas, International Movies, Romantic Movies"
+259,Movie,Out of my league,Alice Filippi,"August 18, 2021",2020,92 min,"Comedies, Dramas, International Movies"
+260,Movie,Pahuna,Paakhi Tyrewala,"August 18, 2021",2018,82 min,"Comedies, Dramas, International Movies"
+261,TV Show,The Defeated,null,"August 18, 2021",2020,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
+262,Movie,The Secret Diary of an Exchange Student,Bruno Garotti,"August 18, 2021",2021,97 min,"Comedies, International Movies, Romantic Movies"
+263,Movie,Untold: Deal With the Devil,Laura Brownson,"August 18, 2021",2021,78 min,"Documentaries, LGBTQ Movies, Sports Movies"
+264,TV Show,Mother Goose Club,null,"August 16, 2021",2016,2 Seasons,Kids' TV
+265,Movie,Walk of Shame,Steve Brill,"August 16, 2021",2014,94 min,"Comedies, Independent Movies"
+266,TV Show,Rascal Does Not Dream of Bunny Girl Senpai,null,"August 15, 2021",2018,1 Season,"Anime Series, International TV Shows, Romantic TV Shows"
+267,TV Show,The Creative Indians,null,"August 15, 2021",2020,1 Season,"Docuseries, International TV Shows"
+268,Movie,The Piano,Jane Campion,"August 15, 2021",1993,121 min,"Classic Movies, Dramas, Independent Movies"
+269,Movie,Unroyal,Moses Inwang,"August 15, 2021",2020,97 min,"Dramas, International Movies"
+270,TV Show,Winx Club,null,"August 15, 2021",2015,2 Seasons,Kids' TV
+271,Movie,Beckett,Ferdinando Cito Filomarino,"August 13, 2021",2021,110 min,Action & Adventure
+272,TV Show,Brand New Cherry Flavor,null,"August 13, 2021",2021,1 Season,"TV Dramas, TV Horror, TV Mysteries"
+273,TV Show,Fast & Furious Spy Racers,null,"August 13, 2021",2021,5 Seasons,Kids' TV
+274,TV Show,Gone for Good,Juan Carlos Medina,"August 13, 2021",2021,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
+275,TV Show,Grace and Frankie,null,"August 13, 2021",2021,7 Seasons,"TV Comedies, TV Dramas"
+276,TV Show,The Kingdom,null,"August 13, 2021",2021,1 Season,"Crime TV Shows, International TV Shows, Spanish-Language TV Shows"
+277,TV Show,Valeria,Inma Torrente,"August 13, 2021",2021,2 Seasons,"International TV Shows, Romantic TV Shows, Spanish-Language TV Shows"
+278,TV Show,AlRawabi School for Girls,null,"August 12, 2021",2021,1 Season,"International TV Shows, TV Dramas, Teen TV Shows"
+279,Movie,Lokillo: Nothing's the Same,Julián Gaviria,"August 12, 2021",2021,64 min,Stand-Up Comedy
+280,Movie,Monster Hunter: Legends of the Guild,Steven Yamamoto,"August 12, 2021",2021,59 min,"Action & Adventure, Anime Features, Children & Family Movies"
+281,TV Show,Bake Squad,null,"August 11, 2021",2021,1 Season,Reality TV
+282,Movie,Brother Jekwu,Charles Uwagbai,"August 11, 2021",2016,101 min,"Comedies, International Movies"
+283,Movie,La diosa del asfalto,Julián Hernández,"August 11, 2021",2020,127 min,"Dramas, Independent Movies, International Movies"
+284,Movie,Misha and the Wolves,Sam Hobkinson,"August 11, 2021",2021,90 min,"Documentaries, International Movies"
+285,Movie,The Kissing Booth 3,Vince Marcello,"August 11, 2021",2021,114 min,"Comedies, Romantic Movies"
+286,Movie,The Railway Man,Jonathan Teplitzky,"August 11, 2021",2013,108 min,"Dramas, International Movies"
+287,TV Show,Gabby's Dollhouse,null,"August 10, 2021",2021,2 Seasons,Kids' TV
+288,TV Show,I Need Romance,Sakon Tiacharoen,"August 10, 2021",2021,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+289,TV Show,Las muñecas de la mafia,null,"August 10, 2021",2018,1 Season,"Crime TV Shows, International TV Shows, Spanish-Language TV Shows"
+290,TV Show,The Crowned Clown,null,"August 10, 2021",2019,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
+291,Movie,Untold: Malice at the Palace,Floyd Russ,"August 10, 2021",2021,70 min,"Documentaries, Sports Movies"
+292,TV Show,SHAMAN KING,null,"August 9, 2021",2021,1 Season,"Anime Series, International TV Shows"
+293,Movie,Quartet,Dustin Hoffman,"August 8, 2021",2012,98 min,"Comedies, Dramas, Independent Movies"
+294,Movie,Slay,Adze Ugah,"August 8, 2021",2021,86 min,"Comedies, International Movies, Romantic Movies"
+295,Movie,Takizawa Kabuki ZERO 2020 The Movie,Hideaki Takizawa,"August 7, 2021",2020,139 min,"International Movies, Music & Musicals"
+296,Movie,The Paper Tigers,Quoc Bao Tran,"August 7, 2021",2021,111 min,"Action & Adventure, Comedies"
+297,TV Show,Hit & Run,null,"August 6, 2021",2021,1 Season,"TV Action & Adventure, TV Dramas, TV Mysteries"
+298,TV Show,Navarasa,"Bejoy Nambiar, Priyadarshan, Karthik Narain, Vasanth Sai, Karthik Subbaraj, Arvind Swamy, Rathindran R Prasad, Sarjun, Gautham Vasudev Menon","August 6, 2021",2021,1 Season,TV Shows
+299,Movie,Quam's Money,Kayode Kasum,"August 6, 2021",2020,115 min,"Comedies, Dramas, International Movies"
+300,Movie,The Swarm,Just Philippot,"August 6, 2021",2021,102 min,"Horror Movies, Independent Movies, International Movies"
+301,Movie,Vivo,"Kirk DeMicco, Brandon Jeffords","August 6, 2021",2021,100 min,"Children & Family Movies, Music & Musicals"
+302,Movie,Chennai Express,Rohit Shetty,"August 5, 2021",2013,135 min,"Action & Adventure, Comedies, International Movies"
+303,Movie,City of God: 10 Years Later,"Cavi Borges, Luciano Vidigal","August 5, 2021",2013,69 min,"Documentaries, International Movies"
+304,Movie,Esperando la carroza,Alejandro Doria,"August 5, 2021",1985,95 min,"Comedies, Cult Movies, International Movies"
+305,Movie,Lady Boss: The Jackie Collins Story,Laura Fairrie,"August 5, 2021",2021,97 min,Documentaries
+306,Movie,Tango Feroz,Marcelo Piñeyro,"August 5, 2021",1993,124 min,"Classic Movies, Dramas, International Movies"
+307,Movie,'76,Izu Ojukwu,"August 4, 2021",2016,118 min,"Dramas, International Movies"
+308,Movie,Aftermath,Peter Winther,"August 4, 2021",2021,115 min,Horror Movies
+309,Movie,American Masters: Inventing David Geffen,Susan Lacy,"August 4, 2021",2012,115 min,Movies
+310,TV Show,Car Masters: Rust to Riches,null,"August 4, 2021",2021,3 Seasons,Reality TV
+311,TV Show,Cocaine Cowboys: The Kings of Miami,Billy Corben,"August 4, 2021",2021,1 Season,"Crime TV Shows, Docuseries"
+312,TV Show,Control Z,null,"August 4, 2021",2021,2 Seasons,"International TV Shows, Spanish-Language TV Shows, TV Dramas"
+313,TV Show,Cooking With Paris,null,"August 4, 2021",2021,1 Season,Reality TV
+314,TV Show,Autumn's Concerto,null,"August 3, 2021",2009,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
+315,Movie,Heavy,James Mangold,"August 3, 2021",1995,104 min,"Dramas, Independent Movies, Romantic Movies"
+316,Movie,Ije: The Journey,Chineze Anyaene,"August 3, 2021",2010,106 min,"Dramas, International Movies"
+317,TV Show,Office Girls,Hsu Fu-chun,"August 3, 2021",2011,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+318,Movie,Pray Away,Kristine Stolakis,"August 3, 2021",2021,102 min,"Documentaries, LGBTQ Movies"
+319,Movie,Shiny_Flakes: The Teenage Drug Lord,"Eva Müller, Michael Schmitt","August 3, 2021",2021,97 min,"Documentaries, International Movies"
+320,TV Show,The Prince Who Turns into a Frog,null,"August 3, 2021",2005,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+321,TV Show,Top Secret UFO Projects: Declassified,null,"August 3, 2021",2021,1 Season,Docuseries
+322,TV Show,Two Fathers,null,"August 3, 2021",2013,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+323,TV Show,You're My Destiny,null,"August 3, 2021",2008,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+324,TV Show,30 Rock,null,"August 1, 2021",2012,7 Seasons,TV Comedies
+325,TV Show,44 Cats,null,"August 1, 2021",2020,3 Seasons,Kids' TV
+326,Movie,Beethoven,Brian Levant,"August 1, 2021",1992,87 min,"Children & Family Movies, Comedies"
+327,Movie,Beethoven's 2nd,Rod Daniel,"August 1, 2021",1993,88 min,"Children & Family Movies, Comedies"
+328,Movie,Beowulf,Robert Zemeckis,"August 1, 2021",2007,114 min,"Action & Adventure, Sci-Fi & Fantasy"
+329,Movie,Boyka: Undisputed,Todor Chapkanov,"August 1, 2021",2016,90 min,Action & Adventure
+330,Movie,Catch Me If You Can,Steven Spielberg,"August 1, 2021",2002,142 min,Dramas
+331,Movie,Cloudy with a Chance of Meatballs,"Phil Lord, Christopher Miller","August 1, 2021",2009,90 min,"Children & Family Movies, Comedies, Sci-Fi & Fantasy"
+332,TV Show,Darwin’s Game,null,"August 1, 2021",2020,1 Season,"Anime Series, International TV Shows, TV Thrillers"
+333,Movie,Deep Blue Sea,Renny Harlin,"August 1, 2021",1999,105 min,"Action & Adventure, Horror Movies, Sci-Fi & Fantasy"
+334,Movie,Ferris Bueller's Day Off,John Hughes,"August 1, 2021",1986,103 min,"Classic Movies, Comedies, Cult Movies"
+335,Movie,Five Feet Apart,Justin Baldoni,"August 1, 2021",2019,116 min,"Dramas, Romantic Movies"
+336,Movie,Freedomland,Joe Roth,"August 1, 2021",2006,113 min,"Dramas, Thrillers"
+337,TV Show,Friday Night Lights,null,"August 1, 2021",2010,5 Seasons,"TV Dramas, Teen TV Shows"
+338,Movie,Good Luck Chuck,Mark Helfrich,"August 1, 2021",2007,99 min,"Comedies, Romantic Movies"
+339,TV Show,Hunter X Hunter (2011),null,"August 1, 2021",2014,6 Seasons,"Anime Series, International TV Shows"
+340,Movie,I missed you: Director's Cut,"Mag Hsu, Hsu Chih-yen","August 1, 2021",2021,96 min,"Dramas, Independent Movies, International Movies"
+341,Movie,Inception,Christopher Nolan,"August 1, 2021",2010,148 min,"Action & Adventure, Sci-Fi & Fantasy, Thrillers"
+342,Movie,Magnolia,Paul Thomas Anderson,"August 1, 2021",1999,189 min,"Dramas, Independent Movies"
+343,Movie,Major Payne,Nick Castle,"August 1, 2021",1995,97 min,Comedies
+344,Movie,My Girl,Howard Zieff,"August 1, 2021",1991,102 min,Dramas
+345,Movie,My Girl 2,Howard Zieff,"August 1, 2021",1994,99 min,"Children & Family Movies, Comedies, Dramas"
+346,Movie,Open Season: Scared Silly,David Feiss,"August 1, 2021",2015,85 min,"Children & Family Movies, Comedies"
+347,Movie,Pineapple Express,David Gordon Green,"August 1, 2021",2008,112 min,"Action & Adventure, Comedies"
+348,Movie,Planet 51,Jorge Blanco,"August 1, 2021",2009,91 min,"Children & Family Movies, Comedies, Sci-Fi & Fantasy"
+349,Movie,Poms,Zara Hayes,"August 1, 2021",2019,91 min,Comedies
+350,Movie,Seabiscuit,Gary Ross,"August 1, 2021",2003,141 min,"Dramas, Sports Movies"
+351,Movie,Space Cowboys,Clint Eastwood,"August 1, 2021",2000,130 min,"Action & Adventure, Dramas, Sci-Fi & Fantasy"
+352,Movie,Team America: World Police,Trey Parker,"August 1, 2021",2004,98 min,"Action & Adventure, Comedies, Cult Movies"
+353,Movie,The Edge of Seventeen,Kelly Fremon Craig,"August 1, 2021",2016,105 min,"Comedies, Dramas"
+354,Movie,The Haunting in Connecticut 2: Ghosts of Georgia,Tom Elkins,"August 1, 2021",2013,101 min,Horror Movies
+355,Movie,The Last Boy Scout,Tony Scott,"August 1, 2021",1991,105 min,"Action & Adventure, Comedies"
+356,Movie,The Lincoln Lawyer,Brad Furman,"August 1, 2021",2011,118 min,"Dramas, Thrillers"
+357,Movie,The Losers,Sylvain White,"August 1, 2021",2010,97 min,Action & Adventure
+358,Movie,The Machinist,Brad Anderson,"August 1, 2021",2004,102 min,"Dramas, Independent Movies, Thrillers"
+359,Movie,The Net,Irwin Winkler,"August 1, 2021",1995,114 min,Thrillers
+360,Movie,The Original Kings of Comedy,Spike Lee,"August 1, 2021",2000,111 min,Stand-Up Comedy
+361,Movie,Valentine's Day,Garry Marshall,"August 1, 2021",2010,125 min,"Comedies, Romantic Movies"
+362,TV Show,Charmed,null,"July 31, 2021",2021,3 Seasons,"TV Dramas, TV Sci-Fi & Fantasy"
+363,Movie,The Lost Café,Kenneth Gyang,"July 31, 2021",2018,76 min,"Dramas, International Movies"
+364,Movie,The Vault,Jaume Balagueró,"July 31, 2021",2021,118 min,"Action & Adventure, International Movies, Thrillers"
+365,TV Show,Centaurworld,null,"July 30, 2021",2021,1 Season,"Kids' TV, TV Comedies"
+366,Movie,Eyes of a Thief,Najwa Najjar,"July 30, 2021",2014,103 min,"Dramas, Independent Movies, International Movies"
+367,TV Show,Glow Up,null,"July 30, 2021",2021,3 Seasons,"British TV Shows, International TV Shows, Reality TV"
+368,Movie,I'm Glad I Did,Selçuk Metin,"July 30, 2021",2020,114 min,"Documentaries, International Movies"
+369,TV Show,Khawatir,null,"July 30, 2021",2009,1 Season,"International TV Shows, Reality TV"
+370,TV Show,Myth & Mogul: John DeLorean,null,"July 30, 2021",2021,1 Season,"British TV Shows, Crime TV Shows, Docuseries"
+371,TV Show,Outer Banks,null,"July 30, 2021",2021,2 Seasons,"TV Action & Adventure, TV Dramas, Teen TV Shows"
+372,Movie,Pomegranates and Myrrh,Najwa Najjar,"July 30, 2021",2009,95 min,"Dramas, Independent Movies, International Movies"
+373,Movie,Rurouni Kenshin: The Beginning,Keishi Otomo,"July 30, 2021",2021,138 min,"Action & Adventure, International Movies"
+374,Movie,The Last Mercenary,David Charhon,"July 30, 2021",2021,112 min,"Action & Adventure, Comedies, International Movies"
+375,Movie,Flower Girl,Michelle Bello,"July 29, 2021",2013,94 min,"Comedies, International Movies, Romantic Movies"
+376,Movie,Resort to Love,Steven Tsuchida,"July 29, 2021",2021,102 min,"Comedies, Romantic Movies"
+377,TV Show,Transformers: War for Cybertron: Kingdom,null,"July 29, 2021",2021,1 Season,Anime Series
+378,Movie,Bartkowiak,Daniel Markowicz,"July 28, 2021",2021,92 min,"Action & Adventure, International Movies"
+379,Movie,Fantastic Fungi,Louie Schwartzberg,"July 28, 2021",2019,81 min,Documentaries
+380,TV Show,Tattoo Redo,null,"July 28, 2021",2021,1 Season,Reality TV
+381,TV Show,The Flash,Glen Winter,"July 28, 2021",2021,7 Seasons,"Crime TV Shows, TV Action & Adventure, TV Sci-Fi & Fantasy"
+382,TV Show,The Snitch Cartel: Origins,null,"July 28, 2021",2021,1 Season,"Crime TV Shows, International TV Shows, Spanish-Language TV Shows"
+383,TV Show,All American,null,"July 27, 2021",2021,3 Seasons,"TV Dramas, Teen TV Shows"
+384,Movie,Department,Ram Gopal Varma,"July 27, 2021",2012,143 min,"Action & Adventure, International Movies"
+385,Movie,Hostage House,David Benullo,"July 27, 2021",2021,86 min,Thrillers
+386,TV Show,How to Sell Drugs Online (Fast),null,"July 27, 2021",2021,3 Seasons,"Crime TV Shows, International TV Shows, TV Comedies"
+387,TV Show,Mighty Express,null,"July 27, 2021",2021,4 Seasons,Kids' TV
+388,Movie,Mimi,Laxman Utekar,"July 27, 2021",2021,132 min,"Comedies, Dramas, International Movies"
+389,TV Show,Plastic Cup Boyz: Laughing My Mask Off!,"Royale Watkins, Rich Schlansker","July 27, 2021",2021,1 Season,"Stand-Up Comedy & Talk Shows, TV Comedies"
+390,Movie,The Operative,Yuval Adler,"July 27, 2021",2019,117 min,"Dramas, International Movies, Thrillers"
+391,TV Show,The Walking Dead,null,"July 26, 2021",2019,10 Seasons,"Classic & Cult TV, TV Action & Adventure, TV Dramas"
+392,TV Show,Wynonna Earp,null,"July 26, 2021",2020,4 Seasons,"International TV Shows, TV Action & Adventure, TV Dramas"
+393,Movie,Django Unchained,Quentin Tarantino,"July 24, 2021",2012,165 min,"Action & Adventure, Dramas"
+394,Movie,A Second Chance:  Rivals!,Clay Glen,"July 23, 2021",2021,91 min,"Children & Family Movies, Sports Movies"
+395,Movie,African America,Muzi Mthembu,"July 23, 2021",2021,97 min,"Dramas, Independent Movies, International Movies"
+396,Movie,Bankrolled,Marcos Bucay,"July 23, 2021",2021,97 min,"Comedies, International Movies"
+397,Movie,Blood Red Sky,Peter Thorwarth,"July 23, 2021",2021,123 min,"Action & Adventure, Horror Movies, International Movies"
+398,TV Show,Feels Like Ishq,null,"July 23, 2021",2021,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+399,Movie,Kingdom: Ashin of the North,Kim Seong-hun,"July 23, 2021",2021,94 min,"Horror Movies, International Movies, Thrillers"
+400,TV Show,Masters of the Universe: Revelation,null,"July 23, 2021",2021,1 Season,"TV Action & Adventure, TV Sci-Fi & Fantasy"
+401,TV Show,Revelations: The Masters of the Universe: Revelation Aftershow,null,"July 23, 2021",2021,1 Season,"Anime Series, Stand-Up Comedy & Talk Shows"
+402,TV Show,Sky Rojo,null,"July 23, 2021",2021,2 Seasons,"International TV Shows, Spanish-Language TV Shows, TV Action & Adventure"
+403,Movie,The Last Letter From Your Lover,Augustine Frizzell,"July 23, 2021",2021,111 min,"Dramas, Romantic Movies"
+404,TV Show,The Movies That Made Us,null,"July 23, 2021",2021,2 Seasons,Docuseries
+405,Movie,9to5: The Story of a Movement,null,"July 22, 2021",2021,85 min,Documentaries
+406,Movie,Chhota Bheem - Dinosaur World,Sidheswar Shukla,"July 22, 2021",2015,65 min,Children & Family Movies
+407,Movie,Chhota Bheem - Neeli Pahaadi,Rajiv Chilaka,"July 22, 2021",2013,64 min,Children & Family Movies
+408,Movie,Chhota Bheem & Ganesh,Rajiv Chilaka,"July 22, 2021",2009,68 min,Children & Family Movies
+409,Movie,Chhota Bheem & Krishna: Mayanagari,Rajiv Chilaka,"July 22, 2021",2011,67 min,Children & Family Movies
+410,Movie,Chhota Bheem & Krishna: Pataliputra- City of the Dead,Rajiv Chilaka,"July 22, 2021",2010,66 min,Children & Family Movies
+411,Movie,Chhota Bheem And The Broken Amulet,Rajiv Chilaka,"July 22, 2021",2013,64 min,Children & Family Movies
+412,Movie,Chhota Bheem And The Crown of Valhalla,Rajiv Chilaka,"July 22, 2021",2013,64 min,Children & Family Movies
+413,Movie,Chhota Bheem and the Incan Adventure,Rajiv Chilaka,"July 22, 2021",2013,65 min,Children & Family Movies
+414,Movie,Chhota Bheem and The ShiNobi Secret,Rajiv Chilaka,"July 22, 2021",2013,64 min,Children & Family Movies
+415,Movie,Chhota Bheem Aur Hanuman,Rajiv Chilaka,"July 22, 2021",2012,68 min,Children & Family Movies
+416,Movie,Chhota Bheem aur Krishna,Rajiv Chilaka,"July 22, 2021",2009,68 min,Children & Family Movies
+417,Movie,Chhota Bheem aur Krishna vs Zimbara,Rajiv Chilaka,"July 22, 2021",2013,64 min,Children & Family Movies
+418,Movie,Chhota Bheem in African Safari,Binayak Das,"July 22, 2021",2015,62 min,Children & Family Movies
+419,Movie,Chhota Bheem Ka Roosi Romanch,"Arpan Sarkar, Shyamal Chaulia","July 22, 2021",2019,63 min,Children & Family Movies
+420,Movie,Chhota Bheem: Bheem vs Aliens,Rajiv Chilaka,"July 22, 2021",2010,69 min,"Children & Family Movies, Sports Movies"
+421,Movie,Chhota Bheem: Dholakpur to Kathmandu,Rajiv Chilaka,"July 22, 2021",2012,70 min,Children & Family Movies
+422,Movie,Chhota Bheem: Dus Pe Dus,"Rajiv Chilaka, Owll Mina","July 22, 2021",2014,63 min,Children & Family Movies
+423,Movie,Chhota Bheem: Journey to Petra,Rajiv Chilaka,"July 22, 2021",2011,68 min,Children & Family Movies
+424,Movie,Chhota Bheem: Master of Shaolin,Rajiv Chilaka,"July 22, 2021",2011,74 min,Children & Family Movies
+425,Movie,Chhota Bheem: The Rise of Kirmada,Rajiv Chilaka,"July 22, 2021",2012,68 min,Children & Family Movies
+426,TV Show,Chicago Med,null,"July 22, 2021",2019,5 Seasons,TV Dramas
+427,Movie,Cousins,"Ainsley Gardiner, Briar Grace-Smith","July 22, 2021",2021,99 min,Dramas
+428,Movie,Wannabe Courageous,Mahmoud Karim,"July 22, 2021",2019,90 min,"Comedies, International Movies"
+429,Movie,Words Bubble Up Like Soda Pop,Kyohei Ishiguro,"July 22, 2021",2021,87 min,"Anime Features, Children & Family Movies, International Movies"
+430,Movie,Sanitation Day,Seyi Babatope,"July 21, 2021",2020,105 min,"Dramas, International Movies, Thrillers"
+431,TV Show,Sexy Beasts,null,"July 21, 2021",2021,1 Season,"British TV Shows, International TV Shows, Reality TV"
+432,TV Show,Too Hot to Handle: Brazil,null,"July 21, 2021",2021,1 Season,"International TV Shows, Reality TV, Romantic TV Shows"
+433,Movie,Trollhunters: Rise of the Titans,"Johane Matte, Andrew L. Schmidt, Francisco Ruiz Velasco","July 21, 2021",2021,106 min,Children & Family Movies
+434,Movie,Milkwater,Morgan Ingari,"July 20, 2021",2020,102 min,"Comedies, Dramas, Independent Movies"
+435,TV Show,Okupas,null,"July 20, 2021",2020,1 Season,"Classic & Cult TV, Crime TV Shows, International TV Shows"
+436,TV Show,Touch Your Heart,null,"July 20, 2021",2019,1 Season,"Crime TV Shows, International TV Shows, Romantic TV Shows"
+437,Movie,The Tambour of Retribution,Abdulaziz Alshlahei,"July 19, 2021",2021,91 min,"Dramas, International Movies, Romantic Movies"
+438,Movie,Cosmic Sin,Edward Drake,"July 17, 2021",2021,88 min,Action & Adventure
+439,Movie,2 Weeks in Lagos,Kathryn Fasegha,"July 16, 2021",2020,107 min,"Dramas, International Movies, Romantic Movies"
+440,Movie,Deep,"Sita Likitvanichkul, Jetarin Ratanaserikiat, Apirak Samudkitpaisan, Thanabodee Uawithya, Adirek Wattaleela","July 16, 2021",2021,101 min,"Dramas, International Movies, Thrillers"
+441,TV Show,Explained,null,"July 16, 2021",2021,3 Seasons,"Docuseries, Science & Nature TV"
+442,Movie,Fear Street Part 3: 1666,Leigh Janiak,"July 16, 2021",2021,114 min,"Horror Movies, LGBTQ Movies"
+443,TV Show,Johnny Test,null,"July 16, 2021",2021,1 Season,"Kids' TV, TV Comedies"
+444,Movie,La ley de Herodes,Luis Estrada,"July 16, 2021",1999,123 min,"Comedies, International Movies"
+445,TV Show,Naomi Osaka,Garrett Bradley,"July 16, 2021",2021,1 Season,Docuseries
+446,Movie,The Beguiled,Sofia Coppola,"July 16, 2021",2017,94 min,"Dramas, Independent Movies, Thrillers"
+447,Movie,The Book of Henry,Colin Trevorrow,"July 16, 2021",2017,105 min,Dramas
+448,Movie,The Twilight Saga: Breaking Dawn: Part 1,Bill Condon,"July 16, 2021",2011,117 min,"Dramas, Romantic Movies"
+449,Movie,The Twilight Saga: Breaking Dawn: Part 2,Bill Condon,"July 16, 2021",2012,115 min,"Dramas, Romantic Movies"
+450,Movie,The Twilight Saga: Eclipse,David Slade,"July 16, 2021",2010,124 min,"Dramas, Romantic Movies"
+451,Movie,The Twilight Saga: New Moon,Chris Weitz,"July 16, 2021",2009,131 min,"Dramas, Romantic Movies"
+452,Movie,Twilight,Catherine Hardwicke,"July 16, 2021",2008,122 min,"Action & Adventure, Dramas, Romantic Movies"
+453,Movie,A Perfect Fit,Hadrah Daeng Ratu,"July 15, 2021",2021,113 min,"Comedies, Dramas, International Movies"
+454,TV Show,BEASTARS,null,"July 15, 2021",2021,2 Seasons,"Anime Series, International TV Shows"

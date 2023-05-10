@@ -458,19 +458,18 @@ public class DatabaseAccess {
             databaseFile.seek(pointerPosition + 6 + size);
             pointerPosition = databaseFile.getFilePointer();
         }
-        System.out.println(fileString);
+        // System.out.println(fileString);
         return fileString;
     }
 
     public void dbFromString(String unpackedFileString) throws NumberFormatException, IOException, ParseException {
 
         clearDb();
-        position = (long) 0;
 
         String lines[] = unpackedFileString.split("\n");
-        databaseFile.writeInt(Integer.parseInt(lines[0]));
 
-        // remover $ e o tamanho
+        // transform each array item in a film and write it
+        // in the db file
         for (int i = 1; i < lines.length; i++) {
 
             Film film = new Film();

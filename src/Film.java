@@ -156,9 +156,9 @@ public class Film {
      */
     public String toString() {
 
-        return Integer.toString(show_id) + "," + type.trim() + "," + title.trim() + ","
+        return Integer.toString(show_id) + "," + type.trim() + ",\"" + title.trim() + "\",\""
                 + director.trim()
-                + ",\"" + new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).format(date_added)
+                + "\",\"" + new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).format(date_added)
                 + "\"," + Integer.toString(release_year)
                 + "," + duration.trim() + ",\"" + String.join(",", listed_in) + "\"";
 

@@ -37,16 +37,18 @@ public class LZW {
                 current = "" + c;
             }
         }
-        // System.out.println("Tamanho do dicionário após inserção: " +
-        // dictionary.size());
+        System.out.println("Tamanho do dicionário após inserção: " + dictionary.size());
 
         if (!current.equals("")) {
             result.add(dictionary.get(current));
         }
 
-        // System.out.println("Tamanho do result após cada inserção: " + result.size());
+        System.out.println("Tamanho do result após cada inserção: " + result.size());
 
+        int count = 0;
         for (short code : result) {
+            count++;
+            System.out.println("count: " + count);
             compressedFile.writeShort(code);
 
         }
@@ -59,7 +61,8 @@ public class LZW {
         System.out.println("Tempo total para compactação pelo algoritmo LZW foi de " + total + " milessegundos");
     }
 
-    public void unpack(String CompressedFileName, String newDBFile) throws IOException, NumberFormatException, ParseException {
+    public void unpack(String CompressedFileName, String newDBFile)
+            throws IOException, NumberFormatException, ParseException {
         long tempoInicial = System.currentTimeMillis();
 
         // create the initial dictionary
