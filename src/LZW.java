@@ -16,15 +16,15 @@ public class LZW {
         long tempoInicial = System.currentTimeMillis();
 
         // create the initial dictionary
-        HashMap<String, Short> dictionary = new HashMap<>();
+        HashMap<String, Integer> dictionary = new HashMap<>();
 
         for (int i = 0; i < 256; i++) {
-            dictionary.put("" + (char) i, (short) i);
+            dictionary.put("" + (char) i, i);
 
         }
         // System.out.println("Tamanho do dicionário inicial: " + dictionary.size());
         String current = "";
-        List<Short> result = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         DataOutputStream compressedFile = new DataOutputStream(new FileOutputStream(fileName));
 
         for (char c : fileAsString.toCharArray()) {
@@ -33,8 +33,8 @@ public class LZW {
                 current = combined;
             } else {
                 result.add(dictionary.get(current));
-                dictionary.put(combined, (short) dictionary.size());
-                System.out.println("key: " + combined + "| Value: " + (short) dictionary.size());
+                dictionary.put(combined, dictionary.size());
+
                 current = "" + c;
 
             }
@@ -43,22 +43,14 @@ public class LZW {
         // System.out.println("Tamanho do dicionário após inserção: " +
         // dictionary.size());
 
-        if (!current.equals(""))
-        {
+        if (!current.equals("")) {
             result.add(dictionary.get(current));
         }
 
-        /*
-         * /
-         * dictionary.entrySet().forEach(entry -> {
-         * System.out.println(entry.getKey() + " = " + entry.getValue());
-         * });
-         */
-
         // System.out.println("Tamanho do result após cada inserção: " + result.size());
 
-        for (short code : result) {   
-           compressedFile.writeShort(code);
+        for (Integer code : result) {
+            compressedFile.writeInt(code);
 
         }
 
@@ -75,26 +67,26 @@ public class LZW {
         long tempoInicial = System.currentTimeMillis();
 
         // create the initial dictionary
-        HashMap<Short, String> dictionary = new HashMap<>();
+        HashMap<Integer, String> dictionary = new HashMap<>();
 
         for (int i = 0; i < 256; i++) {
-            dictionary.put((short) i, "" + (char) i);
+            dictionary.put(i, "" + (char) i);
 
         }
 
         DataInputStream compressedFile = new DataInputStream(new FileInputStream(CompressedFileName));
 
-        List<Short> compressed = new ArrayList<>();
+        List<Integer> compressed = new ArrayList<>();
 
         while (compressedFile.available() > 0) {
-            compressed.add(compressedFile.readShort());
+            compressed.add(compressedFile.readInt());
         }
         compressedFile.close();
 
-        short code = compressed.remove(0);
+        int code = compressed.remove(0);
         String current = dictionary.get(code);
         String unpackedFileString = current;
-        for (short nextCode : compressed) {
+        for (int nextCode : compressed) {
             String entry;
             if (dictionary.containsKey(nextCode)) {
                 entry = dictionary.get(nextCode);
@@ -104,7 +96,7 @@ public class LZW {
                 throw new IllegalArgumentException("Bad compressed code: " + nextCode);
             }
             unpackedFileString += entry;
-            dictionary.put((short) dictionary.size(), current + entry.charAt(0));
+            dictionary.put(dictionary.size(), current + entry.charAt(0));
             current = entry;
         }
 

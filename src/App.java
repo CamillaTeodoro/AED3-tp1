@@ -4,12 +4,12 @@ import java.util.*;
 
 public class App {
     private static int batchSize = 5;
-    private static final String CSV_PATH = "../test.csv";
+    private static final String CSV_PATH = "../netflix_titles.csv";
     private static final String DB_PATH = "../db/banco.db";
     private static final String BTREE_PATH = "../db/bTree.db";
     private static final String HASH_DIR_PATH = "../db/HashDir.db";
     private static final String HASH_IND_PATH = "../db/HashInd.db";
-    private static final String COMPRESSED_FILE = "../db/BancoLZWCompressao1.db";
+    private static final String COMPRESSED_FILE = "../compress/BancoLZWCompressao1.db";
 
     /**
      * Read the csv file and load it into the database
@@ -49,6 +49,36 @@ public class App {
             e.printStackTrace();
         }
         System.out.println("Base de dados criada com sucesso.");
+    }
+
+    public static void cleanCSV() throws FileNotFoundException {
+        Scanner fileReaderScanner = new Scanner(new File(CSV_PATH));
+        String line = fileReaderScanner.nextLine(); // Ignora
+
+        // create the initial dictionary
+        HashMap<String, Integer> dictionary = new HashMap<>();
+
+        for (int i = 0; i < 256; i++) {
+            dictionary.put("" + (char) i, i);
+        }
+
+        ArrayList<String> ofenders = new ArrayList<>();
+
+        while (fileReaderScanner.hasNextLine()) {
+            line = fileReaderScanner.nextLine();
+            if (line.trim().length() == 0) {
+                continue;
+            }
+
+            //
+            for (int i = 0; i < line.length(); i++) {
+                if (!dictionary.containsKey(line.charAt(i) + "")) {
+                    ofenders.add(line.charAt(i) + "");
+                    System.out.println(line);
+                }
+            }
+        }
+        System.out.println(Arrays.toString(ofenders.toArray()));
     }
 
     /**
@@ -911,6 +941,9 @@ public class App {
                 case 14:
                     System.out.println("Descompactando");
                     lzw.unpack(COMPRESSED_FILE, DB_PATH);
+                    break;
+                case 15:
+                    cleanCSV();
                     break;
                 case 0:
                     System.out.println("Saindo...");
