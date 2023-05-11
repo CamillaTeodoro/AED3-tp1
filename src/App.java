@@ -977,9 +977,14 @@ public class App {
                     break;
 
                 case 14: {
-                    String fileToUnpack = "../compress/" + readFilesFromFolder();
-                    System.out.println("Descompactando");
-                    lzw.unpack(fileToUnpack, DB_PATH);
+                    String file = readFilesFromFolder();
+                    if (file == "") {
+                        System.out.println("ERRO AO DESCOMPACTAR");
+                    } else {
+                        String fileToUnpack = "../compress/" + file;
+                        System.out.println("Descompactando");
+                        lzw.unpack(fileToUnpack, DB_PATH);
+                    }
                     break;
                 }
                 case 15:
