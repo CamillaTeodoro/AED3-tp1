@@ -9,6 +9,13 @@
       "name": "App",
       "request": "launch",
       "mainClass": "App",
+      "projectName": "AED3-tp1_c2c5d6c7"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
       "projectName": "AED3-tp1_5cfa0bf1",
       "cwd": "${workspaceFolder}/src"
     }

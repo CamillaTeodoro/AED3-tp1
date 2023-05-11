@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.text.ParseException;
 
 public class DatabaseAccess {
 
@@ -373,6 +374,30 @@ public class DatabaseAccess {
     }
 
     /**
+     * Get next record and return the film object
+     * 
+     * @return a Film or null
+     */
+    public Film nextFilm() {
+        try {
+            long pointerPosition = databaseFile.getFilePointer();
+            Film film = new Film();
+            databaseFile.seek(pointerPosition - 4);
+            int sizeFilm = databaseFile.readInt();
+            // System.out.println(sizeFilm);
+            byte[] b = new byte[sizeFilm];
+            databaseFile.read(b);
+            film.fromByteArray(b);
+
+            return film;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Print database
      */
     public void print() {
@@ -406,5 +431,51 @@ public class DatabaseAccess {
      */
     public void setPosition(Long pointerPosition) throws IOException {
         this.position = pointerPosition;
+    }
+
+    public String dbToString() throws IOException {
+
+        String fileString = "";
+        long fileSize = databaseFile.length();
+        long pointerPosition = position;
+        databaseFile.seek(0);
+        int lastId = databaseFile.readInt();
+        fileString += Integer.toString(lastId);
+        fileString += ";";
+
+        while (pointerPosition < fileSize) {
+            char lapide = databaseFile.readChar();
+            int size = databaseFile.readInt();
+            if (lapide == '$') {
+                Film film = new Film();
+                film = nextFilm();
+                String filmAsString = film.toString();
+                fileString += filmAsString;
+
+                fileString += ";";
+            }
+
+            databaseFile.seek(pointerPosition + 6 + size);
+            pointerPosition = databaseFile.getFilePointer();
+        }
+        // System.out.println(fileString);
+        return fileString;
+    }
+
+    public void dbFromString(String unpackedFileString) throws NumberFormatException, IOException, ParseException {
+
+        clearDb();
+
+        String lines[] = unpackedFileString.split(";");
+
+        // transform each array item in a film and write it
+        // in the db file
+        for (int i = 1; i < lines.length; i++) {
+
+            Film film = new Film();
+            film.ReadText(lines[i]);
+            // film.print();
+            create(film);
+        }
     }
 }

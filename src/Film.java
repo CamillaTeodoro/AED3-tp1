@@ -151,6 +151,19 @@ public class Film {
 
     }
 
+    /**
+     * Print register
+     */
+    public String toString() {
+
+        return Integer.toString(show_id) + ",\"" + type.trim() + "\",\"" + title.trim() + "\",\""
+                + director.trim()
+                + "\",\"" + new SimpleDateFormat("MMMMM dd, yyyy", Locale.ENGLISH).format(date_added)
+                + "\"," + Integer.toString(release_year)
+                + "," + duration.trim() + ",\"" + String.join(",", listed_in) + "\"";
+
+    }
+
     // Turns an object into a byte array
     public byte[] toByteArray() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

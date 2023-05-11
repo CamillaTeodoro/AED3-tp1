@@ -330,7 +330,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 329,Movie,Boyka: Undisputed,Todor Chapkanov,"August 1, 2021",2016,90 min,Action & Adventure
 330,Movie,Catch Me If You Can,Steven Spielberg,"August 1, 2021",2002,142 min,Dramas
 331,Movie,Cloudy with a Chance of Meatballs,"Phil Lord, Christopher Miller","August 1, 2021",2009,90 min,"Children & Family Movies, Comedies, Sci-Fi & Fantasy"
-332,TV Show,Darwin’s Game,null,"August 1, 2021",2020,1 Season,"Anime Series, International TV Shows, TV Thrillers"
+332,TV Show,Darwins Game,null,"August 1, 2021",2020,1 Season,"Anime Series, International TV Shows, TV Thrillers"
 333,Movie,Deep Blue Sea,Renny Harlin,"August 1, 2021",1999,105 min,"Action & Adventure, Horror Movies, Sci-Fi & Fantasy"
 334,Movie,Ferris Bueller's Day Off,John Hughes,"August 1, 2021",1986,103 min,"Classic Movies, Comedies, Cult Movies"
 335,Movie,Five Feet Apart,Justin Baldoni,"August 1, 2021",2019,116 min,"Dramas, Romantic Movies"
@@ -474,8 +474,8 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 473,TV Show,Ridley Jones,null,"July 13, 2021",2021,1 Season,Kids' TV
 474,Movie,Born to Play,Viridiana Lieberman,"July 12, 2021",2020,93 min,"Documentaries, Sports Movies"
 475,Movie,American Ultra,Nima Nourizadeh,"July 10, 2021",2015,96 min,"Action & Adventure, Comedies"
-476,Movie,The Stand-Up,Daniel Růžička,"July 10, 2021",2019,93 min,Stand-Up Comedy
-477,Movie,The Tour,Juraj Šajmovič,"July 10, 2021",2016,93 min,"Comedies, Documentaries, International Movies"
+476,Movie,The Stand-Up,Daniel Ruzicka,"July 10, 2021",2019,93 min,Stand-Up Comedy
+477,Movie,The Tour,Juraj Sajmovic,"July 10, 2021",2016,93 min,"Comedies, Documentaries, International Movies"
 478,TV Show,Atypical,null,"July 9, 2021",2021,4 Seasons,"TV Comedies, TV Dramas, Teen TV Shows"
 479,TV Show,Biohackers,null,"July 9, 2021",2021,2 Seasons,"International TV Shows, TV Dramas, TV Sci-Fi & Fantasy"
 480,Movie,Fear Street Part 2: 1978,Leigh Janiak,"July 9, 2021",2021,111 min,Horror Movies
@@ -623,7 +623,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 622,TV Show,Legend of Exorcism,Shen Leping,"June 30, 2021",2020,1 Season,"Anime Series, Crime TV Shows, International TV Shows"
 623,Movie,Lying and Stealing,Matt Aselton,"June 30, 2021",2019,100 min,Thrillers
 624,Movie,Mommy Issues,Jose Javier Reyes,"June 30, 2021",2021,90 min,"Comedies, Dramas, International Movies"
-625,Movie,Prime Time,Jakub Piątek,"June 30, 2021",2021,92 min,"Dramas, International Movies, Thrillers"
+625,Movie,Prime Time,Jakub Piatek,"June 30, 2021",2021,92 min,"Dramas, International Movies, Thrillers"
 626,TV Show,Somos.,null,"June 30, 2021",2021,1 Season,"Crime TV Shows, International TV Shows, Spanish-Language TV Shows"
 627,TV Show,Sophie: A Murder in West Cork,John Dower,"June 30, 2021",2021,1 Season,"British TV Shows, Crime TV Shows, Docuseries"
 628,TV Show,The Daily Life of the Immortal King,null,"June 30, 2021",2020,1 Season,"Anime Series, International TV Shows, Teen TV Shows"
@@ -632,7 +632,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 631,Movie,Killing Them Softly,Andrew Dominik,"June 28, 2021",2012,97 min,Dramas
 632,TV Show,The Seven Deadly Sins,null,"June 28, 2021",2021,5 Seasons,"Anime Series, International TV Shows"
 633,Movie,Wanted,Nibal Arakji,"June 28, 2021",2019,90 min,"Comedies, International Movies"
-634,Movie,Into the Wind,Sofie Šustková,"June 26, 2021",2018,76 min,"Dramas, Independent Movies, International Movies"
+634,Movie,Into the Wind,Sofie Sustková,"June 26, 2021",2018,76 min,"Dramas, Independent Movies, International Movies"
 635,Movie,Wonder Boy,Anissa Bonnefont,"June 26, 2021",2019,83 min,"Documentaries, International Movies"
 636,Movie,Here Comes the Rain,Bahij Hojeij,"June 25, 2021",2010,101 min,"Dramas, International Movies"
 637,Movie,The Ice Road,Jonathan Hensleigh,"June 25, 2021",2021,109 min,Action & Adventure
@@ -748,7 +748,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 747,Movie,Awake,Mark Raso,"June 9, 2021",2021,97 min,"Dramas, Thrillers"
 748,Movie,Confusion Na Wa,Kenneth Gyang,"June 9, 2021",2013,106 min,"Comedies, Dramas, International Movies"
 749,TV Show,"Fresh, Fried & Crispy",null,"June 9, 2021",2021,1 Season,Reality TV
-750,TV Show,L.A.’s Finest,null,"June 9, 2021",2021,2 Seasons,"Crime TV Shows, TV Action & Adventure, TV Comedies"
+750,TV Show,L.A.'s Finest,null,"June 9, 2021",2021,2 Seasons,"Crime TV Shows, TV Action & Adventure, TV Comedies"
 751,Movie,Tragic Jungle,Yulene Olaizola,"June 9, 2021",2021,97 min,"Dramas, Independent Movies, International Movies"
 752,TV Show,Guru Aur Bhole,null,"June 8, 2021",2018,2 Seasons,"Kids' TV, TV Comedies"
 753,Movie,Vampire Academy,Mark Waters,"June 7, 2021",2014,104 min,"Action & Adventure, Comedies, Sci-Fi & Fantasy"
@@ -905,7 +905,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 904,Movie,Nayattu,Martin Prakkat,"May 9, 2021",2021,122 min,"Dramas, International Movies, Thrillers"
 905,Movie,Sleepless,Baran bo Odar,"May 8, 2021",2017,95 min,Action & Adventure
 906,Movie,Super Me,Zhang Chong,"May 8, 2021",2021,104 min,"Action & Adventure, Dramas, International Movies"
-907,Movie,Have You Ever Seen Fireflies? - Theatre Play,Yılmaz Erdoğan,"May 7, 2021",1999,118 min,"Dramas, International Movies"
+907,Movie,Have You Ever Seen Fireflies? - Theatre Play,Yilmaz Erdogan,"May 7, 2021",1999,118 min,"Dramas, International Movies"
 908,Movie,In Our Mothers' Gardens,Shantrelle P. Lewis,"May 7, 2021",2020,85 min,Documentaries
 909,TV Show,Jupiter's Legacy,null,"May 7, 2021",2021,1 Season,"TV Action & Adventure, TV Sci-Fi & Fantasy"
 910,Movie,Milestone,Ivan Ayr,"May 7, 2021",2021,98 min,"Dramas, Independent Movies, International Movies"
@@ -975,26 +975,26 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 974,Movie,One,Santhosh Viswanath,"April 27, 2021",2020,149 min,"Dramas, International Movies"
 975,Movie,Ram Prasad Ki Tehrvi,Seema Pahwa,"April 24, 2021",2019,113 min,"Dramas, Independent Movies, International Movies"
 976,Movie,Shadow and Bone - The Afterparty,null,"April 24, 2021",2021,33 min,"Action & Adventure, Comedies, Dramas"
-977,Movie,Among Family,Ozan Açıktan,"April 23, 2021",2017,127 min,"Comedies, International Movies"
+977,Movie,Among Family,Ozan Açiktan,"April 23, 2021",2017,127 min,"Comedies, International Movies"
 978,Movie,Dedemin Fisi,Meltem Bozoflu,"April 23, 2021",2016,101 min,"Comedies, International Movies"
 979,Movie,Deliha,Hakan Algül,"April 23, 2021",2014,102 min,"Comedies, International Movies, Romantic Movies"
-980,Movie,Düğün Dernek,"Selçuk Aydemir, Birkan Pusa","April 23, 2021",2013,102 min,"Comedies, International Movies"
+980,Movie,Dügün Dernek,"Selçuk Aydemir, Birkan Pusa","April 23, 2021",2013,102 min,"Comedies, International Movies"
 981,Movie,Dügün Dernek 2: Sünnet,Selçuk Aydemir,"April 23, 2021",2015,107 min,"Comedies, International Movies"
 982,Movie,G.O.R.A,Ömer Faruk Sorak,"April 23, 2021",2004,123 min,"Action & Adventure, Comedies, International Movies"
-983,Movie,Hayat Öpücügü,Şenol Sönmez,"April 23, 2021",2015,98 min,"Comedies, Dramas, International Movies"
+983,Movie,Hayat Öpücügü,Senol Sönmez,"April 23, 2021",2015,98 min,"Comedies, Dramas, International Movies"
 984,Movie,Heroes: Silence and Rock & Roll,Alexis Morante,"April 23, 2021",2021,95 min,"Documentaries, International Movies, Music & Musicals"
 985,Movie,Kara Bela,Burak Aksak,"April 23, 2021",2015,101 min,"Comedies, International Movies"
-986,Movie,Kocan Kadar Konus,Kıvanç Baruönü,"April 23, 2021",2015,104 min,"Comedies, International Movies, Romantic Movies"
-987,Movie,Kocan Kadar Konus 2: Dirilis,Kıvanç Baruönü,"April 23, 2021",2016,104 min,"Comedies, International Movies, Romantic Movies"
+986,Movie,Kocan Kadar Konus,Kivanç Baruönü,"April 23, 2021",2015,104 min,"Comedies, International Movies, Romantic Movies"
+987,Movie,Kocan Kadar Konus 2: Dirilis,Kivanç Baruönü,"April 23, 2021",2016,104 min,"Comedies, International Movies, Romantic Movies"
 988,Movie,Legal Hash,Rindala Kodeih,"April 23, 2021",2019,103 min,"Comedies, International Movies"
 989,TV Show,Let's Fight Ghost,Kongkiat Khomsiri,"April 23, 2021",2021,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
 990,Movie,My Travel Buddy,Bedran Güzel,"April 23, 2021",2017,111 min,"Comedies, International Movies"
 991,Movie,Niyazi Gül Dörtnala,Hakan Algül,"April 23, 2021",2015,102 min,"Comedies, International Movies"
 992,Movie,One Like It,Marwan Nabil,"April 23, 2021",2020,15 min,"Dramas, Independent Movies, International Movies"
-993,Movie,Perfume Imaginary Museum “Time Warp”,"MIKIKO, Daito Manabe","April 23, 2021",2020,54 min,"International Movies, Music & Musicals"
+993,Movie,Perfume Imaginary Museum "Time Warp","MIKIKO, Daito Manabe","April 23, 2021",2020,54 min,"International Movies, Music & Musicals"
 994,TV Show,Shadow and Bone,null,"April 23, 2021",2021,1 Season,"TV Action & Adventure, TV Dramas, TV Sci-Fi & Fantasy"
 995,Movie,This Lady Called Life,Kayode Kasum,"April 23, 2021",2020,120 min,"Dramas, International Movies, Romantic Movies"
-996,Movie,Vizontele,"Yılmaz Erdoğan, Ömer Faruk Sorak","April 23, 2021",2001,106 min,"Comedies, Dramas, International Movies"
+996,Movie,Vizontele,"Yilmaz Erdogan, Ömer Faruk Sorak","April 23, 2021",2001,106 min,"Comedies, Dramas, International Movies"
 997,Movie,HOMUNCULUS,Takashi Shimizu,"April 22, 2021",2021,116 min,"Horror Movies, International Movies, Thrillers"
 998,TV Show,Life in Color with David Attenborough,null,"April 22, 2021",2021,1 Season,"British TV Shows, Docuseries, International TV Shows"
 999,Movie,Searching For Sheela,null,"April 22, 2021",2021,58 min,"Documentaries, International Movies"
@@ -1041,7 +1041,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1040,Movie,Dark City Beneath the Beat,TT The Artist,"April 15, 2021",2020,65 min,"Documentaries, Music & Musicals"
 1041,TV Show,Durarara!!,null,"April 15, 2021",2016,1 Season,"Anime Series, Crime TV Shows, International TV Shows"
 1042,Movie,GANTZ:O,"Keiichi Sato, Yasushi Kawamura","April 15, 2021",2016,96 min,"Action & Adventure, Anime Features, Horror Movies"
-1043,TV Show,Garth Brooks: The Road I’m On,Glenn Weiss,"April 15, 2021",2019,1 Season,Docuseries
+1043,TV Show,Garth Brooks: The Road I'm On,Glenn Weiss,"April 15, 2021",2019,1 Season,Docuseries
 1044,TV Show,Gilmore Girls,null,"April 15, 2021",2006,7 Seasons,"Romantic TV Shows, TV Comedies, TV Dramas"
 1045,TV Show,High-Rise Invasion,null,"April 15, 2021",2021,1 Season,"Anime Series, International TV Shows, TV Thrillers"
 1046,TV Show,Next in Fashion,null,"April 15, 2021",2020,1 Season,Reality TV
@@ -1073,7 +1073,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1072,Movie,Motu Patlu in Hong Kong: Kung Fu Kings 3,Suhas Kadav,"April 13, 2021",2017,84 min,"Children & Family Movies, Music & Musicals"
 1073,Movie,Motu Patlu in the City of Gold,Suhas Kadav,"April 13, 2021",2018,77 min,"Children & Family Movies, Comedies, Music & Musicals"
 1074,Movie,Motu Patlu Kung Fu Kings 4 The Challenge of Kung Fu Brothers,Suhas Kadav,"April 13, 2021",2018,86 min,"Children & Family Movies, Music & Musicals"
-1075,Movie,Motu Patlu the Superheroes – Super Villains from Mars,Suhas Kadav,"April 13, 2021",2019,79 min,Children & Family Movies
+1075,Movie,Motu Patlu the Superheroes - Super Villains from Mars,Suhas Kadav,"April 13, 2021",2019,79 min,Children & Family Movies
 1076,TV Show,My Love: Six Stories of True Love,"Moyoung Jin, Caroline Sá, Deepti Kakkar, Fahad Mustafa, Hikaru Toda, Chico Pereira, Elaine McMillion Sheldon","April 13, 2021",2021,1 Season,Docuseries
 1077,Movie,Shiva VS Autobots,Suhas Kadav,"April 13, 2021",2018,80 min,Children & Family Movies
 1078,Movie,Shiva: Journey to Plunotaria,Suhas Kadav,"April 13, 2021",2019,81 min,Children & Family Movies
@@ -1137,7 +1137,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1136,Movie,Takers,John Luessenhop,"April 1, 2021",2010,107 min,Action & Adventure
 1137,Movie,Tersanjung the Movie,"Hanung Bramantyo, Pandu Adjisurya","April 1, 2021",2021,114 min,"Dramas, International Movies, Romantic Movies"
 1138,Movie,The Knight and the Princess,Bashir El Deek,"April 1, 2021",2019,96 min,"Action & Adventure, International Movies, Music & Musicals"
-1139,Movie,The Pianist,Roman Polański,"April 1, 2021",2002,149 min,"Dramas, Independent Movies, International Movies"
+1139,Movie,The Pianist,Roman Polanski,"April 1, 2021",2002,149 min,"Dramas, Independent Movies, International Movies"
 1140,Movie,The Stepfather,Nelson McCormick,"April 1, 2021",2009,102 min,"Horror Movies, Thrillers"
 1141,Movie,Universal Soldier: The Return,Mic Rodgers,"April 1, 2021",1999,83 min,Action & Adventure
 1142,Movie,Wazir,Bejoy Nambiar,"April 1, 2021",2016,98 min,"Dramas, International Movies, Thrillers"
@@ -1210,12 +1210,12 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1209,Movie,Çarsi Pazar,Muharrem Gülmez,"March 12, 2021",2015,97 min,"Comedies, International Movies"
 1210,Movie,Just In Time,Dolapo Adeleke,"March 12, 2021",2020,92 min,"Comedies, Dramas, International Movies"
 1211,TV Show,Love Alarm,null,"March 12, 2021",2021,2 Seasons,"International TV Shows, Korean TV Shows, Romantic TV Shows"
-1212,Movie,Mucize,Mahsun Kırmızıgül,"March 12, 2021",2015,136 min,"Dramas, International Movies"
+1212,Movie,Mucize,Mahsun Kirmizigül,"March 12, 2021",2015,136 min,"Dramas, International Movies"
 1213,Movie,Paper Lives,Can Ulkay,"March 12, 2021",2021,97 min,"Dramas, International Movies"
 1214,TV Show,Paradise PD,null,"March 12, 2021",2021,3 Seasons,TV Comedies
 1215,Movie,Quiet,Luis Alejandro Pérez,"March 12, 2021",2020,103 min,"Dramas, International Movies, Music & Musicals"
 1216,Movie,Romantik Komedi,Ketche,"March 12, 2021",2010,110 min,"Comedies, International Movies, Romantic Movies"
-1217,Movie,Romantik Komedi 2: Bekarlığa Veda,Erol Özlevi,"March 12, 2021",2013,105 min,"Comedies, International Movies, Romantic Movies"
+1217,Movie,Romantik Komedi 2: Bekarliga Veda,Erol Özlevi,"March 12, 2021",2013,105 min,"Comedies, International Movies, Romantic Movies"
 1218,TV Show,The One,null,"March 12, 2021",2021,1 Season,"British TV Shows, Crime TV Shows, International TV Shows"
 1219,Movie,YES DAY,Miguel Arteta,"March 12, 2021",2021,90 min,"Children & Family Movies, Comedies"
 1220,Movie,You're Everything To Me,Tolga Örnek,"March 12, 2021",2016,107 min,"Comedies, Dramas, Independent Movies"
@@ -1368,7 +1368,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1367,Movie,Fatima,Marco Pontecorvo,"January 31, 2021",2020,113 min,"Dramas, Faith & Spirituality"
 1368,Movie,Hell Fest,Gregory Plotkin,"January 31, 2021",2018,89 min,Horror Movies
 1369,Movie,Below Zero,Lluís Quílez,"January 29, 2021",2021,107 min,"Action & Adventure, International Movies"
-1370,Movie,Finding ‘Ohana,Jude Weng,"January 29, 2021",2021,123 min,"Children & Family Movies, Comedies"
+1370,Movie,Finding 'Ohana,Jude Weng,"January 29, 2021",2021,123 min,"Children & Family Movies, Comedies"
 1371,Movie,The Dig,Simon Stone,"January 29, 2021",2021,113 min,"Dramas, International Movies"
 1372,TV Show,We Are: The Brooklyn Saints,null,"January 29, 2021",2021,1 Season,Docuseries
 1373,Movie,June & Kopi,Noviandra Santosa,"January 28, 2021",2021,90 min,"Children & Family Movies, Dramas, International Movies"
@@ -1385,7 +1385,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1384,TV Show,Blown Away,null,"January 22, 2021",2021,2 Seasons,"International TV Shows, Reality TV"
 1385,TV Show,Busted!,null,"January 22, 2021",2021,3 Seasons,"Crime TV Shows, International TV Shows, Korean TV Shows"
 1386,TV Show,Demon Slayer: Kimetsu no Yaiba,null,"January 22, 2021",2019,1 Season,"Anime Series, International TV Shows"
-1387,Movie,So My Grandma’s a Lesbian!,Ángeles Reiné,"January 22, 2021",2020,95 min,"Comedies, International Movies, LGBTQ Movies"
+1387,Movie,So My Grandma's a Lesbian!,Ángeles Reiné,"January 22, 2021",2020,95 min,"Comedies, International Movies, LGBTQ Movies"
 1388,Movie,The Next Three Days,Paul Haggis,"January 22, 2021",2010,133 min,"Dramas, Thrillers"
 1389,Movie,The White Tiger,Ramin Bahrani,"January 22, 2021",2021,127 min,Dramas
 1390,Movie,Friendsgiving,Nicol Paone,"January 21, 2021",2020,95 min,Comedies
@@ -1426,10 +1426,10 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1425,Movie,Charming,Ross Venokur,"January 8, 2021",2021,85 min,"Children & Family Movies, Comedies"
 1426,Movie,Creating The Queen's Gambit,null,"January 8, 2021",2021,14 min,Documentaries
 1427,Movie,Gangaajal,Prakash Jha,"January 8, 2021",2003,148 min,"Dramas, International Movies"
-1428,TV Show,Inside the World’s Toughest Prisons,null,"January 8, 2021",2021,5 Seasons,"British TV Shows, Crime TV Shows, Docuseries"
+1428,TV Show,Inside the World's Toughest Prisons,null,"January 8, 2021",2021,5 Seasons,"British TV Shows, Crime TV Shows, Docuseries"
 1429,Movie,Is Love Enough? Sir,Rohena Gera,"January 8, 2021",2018,99 min,"Dramas, Independent Movies, International Movies"
 1430,TV Show,Mighty Little Bheem: Kite Festival,null,"January 8, 2021",2021,1 Season,"Kids' TV, TV Comedies"
-1431,TV Show,Pretend It’s a City,null,"January 8, 2021",2021,1 Season,Docuseries
+1431,TV Show,Pretend It's a City,null,"January 8, 2021",2021,1 Season,Docuseries
 1432,Movie,Stuck Apart,null,"January 8, 2021",2021,97 min,"Comedies, Dramas, International Movies"
 1433,TV Show,The Idhun Chronicles,Maite Ruiz De Austri,"January 8, 2021",2021,2 Seasons,"Anime Series, International TV Shows, Spanish-Language TV Shows"
 1434,Movie,100% Halal,Jastis Arimba,"January 7, 2021",2020,101 min,"Dramas, International Movies"
@@ -1506,7 +1506,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1505,Movie,QLIMAX THE SOURCE,"Daan Jansen, Stijn Verlinde","December 22, 2020",2020,57 min,Music & Musicals
 1506,TV Show,Rhyme Time Town Singalongs,null,"December 22, 2020",2020,1 Season,Kids' TV
 1507,TV Show,Shaun the Sheep,null,"December 22, 2020",2016,2 Seasons,"British TV Shows, Kids' TV, TV Comedies"
-1508,Movie,Shaun the Sheep: The Farmer’s Llamas,Jay Grace,"December 22, 2020",2020,28 min,"Children & Family Movies, Comedies"
+1508,Movie,Shaun the Sheep: The Farmer's Llamas,Jay Grace,"December 22, 2020",2020,28 min,"Children & Family Movies, Comedies"
 1509,TV Show,Timmy Time,null,"December 22, 2020",2010,1 Season,"British TV Shows, Kids' TV"
 1510,Movie,"Ariana grande: excuse me, i love you",Paul Dugdale,"December 21, 2020",2020,98 min,"Documentaries, Music & Musicals"
 1511,Movie,The Con Is On,James Haslam,"December 21, 2020",2018,95 min,Comedies
@@ -1576,11 +1576,11 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1575,TV Show,The Surgeon's Cut,null,"December 9, 2020",2020,1 Season,"Docuseries, Science & Nature TV"
 1576,Movie,André & his olive tree,Josiah Ng,"December 8, 2020",2020,104 min,"Documentaries, International Movies"
 1577,Movie,Bobbleheads The Movie,Kirk Wise,"December 8, 2020",2020,83 min,"Children & Family Movies, Comedies"
-1578,Movie,Emicida: AmarElo - It’s All For Yesterday,null,"December 8, 2020",2020,90 min,"Documentaries, International Movies, Music & Musicals"
+1578,Movie,Emicida: AmarElo - It's All For Yesterday,null,"December 8, 2020",2020,90 min,"Documentaries, International Movies, Music & Musicals"
 1579,TV Show,Juman,null,"December 8, 2020",2019,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
 1580,TV Show,Mr. Iglesias,null,"December 8, 2020",2020,3 Seasons,"TV Comedies, Teen TV Shows"
 1581,Movie,Spirit Riding Free: Ride Along Adventure,"Beth Sleven, Allan Jacobsen, Kevin Wotton","December 8, 2020",2020,79 min,Children & Family Movies
-1582,Movie,Super Monsters: Santa’s Super Monster Helpers,Steve Ball,"December 8, 2020",2020,24 min,Children & Family Movies
+1582,Movie,Super Monsters: Santa's Super Monster Helpers,Steve Ball,"December 8, 2020",2020,24 min,Children & Family Movies
 1583,Movie,Triple 9,John Hillcoat,"December 8, 2020",2016,115 min,"Dramas, Thrillers"
 1584,TV Show,100 Days My Prince,null,"December 7, 2020",2018,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
 1585,Movie,Ava,Tate Taylor,"December 7, 2020",2020,97 min,"Action & Adventure, Dramas"
@@ -1608,7 +1608,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1607,Movie,Fierce,Anna Wieczur-Bluszcz,"December 2, 2020",2020,118 min,"Comedies, Dramas, International Movies"
 1608,Movie,Hazel Brugger: Tropical,null,"December 2, 2020",2020,58 min,Stand-Up Comedy
 1609,Movie,3 Days to Kill,McG,"December 1, 2020",2014,117 min,Action & Adventure
-1610,Movie,Angela's Christmas Wish,Damien O’Connor,"December 1, 2020",2020,48 min,Children & Family Movies
+1610,Movie,Angela's Christmas Wish,Damien O'Connor,"December 1, 2020",2020,48 min,Children & Family Movies
 1611,Movie,Angels & Demons,Ron Howard,"December 1, 2020",2009,139 min,Thrillers
 1612,TV Show,Are You The One,null,"December 1, 2020",2014,2 Seasons,Reality TV
 1613,Movie,Chef,Jon Favreau,"December 1, 2020",2014,115 min,"Comedies, Independent Movies"
@@ -1636,7 +1636,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1635,TV Show,The Uncanny Counter,null,"November 29, 2020",2020,1 Season,"International TV Shows, TV Action & Adventure, TV Dramas"
 1636,Movie,A Go! Go! Cory Carson Christmas,"Stanley Moore, Alex Woo","November 27, 2020",2020,22 min,Children & Family Movies
 1637,Movie,Dance Dreams: Hot Chocolate Nutcracker,Oliver Bokelberg,"November 27, 2020",2020,81 min,"Children & Family Movies, Documentaries"
-1638,Movie,Don’t Listen,Ángel Gómez Hernández,"November 27, 2020",2020,98 min,"Horror Movies, International Movies"
+1638,Movie,Don't Listen,Ángel Gómez Hernández,"November 27, 2020",2020,98 min,"Horror Movies, International Movies"
 1639,TV Show,Fabulous Lives of Bollywood Wives,null,"November 27, 2020",2020,1 Season,"International TV Shows, Reality TV"
 1640,TV Show,Heartbreak High,null,"November 27, 2020",1999,7 Seasons,"International TV Shows, TV Dramas, Teen TV Shows"
 1641,TV Show,Over Christmas,null,"November 27, 2020",2020,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
@@ -1662,7 +1662,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1661,Movie,Shawn Mendes: In Wonder,Grant Singer,"November 23, 2020",2020,83 min,"Documentaries, Music & Musicals"
 1662,TV Show,Strongest Deliveryman,null,"November 23, 2020",2017,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
 1663,Movie,The Suit,Mohammad Adel,"November 23, 2020",2018,97 min,"Action & Adventure, Comedies, International Movies"
-1664,Movie,Dolly Parton’s Christmas on the Square,Debbie Allen,"November 22, 2020",2020,99 min,"Children & Family Movies, Music & Musicals"
+1664,Movie,Dolly Parton's Christmas on the Square,Debbie Allen,"November 22, 2020",2020,99 min,"Children & Family Movies, Music & Musicals"
 1665,Movie,Machete Kills,Robert Rodriguez,"November 22, 2020",2013,108 min,Action & Adventure
 1666,Movie,40 Sticks,Victor Gatonye,"November 20, 2020",2019,93 min,"International Movies, Thrillers"
 1667,Movie,Alien Xmas,Stephen Chiodo,"November 20, 2020",2020,42 min,Children & Family Movies
@@ -1750,8 +1750,8 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1749,TV Show,60 Days In,null,"November 1, 2020",2019,1 Season,Reality TV
 1750,Movie,Christmas Break-In,Michael Kampa,"November 1, 2020",2019,87 min,"Children & Family Movies, Comedies"
 1751,TV Show,Dawson's Creek,null,"November 1, 2020",2002,6 Seasons,"Romantic TV Shows, TV Dramas, Teen TV Shows"
-1752,Movie,Elf Pets: A Fox Cub’s Christmas Tale,Chanda Bell,"November 1, 2020",2020,28 min,Children & Family Movies
-1753,Movie,Elf Pets: Santa’s Reindeer Rescue,Chanda Bell,"November 1, 2020",2020,27 min,Children & Family Movies
+1752,Movie,Elf Pets: A Fox Cub's Christmas Tale,Chanda Bell,"November 1, 2020",2020,28 min,Children & Family Movies
+1753,Movie,Elf Pets: Santa's Reindeer Rescue,Chanda Bell,"November 1, 2020",2020,27 min,Children & Family Movies
 1754,Movie,Elliot the Littlest Reindeer,Jennifer Westcott,"November 1, 2020",2018,90 min,Children & Family Movies
 1755,TV Show,Forged in Fire,null,"November 1, 2020",2019,1 Season,Reality TV
 1756,TV Show,Leah Remini: Scientology and the Aftermath,null,"November 1, 2020",2018,3 Seasons,Docuseries
@@ -1895,7 +1895,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1894,TV Show,DreamWorks Happy Holidays from Madagascar,null,"October 2, 2020",2005,1 Season,"Kids' TV, TV Comedies"
 1895,TV Show,Emily in Paris,null,"October 2, 2020",2020,1 Season,"Romantic TV Shows, TV Comedies, TV Dramas"
 1896,TV Show,H2O: Just Add Water,null,"October 2, 2020",2009,3 Seasons,"Kids' TV, TV Dramas"
-1897,Movie,Òlòtūré,Kenneth Gyang,"October 2, 2020",2020,107 min,"Dramas, International Movies"
+1897,Movie,Òlòturé,Kenneth Gyang,"October 2, 2020",2020,107 min,"Dramas, International Movies"
 1898,Movie,Serious Men,Sudhir Mishra,"October 2, 2020",2020,115 min,"Comedies, Dramas, International Movies"
 1899,Movie,The Binding,Domenico de Feudis,"October 2, 2020",2020,93 min,"Horror Movies, International Movies, Thrillers"
 1900,Movie,Turkish Dance School,Burak Aksak,"October 2, 2020",2017,107 min,"Comedies, International Movies, Romantic Movies"
@@ -1952,7 +1952,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 1951,Movie,Time Out,Rikhil Bahadur,"September 26, 2020",2015,98 min,"Dramas, Independent Movies, International Movies"
 1952,TV Show,A Perfect Crime,null,"September 25, 2020",2020,1 Season,"Crime TV Shows, Docuseries, International TV Shows"
 1953,TV Show,Mighty Little Bheem,null,"September 25, 2020",2020,3 Seasons,"Kids' TV, TV Comedies"
-1954,Movie,My Mother's Wound,Ozan Açıktan,"September 25, 2020",2016,115 min,"Dramas, International Movies"
+1954,Movie,My Mother's Wound,Ozan Açiktan,"September 25, 2020",2016,115 min,"Dramas, International Movies"
 1955,TV Show,Sneakerheads,null,"September 25, 2020",2020,1 Season,TV Comedies
 1956,TV Show,The School Nurse Files,null,"September 25, 2020",2020,1 Season,"International TV Shows, TV Dramas, TV Mysteries"
 1957,Movie,Zulu Man in Japan,null,"September 25, 2020",2019,44 min,"Documentaries, International Movies, Music & Musicals"
@@ -2054,7 +2054,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2053,Movie,"Love, Guaranteed",Mark Steven Johnson,"September 3, 2020",2020,91 min,"Comedies, Independent Movies, Romantic Movies"
 2054,TV Show,Young Wallander,null,"September 3, 2020",2020,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
 2055,TV Show,Chef's Table: BBQ,null,"September 2, 2020",2020,1 Season,"Docuseries, Reality TV"
-2056,Movie,Freaks – You're One of Us,Felix Binder,"September 2, 2020",2020,93 min,"Dramas, Independent Movies, International Movies"
+2056,Movie,Freaks - You're One of Us,Felix Binder,"September 2, 2020",2020,93 min,"Dramas, Independent Movies, International Movies"
 2057,Movie,Hotel for Dogs,Thor Freudenthal,"September 2, 2020",2009,101 min,"Children & Family Movies, Comedies"
 2058,Movie,Sky Tour: The Movie,Nguyen Thanh Tung,"September 2, 2020",2020,93 min,"Documentaries, International Movies, Music & Musicals"
 2059,TV Show,The Witcher: A Look Inside the Episodes,null,"September 2, 2020",2020,1 Season,"Docuseries, TV Sci-Fi & Fantasy"
@@ -2308,10 +2308,10 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2307,TV Show,A Touch of Green,null,"July 1, 2020",2016,1 Season,"International TV Shows, TV Dramas"
 2308,TV Show,Abby Hatcher,Kyran Kelly,"July 1, 2020",2019,1 Season,Kids' TV
 2309,Movie,Adú,Salvador Calvo,"July 1, 2020",2020,120 min,"Dramas, International Movies"
-2310,Movie,Ali Baba ve 7 Cüceler,Cem Yılmaz,"July 1, 2020",2015,115 min,"Action & Adventure, Comedies, International Movies"
+2310,Movie,Ali Baba ve 7 Cüceler,Cem Yilmaz,"July 1, 2020",2015,115 min,"Action & Adventure, Comedies, International Movies"
 2311,Movie,David Foster: Off the Record,Barry Avrich,"July 1, 2020",2019,107 min,"Documentaries, Music & Musicals"
 2312,Movie,Double Jeopardy,Bruce Beresford,"July 1, 2020",1999,105 min,Thrillers
-2313,Movie,Pek Yakında,Cem Yılmaz,"July 1, 2020",2014,134 min,"Comedies, International Movies"
+2313,Movie,Pek Yakinda,Cem Yilmaz,"July 1, 2020",2014,134 min,"Comedies, International Movies"
 2314,TV Show,Say I Do,null,"July 1, 2020",2020,1 Season,"Reality TV, Romantic TV Shows"
 2315,Movie,Stardust,Matthew Vaughn,"July 1, 2020",2007,128 min,"Action & Adventure, International Movies, Romantic Movies"
 2316,Movie,The F**k-It List,Michael Duggan,"July 1, 2020",2019,103 min,Comedies
@@ -2359,7 +2359,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2358,TV Show,Floor Is Lava,null,"June 19, 2020",2020,1 Season,Reality TV
 2359,Movie,Lost Bullet,Guillaume Pierret,"June 19, 2020",2020,93 min,"Action & Adventure, Dramas, International Movies"
 2360,TV Show,Most Beautiful Thing,null,"June 19, 2020",2020,2 Seasons,"International TV Shows, Romantic TV Shows, TV Dramas"
-2361,Movie,One-Way to Tomorrow,Ozan Açıktan,"June 19, 2020",2020,90 min,"Dramas, International Movies, Romantic Movies"
+2361,Movie,One-Way to Tomorrow,Ozan Açiktan,"June 19, 2020",2020,90 min,"Dramas, International Movies, Romantic Movies"
 2362,Movie,The Emigrant,Youssef Chahine,"June 19, 2020",1994,130 min,"Dramas, International Movies"
 2363,TV Show,The Politician,null,"June 19, 2020",2020,2 Seasons,"TV Comedies, TV Dramas, Teen TV Shows"
 2364,Movie,Wasp Network,Olivier Assayas,"June 19, 2020",2020,128 min,"Dramas, International Movies, Thrillers"
@@ -2411,7 +2411,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2410,TV Show,Reality Z,null,"June 10, 2020",2020,1 Season,"International TV Shows, TV Horror, TV Mysteries"
 2411,Movie,The Witch: Part 1 - The Subversion,Park Hoon-jung,"June 10, 2020",2018,126 min,"Action & Adventure, International Movies, Sci-Fi & Fantasy"
 2412,Movie,Before I Fall,Ry Russo-Young,"June 8, 2020",2017,98 min,"Dramas, Romantic Movies"
-2413,Movie,365 Days,"Barbara Białowąs, Tomasz Mandes","June 7, 2020",2020,114 min,"Dramas, International Movies, Romantic Movies"
+2413,Movie,365 Days,"Barbara Bialowas, Tomasz Mandes","June 7, 2020",2020,114 min,"Dramas, International Movies, Romantic Movies"
 2414,Movie,Forensic,"Akhil Paul, Anas Khan","June 7, 2020",2020,132 min,"International Movies, Thrillers"
 2415,Movie,Project Papa,Kanika Batra,"June 7, 2020",2018,92 min,"Dramas, Independent Movies, International Movies"
 2416,TV Show,Queen of the South,null,"June 6, 2020",2018,4 Seasons,"Crime TV Shows, TV Action & Adventure, TV Dramas"
@@ -2426,9 +2426,9 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2425,Movie,The Last Days of American Crime,Olivier Megaton,"June 5, 2020",2020,149 min,"Action & Adventure, Dramas, Independent Movies"
 2426,Movie,The Light of My Eyes,null,"June 5, 2020",2010,96 min,"Dramas, International Movies, Romantic Movies"
 2427,TV Show,BAKI,null,"June 4, 2020",2020,3 Seasons,"Anime Series, International TV Shows"
-2428,Movie,Hot Sweet Sour,Andaç Haznedaroğlu,"June 4, 2020",2017,102 min,"Dramas, International Movies, Romantic Movies"
+2428,Movie,Hot Sweet Sour,Andaç Haznedaroglu,"June 4, 2020",2017,102 min,"Dramas, International Movies, Romantic Movies"
 2429,Movie,Overnight Republic,Murat Kepez,"June 4, 2020",2017,105 min,"Comedies, International Movies"
-2430,Movie,Can’t Complain,Ahmed Nader Galal,"June 3, 2020",2007,114 min,"Comedies, International Movies, Romantic Movies"
+2430,Movie,Can't Complain,Ahmed Nader Galal,"June 3, 2020",2007,114 min,"Comedies, International Movies, Romantic Movies"
 2431,Movie,Lady Bird,Greta Gerwig,"June 3, 2020",2017,94 min,"Comedies, Dramas, Independent Movies"
 2432,Movie,Spelling the Dream,Sam Rega,"June 3, 2020",2020,83 min,"Children & Family Movies, Documentaries"
 2433,TV Show,Alone,null,"June 2, 2020",2019,1 Season,Reality TV
@@ -2604,23 +2604,23 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2603,TV Show,The Forest of Love: Deep Cut,Sion Sono,"April 30, 2020",2020,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
 2604,TV Show,The Victims' Game,"David Chuang, Chen Kuan-chung","April 30, 2020",2020,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
 2605,Movie,A Secret Love,Chris Bolan,"April 29, 2020",2020,83 min,"Documentaries, LGBTQ Movies"
-2606,Movie,Ekşi Elmalar,Yılmaz Erdoğan,"April 29, 2020",2016,109 min,"Dramas, International Movies"
+2606,Movie,EkSi Elmalar,Yilmaz Erdogan,"April 29, 2020",2016,109 min,"Dramas, International Movies"
 2607,TV Show,Extracurricular,null,"April 29, 2020",2020,1 Season,"Crime TV Shows, International TV Shows, Korean TV Shows"
 2608,Movie,Love Is War,Omoni Oboli,"April 29, 2020",2019,111 min,"Comedies, Dramas, International Movies"
 2609,Movie,Murder to Mercy: The Cyntoia Brown Story,null,"April 29, 2020",2020,97 min,Documentaries
-2610,TV Show,Nadiya’s Time to Eat,null,"April 29, 2020",2020,1 Season,"British TV Shows, International TV Shows, Reality TV"
+2610,TV Show,Nadiya's Time to Eat,null,"April 29, 2020",2020,1 Season,"British TV Shows, International TV Shows, Reality TV"
 2611,Movie,R.K.Nagar,Saravana Rajan,"April 29, 2020",2019,132 min,"Action & Adventure, Comedies, Dramas"
 2612,TV Show,Tjovitjo,null,"April 29, 2020",2017,2 Seasons,"International TV Shows, TV Dramas"
-2613,Movie,Beynelmilel,"Muharrem Gülmez, Sırrı Süreyya Önder","April 28, 2020",2006,102 min,"Comedies, Dramas, International Movies"
+2613,Movie,Beynelmilel,"Muharrem Gülmez, Sirri Süreyya Önder","April 28, 2020",2006,102 min,"Comedies, Dramas, International Movies"
 2614,Movie,Bir Baba Hindu,Sermiyan Midyat,"April 28, 2020",2016,107 min,"Action & Adventure, Comedies, International Movies"
 2615,Movie,Boushkash,"Ahmed Yousry, Hazem Fouda","April 28, 2020",2008,100 min,"Comedies, International Movies"
-2616,Movie,Cinar Agaci,Handan İpekçi,"April 28, 2020",2011,115 min,"Comedies, Dramas, International Movies"
-2617,Movie,Görümce,Kıvanç Baruönü,"April 28, 2020",2016,104 min,"Comedies, International Movies, Music & Musicals"
-2618,Movie,İstanbul Kırmızısı,Ferzan Özpetek,"April 28, 2020",2017,110 min,"Dramas, Independent Movies, International Movies"
+2616,Movie,Cinar Agaci,Handan Ipekçi,"April 28, 2020",2011,115 min,"Comedies, Dramas, International Movies"
+2617,Movie,Görümce,Kivanç Baruönü,"April 28, 2020",2016,104 min,"Comedies, International Movies, Music & Musicals"
+2618,Movie,Istanbul Kirmizisi,Ferzan Özpetek,"April 28, 2020",2017,110 min,"Dramas, Independent Movies, International Movies"
 2619,Movie,Küçük Esnaf,Bedran Güzel,"April 28, 2020",2016,100 min,"Comedies, International Movies"
 2620,Movie,Lembi 8 Giga,Ashraf Fayeq,"April 28, 2020",2010,111 min,"Comedies, International Movies"
-2621,Movie,Neseli Hayat,Yılmaz Erdoğan,"April 28, 2020",2009,108 min,"Comedies, International Movies"
-2622,Movie,Organize Isler,Yılmaz Erdoğan,"April 28, 2020",2005,104 min,"Action & Adventure, Comedies, International Movies"
+2621,Movie,Neseli Hayat,Yilmaz Erdogan,"April 28, 2020",2009,108 min,"Comedies, International Movies"
+2622,Movie,Organize Isler,Yilmaz Erdogan,"April 28, 2020",2005,104 min,"Action & Adventure, Comedies, International Movies"
 2623,Movie,The Reliant,Paul Munger,"April 28, 2020",2019,116 min,"Dramas, Faith & Spirituality"
 2624,Movie,We'll Be Right Back After The Break,Ahmed Nader Galal,"April 28, 2020",2012,106 min,"Action & Adventure, Comedies, International Movies"
 2625,Movie,5Gang,Matei Dima,"April 27, 2020",2019,96 min,"Comedies, International Movies"
@@ -2637,8 +2637,8 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2636,Movie,The Dealer,Ahmed Saleh,"April 25, 2020",2010,124 min,"Action & Adventure, International Movies"
 2637,Movie,The International Player,Ahmed Medhat,"April 25, 2020",2009,93 min,"Dramas, International Movies, Sports Movies"
 2638,Movie,The Promise,Mohamed Yassin,"April 25, 2020",2008,110 min,"Dramas, International Movies"
-2639,Movie,الف مبروك,Ahmed Nader Galal,"April 25, 2020",2009,115 min,"Comedies, Dramas, International Movies"
-2640,TV Show,دفعة القاهرة,null,"April 25, 2020",2019,1 Season,"International TV Shows, TV Dramas"
+2639,Movie,Outro show arabe,Ahmed Nader Galal,"April 25, 2020",2009,115 min,"Comedies, Dramas, International Movies"
+2640,TV Show,Strangers,null,"April 25, 2020",2019,1 Season,"International TV Shows, TV Dramas"
 2641,TV Show,After Life,null,"April 24, 2020",2020,2 Seasons,"British TV Shows, International TV Shows, TV Comedies"
 2642,TV Show,DreamWorks Spooky Stories: Volume 2,null,"April 24, 2020",2011,1 Season,"Kids' TV, TV Comedies"
 2643,Movie,Kolaiyuthir Kaalam,Chakri Toleti,"April 24, 2020",2019,107 min,"International Movies, Thrillers"
@@ -2666,7 +2666,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2665,TV Show,ChuChu TV Nursery Rhymes & Kids Songs (Hindi),null,"April 18, 2020",2019,1 Season,Kids' TV
 2666,TV Show,The King: Eternal Monarch,null,"April 18, 2020",2020,1 Season,"Crime TV Shows, International TV Shows, Korean TV Shows"
 2667,TV Show,#blackAF,null,"April 17, 2020",2020,1 Season,TV Comedies
-2668,Movie,Babamın Ceketi,Müfit Can Saçıntı,"April 17, 2020",2018,101 min,"Comedies, International Movies"
+2668,Movie,Babamin Ceketi,Müfit Can Saçinti,"April 17, 2020",2018,101 min,"Comedies, International Movies"
 2669,Movie,Earth and Blood,Julien Leclercq,"April 17, 2020",2020,81 min,"Dramas, International Movies, Thrillers"
 2670,TV Show,El Dragón: Return of a Warrior,null,"April 17, 2020",2020,2 Seasons,"Crime TV Shows, International TV Shows, Spanish-Language TV Shows"
 2671,TV Show,Hasmukh,null,"April 17, 2020",2020,1 Season,"Crime TV Shows, International TV Shows, TV Comedies"
@@ -2680,7 +2680,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2679,Movie,Jem and the Holograms,Jon M. Chu,"April 16, 2020",2015,119 min,"Children & Family Movies, Dramas, Music & Musicals"
 2680,Movie,Maurício Meirelles: Generating Chaos,Diego Pignataro,"April 16, 2020",2020,63 min,Stand-Up Comedy
 2681,Movie,Puerto Ricans in Paris,Ian Edelman,"April 16, 2020",2015,82 min,Comedies
-2682,Movie,Stunt School,Ali Yorgancıoğlu,"April 16, 2020",2019,95 min,"Children & Family Movies, Comedies, International Movies"
+2682,Movie,Stunt School,Ali Yorgancioglu,"April 16, 2020",2019,95 min,"Children & Family Movies, Comedies, International Movies"
 2683,Movie,For the Broken Hearted,Digo Ricio,"April 15, 2020",2018,93 min,"Dramas, International Movies, Romantic Movies"
 2684,Movie,Mischief,Emcy Joseph,"April 15, 2020",2019,120 min,"Comedies, Dramas, Independent Movies"
 2685,TV Show,The Innocence Files,null,"April 15, 2020",2020,1 Season,"Crime TV Shows, Docuseries"
@@ -2843,7 +2843,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2842,TV Show,Mighty Little Bheem: Festival of Colors,null,"March 5, 2020",2020,1 Season,"Kids' TV, TV Comedies"
 2843,Movie,Tootsies & The Fake,Kittiphak Thonguam,"March 5, 2020",2019,108 min,"Comedies, International Movies, LGBTQ Movies"
 2844,Movie,Aurora,Cristi Puiu,"March 4, 2020",2010,186 min,"Dramas, International Movies"
-2845,Movie,Lil Peep: Everybody’s Everything,"Sebastian Jones, Ramez Silyan","March 4, 2020",2019,116 min,"Documentaries, Music & Musicals"
+2845,Movie,Lil Peep: Everybody's Everything,"Sebastian Jones, Ramez Silyan","March 4, 2020",2019,116 min,"Documentaries, Music & Musicals"
 2846,Movie,The Death of Mr. Lazarescu,Cristi Puiu,"March 4, 2020",2005,154 min,"Dramas, International Movies"
 2847,TV Show,Velvet,Carlos Sedes,"March 4, 2020",2016,4 Seasons,"International TV Shows, Romantic TV Shows, Spanish-Language TV Shows"
 2848,Movie,Freaks,"Adam B. Stein, Zach Lipovsky","March 3, 2020",2018,105 min,"Independent Movies, Sci-Fi & Fantasy, Thrillers"
@@ -2912,7 +2912,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2911,TV Show,Talking Tom and Friends,null,"February 15, 2020",2017,1 Season,"Kids' TV, TV Comedies"
 2912,Movie,A Shaun the Sheep Movie: Farmageddon,"Richard Phelan, Will Becher","February 14, 2020",2019,87 min,"Children & Family Movies, Comedies"
 2913,Movie,Cuddle Weather,Rod Cabatana Marmol,"February 14, 2020",2019,95 min,"Dramas, International Movies, Romantic Movies"
-2914,Movie,Fanatyk,Michał Tylka,"February 14, 2020",2017,33 min,"Comedies, Dramas, Independent Movies"
+2914,Movie,Fanatyk,Michal Tylka,"February 14, 2020",2017,33 min,"Comedies, Dramas, Independent Movies"
 2915,Movie,Isi & Ossi,Oliver Kienle,"February 14, 2020",2020,113 min,"Comedies, International Movies, Romantic Movies"
 2916,Movie,Liefling,Brian Webber,"February 14, 2020",2010,118 min,"Comedies, International Movies, Music & Musicals"
 2917,Movie,Panipat - The Great Betrayal,Ashutosh Gowariker,"February 14, 2020",2019,171 min,"Dramas, International Movies, Romantic Movies"
@@ -2997,7 +2997,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 2996,Movie,Airplane Mode,César Rodrigues,"January 23, 2020",2020,97 min,"Comedies, International Movies, Romantic Movies"
 2997,Movie,Alex Fernández: The Best Comedian in the World,Alex Díaz,"January 23, 2020",2020,51 min,Stand-Up Comedy
 2998,TV Show,October Faction,null,"January 23, 2020",2020,1 Season,"TV Action & Adventure, TV Dramas, TV Horror"
-2999,TV Show,​SAINT SEIYA: Knights of the Zodiac,null,"January 23, 2020",2020,2 Seasons,"Anime Series, International TV Shows"
+2999,TV Show,SAINT SEIYA: Knights of the Zodiac,null,"January 23, 2020",2020, 2 Seasons,"Anime Series, International TV Shows"
 3000,TV Show,The Ghost Bride,Quek Shio-chuan,"January 23, 2020",2020,1 Season,"International TV Shows, TV Dramas, TV Mysteries"
 3001,TV Show,Pandemic: How to Prevent an Outbreak,null,"January 22, 2020",2020,1 Season,"Docuseries, Science & Nature TV"
 3002,TV Show,Playing with Fire,null,"January 22, 2020",2019,1 Season,"International TV Shows, Romantic TV Shows, Spanish-Language TV Shows"
@@ -3091,7 +3091,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3090,Movie,Hot Gimmick: Girl Meets Boy,Yuki Yamato,"December 28, 2019",2019,120 min,"Dramas, International Movies"
 3091,Movie,Blitz Patrollie,Andrew Wessels,"December 27, 2019",2013,102 min,"Action & Adventure, Comedies, International Movies"
 3092,Movie,"El Pepe, a Supreme Life",Emir Kusturica,"December 27, 2019",2018,73 min,"Documentaries, International Movies"
-3093,TV Show,Kevin Hart: Don’t F**k This Up,null,"December 27, 2019",2019,1 Season,Docuseries
+3093,TV Show,Kevin Hart: Don't F**k This Up,null,"December 27, 2019",2019,1 Season,Docuseries
 3094,Movie,The Vendor,Odunlade Adekola,"December 27, 2019",2018,103 min,"Comedies, International Movies"
 3095,Movie,The App,Elisa Fuksas,"December 26, 2019",2019,79 min,"Dramas, Independent Movies, International Movies"
 3096,TV Show,The Bonfire of Destiny,null,"December 26, 2019",2019,1 Season,"International TV Shows, TV Dramas"
@@ -3317,7 +3317,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3316,Movie,A Fairly Odd Summer,Savage Steve Holland,"November 2, 2019",2014,68 min,"Children & Family Movies, Comedies"
 3317,TV Show,Bella and the Bulldogs,null,"November 2, 2019",2015,1 Season,"Kids' TV, TV Comedies"
 3318,Movie,Big Time Movie,Savage Steve Holland,"November 2, 2019",2012,68 min,"Children & Family Movies, Comedies, Music & Musicals"
-3319,Movie,Escape from Mr. Lemoncello’s Library,Scott McAboy,"November 2, 2019",2017,69 min,Children & Family Movies
+3319,Movie,Escape from Mr. Lemoncello's Library,Scott McAboy,"November 2, 2019",2017,69 min,Children & Family Movies
 3320,Movie,Hey Arnold! The Jungle Movie,"Raymie Muzquiz, Stu Livingston","November 2, 2019",2017,81 min,"Children & Family Movies, Comedies"
 3321,Movie,Jinxed,Stephen Herek,"November 2, 2019",2013,69 min,"Children & Family Movies, Comedies"
 3322,Movie,LEGENDS OF THE HIDDEN TEMPLE,Joe Menendez,"November 2, 2019",2016,68 min,Children & Family Movies
@@ -3370,7 +3370,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3369,TV Show,A Little Thing Called First Love,null,"October 26, 2019",2019,1 Season,"International TV Shows, Romantic TV Shows, Teen TV Shows"
 3370,TV Show,BoJack Horseman,null,"October 25, 2019",2020,6 Seasons,TV Comedies
 3371,TV Show,Brotherhood,null,"October 25, 2019",2019,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
-3372,Movie,Consequences,Ozan Açıktan,"October 25, 2019",2014,106 min,"Dramas, International Movies, Thrillers"
+3372,Movie,Consequences,Ozan Açiktan,"October 25, 2019",2014,106 min,"Dramas, International Movies, Thrillers"
 3373,Movie,Dolemite Is My Name,Craig Brewer,"October 25, 2019",2019,118 min,"Comedies, Dramas"
 3374,TV Show,Drug Squad: Costa del Sol,null,"October 25, 2019",2019,1 Season,"Crime TV Shows, International TV Shows, Spanish-Language TV Shows"
 3375,Movie,It Takes a Lunatic,Billy Lyons,"October 25, 2019",2019,127 min,Documentaries
@@ -3401,7 +3401,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3400,Movie,In My Country,Frank Rajah Arase,"October 18, 2019",2018,99 min,"Dramas, International Movies"
 3401,TV Show,Interior Design Masters,null,"October 18, 2019",2019,1 Season,"British TV Shows, International TV Shows, Reality TV"
 3402,TV Show,Little Baby Bum: Nursery Rhyme Friends,null,"October 18, 2019",2019,2 Seasons,"British TV Shows, Kids' TV"
-3403,Movie,"Love, Surreal and Odd",Yılmaz Erdoğan,"October 18, 2019",2017,95 min,"Comedies, International Movies, Romantic Movies"
+3403,Movie,"Love, Surreal and Odd",Yilmaz Erdogan,"October 18, 2019",2017,95 min,"Comedies, International Movies, Romantic Movies"
 3404,TV Show,Mighty Little Bheem: Diwali,null,"October 18, 2019",2019,1 Season,"Kids' TV, TV Comedies"
 3405,TV Show,MONKART,null,"October 18, 2019",2017,1 Season,"Kids' TV, Korean TV Shows"
 3406,Movie,Seventeen,Daniel Sánchez Arévalo,"October 18, 2019",2019,100 min,"Comedies, Dramas, International Movies"
@@ -3422,7 +3422,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3421,TV Show,Second 20s,null,"October 16, 2019",2015,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
 3422,Movie,Sinister 2,Ciarán Foy,"October 16, 2019",2015,97 min,Horror Movies
 3423,Movie,The Game Changers,Louie Psihoyos,"October 16, 2019",2018,86 min,"Documentaries, Sports Movies"
-3424,TV Show,Black Money Love,Ahmet Katıksız,"October 15, 2019",2014,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
+3424,TV Show,Black Money Love,Ahmet Katiksiz,"October 15, 2019",2014,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
 3425,Movie,"Martin Matte: La vie, la mort...eh la la..!",Jean-François Blais,"October 14, 2019",2019,62 min,Stand-Up Comedy
 3426,Movie,Street Flow,"Leïla Sy, Kery James","October 13, 2019",2019,96 min,"Dramas, International Movies"
 3427,TV Show,The Lies Within,null,"October 13, 2019",2019,1 Season,"Crime TV Shows, International TV Shows, Korean TV Shows"
@@ -3435,7 +3435,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3434,TV Show,The Hook Up Plan,null,"October 11, 2019",2020,2 Seasons,"International TV Shows, Romantic TV Shows, TV Comedies"
 3435,Movie,The Influence,Dennis Rovira van Boekholt,"October 11, 2019",2019,102 min,"Horror Movies, International Movies"
 3436,TV Show,Beyblade Burst Turbo,null,"October 10, 2019",2018,1 Season,"Anime Series, Kids' TV"
-3437,Movie,GEN HOSHINO STADIUM TOUR “POP VIRUS”,Naoto Amazutsumi,"October 10, 2019",2019,154 min,"International Movies, Music & Musicals"
+3437,Movie,GEN HOSHINO STADIUM TOUR "POP VIRUS",Naoto Amazutsumi,"October 10, 2019",2019,154 min,"International Movies, Music & Musicals"
 3438,TV Show,Ultramarine Magmell,null,"October 10, 2019",2019,1 Season,"Anime Series, International TV Shows"
 3439,Movie,After,Jenny Gage,"October 9, 2019",2019,106 min,"Dramas, Romantic Movies"
 3440,Movie,Home Is Where the Killer Is,Kaila York,"October 9, 2019",2019,87 min,"Dramas, Thrillers"
@@ -3470,7 +3470,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3469,Movie,Limitless,Vrinda Samartha,"October 1, 2019",2017,59 min,"Documentaries, International Movies, Sports Movies"
 3470,Movie,Little Baby Bum: Go Buster,null,"October 1, 2019",2019,58 min,Children & Family Movies
 3471,TV Show,Miniforce X,null,"October 1, 2019",2018,1 Season,"Kids' TV, Korean TV Shows"
-3472,Movie,Nikki Glaser: Bangin’,Nicholaus Goossen,"October 1, 2019",2019,64 min,Stand-Up Comedy
+3472,Movie,Nikki Glaser: Bangin',Nicholaus Goossen,"October 1, 2019",2019,64 min,Stand-Up Comedy
 3473,Movie,Rugrats in Paris: The Movie,"Stig Bergqvist, Paul Demeyer","October 1, 2019",2000,79 min,"Children & Family Movies, Comedies"
 3474,TV Show,The K2,null,"October 1, 2019",2016,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
 3475,TV Show,The Liar and His Lover,null,"October 1, 2019",2017,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
@@ -3519,7 +3519,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3518,Movie,The Crystal Calls Making the Dark Crystal: Age of Resistance,Randall Lobb,"September 14, 2019",2019,83 min,"Documentaries, International Movies"
 3519,Movie,"Hello, Privilege. It's Me, Chelsea",Alex Stapleton,"September 13, 2019",2019,65 min,Documentaries
 3520,TV Show,Kabaneri of the Iron Fortress: The Battle of Unato,null,"September 13, 2019",2019,1 Season,"Anime Series, International TV Shows, TV Horror"
-3521,Movie,Locked on You,Kıvanç Baruönü,"September 13, 2019",2018,105 min,"Comedies, International Movies"
+3521,Movie,Locked on You,Kivanç Baruönü,"September 13, 2019",2018,105 min,"Comedies, International Movies"
 3522,TV Show,Marianne,null,"September 13, 2019",2019,1 Season,"International TV Shows, TV Dramas, TV Horror"
 3523,Movie,Shanghai Fortress,Teng Huatao,"September 13, 2019",2019,107 min,"Dramas, International Movies, Romantic Movies"
 3524,Movie,Tall Girl,Nzingha Stewart,"September 13, 2019",2019,103 min,"Children & Family Movies, Comedies, Romantic Movies"
@@ -3532,7 +3532,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3531,Movie,Article 15,Anubhav Sinha,"September 6, 2019",2019,125 min,"Dramas, International Movies, Thrillers"
 3532,Movie,Care of Kancharapalem,Maha Venkatesh,"September 6, 2019",2018,142 min,"Comedies, Dramas, Independent Movies"
 3533,Movie,Ee Nagaraniki Emaindi,Tharun Bhascker,"September 6, 2019",2018,133 min,"Comedies, Independent Movies, International Movies"
-3534,Movie,Kill Me If You Dare,Şenol Sönmez,"September 6, 2019",2019,100 min,"Comedies, International Movies, Romantic Movies"
+3534,Movie,Kill Me If You Dare,Senol Sönmez,"September 6, 2019",2019,100 min,"Comedies, International Movies, Romantic Movies"
 3535,TV Show,The Spy,null,"September 6, 2019",2019,1 Season,"International TV Shows, TV Dramas, TV Thrillers"
 3536,Movie,American Factory: A Conversation with the Obamas,null,"September 5, 2019",2019,10 min,Documentaries
 3537,Movie,Saawan,Farhan Alam,"September 4, 2019",2016,128 min,"Dramas, Independent Movies, International Movies"
@@ -3609,7 +3609,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3608,TV Show,Dollar,null,"August 8, 2019",2019,1 Season,"International TV Shows, TV Dramas"
 3609,TV Show,Jane The Virgin,null,"August 8, 2019",2019,5 Seasons,"Romantic TV Shows, TV Comedies, TV Dramas"
 3610,TV Show,Let's Eat 2,null,"August 8, 2019",2015,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
-3611,TV Show,Let’s Eat,null,"August 8, 2019",2013,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
+3611,TV Show,Let's Eat,null,"August 8, 2019",2013,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
 3612,TV Show,Misaeng,null,"August 8, 2019",2014,1 Season,"International TV Shows, Korean TV Shows, TV Dramas"
 3613,TV Show,Oh My Ghost,null,"August 8, 2019",2015,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
 3614,TV Show,Reply 1994,Shin Won-ho,"August 8, 2019",2014,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
@@ -3661,7 +3661,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3660,TV Show,Pinky Malinky,null,"July 17, 2019",2019,3 Seasons,"Kids' TV, TV Comedies"
 3661,TV Show,Unrequited Love,null,"July 17, 2019",2019,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
 3662,Movie,Bogda,Nisheeta Keni,"July 16, 2019",2018,161 min,"Dramas, International Movies"
-3663,Movie,"Frankenstein’s Monster’s Monster, Frankenstein",Daniel Gray Longino,"July 16, 2019",2019,32 min,Comedies
+3663,Movie,"Frankenstein's Monster's Monster, Frankenstein",Daniel Gray Longino,"July 16, 2019",2019,32 min,Comedies
 3664,TV Show,Angel Beats!,null,"July 15, 2019",2010,1 Season,"Anime Series, International TV Shows"
 3665,TV Show,Anohana: The Flower We Saw That Day,null,"July 15, 2019",2011,1 Season,"Anime Series, International TV Shows, Teen TV Shows"
 3666,TV Show,God Eater,null,"July 15, 2019",2015,1 Season,"Anime Series, International TV Shows"
@@ -3775,7 +3775,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3774,Movie,A Silent Voice,Naoko Yamada,"June 5, 2019",2016,130 min,"Anime Features, International Movies"
 3775,TV Show,Black Mirror,null,"June 5, 2019",2019,5 Seasons,"British TV Shows, International TV Shows, TV Dramas"
 3776,Movie,Cosmos Laundromat: First Cycle,Mathieu Auvray,"June 4, 2019",2015,12 min,"Dramas, International Movies, Sci-Fi & Fantasy"
-3777,Movie,Miranda Sings Live…Your Welcome,Marcus Raboy,"June 4, 2019",2019,62 min,Stand-Up Comedy
+3777,Movie,Miranda Sings Live...Your Welcome,Marcus Raboy,"June 4, 2019",2019,62 min,Stand-Up Comedy
 3778,Movie,Silent,"Limbert Fabian, Brandon Oldenburg","June 4, 2019",2014,3 min,"Children & Family Movies, Sci-Fi & Fantasy"
 3779,TV Show,Documentary Now!,null,"June 3, 2019",2019,3 Seasons,TV Comedies
 3780,TV Show,Malibu Rescue: The Series,null,"June 3, 2019",2019,1 Season,"Kids' TV, TV Action & Adventure, TV Comedies"
@@ -3888,7 +3888,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3887,TV Show,Señora Acero,null,"April 28, 2019",2018,5 Seasons,"Crime TV Shows, International TV Shows, Spanish-Language TV Shows"
 3888,TV Show,Chambers,null,"April 26, 2019",2019,1 Season,"TV Horror, TV Mysteries, Teen TV Shows"
 3889,Movie,Loving is Losing,Fernando Ayllón,"April 26, 2019",2019,91 min,"Comedies, International Movies, Romantic Movies"
-3890,Movie,Money Trap,Yılmaz Erdoğan,"April 26, 2019",2019,122 min,"Comedies, Dramas, International Movies"
+3890,Movie,Money Trap,Yilmaz Erdogan,"April 26, 2019",2019,122 min,"Comedies, Dramas, International Movies"
 3891,Movie,Njan Prakashan,Sathyan Anthikad,"April 26, 2019",2018,125 min,"Comedies, Dramas, International Movies"
 3892,Movie,ReMastered: Devil at the Crossroads,Brian Oakes,"April 26, 2019",2019,49 min,"Documentaries, Music & Musicals"
 3893,TV Show,Street Food,null,"April 26, 2019",2019,1 Season,Docuseries
@@ -3921,8 +3921,8 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 3920,Movie,Thriller,Dallas Jackson,"April 14, 2019",2018,87 min,Horror Movies
 3921,TV Show,Crazy Ex-Girlfriend,null,"April 13, 2019",2019,4 Seasons,"Romantic TV Shows, TV Comedies"
 3922,Movie,Who Would You Take to a Deserted Island?,Jota Linares,"April 13, 2019",2019,94 min,"Dramas, International Movies"
-3923,Movie,Dabbe 5: Zehr-i Cin,Hasan Karacadağ,"April 12, 2019",2014,133 min,"Horror Movies, International Movies"
-3924,Movie,Dabbe: The Possession,Hasan Karacadağ,"April 12, 2019",2013,135 min,"Horror Movies, International Movies"
+3923,Movie,Dabbe 5: Zehr-i Cin,Hasan Karacadag,"April 12, 2019",2014,133 min,"Horror Movies, International Movies"
+3924,Movie,Dabbe: The Possession,Hasan Karacadag,"April 12, 2019",2013,135 min,"Horror Movies, International Movies"
 3925,Movie,Francesco De Carlo: Cose di Questo Mondo,null,"April 12, 2019",2019,61 min,Stand-Up Comedy
 3926,TV Show,Huge in France,null,"April 12, 2019",2019,1 Season,TV Comedies
 3927,Movie,The Perfect Date,Chris Nelson,"April 12, 2019",2019,91 min,"Comedies, Romantic Movies"
@@ -4351,7 +4351,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 4350,Movie,Set Off,Liu Jiang,"December 1, 2018",2008,96 min,"Dramas, International Movies"
 4351,TV Show,1983,null,"November 30, 2018",2018,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
 4352,Movie,A Christmas Prince: The Royal Wedding,John Schultz,"November 30, 2018",2018,93 min,"Children & Family Movies, Dramas, Romantic Movies"
-4353,Movie,Angela's Christmas,Damien O’Connor,"November 30, 2018",2018,30 min,Children & Family Movies
+4353,Movie,Angela's Christmas,Damien O'Connor,"November 30, 2018",2018,30 min,Children & Family Movies
 4354,TV Show,Death by Magic,null,"November 30, 2018",2018,1 Season,Reality TV
 4355,Movie,El club de los insomnes,"Joseduardo Giordano, Sergio Goyri Jr.","November 30, 2018",2018,82 min,"Dramas, International Movies"
 4356,Movie,Happy as Lazzaro,Alice Rohrwacher,"November 30, 2018",2018,127 min,"Dramas, Independent Movies, International Movies"
@@ -4418,7 +4418,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 4417,Movie,ReMastered: Tricky Dick & The Man in Black,Sara Dosa,"November 2, 2018",2018,59 min,"Documentaries, Music & Musicals"
 4418,Movie,The Holiday Calendar,Bradley Walsh,"November 2, 2018",2018,95 min,"Dramas, Romantic Movies"
 4419,Movie,The Other Side of the Wind,Orson Welles,"November 2, 2018",2018,122 min,"Classic Movies, Dramas, Independent Movies"
-4420,Movie,They’ll Love Me When I’m Dead,Morgan Neville,"November 2, 2018",2018,98 min,Documentaries
+4420,Movie,They'll Love Me When I'm Dead,Morgan Neville,"November 2, 2018",2018,98 min,Documentaries
 4421,Movie,Aagey Se Right,Indrajit Nattoji,"November 1, 2018",2009,117 min,"Comedies, International Movies, Music & Musicals"
 4422,Movie,Aamir,Raj Kumar Gupta,"November 1, 2018",2008,95 min,"International Movies, Thrillers"
 4423,Movie,ABCD 2,Remo D'Souza,"November 1, 2018",2015,146 min,"Dramas, International Movies, Music & Musicals"
@@ -4666,7 +4666,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 4665,TV Show,Age of Rebellion,Peter Ho,"September 1, 2018",2018,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
 4666,Movie,Carbon,Olivier Marchal,"September 1, 2018",2017,104 min,"Dramas, International Movies, Thrillers"
 4667,Movie,Garbage,Qaushiq Mukherjee,"September 1, 2018",2018,109 min,"Dramas, Independent Movies, International Movies"
-4668,Movie,​​Kuch Bheege Alfaaz,Onir,"September 1, 2018",2018,110 min,"Dramas, Independent Movies, International Movies"
+4668,Movie,Kuch Bheege Alfaaz,Onir,"September 1, 2018",2018,110 min,"Dramas, Independent Movies, International Movies"
 4669,Movie,Love and Shukla,Jatla Siddartha,"September 1, 2018",2017,110 min,"Dramas, Independent Movies, International Movies"
 4670,Movie,Once Again,Kanwal Sethi,"September 1, 2018",2018,101 min,"Dramas, Independent Movies, International Movies"
 4671,TV Show,Sisters,null,"September 1, 2018",2018,1 Season,"International TV Shows, TV Comedies, TV Dramas"
@@ -4697,7 +4697,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 4696,Movie,Party Monster: Scratching the Surface,null,"August 17, 2018",2018,33 min,Comedies
 4697,TV Show,Stay Here,null,"August 17, 2018",2018,1 Season,Reality TV
 4698,Movie,The Motive,Manuel Martín Cuenca,"August 17, 2018",2017,114 min,"Comedies, Dramas, International Movies"
-4699,Movie,To All the Boys I’ve Loved Before,Susan Johnson,"August 17, 2018",2018,100 min,"Comedies, International Movies, Romantic Movies"
+4699,Movie,To All the Boys I've Loved Before,Susan Johnson,"August 17, 2018",2018,100 min,"Comedies, International Movies, Romantic Movies"
 4700,Movie,Yoo Byung Jae: Discomfort Zone,Y. Joon Chung,"August 17, 2018",2018,54 min,Stand-Up Comedy
 4701,Movie,Bhavesh Joshi Superhero,Vikramaditya Motwane,"August 16, 2018",2018,150 min,"Dramas, International Movies, Sci-Fi & Fantasy"
 4702,Movie,For Here or to Go?,Rucha Humnabadkar,"August 15, 2018",2015,105 min,"Comedies, Dramas, Independent Movies"
@@ -4741,7 +4741,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 4740,Movie,Being Napoleon,"Jesse Handsher, Olivier Roland","August 1, 2018",2018,88 min,Documentaries
 4741,Movie,Invisible,Pablo Giorgelli,"August 1, 2018",2017,87 min,"Dramas, Independent Movies, International Movies"
 4742,TV Show,Switched,null,"August 1, 2018",2018,1 Season,"International TV Shows, TV Dramas, TV Mysteries"
-4743,TV Show,The Could’ve-Gone-All-the-Way Committee,null,"August 1, 2018",2018,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
+4743,TV Show,The Could've-Gone-All-the-Way Committee,null,"August 1, 2018",2018,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
 4744,TV Show,A Very Secret Service,null,"July 30, 2018",2018,2 Seasons,"International TV Shows, TV Comedies"
 4745,TV Show,SWORDGAI The Animation,null,"July 30, 2018",2018,2 Seasons,"Anime Series, International TV Shows"
 4746,Movie,Da Kath & Kim Code,Ted Emery,"July 28, 2018",2005,82 min,Movies
@@ -4806,7 +4806,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 4805,TV Show,Somewhere Between,null,"June 30, 2018",2017,1 Season,"Crime TV Shows, TV Dramas, TV Mysteries"
 4806,Movie,The Maus,Yayo Herrero,"June 30, 2018",2017,90 min,"Horror Movies, Independent Movies, International Movies"
 4807,Movie,Calibre,Matt Palmer,"June 29, 2018",2018,101 min,"Dramas, International Movies, Thrillers"
-4808,TV Show,Churchill’s Secret Agents: The New Recruits,null,"June 29, 2018",2018,1 Season,"British TV Shows, International TV Shows, Reality TV"
+4808,TV Show,Churchill's Secret Agents: The New Recruits,null,"June 29, 2018",2018,1 Season,"British TV Shows, International TV Shows, Reality TV"
 4809,Movie,Jani Dueñas: Grandes fracasos de ayer y hoy,"Raúl Campos, Jan Suter","June 29, 2018",2018,77 min,Stand-Up Comedy
 4810,TV Show,Kiss Me First,null,"June 29, 2018",2018,1 Season,"British TV Shows, Crime TV Shows, International TV Shows"
 4811,Movie,Penalty Kick,Rodrigo Triana,"June 29, 2018",2018,89 min,"Comedies, Dramas, International Movies"
@@ -4913,7 +4913,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 4912,Movie,The Rachel Divide,Laura Brownson,"April 27, 2018",2018,105 min,Documentaries
 4913,Movie,The Week Of,Robert Smigel,"April 27, 2018",2018,117 min,Comedies
 4914,TV Show,Trio and a Bed,null,"April 27, 2018",2016,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
-4915,TV Show,海的儿子,null,"April 27, 2018",2016,1 Season,"International TV Shows, TV Dramas"
+4915,TV Show, Japa Show,null,"April 27, 2018",2016,1 Season,"International TV Shows, TV Dramas"
 4916,Movie,Enissa Amani: Ehrenwort,Max Amini,"April 26, 2018",2018,66 min,Stand-Up Comedy
 4917,Movie,Bill Nye: Science Guy,"Jason Sussberg, David Alvarado","April 25, 2018",2017,97 min,Documentaries
 4918,Movie,Fishtronaut: The Movie,"Célia Catunda, Kiko Mistrorigo, Rodrigo Eba","April 25, 2018",2018,78 min,Children & Family Movies
@@ -5021,7 +5021,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5020,Movie,Trailer Park Boys: Xmas Special,Mike Clattenburg,"March 1, 2018",2004,46 min,Movies
 5021,Movie,Tu Hai Mera Sunday,Milind Dhaimade,"March 1, 2018",2016,125 min,"Comedies, Independent Movies, International Movies"
 5022,Movie,Yuva,Mani Ratnam,"March 1, 2018",2004,160 min,"Dramas, International Movies"
-5023,Movie,반드시 잡는다,Hong-seon Kim,"February 28, 2018",2017,110 min,"Dramas, International Movies, Thrillers"
+5023,Movie,Korea Show,Hong-seon Kim,"February 28, 2018",2017,110 min,"Dramas, International Movies, Thrillers"
 5024,Movie,Derren Brown: The Push,null,"February 27, 2018",2018,69 min,Movies
 5025,Movie,Marlon Wayans: Woke-ish,Marcus Raboy,"February 27, 2018",2018,67 min,Stand-Up Comedy
 5026,Movie,Veronica,Paco Plaza,"February 25, 2018",2017,105 min,"Horror Movies, International Movies, Thrillers"
@@ -5060,7 +5060,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5059,Movie,Holy Camp!,"Javier Ambrossi, Javier Calvo","January 29, 2018",2017,108 min,"Comedies, Dramas, Faith & Spirituality"
 5060,Movie,A Futile and Stupid Gesture,David Wain,"January 26, 2018",2018,102 min,Comedies
 5061,Movie,Fakkah Fuzz: Almost Banned,Michael McKay,"January 26, 2018",2018,61 min,Stand-Up Comedy
-5062,Movie,Mau Nieto: Viviendo sobrio… desde el bar,null,"January 26, 2018",2018,57 min,Stand-Up Comedy
+5062,Movie,Mau Nieto: Viviendo sobrio... desde el bar,null,"January 26, 2018",2018,57 min,Stand-Up Comedy
 5063,Movie,Sebastián Marcelo Wainraich,"Raúl Campos, Jan Suter","January 26, 2018",2018,49 min,Stand-Up Comedy
 5064,TV Show,The Adventures of Puss in Boots,null,"January 26, 2018",2018,6 Seasons,"Kids' TV, TV Comedies"
 5065,Movie,Acts of Vengeance,Isaac Florentine,"January 25, 2018",2017,87 min,"Action & Adventure, International Movies"
@@ -5347,7 +5347,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5346,TV Show,Wet Hot American Summer: Ten Years Later,null,"August 4, 2017",2017,1 Season,TV Comedies
 5347,Movie,The Invisible Guardian,Fernando González Molina,"August 3, 2017",2017,129 min,"International Movies, Thrillers"
 5348,TV Show,Bountiful Blessings,null,"August 1, 2017",2011,1 Season,"International TV Shows, TV Dramas, TV Sci-Fi & Fantasy"
-5349,TV Show,Close Your Eyes Before It’s Dark,null,"August 1, 2017",2016,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
+5349,TV Show,Close Your Eyes Before It's Dark,null,"August 1, 2017",2016,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
 5350,TV Show,Entangled,null,"August 1, 2017",2014,1 Season,"International TV Shows, TV Dramas"
 5351,TV Show,Fartsa,null,"August 1, 2017",2015,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
 5352,Movie,Handsome Devil,John Butler,"August 1, 2017",2016,95 min,"Comedies, Dramas, International Movies"
@@ -5368,7 +5368,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5367,TV Show,World War II in Colour,null,"August 1, 2017",2009,1 Season,"British TV Shows, Docuseries, International TV Shows"
 5368,TV Show,Daughters of Destiny,Vanessa Roth,"July 28, 2017",2017,1 Season,Docuseries
 5369,Movie,The Incredible Jessica James,Jim Strouse,"July 28, 2017",2017,84 min,"Comedies, Independent Movies, Romantic Movies"
-5370,Movie,Joe Mande’s Award-Winning Comedy Special,Daniel Gray Longino,"July 25, 2017",2017,67 min,Stand-Up Comedy
+5370,Movie,Joe Mande's Award-Winning Comedy Special,Daniel Gray Longino,"July 25, 2017",2017,67 min,Stand-Up Comedy
 5371,Movie,I Called Him Morgan,Kasper Collin,"July 24, 2017",2016,91 min,"Documentaries, Music & Musicals"
 5372,Movie,Aditi Mittal: Things They Wouldn't Let Me Say,Fazila Allana,"July 18, 2017",2017,63 min,Stand-Up Comedy
 5373,TV Show,Ari Shaffir: Double Negative,Eric Abrams,"July 18, 2017",2017,1 Season,Stand-Up Comedy & Talk Shows
@@ -5382,7 +5382,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5381,TV Show,Dawn of the Croods,null,"July 7, 2017",2017,4 Seasons,Kids' TV
 5382,TV Show,Degrassi: Next Class,Stefan Brogren,"July 7, 2017",2017,4 Seasons,"International TV Shows, TV Dramas, Teen TV Shows"
 5383,TV Show,Diamond Lover,null,"July 7, 2017",2015,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
-5384,TV Show,King’s War,null,"July 7, 2017",2012,1 Season,"International TV Shows, TV Dramas"
+5384,TV Show,King's War,null,"July 7, 2017",2012,1 Season,"International TV Shows, TV Dramas"
 5385,TV Show,Qin Empire: Alliance,null,"July 7, 2017",2012,1 Season,"International TV Shows, TV Dramas"
 5386,Movie,Take Me,Pat Healy,"July 7, 2017",2017,84 min,"Comedies, Independent Movies"
 5387,TV Show,The Legend of Bruce Lee,null,"July 7, 2017",2008,1 Season,"International TV Shows, TV Action & Adventure, TV Dramas"
@@ -5580,7 +5580,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5579,TV Show,Buddy Thunderstruck,null,"March 10, 2017",2017,1 Season,"Kids' TV, TV Comedies"
 5580,Movie,Burning Sands,Gerard McMurray,"March 10, 2017",2017,102 min,"Dramas, Independent Movies"
 5581,TV Show,One More Time,null,"March 10, 2017",2016,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
-5582,Movie,The Butterfly's Dream,Yılmaz Erdoğan,"March 10, 2017",2013,118 min,"Dramas, International Movies, Romantic Movies"
+5582,Movie,The Butterfly's Dream,Yilmaz Erdogan,"March 10, 2017",2013,118 min,"Dramas, International Movies, Romantic Movies"
 5583,Movie,Amy Schumer: The Leather Special,Amy Schumer,"March 7, 2017",2017,57 min,Stand-Up Comedy
 5584,TV Show,Love Is in the Air,null,"March 1, 2017",2010,1 Season,"International TV Shows, TV Dramas"
 5585,Movie,Nila,Selvamani Selvaraj,"March 1, 2017",2016,94 min,"Dramas, International Movies, Romantic Movies"
@@ -5645,7 +5645,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5644,Movie,LEGO: Marvel Super Heroes: Maximum Overload,Greg Richardson,"January 6, 2017",2013,22 min,Children & Family Movies
 5645,Movie,Rampage: President Down,Uwe Boll,"January 5, 2017",2016,100 min,"Action & Adventure, International Movies"
 5646,Movie,Marvel's Hulk: Where Monsters Dwell,Mitch Schauer,"January 4, 2017",2016,75 min,"Children & Family Movies, Sci-Fi & Fantasy"
-5647,Movie,Jen Kirkman: Just Keep Livin’?,Lance Bangs,"January 3, 2017",2017,69 min,Stand-Up Comedy
+5647,Movie,Jen Kirkman: Just Keep Livin'?,Lance Bangs,"January 3, 2017",2017,69 min,Stand-Up Comedy
 5648,Movie,Autohead,Rohit Mittal,"January 1, 2017",2016,97 min,"Dramas, International Movies, Thrillers"
 5649,Movie,Bee Movie,"Steve Hickner, Simon J. Smith","January 1, 2017",2007,92 min,"Children & Family Movies, Comedies"
 5650,Movie,Headwinds,Jalil Lespert,"January 1, 2017",2011,92 min,"Dramas, Independent Movies, International Movies"
@@ -5659,11 +5659,11 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5658,Movie,Garfunkel and Oates: Trying to be Special,"Riki Lindhome, Jeremy Konner","December 23, 2016",2016,62 min,"Music & Musicals, Stand-Up Comedy"
 5659,TV Show,Sense8,null,"December 23, 2016",2018,2 Seasons,"Crime TV Shows, TV Dramas, TV Mysteries"
 5660,Movie,A Christmas Special: Miraculous: Tales of Ladybug & Cat Noir,Thomas Astruc,"December 20, 2016",2016,22 min,Movies
-5661,Movie,Gabriel lglesias: I’m Sorry For What I Said When I Was Hungry,Manny Rodriguez,"December 20, 2016",2016,88 min,Stand-Up Comedy
+5661,Movie,Gabriel lglesias: I'm Sorry For What I Said When I Was Hungry,Manny Rodriguez,"December 20, 2016",2016,88 min,Stand-Up Comedy
 5662,Movie,Barry,Vikram Gandhi,"December 16, 2016",2016,105 min,Dramas
 5663,TV Show,Crazyhead,null,"December 16, 2016",2016,1 Season,"British TV Shows, International TV Shows, TV Comedies"
 5664,Movie,Sister Cities,Sean Hanish,"December 16, 2016",2016,88 min,Dramas
-5665,Movie,3 Türken & ein Baby,Sinan Akkuş,"December 15, 2016",2015,93 min,"Comedies, International Movies"
+5665,Movie,3 Türken & ein Baby,Sinan AkkuS,"December 15, 2016",2015,93 min,"Comedies, International Movies"
 5666,TV Show,Color of Woman,null,"December 15, 2016",2012,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
 5667,Movie,Eddie - Strongman,Matt Bell,"December 15, 2016",2015,98 min,"Documentaries, Sports Movies"
 5668,TV Show,Goodbye My Wife,null,"December 15, 2016",2012,1 Season,"International TV Shows, Korean TV Shows, Romantic TV Shows"
@@ -5785,11 +5785,11 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5784,Movie,Audrie & Daisy,"Bonni Cohen, Jon Shenk","September 23, 2016",2016,99 min,Documentaries
 5785,Movie,Iliza Shlesinger: Confirmed Kills,Bobcat Goldthwait,"September 23, 2016",2016,78 min,Stand-Up Comedy
 5786,TV Show,VeggieTales in the House,null,"September 23, 2016",2016,4 Seasons,Kids' TV
-5787,Movie,"Karol Modzelewski, Łukasz „Lotek” Lodkowski No Offense",null,"September 19, 2016",2016,65 min,Stand-Up Comedy
-5788,Movie,"Katarzyna Piasecka, Rafał Pacześ Seriously Funny",null,"September 19, 2016",2016,65 min,Stand-Up Comedy
-5789,Movie,"Mariusz Kałamaga, Karol Kopiec, Wiolka Walaszczyk Hilarious Trio",null,"September 19, 2016",2016,69 min,Stand-Up Comedy
-5790,Movie,"Rafał Banaś, Michał Leja Laugh out Loud",null,"September 19, 2016",2016,64 min,Stand-Up Comedy
-5791,Movie,The Best of Rafał Rutkowski Olka Szczęśniak,null,"September 19, 2016",2016,63 min,Stand-Up Comedy
+5787,Movie,"Karol Modzelewski, Lukasz Lotek Lodkowski No Offense",null,"September 19, 2016",2016,65 min,Stand-Up Comedy
+5788,Movie,"Katarzyna Piasecka, Rafal Paczes Seriously Funny",null,"September 19, 2016",2016,65 min,Stand-Up Comedy
+5789,Movie,"Mariusz Kalamaga, Karol Kopiec, Wiolka Walaszczyk Hilarious Trio",null,"September 19, 2016",2016,69 min,Stand-Up Comedy
+5790,Movie,"Rafal Banas, Michal Leja Laugh out Loud",null,"September 19, 2016",2016,64 min,Stand-Up Comedy
+5791,Movie,The Best of Rafal Rutkowski Olka Szczesniak,null,"September 19, 2016",2016,63 min,Stand-Up Comedy
 5792,Movie,"Tomasz Jachimek, Jacek Stramik Laugh at Live",null,"September 19, 2016",2016,63 min,Stand-Up Comedy
 5793,Movie,ARQ,Tony Elliott,"September 16, 2016",2016,89 min,"International Movies, Sci-Fi & Fantasy, Thrillers"
 5794,Movie,Cedric the Entertainer: Live from the Ville,Troy Miller,"September 16, 2016",2016,60 min,Stand-Up Comedy
@@ -5807,7 +5807,7 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5806,TV Show,The Fierce Wife,null,"September 1, 2016",2010,1 Season,"International TV Shows, Romantic TV Shows, TV Dramas"
 5807,TV Show,Witches: A Century of Murder,null,"September 1, 2016",2015,1 Season,"British TV Shows, Crime TV Shows, Docuseries"
 5808,TV Show,Glitter Force,null,"August 26, 2016",2016,2 Seasons,"Anime Series, Kids' TV"
-5809,Movie,Jeff Foxworthy and Larry the Cable Guy: We’ve Been Thinking...,Jay Karas,"August 26, 2016",2016,75 min,Stand-Up Comedy
+5809,Movie,Jeff Foxworthy and Larry the Cable Guy: We've Been Thinking...,Jay Karas,"August 26, 2016",2016,75 min,Stand-Up Comedy
 5810,Movie,XOXO,Christopher Louie,"August 26, 2016",2016,92 min,"Dramas, Music & Musicals"
 5811,Movie,I'll Sleep When I'm Dead,Justin Krook,"August 19, 2016",2016,80 min,"Documentaries, Music & Musicals"
 5812,TV Show,Behind Enemy Lines,null,"August 15, 2016",2001,1 Season,"British TV Shows, Docuseries"
@@ -5967,17 +5967,17 @@ show_id,type,title,director,date_added,release_year,duration,listed_in
 5966,Movie,22-Jul,Paul Greengrass,"October 10, 2018",2018,144 min,"Dramas, Thrillers"
 5967,Movie,15-Aug,Swapnaneel Jayakar,"March 29, 2019",2019,124 min,"Comedies, Dramas, Independent Movies"
 5968,Movie,'89,null,"May 16, 2018",2017,87 min,Sports Movies
-5969,Movie,​Goli Soda 2,Vijay Milton,"September 15, 2018",2018,128 min,"Action & Adventure, Dramas, International Movies"
-5970,Movie,​Maj Rati ​​Keteki,Santwana Bardoloi,"September 15, 2018",2017,117 min,"Dramas, International Movies"
-5971,Movie,​Mayurakshi,Atanu Ghosh,"September 15, 2018",2017,100 min,"Dramas, International Movies"
+5969,Movie,Goli Soda 2,Vijay Milton,"September 15, 2018",2018,128 min,"Action & Adventure, Dramas, International Movies"
+5970,Movie,Maj Rati Keteki,Santwana,Bordoloi,"September 15, 2018",2017,117 min,"Dramas, International Movies"
+5971,Movie,Mayurakshi,Atanu Ghosh,"September 15, 2018",2017,100 min,"Dramas, International Movies"
 5972,Movie,(T)ERROR,"Lyric R. Cabral, David Felix Sutcliffe","June 30, 2016",2015,84 min,Documentaries
 5973,Movie,#cats_the_mewvie,Michael Margolis,"February 5, 2020",2020,90 min,"Documentaries, International Movies"
 5974,Movie,#Roxy,Michael Kennedy,"April 10, 2019",2018,105 min,"Comedies, Romantic Movies"
-5975,TV Show,แผนร้ายนายเจ้าเล่ห์,null,"March 30, 2019",2016,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
+5975,TV Show,Arabe movie,null,"March 30, 2019",2016,1 Season,"International TV Shows, Romantic TV Shows, TV Comedies"
 5976,Movie,Ég man þig,Óskar Thór Axelsson,"March 27, 2018",2017,106 min,"Horror Movies, International Movies"
-5977,Movie,Çok Filim Hareketler Bunlar,Ozan Açıktan,"March 10, 2017",2010,99 min,"Comedies, International Movies"
-5978,Movie,Æon Flux,Karyn Kusama,"February 1, 2018",2005,93 min,"Action & Adventure, Sci-Fi & Fantasy"
-5979,TV Show,Şubat,null,"January 17, 2017",2013,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
+5977,Movie,Çok Filim Hareketler Bunlar,Ozan Açiktan,"March 10, 2017",2010,99 min,"Comedies, International Movies"
+5978,Movie,Aeon Flux,Karyn Kusama,"February 1, 2018",2005,93 min,"Action & Adventure, Sci-Fi & Fantasy"
+5979,TV Show,Subat,null,"January 17, 2017",2013,1 Season,"Crime TV Shows, International TV Shows, TV Dramas"
 5980,Movie,1 Chance 2 Dance,Adam Deyoe,"July 1, 2017",2014,89 min,"Dramas, Romantic Movies"
 5981,Movie,1 Mile to You,Leif Tilden,"July 7, 2017",2017,105 min,"Dramas, Romantic Movies, Sports Movies"
 5982,Movie,"10,000 B.C.",Roland Emmerich,"June 1, 2019",2008,109 min,Action & Adventure
