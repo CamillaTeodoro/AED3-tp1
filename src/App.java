@@ -91,12 +91,12 @@ public class App {
         // Creating a File object for directory
         File directoryPath = new File("../compress");
         // List of all files and directories
-        String contents[] = directoryPath.list();
+        String files[] = directoryPath.list();
         System.out.println("Qual dos arquivos você deseja descompactar? Entre com o número correspondente. ");
 
         // ignore .gitkeep file
-        for (int i = 1; i < contents.length; i++) {
-            System.out.println(i + " - " + contents[i]);
+        for (int i = 1; i < files.length; i++) {
+            System.out.println(i + " - " + files[i]);
         }
         try {
 
@@ -108,14 +108,51 @@ public class App {
             return fileToUnpack;
         }
 
-        if (option >= contents.length) {
+        if (option >= files.length) {
             System.out.println("Opção inválida");
             return fileToUnpack;
         }
 
-        fileToUnpack = contents[option];
+        fileToUnpack = files[option];
 
         return fileToUnpack;
+    }
+
+    public static String[] nextFileName() {
+
+        String directory = "../compress/";
+        String baseNameLZW = "BancoLZWCompressao";
+        String baseNameHuffman = "BancoHuffmanCompressao";
+        String extension = ".db";
+
+        String[] result = new String[2];
+
+        File dir = new File(directory);
+        File[] files = dir.listFiles();
+
+        int nextNumber = 1;
+        for (int i = 0; i < files.length; i++) {
+        }
+        for (File file : files) {
+
+            if (file.isFile() && file.getName().startsWith(baseNameLZW)
+                    && file.getName().endsWith(extension)) {
+                String name = file.getName();
+                String strNumber = name.substring(baseNameLZW.length(), name.length() - extension.length());
+                try {
+                    int numero = Integer.parseInt(strNumber);
+                    nextNumber = Math.max(nextNumber, numero + 1);
+                } catch (NumberFormatException e) {
+
+                }
+            }
+        }
+
+        result[0] = directory + baseNameLZW + nextNumber + extension;
+        result[1] = directory + baseNameHuffman + nextNumber + extension;
+
+        return result;
+
     }
 
     /**
@@ -972,8 +1009,9 @@ public class App {
                 case 13:
                     System.out.println("Compactando");
                     String fileAString = db.dbToString();
+                    String[] fileName = nextFileName();
 
-                    lzw.compress(fileAString, COMPRESSED_FILE);
+                    lzw.compress(fileAString, fileName[0]);
                     break;
 
                 case 14: {
