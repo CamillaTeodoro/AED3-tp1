@@ -9,7 +9,7 @@ public class App {
     private static final String BTREE_PATH = "../db/bTree.db";
     private static final String HASH_DIR_PATH = "../db/HashDir.db";
     private static final String HASH_IND_PATH = "../db/HashInd.db";
-    private static final String COMPRESSED_FILE = "../compress/BancoLZWCompressao1.db";
+    private static final String COMPRESSED_FILE = "../compress/BancoLZWCompressao2.db";
 
     /**
      * Read the csv file and load it into the database
@@ -51,6 +51,8 @@ public class App {
         System.out.println("Base de dados criada com sucesso.");
     }
 
+    // used to remove all characters that do not exist in the ASCII table
+
     public static void cleanCSV() throws FileNotFoundException {
         Scanner fileReaderScanner = new Scanner(new File(CSV_PATH));
         String line = fileReaderScanner.nextLine(); // Ignora
@@ -79,6 +81,41 @@ public class App {
             }
         }
         System.out.println(Arrays.toString(ofenders.toArray()));
+    }
+
+    public static String readFilesFromFolder() {
+
+        Scanner sc = new Scanner(System.in);
+        int option = 0;
+        String fileToUnpack = "";
+        // Creating a File object for directory
+        File directoryPath = new File("../compress");
+        // List of all files and directories
+        String contents[] = directoryPath.list();
+        System.out.println("Qual dos arquivos você deseja descompactar? Entre com o número correspondente. ");
+
+        // ignore .gitkeep file
+        for (int i = 1; i < contents.length; i++) {
+            System.out.println(i + " - " + contents[i]);
+        }
+        try {
+
+            option = Integer.parseInt(sc.nextLine());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("O valor digitado deve ser um número!!");
+            return fileToUnpack;
+        }
+
+        if (option >= contents.length) {
+            System.out.println("Opção inválida");
+            return fileToUnpack;
+        }
+
+        fileToUnpack = contents[option];
+
+        return fileToUnpack;
     }
 
     /**
@@ -938,12 +975,18 @@ public class App {
 
                     lzw.compress(fileAString, COMPRESSED_FILE);
                     break;
-                case 14:
+
+                case 14: {
+                    String fileToUnpack = "../compress/" + readFilesFromFolder();
                     System.out.println("Descompactando");
-                    lzw.unpack(COMPRESSED_FILE, DB_PATH);
+                    lzw.unpack(fileToUnpack, DB_PATH);
                     break;
+                }
                 case 15:
                     cleanCSV();
+                    break;
+                case 16:
+
                     break;
                 case 0:
                     System.out.println("Saindo...");
