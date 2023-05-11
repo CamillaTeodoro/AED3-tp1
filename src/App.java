@@ -1021,7 +1021,12 @@ public class App {
                     } else {
                         String fileToUnpack = "../compress/" + file;
                         System.out.println("Descompactando");
-                        lzw.unpack(fileToUnpack, DB_PATH);
+                        if (fileToUnpack.contains("LWZ")) {
+                            lzw.unpack(fileToUnpack, DB_PATH);
+                            System.out.println("Arquivo " + fileToUnpack + "descompactado com sucesso");
+                        } else {
+                            System.out.println("Descompactar Huffman");
+                        }
                     }
                     break;
                 }
