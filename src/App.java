@@ -118,6 +118,11 @@ public class App {
         return fileToUnpack;
     }
 
+    /**
+     * Method to provide the next file name
+     * 
+     * @return string array with file paths
+     */
     public static String[] nextFileName() {
 
         String directory = "../compress/";
@@ -147,8 +152,9 @@ public class App {
                 }
             }
         }
-
+        // next LZW file
         result[0] = directory + baseNameLZW + nextNumber + extension;
+        // next Huffman file
         result[1] = directory + baseNameHuffman + nextNumber + extension;
 
         return result;

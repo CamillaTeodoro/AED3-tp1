@@ -433,6 +433,14 @@ public class DatabaseAccess {
         this.position = pointerPosition;
     }
 
+    /**
+     * read the db file and return a string
+     * excludes deleted datas
+     * use a ";" to separate each record
+     * 
+     * @return file as a string
+     * @throws IOException
+     */
     public String dbToString() throws IOException {
 
         String fileString = "";
@@ -462,6 +470,13 @@ public class DatabaseAccess {
         return fileString;
     }
 
+    /**
+     * 
+     * @param unpackedFileString string to be saved in the db file
+     * @throws NumberFormatException
+     * @throws IOException
+     * @throws ParseException
+     */
     public void dbFromString(String unpackedFileString) throws NumberFormatException, IOException, ParseException {
 
         clearDb();
