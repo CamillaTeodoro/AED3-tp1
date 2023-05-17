@@ -1029,7 +1029,7 @@ public class App {
                     } else {
                         String fileToUnpack = "../compress/" + file;
                         System.out.println("Descompactando");
-                        if (fileToUnpack.contains("LWZ")) {
+                        if (fileToUnpack.contains("LZW")) {
                             lzw.unpack(fileToUnpack, DB_PATH);
                             System.out.println("Arquivo " + fileToUnpack + " descompactado com sucesso");
                         } else {
