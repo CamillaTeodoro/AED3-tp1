@@ -9,7 +9,6 @@ public class App {
     private static final String BTREE_PATH = "../db/bTree.db";
     private static final String HASH_DIR_PATH = "../db/HashDir.db";
     private static final String HASH_IND_PATH = "../db/HashInd.db";
-    private static final String COMPRESSED_FILE = "../compress/BancoLZWCompressao2.db";
 
     /**
      * Read the csv file and load it into the database
@@ -96,8 +95,8 @@ public class App {
 
         // ignore .gitkeep file
         for (int i = 0; i < files.length; i++) {
-            if(files[i].charAt(0)!= '.'){
-            System.out.println(i + " - " + files[i]);
+            if (files[i].charAt(0) != '.') {
+                System.out.println(i + " - " + files[i]);
             }
         }
         try {
@@ -1014,16 +1013,15 @@ public class App {
                     }
                 }
                     break;
-                case 13:
-                    {
+                case 13: {
                     System.out.println("Compactando");
                     String fileAString = db.dbToString();
                     String[] fileName = nextFileName();
-                    Huff huff = new Huff();     
-                   // lzw.compress(fileAString, fileName[0]);
-                    huff.comprimir(fileAString,fileName[1]);
+                    Huff huff = new Huff();
+                    lzw.compress(fileAString, fileName[0]);
+                    huff.comprimir(fileAString, fileName[1]);
                     break;
-                    }
+                }
                 case 14: {
                     String file = readFilesFromFolder();
                     if (file == "") {
@@ -1033,11 +1031,12 @@ public class App {
                         System.out.println("Descompactando");
                         if (fileToUnpack.contains("LWZ")) {
                             lzw.unpack(fileToUnpack, DB_PATH);
-                            System.out.println("Arquivo " + fileToUnpack + "descompactado com sucesso");
+                            System.out.println("Arquivo " + fileToUnpack + " descompactado com sucesso");
                         } else {
                             Huff hf = new Huff();
-                            System.out.println("Descompactar Huffman");
-                            hf.descomprimir(fileToUnpack,DB_PATH);
+                            // System.out.println("Descompactar Huffman");
+                            hf.descomprimir(fileToUnpack, DB_PATH);
+                            System.out.println("Arquivo " + fileToUnpack + " descompactado com sucesso");
 
                         }
                     }
