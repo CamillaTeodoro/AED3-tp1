@@ -1,110 +1,165 @@
 import java.util.*;
 
 public class BoyerMoore {
-    public List<Integer> boyerMooreSearch(String text, String pattern) {
-        List<Integer> matches = new ArrayList<>();
+    long tempoInicial = System.currentTimeMillis();
 
-        int n = text.length();
-        int m = pattern.length();
+    private static int NO_OF_CHARS = 256; // Assuming an extended ASCII character set
 
-        if (m == 0 || m > n) {
-            return matches;
+    /**
+     * Create the bad character table
+     * 
+     * @param pattern
+     * @param badChar
+     */
+    private static void badCharHeuristic(char[] pattern, int[] badChar) {
+        int patternLength = pattern.length;
+
+        // Initialize the bad character array with -1
+        Arrays.fill(badChar, -1);
+
+        // Store the rightmost occurrence of each character in the pattern, except for
+        // the last character
+        for (int i = 0; i < patternLength - 1; i++) {
+            badChar[pattern[i]] = i;
         }
-
-        Map<Character, Integer> badCharTable = generateBadCharTable(pattern);
-        int[] goodSuffixTable = generateGoodSuffixTable(pattern);
-
-        int i = m - 1;
-        int j = m - 1;
-
-        while (i < n) {
-            if (text.charAt(i) == pattern.charAt(j)) {
-                if (j == 0) {
-                    matches.add(i);
-                    i += m;
-                } else {
-                    i--;
-                    j--;
-                }
-            } else {
-                int shift1 = badCharTable.getOrDefault(text.charAt(i), m);
-                int shift2 = goodSuffixTable[j];
-                int shift = Math.max(shift1, shift2);
-                i += shift;
-                j = m - 1;
-            }
-        }
-
-        return matches;
     }
 
     /**
-     * Create the table for the bad character
-     * 
-     * @param pattern
-     * @return
+     * Create the Good Suffix table
      */
-    private static Map<Character, Integer> generateBadCharTable(String pattern) {
-        Map<Character, Integer> table = new HashMap<>();
+    private static void goodSuffixHeuristic(char[] pattern, int[] goodSuffix) {
+        int patternLength = pattern.length;
+        //
+        int[] suffixes = new int[patternLength];
+        int lastPrefixPosition = patternLength;
 
-        for (int i = 0; i < pattern.length() - 1; i++) {
-            char c = pattern.charAt(i);
-            table.put(c, i);
-        }
-        table.forEach((key, value) -> System.out.println(key + " " + value));
-        return table;
-    }
+        for (int i = patternLength - 1; i >= 0; i--) {
+            if (isPrefix(pattern, i + 1)) {
+                lastPrefixPosition = i + 1;
+            }
 
-    private static int[] generateGoodSuffixTable(String pattern) {
-        int m = pattern.length();
-        int[] table = new int[m];
-        int[] suffixes = generateSuffixes(pattern);
-
-        for (int i = 0; i < m; i++) {
-            table[i] = m;
+            // Calculate the lengths of the suffixes
+            suffixes[i] = lastPrefixPosition - i + patternLength - 1;
         }
 
-        int j = 0;
-        for (int i = m - 1; i >= 0; i--) {
+        for (int i = 0; i < patternLength - 1; i++) {
+            int suffixLength = suffixLength(pattern, i);
+            // Update the table with the lengths of the suffixes
+            suffixes[suffixLength] = patternLength - 1 - i + suffixLength;
+        }
+
+        for (int i = 0; i < patternLength; i++) {
+            // Initialize the goodsuffix array with the default shift value
+            goodSuffix[i] = patternLength;
+        }
+
+        for (int i = patternLength - 1; i >= 0; i--) {
             if (suffixes[i] == i + 1) {
-                for (; j < m - 1 - i; j++) {
-                    if (table[j] == m) {
-                        table[j] = m - 1 - i;
+                for (int j = 0; j < patternLength - 1 - i; j++) {
+                    if (goodSuffix[j] == patternLength) {
+                        goodSuffix[j] = patternLength - 1 - i;
                     }
                 }
             }
         }
 
-        for (int i = 0; i < m - 1; i++) {
-            table[m - 1 - suffixes[i]] = m - 1 - i;
+        for (int i = 0; i < patternLength - 1; i++) {
+            int suffixLength = suffixLength(pattern, i);
+            goodSuffix[patternLength - 1 - suffixLength] = patternLength - 1 - i;
         }
-
-        return table;
     }
 
-    private static int[] generateSuffixes(String pattern) {
-        int m = pattern.length();
-        int[] suffixes = new int[m];
-        int f = 0;
-        int g;
+    /**
+     * Check if a given pattern is a prefix of another pattern
+     * 
+     * @param pattern
+     * @param p
+     * @return
+     */
+    private static boolean isPrefix(char[] pattern, int p) {
+        int patternLength = pattern.length;
+        for (int i = p, j = 0; i < patternLength; i++, j++) {
+            if (pattern[i] != pattern[j]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-        suffixes[m - 1] = m;
-        g = m - 1;
-        for (int i = m - 2; i >= 0; i--) {
-            if (i > g && suffixes[i + m - 1 - f] < i - g) {
-                suffixes[i] = suffixes[i + m - 1 - f];
+    /**
+     * Calculate the length of a suffix
+     * 
+     * @param pattern
+     * @param p
+     * @return
+     */
+    private static int suffixLength(char[] pattern, int p) {
+        int patternLength = pattern.length;
+        int length = 0;
+        for (int i = p, j = patternLength - 1; i >= 0 && pattern[i] == pattern[j]; i--, j--) {
+            length += 1;
+        }
+        return length;
+    }
+
+    /**
+     * Search for the given pattern in the text
+     * 
+     * @param text
+     * @param pattern
+     * @return
+     */
+    public List<Integer> boyerMooreSearch(String fileAsString, String pattern) {
+        List<Integer> occurrences = new ArrayList<>();
+
+        // Convert the fileAsString and pattern strings into character arrays
+        char[] textChars = fileAsString.toCharArray();
+        char[] patternChars = pattern.toCharArray();
+
+        int textLength = textChars.length;
+        int patternLength = patternChars.length;
+
+        // count the pattern shifts inside the text
+        int patternShifts = 0;
+
+        int[] badChar = new int[NO_OF_CHARS];
+        int[] goodSuffix = new int[patternLength + 1];
+
+        // Preprocess the bad Char and the good suffix
+        badCharHeuristic(patternChars, badChar);
+        goodSuffixHeuristic(patternChars, goodSuffix);
+
+        int shift = 0;
+        // Loop that continues as long as the shift is less than or equal to the
+        // difference between the lengths of the text and the pattern
+        while (shift <= textLength - patternLength) {
+            int j = patternLength - 1;
+
+            // Compare the pattern with the text character by character from right to left
+            while (j >= 0 && patternChars[j] == textChars[shift + j]) {
+                j--;
+            }
+
+            if (j < 0) {
+                // add the position to the list of occurrences
+                occurrences.add(shift);
+                // Apply the shift based on the good suffix array
+                shift += goodSuffix[0];
             } else {
-                if (i < g) {
-                    g = i;
-                }
-                f = i;
-                while (g >= 0 && pattern.charAt(g) == pattern.charAt(g + m - 1 - f)) {
-                    g--;
-                }
-                suffixes[i] = f - g;
+                int badCharShift = j - badChar[textChars[shift + j]];
+                int goodSuffixShift = goodSuffix[j + 1];
+                // shift the pattern according to the max jump
+                shift += Math.max(badCharShift, goodSuffixShift);
+                patternShifts++;
             }
         }
 
-        return suffixes;
+        long tempoFinal = System.currentTimeMillis();
+        long total = tempoFinal - tempoInicial;
+
+        System.out.println("Tempo total para busca pelo algoritmo Boyer-Moore foi de " + total + " milessegundos");
+        System.out.println("Numero de movimentações do padrão pelo algoritmo Boyer-Moore foi de " + patternShifts
+                + " movimentações");
+        return occurrences;
     }
 }

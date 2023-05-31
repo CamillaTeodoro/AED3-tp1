@@ -4,7 +4,7 @@ import java.util.*;
 
 public class App {
     private static int batchSize = 5;
-    private static final String CSV_PATH = "../test.csv";
+    private static final String CSV_PATH = "../netflix_titles.csv";
     private static final String DB_PATH = "../db/banco.db";
     private static final String BTREE_PATH = "../db/bTree.db";
     private static final String HASH_DIR_PATH = "../db/HashDir.db";
@@ -1045,11 +1045,11 @@ public class App {
                 }
                 case 15:
                     BoyerMoore bMoore = new BoyerMoore();
-                    String fileAString = db.dbToString();
-                    System.out.println(fileAString);
+                    String fileAsString = db.dbToString();
+                    // System.out.println(fileAString);
                     System.out.println("Digite o padrão que deseja pesquisar: ");
                     String pattern = sc.nextLine();
-                    List<Integer> matches = bMoore.boyerMooreSearch(fileAString, pattern);
+                    List<Integer> matches = bMoore.boyerMooreSearch(fileAsString, pattern);
 
                     if (matches.isEmpty()) {
                         System.out.println("Padrão não encontrado no texto.");
