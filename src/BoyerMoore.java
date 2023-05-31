@@ -1,62 +1,110 @@
 import java.util.*;
 
 public class BoyerMoore {
-    private static final int ALPHABET_SIZE = 256;
-
-    public List<Integer> search(String fileAString, String pattern) {
+    public List<Integer> boyerMooreSearch(String text, String pattern) {
         List<Integer> matches = new ArrayList<>();
 
-        int n = fileAString.length();
+        int n = text.length();
         int m = pattern.length();
 
-        int[] last = preprocessLastOccurrence(pattern);
-        Map<Character, Integer> badCharShift = preprocessBadCharacterShift(pattern);
+        if (m == 0 || m > n) {
+            return matches;
+        }
 
-        int shift = 0;
-        while (shift <= n - m) {
-            int j = m - 1;
+        Map<Character, Integer> badCharTable = generateBadCharTable(pattern);
+        int[] goodSuffixTable = generateGoodSuffixTable(pattern);
 
-            while (j >= 0 && pattern.charAt(j) == fileAString.charAt(shift + j))
-                j--;
+        int i = m - 1;
+        int j = m - 1;
 
-            if (j < 0) {
-                // Match found at current shift
-                matches.add(shift);
-                shift += (shift + m < n) ? m - last[fileAString.charAt(shift + m)] : 1;
+        while (i < n) {
+            if (text.charAt(i) == pattern.charAt(j)) {
+                if (j == 0) {
+                    matches.add(i);
+                    i += m;
+                } else {
+                    i--;
+                    j--;
+                }
             } else {
-                int charShift = badCharShift.getOrDefault(fileAString.charAt(shift + j), m);
-                shift += Math.max(1, j - charShift);
+                int shift1 = badCharTable.getOrDefault(text.charAt(i), m);
+                int shift2 = goodSuffixTable[j];
+                int shift = Math.max(shift1, shift2);
+                i += shift;
+                j = m - 1;
             }
         }
 
         return matches;
     }
 
-    private static Map<Character, Integer> preprocessBadCharacterShift(String pattern) {
-        Map<Character, Integer> badCharShift = new HashMap<>();
-        int m = pattern.length();
+    /**
+     * Create the table for the bad character
+     * 
+     * @param pattern
+     * @return
+     */
+    private static Map<Character, Integer> generateBadCharTable(String pattern) {
+        Map<Character, Integer> table = new HashMap<>();
 
-        for (int i = 0; i < m - 1; i++) {
+        for (int i = 0; i < pattern.length() - 1; i++) {
             char c = pattern.charAt(i);
-            badCharShift.put(c, m - 1 - i);
+            table.put(c, i);
         }
-
-        return badCharShift;
+        table.forEach((key, value) -> System.out.println(key + " " + value));
+        return table;
     }
 
-    private static int[] preprocessLastOccurrence(String pattern) {
-        int[] last = new int[ALPHABET_SIZE];
+    private static int[] generateGoodSuffixTable(String pattern) {
         int m = pattern.length();
+        int[] table = new int[m];
+        int[] suffixes = generateSuffixes(pattern);
 
-        for (int i = 0; i < ALPHABET_SIZE; i++) {
-            last[i] = -1;
+        for (int i = 0; i < m; i++) {
+            table[i] = m;
+        }
+
+        int j = 0;
+        for (int i = m - 1; i >= 0; i--) {
+            if (suffixes[i] == i + 1) {
+                for (; j < m - 1 - i; j++) {
+                    if (table[j] == m) {
+                        table[j] = m - 1 - i;
+                    }
+                }
+            }
         }
 
         for (int i = 0; i < m - 1; i++) {
-            last[pattern.charAt(i)] = i;
+            table[m - 1 - suffixes[i]] = m - 1 - i;
         }
 
-        return last;
+        return table;
     }
 
+    private static int[] generateSuffixes(String pattern) {
+        int m = pattern.length();
+        int[] suffixes = new int[m];
+        int f = 0;
+        int g;
+
+        suffixes[m - 1] = m;
+        g = m - 1;
+        for (int i = m - 2; i >= 0; i--) {
+            if (i > g && suffixes[i + m - 1 - f] < i - g) {
+                suffixes[i] = suffixes[i + m - 1 - f];
+            } else {
+                if (i < g) {
+                    g = i;
+                }
+                f = i;
+                while (g >= 0 && pattern.charAt(g) == pattern.charAt(g + m - 1 - f)) {
+                    g--;
+                }
+                suffixes[i] = f - g;
+            }
+        }
+
+        return suffixes;
+    }
 }
