@@ -734,6 +734,7 @@ public class App {
             System.out.println("12 - Deletar via hash");
             System.out.println("13 - Compactar arquivo");
             System.out.println("14 - Descompactar arquivo");
+            System.out.println("15 - Buscar padrão usando Boyer-Moore");
             System.out.println("0 - Sair");
             System.out.println();
 
@@ -1043,9 +1044,36 @@ public class App {
                     break;
                 }
                 case 15:
-                    cleanCSV();
+                    BoyerMoore bMoore = new BoyerMoore();
+                    String fileAsString = db.dbToString();
+                    // System.out.println(fileAString);
+                    System.out.println("Digite o padrão que deseja pesquisar: ");
+                    String pattern = sc.nextLine();
+                    List<Integer> matches = bMoore.boyerMooreSearch(fileAsString, pattern);
+
+                    if (matches.isEmpty()) {
+                        System.out.println("Padrão não encontrado no texto.");
+                    } else {
+                        System.out.println("Padrão encontrado em: ");
+                        for (int match : matches) {
+                            System.out.println(match);
+                        }
+                        System.out.println("Padrão encontrado " + matches.size() + " vezes.");
+                    }
+
                     break;
+
                 case 16:
+
+                    break;
+                case 17:
+
+                    break;
+                case 18:
+
+                    break;
+                case 19:
+                    cleanCSV();
 
                     break;
                 case 0:
