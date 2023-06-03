@@ -735,6 +735,7 @@ public class App {
             System.out.println("13 - Compactar arquivo");
             System.out.println("14 - Descompactar arquivo");
             System.out.println("15 - Buscar padrão usando Boyer-Moore");
+            System.out.println("16 - Buscar padrão usando Rabin-Karp");
             System.out.println("0 - Sair");
             System.out.println();
 
@@ -1064,8 +1065,15 @@ public class App {
                     break;
 
                 case 16:
-
+                    {
+                    RB rabinK = new RB();
+                    String dbAsString = db.dbToString();
+                    System.out.println("Digite o padrão que deseja pesquisar: ");
+                    String pattern2 = sc.nextLine();
+                    rabinK.changePadrao(pattern2);
+                    rabinK.procurar(dbAsString);
                     break;
+                    }
                 case 17:
 
                     break;
