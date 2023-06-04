@@ -734,8 +734,8 @@ public class App {
             System.out.println("12 - Deletar via hash");
             System.out.println("13 - Compactar arquivo");
             System.out.println("14 - Descompactar arquivo");
-            System.out.println("15 - Buscar padrão usando Boyer-Moore");
-            System.out.println("16 - Buscar padrão usando Rabin-Karp");
+            System.out.println("15 - Buscar padrão usando Boyer-Moore e Rabin-Karp");
+            // System.out.println("16 - Buscar padrão usando Rabin-Karp");
             System.out.println("0 - Sair");
             System.out.println();
 
@@ -1046,34 +1046,33 @@ public class App {
                 }
                 case 15:
                     BoyerMoore bMoore = new BoyerMoore();
+                    RB rabinK = new RB();
+
                     String fileAsString = db.dbToString();
                     // System.out.println(fileAString);
                     System.out.println("Digite o padrão que deseja pesquisar: ");
                     String pattern = sc.nextLine();
                     List<Integer> matches = bMoore.boyerMooreSearch(fileAsString, pattern);
 
+                    rabinK.changePadrao(pattern);
+                    rabinK.procurar(fileAsString);
+
                     if (matches.isEmpty()) {
                         System.out.println("Padrão não encontrado no texto.");
                     } else {
-                        System.out.println("Padrão encontrado em: ");
-                        for (int match : matches) {
-                            System.out.println(match);
-                        }
-                        System.out.println("Padrão encontrado " + matches.size() + " vezes.");
+                        // System.out.println("Padrão encontrado em: ");
+                        // for (int match : matches) {
+                        // System.out.println(match);
+                        // }
+                        System.out.println("Padrão encontrado " + matches.size() + " vezes usando Boyer-Moore.");
                     }
 
                     break;
 
-                case 16:
-                    {
-                    RB rabinK = new RB();
-                    String dbAsString = db.dbToString();
-                    System.out.println("Digite o padrão que deseja pesquisar: ");
-                    String pattern2 = sc.nextLine();
-                    rabinK.changePadrao(pattern2);
-                    rabinK.procurar(dbAsString);
+                case 16: {
+
                     break;
-                    }
+                }
                 case 17:
 
                     break;
