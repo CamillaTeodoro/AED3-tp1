@@ -462,7 +462,9 @@ public class DatabaseAccess {
     public void setPosition(Long pointerPosition) throws IOException {
         this.position = pointerPosition;
     }
-
+    public void setRafPos(long pos)throws IOException{
+        databaseFile.seek(pos);
+    }
     /**
      * read the db file and return a string
      * excludes deleted datas

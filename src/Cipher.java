@@ -27,6 +27,7 @@ public class Cipher{
 	 */
 	public void createCipherDB(DatabaseAccess db,DatabaseAccess db2){
 		try{
+		db.setRafPos((long)4);
 		db.resetPosition();
 		db2.clearDb();
 		while(db.getRAFPosition()<db.length()){
