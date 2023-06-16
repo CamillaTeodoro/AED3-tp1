@@ -1087,8 +1087,12 @@ public class App {
                     c.createCipherDB(db, dbC);
                     break;
                 }
-                case 17: {
-                    Film film = readFilmDataFromUser(sc, db);
+
+                case 17:
+                    {
+                        Film film = readFilmDataFromUser(sc, dbC);
+
+         
                     if (film == null) {
                         System.out.println("Erro ao cadastrar!");
                     } else {
@@ -1142,8 +1146,10 @@ public class App {
                                 break;
                             }
                             editedFilm.setDirector(c.batmanCipher(editedFilm.getDirector()));
-                            long addr = dbC.update(film, editedFilm);
-                            if (addr > 0) {
+
+                            long addr = dbC.update(film, editedFilm);                
+                            if (addr !=-1) {
+
                                 System.out.println("Registro editado com sucesso!");
                             } else {
                                 System.out.println("Erro ao editar!");
