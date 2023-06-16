@@ -6,6 +6,7 @@ public class App {
     private static int batchSize = 5;
     private static final String CSV_PATH = "../netflix_titles.csv";
     private static final String DB_PATH = "../db/banco.db";
+    private static final String CIPHER_PATH = "../db/bancoC.db";
     private static final String BTREE_PATH = "../db/bTree.db";
     private static final String HASH_DIR_PATH = "../db/HashDir.db";
     private static final String HASH_IND_PATH = "../db/HashInd.db";
@@ -704,7 +705,9 @@ public class App {
 
         Scanner sc = new Scanner(System.in);
         DatabaseAccess db = new DatabaseAccess(DB_PATH);
+        DatabaseAccess dbC = new DatabaseAccess(CIPHER_PATH);
         Hash hh = new Hash(HASH_DIR_PATH, HASH_IND_PATH);
+        Cipher c = new Cipher();
         int option = -1;
         int id = 0;
 
@@ -735,7 +738,11 @@ public class App {
             System.out.println("13 - Compactar arquivo");
             System.out.println("14 - Descompactar arquivo");
             System.out.println("15 - Buscar padrão usando Boyer-Moore e Rabin-Karp");
-            // System.out.println("16 - Buscar padrão usando Rabin-Karp");
+            System.out.println("16 - Criar base de dados com encriptação");
+            System.out.println("17 - Criar um novo registro com encriptação");
+            System.out.println("18 - Ler um registro da base de dados encriptada");
+            System.out.println("19 - Atualizar um registro da base de dados encriptada");
+            System.out.println("20 - Deletar um registro da base de dados encriptada");
             System.out.println("0 - Sair");
             System.out.println();
 
@@ -1070,19 +1077,109 @@ public class App {
                     break;
 
                 case 16: {
-
+                    System.out.println("Digite uma palavra chave para a encriptação");
+                    System.out.println("Ou deixe vazio e aperte enter para usar a chave padrão");
+                    String key = sc.nextLine();
+                    if(key.length()>0){
+                        c.setKey(key);
+                    }
+                    c.createCipherDB(db,dbC);
                     break;
                 }
                 case 17:
-
+                    {
+                        Film film = readFilmDataFromUser(sc, db);
+                    if (film == null) {
+                        System.out.println("Erro ao cadastrar!");
+                    } else {
+                        film.setDirector(c.batmanCipher(film.getDirector()));
+                        Long address = dbC.create(film);
+                        if (address != -1) {
+                            System.out.println("Registro criado com sucesso!");
+                        } else {
+                            System.out.println("Erro ao cadastrar!");
+                        }
+                    }
+                    System.out.println();
+                    }
                     break;
                 case 18:
+                    {
+                        System.out.println("Digite o id do Show que você deseja ver: ");
+                    try {
+                        id = Integer.parseInt(sc.nextLine());
+                        System.out.println("Agora,digite 1 para mostrar esse filme com o campo diretor encriptado");
+                        System.out.println("Ou 0 para descripta-lo");
+                        int choice = Integer.parseInt(sc.nextLine());
+                        Film film  = null;
+                        if(choice == 1){
+                            film = dbC.read(id);
+                        }else if(choice ==0 ){
+                            film = dbC.readCipher(id,c);
+                        }else{
+                            System.out.println("Escolha invalida de criptografia!");
+                        }
+                        if (film == null) {
+                            System.out.println("Filme/Show não existe na base de dados!");
+                        } else {
+                            film.print();
+                        }
+                    } catch (Exception e) {
+                        System.out.println("O valor digitado deve ser um número!!");
+                        option = 0;
+                    }
+                    }
+                    break;
+                case 19:{
+                     System.out.println("Digite o id do Show que você deseja atualizar: ");
+                    try {
+                        id = Integer.parseInt(sc.nextLine());
+                        Film film = dbC.read(id);
+                        if (film != null) {
+                            film.print();
+                            Film editedFilm = readEditDataFromUser(film, sc);
+                            if (editedFilm == null) {
+                                System.out.println("Erro ao editar!");
+                                break;
+                            }
+                            editedFilm.setDirector(c.batmanCipher(editedFilm.getDirector()));
+                            long addr = dbC.update(film, editedFilm);                
+                            if (addr >0) {
+                                System.out.println("Registro editado com sucesso!");
+                            } else {
+                                System.out.println("Erro ao editar!");
+                            }
+
+                            System.out.println();
+                        } else {
+                            System.out.println("Filme/Show não existe na base de dados");
+                        }
+
+                    } catch (Exception e) {
+                        System.out.println("O valor digitado deve ser um número!!");
+                        option = 0;
+                    }
 
                     break;
-                case 19:
-                    cleanCSV();
+                    }
+                case 20:
+                    {
+                         System.out.println("Digite o id do Show que você deseja deletar: ");
+                    try {
+                        id = Integer.parseInt(sc.nextLine());
+                        Boolean result = dbC.delete(id);
+                        if (result) {
+                            System.out.println("Registro deletado com sucesso!");
+                        } else {
+                            System.out.println("Erro ao deletar!");
+                        }
 
+                    } catch (Exception e) {
+                        System.out.println("O valor digitado deve ser um número!!");
+                        option = 0;
+                    }
                     break;
+                    }
                 case 0:
                     System.out.println("Saindo...");
                     break;
