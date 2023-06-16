@@ -456,7 +456,7 @@ public class App {
 
             // It should be sorted now
             System.out.println("");
-            db.print();
+            // db.print();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -654,7 +654,7 @@ public class App {
 
             // It should be sorted now
             System.out.println("");
-            db.print();
+            // db.print();
 
             System.out.println("");
             System.out.println("Base de dados ordenada com sucesso!");
@@ -869,6 +869,7 @@ public class App {
                     try {
                         id = Integer.parseInt(sc.nextLine());
                         Long idAddress = bTree.findIndexInBTreeFile(id);
+                        // System.out.println(idAddress);
                         if (idAddress == -1) {
                             System.out.println("Filme/Show não existe na base de dados!");
                         } else {
@@ -1080,15 +1081,14 @@ public class App {
                     System.out.println("Digite uma palavra chave para a encriptação");
                     System.out.println("Ou deixe vazio e aperte enter para usar a chave padrão");
                     String key = sc.nextLine();
-                    if(key.length()>0){
+                    if (key.length() > 0) {
                         c.setKey(key);
                     }
-                    c.createCipherDB(db,dbC);
+                    c.createCipherDB(db, dbC);
                     break;
                 }
-                case 17:
-                    {
-                        Film film = readFilmDataFromUser(sc, db);
+                case 17: {
+                    Film film = readFilmDataFromUser(sc, db);
                     if (film == null) {
                         System.out.println("Erro ao cadastrar!");
                     } else {
@@ -1101,23 +1101,22 @@ public class App {
                         }
                     }
                     System.out.println();
-                    }
+                }
                     break;
-                case 18:
-                    {
-                        System.out.println("Digite o id do Show que você deseja ver: ");
+                case 18: {
+                    System.out.println("Digite o id do Show que você deseja ver: ");
                     try {
                         id = Integer.parseInt(sc.nextLine());
-                        System.out.println("Agora,digite 1 para mostrar esse filme com o campo diretor encriptado");
+                        System.out.println("Agora, digite 1 para mostrar esse filme com o campo diretor encriptado");
                         System.out.println("Ou 0 para descripta-lo");
                         int choice = Integer.parseInt(sc.nextLine());
-                        Film film  = null;
-                        if(choice == 1){
+                        Film film = null;
+                        if (choice == 1) {
                             film = dbC.read(id);
-                        }else if(choice ==0 ){
-                            film = dbC.readCipher(id,c);
-                        }else{
-                            System.out.println("Escolha invalida de criptografia!");
+                        } else if (choice == 0) {
+                            film = dbC.readCipher(id, c);
+                        } else {
+                            System.out.println("Escolha inválida de criptografia!");
                         }
                         if (film == null) {
                             System.out.println("Filme/Show não existe na base de dados!");
@@ -1128,10 +1127,10 @@ public class App {
                         System.out.println("O valor digitado deve ser um número!!");
                         option = 0;
                     }
-                    }
+                }
                     break;
-                case 19:{
-                     System.out.println("Digite o id do Show que você deseja atualizar: ");
+                case 19: {
+                    System.out.println("Digite o id do Show que você deseja atualizar: ");
                     try {
                         id = Integer.parseInt(sc.nextLine());
                         Film film = dbC.read(id);
@@ -1143,8 +1142,8 @@ public class App {
                                 break;
                             }
                             editedFilm.setDirector(c.batmanCipher(editedFilm.getDirector()));
-                            long addr = dbC.update(film, editedFilm);                
-                            if (addr >0) {
+                            long addr = dbC.update(film, editedFilm);
+                            if (addr > 0) {
                                 System.out.println("Registro editado com sucesso!");
                             } else {
                                 System.out.println("Erro ao editar!");
@@ -1161,10 +1160,9 @@ public class App {
                     }
 
                     break;
-                    }
-                case 20:
-                    {
-                         System.out.println("Digite o id do Show que você deseja deletar: ");
+                }
+                case 20: {
+                    System.out.println("Digite o id do Show que você deseja deletar: ");
                     try {
                         id = Integer.parseInt(sc.nextLine());
                         Boolean result = dbC.delete(id);
@@ -1179,7 +1177,7 @@ public class App {
                         option = 0;
                     }
                     break;
-                    }
+                }
                 case 0:
                     System.out.println("Saindo...");
                     break;
