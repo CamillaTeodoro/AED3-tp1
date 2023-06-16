@@ -52,7 +52,31 @@ public class DatabaseAccess {
         }
         return null;
     }
+    /**<p>readCipher->le do db encriptado,descriptando o campo diretor ou não
+     * de acordo com a flag argumento<\p>
+     * @param id id do filme a procurar
+     * @param c cifra com a chave necessaria
+     */
+    public Film readCipher(int id,Cipher c) throws IOException{
+        try {
+            Long pointerPosition = find(id);
+            if (pointerPosition == (long) -1) {
+                return null;
+            }
+            Film film = new Film();
+            databaseFile.seek(pointerPosition + 2);
+            int sizeFilm = databaseFile.readInt();
+            byte[] b = new byte[sizeFilm];
+            databaseFile.read(b);
+            film.fromByteArray(b);
+            film.setDirector(c.batmanDecipher(film.getDirector()));
+            return film;
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     /**
      * <p>
      * readFromAddr -> reads a film from the database from the the given byte
@@ -422,7 +446,13 @@ public class DatabaseAccess {
     public Long getPosition() throws IOException {
         return position;
     }
-
+    /**
+     * Get raf position
+     * @return raf file buffer positon
+     */
+    public long getRAFPosition()throws IOException{
+        return databaseFile.getFilePointer();
+    }
     /**
      * Set position
      * 
