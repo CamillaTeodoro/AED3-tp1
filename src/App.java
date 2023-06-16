@@ -814,7 +814,7 @@ public class App {
                                 result = true;
                                 result2 = true;
                             } else {
-                                result = true;
+                                result = bTree.updateDBAddress(film.getShow_id(), addr);
                                 result2 = hh.atualizar(film.getShow_id(), addr);
                             }
                             if (result) {
@@ -841,7 +841,7 @@ public class App {
                         id = Integer.parseInt(sc.nextLine());
                         Boolean result = db.delete(id);
 
-                        // TODO: Consider duplicating this case
+                        bTree.delete(id);
                         boolean result2 = hh.deletar(id);
                         if (result && result2) {
                             System.out.println("Registro deletado com sucesso!");
@@ -852,7 +852,7 @@ public class App {
                     } catch (Exception e) {
                         System.out.println("O valor digitado deve ser um número!!");
                         option = 0;
-                    }
+                    }       
                     break;
                 }
                 case 5: {
